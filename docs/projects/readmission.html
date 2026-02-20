@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Hospital Readmission Analytics (SQL + R + Power BI) – Markuss Saule</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-0774fc528949661fb60d8774007a227f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Markuss Saule</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resume.html"> 
+<span class="menu-text">Resume</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/msaule"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hospital Readmission Analytics (SQL + R + Power BI)</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/readmission/cover.png" class="cover-image img-fluid figure-img"></p>
+<figcaption>Project cover</figcaption>
+</figure>
+</div>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>Built a full readmission analytics pipeline using SQL, R, and Power BI on 100K+ hospital encounters. Designed a normalized SQL schema, engineered an analysis view, and ran statistical modeling in R to identify what drives 30-day readmissions. Found an overall readmission rate of ~11%, modest subgroup gaps (~2.7%), and clear clinical drivers: length of stay, number of diagnoses, and medication count. Delivered a 3-page Power BI report showing equity metrics, risk patterns, and clinical complexity signals.</p>
+</section>
+<section id="what-i-did" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-did">What I Did</h2>
+<ul>
+<li>Defined the business objective, metric targets, and analysis scope.</li>
+<li>Built and validated the data, modeling, and reporting workflow.</li>
+<li>Packaged outputs for stakeholder interpretation and decision support.</li>
+</ul>
+</section>
+<section id="resultsimpact" class="level2">
+<h2 class="anchored" data-anchor-id="resultsimpact">Results/Impact</h2>
+<p>Delivered an analysis workflow with decision-ready outputs and reusable artifacts.</p>
+</section>
+<section id="tech-stack" class="level2">
+<h2 class="anchored" data-anchor-id="tech-stack">Tech Stack</h2>
+<ul>
+<li>Data Analysis, Database Management, Problem Solving, Programming, Project Management, UI/UX Design</li>
+</ul>
+</section>
+<section id="deliverables" class="level2">
+<h2 class="anchored" data-anchor-id="deliverables">Deliverables</h2>
+<ul>
+<li><a href="../files/readmission/diabetes-readmission.sql">diabetes-readmission.sql</a></li>
+<li><a href="../files/readmission/diabetes-research-report.pdf">diabetes-research-report.pdf</a></li>
+<li><a href="../files/readmission/diabetes_report.pbix">diabetes_report.pbix</a></li>
+<li><a href="../files/readmission/Hospital_Readmission_Equity_Report 1.pdf">Hospital_Readmission_Equity_Report 1.pdf</a></li>
+<li><a href="../files/readmission/Hospital_Readmission_Equity_Report.pdf">Hospital_Readmission_Equity_Report.pdf</a></li>
+<li><a href="../files/readmission/readmissions-report-final.qmd">readmissions-report-final.qmd</a></li>
+<li><a href="../files/readmission/report-1.pdf">report-1.pdf</a></li>
+<li><a href="../files/readmission/report-2.pdf">report-2.pdf</a></li>
+<li><a href="../files/readmission/report-3.pdf">report-3.pdf</a></li>
+</ul>
+</section>
+<section id="project-notes" class="level2">
+<h2 class="anchored" data-anchor-id="project-notes">Project Notes</h2>
+<p>Description: Built a full readmission analytics pipeline using SQL, R, and Power BI on 100K+ hospital encounters. Designed a normalized SQL schema, engineered an analysis view, and ran statistical modeling in R to identify what drives 30-day readmissions. Found an overall readmission rate of ~11%, modest subgroup gaps (~2.7%), and clear clinical drivers: length of stay, number of diagnoses, and medication count. Delivered a 3-page Power BI report showing equity metrics, risk patterns, and clinical complexity signals. Skills Demonstrated: Data Analysis, Database Management, Problem Solving, Programming, Project Management, UI/UX Design Project Status: Completed Completion Date: September 16, 2025</p>
+</section>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary"><strong>Executive Summary</strong></h2>
+<p>I��ve wanted to find ways to use my skills to contribute to healthcare. This made me think even more about how data and analytics could support doctors, patients, and families.</p>
+<p>So, I picked up the <strong>Diabetes 130-US Hospitals dataset</strong> (about 100,000 encounters from 1999��2008) and built a full pipeline using <strong>SQL, R, and Power BI</strong>. My goal was to take messy data and turn it into something clear and useful: a story about which patients are most likely to be readmitted within 30 days, and why.</p>
+<p><strong>What I found:</strong></p>
+<ul>
+<li>About <strong>11% of patients</strong> are readmitted within 30 days.</li>
+<li>There��s a small but real <strong>2.7% gap</strong> between the lowest and highest racial subgroups.</li>
+<li>The biggest drivers of risk are <strong>number of diagnoses, how many medications are prescribed, and how long the patient stays in the hospital.</strong></li>
+</ul>
+<p>This was both a technical challenge and a personal project. It was proof that I can design an end-to-end workflow while keeping the focus on people represented in the dataset.</p>
+<hr>
+</section>
+<section id="data-tools" class="level2">
+<h2 class="anchored" data-anchor-id="data-tools"><strong>Data &amp; Tools</strong></h2>
+<ul>
+<li><strong>Dataset:</strong> Diabetes 130-US Hospitals (~100k encounters)</li>
+<li><strong>Tools:</strong> MySQL, R (Quarto), Power BI</li>
+<li><strong>Exports:</strong> Cleaned CSVs and visuals for BI</li>
+</ul>
+<hr>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods"><strong>Methods</strong></h2>
+<p><strong>SQL (data foundation)</strong></p>
+<p>I built a normalized schema in MySQL to handle patients, encounters, diagnoses, and medications. A staging table pulled in the raw CSV, then I cleaned and mapped the categories (race, gender, readmission flags, A1C, glucose levels). From there I created a single analysis view that was easy to query later in R and Power BI.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/projects/readmission/erd-sql-report.png" class="img-fluid figure-img"></p>
+<figcaption>erd-sql-report.png</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>SQL Code &amp; Comments</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">-- Hospital Readmission Database (Diabetes 130-US Hospitals)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- Author: Markuss Saule</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">-- Purpose:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">--   Normalized schema + pipeline for loading and analyzing</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">--   ~100k encounters from the Diabetes 130-US Hospitals dataset.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">-- Steps:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">--   0) Create database</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">--   1) Reference (code) tables</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">--   2) Core entity tables</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">--   3) Staging table (mirror CSV)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">--   4) ETL inserts into normalized schema</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">--   5) Basic validation queries</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">--   6) Analysis view</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">-- 0) Create database</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">DATABASE</span> <span class="cf">IF</span> <span class="kw">NOT</span> <span class="kw">EXISTS</span> diabetes_db</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="dt">CHARACTER</span> <span class="kw">SET</span> utf8mb4 COLLATE utf8mb4_0900_ai_ci;</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">USE</span> diabetes_db;</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">-- 1) Reference (code) tables</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_race (</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>race_id TINYINT UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>code    <span class="dt">VARCHAR</span>(<span class="dv">50</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_gender (</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>gender_id TINYINT UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>code      <span class="dt">VARCHAR</span>(<span class="dv">20</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_age_group (</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>age_group_id TINYINT UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT,</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span>        <span class="dt">VARCHAR</span>(<span class="dv">20</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span>,</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>lower_bound  TINYINT <span class="kw">NULL</span>,</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>upper_bound  TINYINT <span class="kw">NULL</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_admission_type (</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>admission_type_id TINYINT UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>name              <span class="dt">VARCHAR</span>(<span class="dv">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_discharge_disposition (</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>discharge_disposition_id <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>name                     <span class="dt">VARCHAR</span>(<span class="dv">150</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_admission_source (</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>admission_source_id <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>name                <span class="dt">VARCHAR</span>(<span class="dv">150</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_readmitted (</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>readmitted_id TINYINT UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT,</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>code          <span class="dt">VARCHAR</span>(<span class="dv">10</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span>  <span class="co">-- '&lt;30', '&gt;30', 'NO'</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_a1c_result (</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>a1c_result_id TINYINT UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT,</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>code          <span class="dt">VARCHAR</span>(<span class="dv">10</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_max_glu_serum (</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>max_glu_serum_id TINYINT UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT,</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>code             <span class="dt">VARCHAR</span>(<span class="dv">10</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> medical_specialty (</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>medical_specialty_id <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT,</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>name                 <span class="dt">VARCHAR</span>(<span class="dv">150</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> medication (</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>medication_id <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT,</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>name          <span class="dt">VARCHAR</span>(<span class="dv">100</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> code_med_status (</span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>med_status_id TINYINT UNSIGNED <span class="kw">PRIMARY</span> <span class="kw">KEY</span> AUTO_INCREMENT,</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>code          <span class="dt">VARCHAR</span>(<span class="dv">10</span>) <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">UNIQUE</span>   <span class="co">-- 'No', 'Steady', 'Up', 'Down'</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="co">-- 2) Core entity tables</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> patient (</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>patient_id   BIGINT <span class="kw">PRIMARY</span> <span class="kw">KEY</span>,          <span class="co">-- from CSV patient_nbr</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>race_id      TINYINT UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>gender_id    TINYINT UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>age_group_id TINYINT UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>payer_code   <span class="dt">VARCHAR</span>(<span class="dv">20</span>) <span class="kw">NULL</span>,</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>weight_text  <span class="dt">VARCHAR</span>(<span class="dv">20</span>) <span class="kw">NULL</span>,</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_patient_race    <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (race_id) <span class="kw">REFERENCES</span> code_race(race_id),</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_patient_gender  <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (gender_id) <span class="kw">REFERENCES</span> code_gender(gender_id),</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_patient_agegrp  <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (age_group_id) <span class="kw">REFERENCES</span> code_age_group(age_group_id)</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> encounter (</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>encounter_id             BIGINT <span class="kw">PRIMARY</span> <span class="kw">KEY</span>, <span class="co">-- from CSV</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>patient_id               BIGINT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>admission_type_id        TINYINT UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>discharge_disposition_id <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>admission_source_id      <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>time_in_hospital         TINYINT UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>num_lab_procedures       <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>num_procedures           <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>num_medications          <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>number_outpatient        <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>number_emergency         <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>number_inpatient         <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>number_diagnoses         TINYINT UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>medical_specialty_id     <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>readmitted_id            TINYINT UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>a1c_result_id            TINYINT UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>max_glu_serum_id         TINYINT UNSIGNED <span class="kw">NULL</span>,</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>change_flag              <span class="dt">BOOLEAN</span> <span class="kw">NULL</span>,    <span class="co">-- 'Ch'-&gt;true, 'No'-&gt;false</span></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>diabetes_med_flag        <span class="dt">BOOLEAN</span> <span class="kw">NULL</span>,    <span class="co">-- 'Yes'/'No'</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_enc_patient     <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (patient_id) <span class="kw">REFERENCES</span> patient(patient_id),</span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_enc_admtype     <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (admission_type_id) <span class="kw">REFERENCES</span> code_admission_type(admission_type_id),</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_enc_disposition <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (discharge_disposition_id) <span class="kw">REFERENCES</span> code_discharge_disposition(discharge_disposition_id),</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_enc_admsource   <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (admission_source_id) <span class="kw">REFERENCES</span> code_admission_source(admission_source_id),</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_enc_med_spec    <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (medical_specialty_id) <span class="kw">REFERENCES</span> medical_specialty(medical_specialty_id),</span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_enc_readmitted  <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (readmitted_id) <span class="kw">REFERENCES</span> code_readmitted(readmitted_id),</span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_enc_a1c         <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (a1c_result_id) <span class="kw">REFERENCES</span> code_a1c_result(a1c_result_id),</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_enc_maxglu      <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (max_glu_serum_id) <span class="kw">REFERENCES</span> code_max_glu_serum(max_glu_serum_id)</span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> encounter_diagnosis (</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>encounter_id BIGINT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>position_no  TINYINT UNSIGNED <span class="kw">NOT</span> <span class="kw">NULL</span>,  <span class="co">-- 1,2,3</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>icd9_code    <span class="dt">VARCHAR</span>(<span class="dv">10</span>) <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="kw">PRIMARY</span> <span class="kw">KEY</span> (encounter_id, position_no),</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_ed_enc <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (encounter_id) <span class="kw">REFERENCES</span> encounter(encounter_id)</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> encounter_medication (</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>encounter_id  BIGINT <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>medication_id <span class="dt">SMALLINT</span> UNSIGNED <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>med_status_id TINYINT UNSIGNED <span class="kw">NOT</span> <span class="kw">NULL</span>,</span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="kw">PRIMARY</span> <span class="kw">KEY</span> (encounter_id, medication_id),</span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_em_enc    <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (encounter_id)  <span class="kw">REFERENCES</span> encounter(encounter_id),</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_em_med    <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (medication_id) <span class="kw">REFERENCES</span> medication(medication_id),</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="kw">CONSTRAINT</span> fk_em_status <span class="kw">FOREIGN</span> <span class="kw">KEY</span> (med_status_id) <span class="kw">REFERENCES</span> code_med_status(med_status_id)</span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="co">-- 3) Staging table (mirror CSV for import)</span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="kw">DROP</span> <span class="kw">TABLE</span> <span class="cf">IF</span> <span class="kw">EXISTS</span> staging_encounter_raw;</span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> staging_encounter_raw (</span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>encounter_id    BIGINT,</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>patient_nbr     BIGINT,</span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>race            <span class="dt">VARCHAR</span>(<span class="dv">50</span>),</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>gender          <span class="dt">VARCHAR</span>(<span class="dv">20</span>),</span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>age             <span class="dt">VARCHAR</span>(<span class="dv">20</span>),</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>weight          <span class="dt">VARCHAR</span>(<span class="dv">20</span>),</span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>admission_type_id <span class="dt">INT</span>,</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>discharge_disposition_id <span class="dt">INT</span>,</span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>admission_source_id <span class="dt">INT</span>,</span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>time_in_hospital <span class="dt">INT</span>,</span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>payer_code      <span class="dt">VARCHAR</span>(<span class="dv">20</span>),</span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a>medical_specialty <span class="dt">VARCHAR</span>(<span class="dv">150</span>),</span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>num_lab_procedures <span class="dt">INT</span>,</span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>num_procedures  <span class="dt">INT</span>,</span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>num_medications <span class="dt">INT</span>,</span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>number_outpatient <span class="dt">INT</span>,</span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>number_emergency <span class="dt">INT</span>,</span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>number_inpatient <span class="dt">INT</span>,</span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>diag_1          <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>diag_2          <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>diag_3          <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a>number_diagnoses <span class="dt">INT</span>,</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>max_glu_serum   <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>A1Cresult       <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>metformin       <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>repaglinide     <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>nateglinide     <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>chlorpropamide  <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a>glimepiride     <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>acetohexamide   <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>glipizide       <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>glyburide       <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>tolbutamide     <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>pioglitazone    <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>rosiglitazone   <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>acarbose        <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>miglitol        <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>troglitazone    <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>tolazamide      <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a>examide         <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>citoglipton     <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a>insulin         <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a>glyburide_metformin <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a>glipizide_metformin <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>glimepiride_pioglitazone <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>metformin_rosiglitazone <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>metformin_pioglitazone <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a>change_raw      <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a>diabetesMed     <span class="dt">VARCHAR</span>(<span class="dv">10</span>),</span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>readmitted      <span class="dt">VARCHAR</span>(<span class="dv">10</span>)</span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="co">-- 4) ETL Inserts</span></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="co">-- Populate reference/code tables</span></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> code_race (code)              <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> race <span class="kw">FROM</span> staging_encounter_raw;</span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> code_gender (code)            <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> gender <span class="kw">FROM</span> staging_encounter_raw;</span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> code_age_group (<span class="kw">label</span>)        <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> age <span class="kw">FROM</span> staging_encounter_raw;</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> code_readmitted (code)        <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> readmitted <span class="kw">FROM</span> staging_encounter_raw;</span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> code_a1c_result (code)        <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> A1Cresult <span class="kw">FROM</span> staging_encounter_raw;</span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> code_max_glu_serum (code)     <span class="kw">SELECT</span> <span class="kw">DISTINCT</span> max_glu_serum <span class="kw">FROM</span> staging_encounter_raw;</span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> medical_specialty (name)</span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> medical_specialty <span class="kw">FROM</span> staging_encounter_raw <span class="kw">WHERE</span> medical_specialty <span class="op">&lt;&gt;</span> <span class="st">'?'</span>;</span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> code_admission_type (admission_type_id, name)</span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> admission_type_id, <span class="fu">CONCAT</span>(<span class="st">'Type '</span>, admission_type_id)</span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> staging_encounter_raw <span class="kw">WHERE</span> admission_type_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> code_discharge_disposition (discharge_disposition_id, name)</span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> discharge_disposition_id, <span class="fu">CONCAT</span>(<span class="st">'Disposition '</span>, discharge_disposition_id)</span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> staging_encounter_raw <span class="kw">WHERE</span> discharge_disposition_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> IGNORE <span class="kw">INTO</span> code_admission_source (admission_source_id, name)</span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> admission_source_id, <span class="fu">CONCAT</span>(<span class="st">'Source '</span>, admission_source_id)</span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> staging_encounter_raw <span class="kw">WHERE</span> admission_source_id <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a><span class="co">-- Patients</span></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> patient (patient_id, race_id, gender_id, age_group_id, payer_code, weight_text)</span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a>s.patient_nbr,</span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>r.race_id,</span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>g.gender_id,</span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a>a.age_group_id,</span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="fu">NULLIF</span>(s.payer_code, <span class="st">'?'</span>),</span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="fu">NULLIF</span>(s.weight, <span class="st">'?'</span>)</span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> (</span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> s1.<span class="op">*</span></span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> staging_encounter_raw s1</span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> (</span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> patient_nbr, <span class="fu">MIN</span>(encounter_id) <span class="kw">AS</span> min_enc</span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> staging_encounter_raw</span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> patient_nbr</span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a>) t <span class="kw">ON</span> s1.patient_nbr <span class="op">=</span> t.patient_nbr <span class="kw">AND</span> s1.encounter_id <span class="op">=</span> t.min_enc</span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a>) s</span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_race r <span class="kw">ON</span> r.code <span class="op">=</span> s.race</span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_gender g <span class="kw">ON</span> g.code <span class="op">=</span> s.gender</span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_age_group a <span class="kw">ON</span> a.<span class="kw">label</span> <span class="op">=</span> s.age;</span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="co">-- Encounters</span></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> encounter (</span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a>encounter_id, patient_id, admission_type_id, discharge_disposition_id, admission_source_id,</span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a>time_in_hospital, num_lab_procedures, num_procedures, num_medications,</span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a>number_outpatient, number_emergency, number_inpatient, number_diagnoses,</span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>medical_specialty_id, readmitted_id, a1c_result_id, max_glu_serum_id,</span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a>change_flag, diabetes_med_flag</span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>s.encounter_id,</span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a>s.patient_nbr,</span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a>s.admission_type_id,</span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>s.discharge_disposition_id,</span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a>s.admission_source_id,</span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>s.time_in_hospital,</span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a>s.num_lab_procedures,</span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a>s.num_procedures,</span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>s.num_medications,</span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a>s.number_outpatient,</span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>s.number_emergency,</span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>s.number_inpatient,</span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a>s.number_diagnoses,</span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a>ms.medical_specialty_id,</span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a>cr.readmitted_id,</span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a>ca.a1c_result_id,</span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a>cg.max_glu_serum_id,</span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a><span class="cf">CASE</span> <span class="cf">WHEN</span> s.change_raw <span class="op">=</span> <span class="st">'Ch'</span> <span class="cf">THEN</span> <span class="kw">TRUE</span> <span class="cf">WHEN</span> s.change_raw <span class="op">=</span> <span class="st">'No'</span> <span class="cf">THEN</span> <span class="kw">FALSE</span> <span class="cf">ELSE</span> <span class="kw">NULL</span> <span class="cf">END</span>,</span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a><span class="cf">CASE</span> <span class="cf">WHEN</span> s.diabetesMed <span class="op">=</span> <span class="st">'Yes'</span> <span class="cf">THEN</span> <span class="kw">TRUE</span> <span class="cf">WHEN</span> s.diabetesMed <span class="op">=</span> <span class="st">'No'</span> <span class="cf">THEN</span> <span class="kw">FALSE</span> <span class="cf">ELSE</span> <span class="kw">NULL</span> <span class="cf">END</span></span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> staging_encounter_raw s</span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> medical_specialty ms <span class="kw">ON</span> [ms.name](http:<span class="op">//</span>ms.name<span class="op">/</span>) <span class="op">=</span> s.medical_specialty</span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_readmitted cr   <span class="kw">ON</span> cr.code <span class="op">=</span> s.readmitted</span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_a1c_result ca   <span class="kw">ON</span> ca.code <span class="op">=</span> s.A1Cresult</span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_max_glu_serum cg <span class="kw">ON</span> cg.code <span class="op">=</span> s.max_glu_serum;</span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a><span class="co">-- 5) Validation queries</span></span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> n_patients <span class="kw">FROM</span> patient;</span>
+<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> n_encounters <span class="kw">FROM</span> encounter;</span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> cr.code <span class="kw">AS</span> readmitted, <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">AS</span> n</span>
+<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> encounter e</span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> code_readmitted cr <span class="kw">ON</span> cr.readmitted_id <span class="op">=</span> e.readmitted_id</span>
+<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> cr.code;</span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a><span class="co">-- 6) Analysis view</span></span>
+<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a><span class="co">-- ==========================================================</span></span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">OR</span> <span class="kw">REPLACE</span> <span class="kw">VIEW</span> vw_encounter_patient <span class="kw">AS</span></span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a>e.encounter_id,</span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a>p.patient_id,</span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a>r.code <span class="kw">AS</span> race,</span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a>g.code <span class="kw">AS</span> gender,</span>
+<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a>a.<span class="kw">label</span> <span class="kw">AS</span> age_group,</span>
+<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a>e.time_in_hospital,</span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a>e.num_medications,</span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a>e.number_diagnoses,</span>
+<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a>cr.code <span class="kw">AS</span> readmitted</span>
+<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> encounter e</span>
+<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> patient p              <span class="kw">ON</span> p.patient_id <span class="op">=</span> e.patient_id</span>
+<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_race r       <span class="kw">ON</span> r.race_id <span class="op">=</span> p.race_id</span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_gender g     <span class="kw">ON</span> g.gender_id <span class="op">=</span> p.gender_id</span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_age_group a  <span class="kw">ON</span> a.age_group_id <span class="op">=</span> p.age_group_id</span>
+<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> code_readmitted cr <span class="kw">ON</span> cr.readmitted_id <span class="op">=</span> e.readmitted_id;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+<p><strong>R (analysis &amp; reporting)</strong></p>
+<p>In R, I cleaned the fields, built a binary readmission flag, and ran exploratory analysis. I also built a logistic regression model to test what factors increased risk of readmission. Finally, I exported cleaned tables for Power BI.</p>
+<p><a href="../files/readmission/Hospital_Readmission_Equity_Report.pdf">Hospital Readmission Equity Report.pdf</a></p>
+<ul>
+<li><p><strong>R Code &amp; Comments</strong></p>
+<p>``` r — title: “Hospital Readmission Equity Report” author: “Markuss Saule” date: “9/15/2025” format: html: theme: cosmo toc: true toc-depth: 3 number-sections: true code-copy: true df-print: paged execute: echo: false warning: false message: false fig-cap-location: bottom code-fold: show jupyter: false —</p>
+<pre class="text"><code># Packages
+required &lt;- c(
+  "DBI","RMariaDB","dplyr","tidyr","forcats","ggplot2",
+  "broom","scales","stringr","readr","knitr","kableExtra"
+)
+to_install &lt;- setdiff(required, rownames(installed.packages()))
+if (length(to_install)) install.packages(to_install, quiet = TRUE)
+invisible(lapply(required, library, character.only = TRUE))
+
+# Utility theme
+theme_set(theme_minimal(base_size = 13))</code></pre>
+<pre class="text"><code>con &lt;- dbConnect(
+  RMariaDB::MariaDB(),
+  user = "root",
+  password = "x",
+  dbname = "diabetes_db",
+  host = "127.0.0.1",
+  port = 3306
+)
+
+# Pull data and clean immediately so summary stats exist for Executive Summary
+df &lt;- dbGetQuery(con, "SELECT * FROM vw_encounter_patient;")
+
+df_clean &lt;- df %&gt;%
+  mutate(
+    race   = na_if(race, "Unknown"),
+    race   = na_if(race, "?"),
+    gender = ifelse(gender %in% c("Unknown/Invalid","?"), NA, gender),
+    readmit_flag = ifelse(readmitted == "&lt;30", 1, 0),
+    age_mid = dplyr::case_when(
+      str_detect(age_group, "\\[\\d+-\\d+\\)") ~ {
+        lo &lt;- as.numeric(str_extract(age_group, "(?&lt;=\\[)\\d+"))
+        hi &lt;- as.numeric(str_extract(age_group, "(?&lt;=-)\\d+(?=\\))"))
+        (lo + hi) / 2
+      },
+      str_detect(age_group, "\\[\\d+\\+\\)") ~ as.numeric(str_extract(age_group, "\\d+")),
+      TRUE ~ NA_real_
+    )
+  )
+
+# Precompute metrics
+overall_rate_text &lt;- scales::percent(mean(df_clean$readmit_flag, na.rm = TRUE))
+
+subgroup &lt;- df_clean %&gt;%
+  group_by(race) %&gt;%
+  summarise(rate = mean(readmit_flag, na.rm = TRUE), .groups="drop")
+
+highest_subgroup_text &lt;- paste0(subgroup$race[which.max(subgroup$rate)],
+                                " �� ",
+                                scales::percent(max(subgroup$rate, na.rm = TRUE)))
+
+gap_text &lt;- scales::percent(max(subgroup$rate,na.rm=TRUE) - min(subgroup$rate,na.rm=TRUE))</code></pre>
+<p># Executive Summary</p>
+<p>This analysis explores <strong>30-day readmission</strong> patterns using the public <em>Diabetes 130-US hospitals (1999��2008)</em> dataset.</p>
+<p>Key messages:</p>
+<ul>
+<li>The <strong>overall 30-day readmission rate is about 11%</strong>, consistent with prior analyses of this dataset.</li>
+<li><strong>Race subgroup differences are modest</strong> (roughly 9��12%), with overlapping confidence intervals, suggesting no strong racial disparities.</li>
+<li><strong>Gender shows almost no difference</strong> in readmission.</li>
+<li>The strongest predictors of readmission are <strong>clinical complexity</strong>: more diagnoses, longer hospital stays, and greater medication use.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Interpretation note:</strong> This dataset is dated and illustrative; findings highlight workflow and methodology, not clinical advice.</p>
+</blockquote>
+<p>This analysis explores <strong>30-day readmission</strong> patterns using the public <em>Diabetes 130-US hospitals (1999��2008)</em> dataset, focusing on <strong>equity across demographic subgroups</strong> and <strong>interpretable drivers</strong> of risk.</p>
+<ul>
+<li><strong>Overall 30-day readmission rate:</strong> <strong><code>r overall_rate_text</code></strong><br>
+</li>
+<li><strong>Demographics not significant:</strong> Race and gender coefficients are near 1 with overlapping CIs.</li>
+<li><strong>Clinical complexity matters:</strong> Longer stays, more diagnoses, and higher medication counts increase odds of readmission.</li>
+<li><strong>Highest subgroup rate (race):</strong> <strong><code>r highest_subgroup_text</code></strong><br>
+</li>
+<li><strong>Gap vs lowest subgroup:</strong> <strong><code>r gap_text</code></strong><br>
+</li>
+<li><strong>Key signals:</strong> <strong>time in hospital</strong>, <strong>number of diagnoses</strong>, and <strong>medication intensity</strong> show monotonic associations with readmission.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Interpretation note:</strong> This is an educational analysis on a public dataset; results are illustrative, not clinical guidance.</p>
+</blockquote>
+<p># Data &amp; Methods</p>
+<p>We implement a pragmatic analytics pipeline similar to what health systems use:</p></li>
+</ul>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">    flowchart TD
+        A["CSV (Kaggle)"] --&gt; B["MySQL: staging_encounter_raw"]
+        B --&gt; C["MySQL: normalized tables"]
+        C --&gt; D["SQL view: vw_encounter_patient"]
+        D --&gt; E["R: cleaning &amp; fairness"]
+        E --&gt; F["Power BI: dashboard"]
+        E --&gt; G["Exports (CSV / MySQL tables)"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<pre><code>**Outcome**: `readmitted` recoded as **`readmit_flag = 1`** if `"&lt;30"`, else **0**.  
+**Equity**: subgroup rates and 95% CIs via normal approximation.  
+**Model**: logistic regression (simple, interpretable).
+
+# Exploratory Overview
+
+```{.text}
+n_encounters &lt;- nrow(df_clean)
+overall_rate &lt;- mean(df_clean$readmit_flag, na.rm=TRUE)
+
+t_overview &lt;- tibble(
+  Metric = c("Encounters", "Overall 30-day readmission rate"),
+  Value  = c(scales::comma(n_encounters), scales::percent(overall_rate))
+)
+
+knitr::kable(t_overview, caption = "Overall snapshot") %&gt;%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+# Readmission by Race (Equity Perspective)
+
+```{.text}
+subgroup &lt;- df_clean %&gt;%
+  group_by(race) %&gt;%
+  summarise(
+    n = dplyr::n(),
+    rate = mean(readmit_flag, na.rm = TRUE),
+    se = sqrt(rate * (1 - rate) / n),
+    lcl = pmax(0, rate - 1.96 * se),
+    ucl = pmin(1, rate + 1.96 * se),
+    .groups = "drop"
+  ) %&gt;%
+  arrange(desc(rate))
+
+knitr::kable(subgroup %&gt;%
+               mutate(across(c(rate,lcl,ucl), scales::percent)),
+             caption = "Readmission by race with 95% CI") %&gt;%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+```{.text}
+ggplot(subgroup, aes(x = reorder(race, rate), y = rate, fill = rate)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = lcl, ymax = ucl), width = 0.2) +
+  geom_text(aes(label = scales::percent(rate, accuracy=0.1)), hjust=-0.1, size=3.5) +
+  coord_flip() +
+  scale_fill_viridis_c(option = 'plasma') +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0,0.1))) +
+  labs(
+    title = "30-day readmission rate by race",
+    x = NULL, y = "Rate (95% CI)"
+  )
+```
+
+# Readmission by Gender
+
+```{.text}
+by_gender &lt;- df_clean %&gt;%
+  filter(!is.na(gender)) %&gt;%
+  group_by(gender) %&gt;%
+  summarise(
+    n = n(),
+    rate = mean(readmit_flag, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(by_gender, aes(x = gender, y = rate, fill = gender)) +
+  geom_col() +
+  geom_text(aes(label = scales::percent(rate, accuracy=0.1)), vjust=-0.5, size=3.5) +
+  scale_fill_viridis_d(option = 'plasma') +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0,0.1))) +
+  labs(title = "30-day readmission by gender", x = NULL, y = "Rate")
+```
+
+# Logistic Regression (Interpretable Model)
+
+```{.text}
+df_model &lt;- df_clean %&gt;%
+  filter(!is.na(race), !race %in% c("Unknown"),
+         !is.na(gender), !gender %in% c("Unknown")) %&gt;%
+  transmute(
+    readmit_flag = readmit_flag,
+    race   = fct_lump_n(factor(race), n = 5),
+    gender = factor(gender),
+    age_mid = age_mid,
+    time_in_hospital = time_in_hospital,
+    num_medications = num_medications,
+    number_diagnoses = number_diagnoses
+  ) %&gt;%
+  drop_na()
+
+m &lt;- glm(
+  readmit_flag ~ race + gender + age_mid + time_in_hospital +
+    num_medications + number_diagnoses,
+  data = df_model, family = binomial()
+)
+
+or &lt;- broom::tidy(m, conf.int = TRUE, exponentiate = TRUE) %&gt;%
+  mutate(term = str_replace_all(term, "race|gender", ""))
+
+knitr::kable(or %&gt;%
+               transmute(Feature = term,
+                         `Odds Ratio` = round(estimate, 3),
+                         `95% CI (low)` = round(conf.low, 3),
+                         `95% CI (high)` = round(conf.high, 3)),
+             caption = "Logistic regression (odds ratios)") %&gt;%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+```{.text}
+or %&gt;% 
+  filter(term != "(Intercept)") %&gt;%
+  mutate(highlight = ifelse(term %in% c("time_in_hospital","num_medications","number_diagnoses"),
+                            "Clinical","Other")) %&gt;%
+  ggplot(aes(x = reorder(term, estimate), y = estimate, color = highlight)) +
+  geom_point(size=3) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0.15) +
+  coord_flip() +
+  geom_hline(yintercept = 1, linetype = 2) +
+  scale_color_manual(values = c("Clinical" = "red", "Other" = "black")) +
+  scale_y_continuous(limits = c(0.8, 1.2), labels = scales::number_format(accuracy=0.01)) +
+  labs(title = "Feature effects (odds ratios with 95% CI)",
+       x = NULL, y = "Odds Ratio (Readmission &lt;30 days)")
+```
+
+# Exports for Power BI
+
+```{.text}
+subgroup_out &lt;- subgroup %&gt;%
+  mutate(
+    rate = round(rate, 4),
+    lcl  = round(lcl, 4),
+    ucl  = round(ucl, 4)
+  )
+
+enc_slim &lt;- df_clean %&gt;%
+  select(encounter_id, patient_id, race, gender, age_group,
+         time_in_hospital, num_medications, number_diagnoses,
+         readmitted, readmit_flag)
+
+# Write files (for Power BI import)
+dir.create("diabetes_project/data/processed", recursive = TRUE, showWarnings = FALSE)
+readr::write_csv(subgroup_out, "diabetes_project/data/processed/subgroup_equity.csv")
+readr::write_csv(enc_slim,     "diabetes_project/data/processed/encounter_slim.csv")
+
+# Show small previews in report
+knitr::kable(head(subgroup_out, 10), caption = "Preview: Subgroup Equity Export") %&gt;%
+  kableExtra::kable_styling(full_width = FALSE)
+
+knitr::kable(head(enc_slim, 10), caption = "Preview: Encounter Slim Export") %&gt;%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+# Findings &amp; Interpretation
+
+- **Demographic predictors (race, gender) were not statistically significant** after adjustment; odds ratios were ~1 with overlapping 95% CIs.
+- **Clinical complexity** (time in hospital, number of diagnoses, medication count) showed positive, statistically significant associations with readmission.
+
+**Summary of results:**
+- The **overall readmission rate is ~11%**.
+- **Race subgroup rates range from ~9% to 12%**, with overlapping CIs �� differences are modest and not clearly significant.
+- **Gender rates are nearly identical.**
+- Logistic regression confirms that **clinical complexity (time in hospital, number of diagnoses, medications)**, not demographics, drives readmission risk.
+
+- Overall 30-day readmission rate: **` r overall_rate_text`**  
+- Highest subgroup (race): **` r highest_subgroup_text`**  
+- Gap vs lowest subgroup: **` r gap_text`**  
+- Strongest predictors: **time in hospital**, **number of diagnoses**, **medication burden**.  
+
+&gt; **Note:** These are illustrative only, not clinical recommendations.
+
+# Limitations
+
+- Dataset covers 1999��2008, and may not reflect today��s clinical practices.
+- Subgroup labels are limited; race/ethnicity categories are coarse.
+- Readmission coding may not align with modern standards.
+
+# Next Steps
+
+1. Add A1C &amp; glucose metrics to models.  
+2. Build risk-adjusted fairness metrics.  
+3. Export dashboard-ready tables with subgroup CIs.  
+4. Explore oncology datasets to connect personal mission to Mayo��s work.
+
+# Appendix
+
+## SQL: Analysis View
+
+```sql
+CREATE OR REPLACE VIEW vw_encounter_patient AS
+SELECT 
+  e.encounter_id,
+  p.patient_id,
+  r.code AS race,
+  g.code AS gender,
+  a.label AS age_group,
+  e.time_in_hospital,
+  e.num_medications,
+  e.number_diagnoses,
+  cr.code AS readmitted
+FROM encounter e
+JOIN patient p              ON p.patient_id = e.patient_id
+LEFT JOIN code_race r       ON r.race_id = p.race_id
+LEFT JOIN code_gender g     ON g.gender_id = p.gender_id
+LEFT JOIN code_age_group a  ON a.age_group_id = p.age_group_id
+LEFT JOIN code_readmitted cr ON cr.readmitted_id = e.readmitted_id;
+```
+
+## Session Info
+
+```{.text}
+sessionInfo()
+dbDisconnect(con)
+```
+```</code></pre>
+<p><strong>Power BI (storytelling)</strong></p>
+<p>I built a three-page dashboard:</p>
+<ol type="1">
+<li><strong>Overview</strong> �� overall rate and age breakdown.</li>
+<li><strong>Equity Perspective</strong> �� racial disparities, with confidence intervals and a simple gap metric.</li>
+<li><strong>Clinical Drivers</strong> �� scatterplots and charts showing how diagnoses, medications, and length of stay affect readmission.</li>
+</ol>
+<hr>
+</section>
+<section id="dashboard-snapshots" class="level2">
+<h2 class="anchored" data-anchor-id="dashboard-snapshots"><strong>Dashboard Snapshots</strong></h2>
+<section id="page-1-overview" class="level3">
+<h3 class="anchored" data-anchor-id="page-1-overview">Page 1 �� Overview</h3>
+<ul>
+<li>11.2% overall readmission rate.</li>
+<li>Patients in their 20s and 30s have the highest risk (~13.8%).</li>
+</ul>
+<p><a href="../files/readmission/report-1.pdf">report-1.pdf</a></p>
+<hr>
+</section>
+<section id="page-2-equity-spotlight" class="level3">
+<h3 class="anchored" data-anchor-id="page-2-equity-spotlight">Page 2 �� Equity Spotlight</h3>
+<ul>
+<li>Race gap of ~2.7% between lowest and highest subgroup.</li>
+<li>Most groups fall between 10��12%.</li>
+</ul>
+<p><a href="../files/readmission/report-2.pdf">report-2.pdf</a></p>
+<hr>
+</section>
+<section id="page-3-clinical-drivers" class="level3">
+<h3 class="anchored" data-anchor-id="page-3-clinical-drivers">Page 3 �� Clinical Drivers</h3>
+<ul>
+<li>Patients with 7+ diagnoses, or 12+ medications, face ~13��15% readmission.</li>
+<li>Staying in the hospital longer (7+ days) is also linked to higher risk.</li>
+</ul>
+<p><a href="../files/readmission/report-3.pdf">report-3.pdf</a></p>
+<hr>
+</section>
+</section>
+<section id="key-insights" class="level2">
+<h2 class="anchored" data-anchor-id="key-insights"><strong>Key Insights</strong></h2>
+<ol type="1">
+<li>The overall readmission rate is 11%, in line with national numbers.</li>
+<li>Race gaps exist but are not as large as I expected (still worth attention).</li>
+<li>Complexity (more diagnoses, more meds, longer stays) - drives risk far more than demographics.</li>
+</ol>
+<hr>
+</section>
+<section id="reflections-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="reflections-next-steps"><strong>Reflections &amp; Next Steps</strong></h2>
+<p>This project reminded me that behind every row in a dataset is a person and a family. I��d explore predictive modeling �� not just describing risk, but actually helping hospitals flag patients early.</p>
+<p>For me, this wasn��t just about SQL queries and charts. It was about proving to myself that I can take raw data, clean it, analyze it, and tell a story that actually matters.</p>
+<hr>
+</section>
+<section id="downloads" class="level2">
+<h2 class="anchored" data-anchor-id="downloads"><strong>Downloads</strong></h2>
+<p><a href="../files/readmission/diabetes_report.pbix">diabetes_report.pbix</a></p>
+<p><a href="../files/readmission/Hospital_Readmission_Equity_Report 1.pdf">Hospital Readmission Equity Report.pdf</a></p>
+<p><a href="../files/readmission/readmissions-report-final.qmd">readmissions-report-final.qmd</a></p>
+<p><a href="../files/readmission/diabetes-readmission.sql">diabetes-readmission.sql</a></p>
+<p><a href="../files/readmission/diabetes-research-report.pdf">diabetes-research-report.pdf</a></p>
+<hr>
+</section>
+<section id="disclaimer" class="level2">
+<h2 class="anchored" data-anchor-id="disclaimer"><strong>Disclaimer</strong></h2>
+<p><em>This project is based on a public dataset and is for educational purposes only.</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/msaule\.github\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

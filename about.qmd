@@ -1,0 +1,7 @@
+---
+title: "About"
+---
+
+I build practical analytics products that connect machine learning outputs to business decisions.
+
+My focus areas include healthcare operations, fraud analytics, forecasting, and decision optimization. I care about technical rigor, clear communication, and deployable results.

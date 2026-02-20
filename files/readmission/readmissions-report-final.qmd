@@ -1,0 +1,335 @@
+---
+title: "Hospital Readmission Equity Report"
+author: "Markuss Saule"
+date: "9/15/2025"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-copy: true
+    df-print: paged
+execute:
+  echo: false
+  warning: false
+  message: false
+fig-cap-location: bottom
+code-fold: show
+jupyter: false
+---
+
+```{r setup}
+# Packages
+required <- c(
+  "DBI","RMariaDB","dplyr","tidyr","forcats","ggplot2",
+  "broom","scales","stringr","readr","knitr","kableExtra"
+)
+to_install <- setdiff(required, rownames(installed.packages()))
+if (length(to_install)) install.packages(to_install, quiet = TRUE)
+invisible(lapply(required, library, character.only = TRUE))
+
+# Utility theme
+theme_set(theme_minimal(base_size = 13))
+```
+
+
+```{r, include=FALSE}
+con <- dbConnect(
+  RMariaDB::MariaDB(),
+  user = "root",
+  password = "x",
+  dbname = "diabetes_db",
+  host = "127.0.0.1",
+  port = 3306
+)
+
+# Pull data and clean immediately so summary stats exist for Executive Summary
+df <- dbGetQuery(con, "SELECT * FROM vw_encounter_patient;")
+
+df_clean <- df %>%
+  mutate(
+    race   = na_if(race, "Unknown"),
+    race   = na_if(race, "?"),
+    gender = ifelse(gender %in% c("Unknown/Invalid","?"), NA, gender),
+    readmit_flag = ifelse(readmitted == "<30", 1, 0),
+    age_mid = dplyr::case_when(
+      str_detect(age_group, "\\[\\d+-\\d+\\)") ~ {
+        lo <- as.numeric(str_extract(age_group, "(?<=\\[)\\d+"))
+        hi <- as.numeric(str_extract(age_group, "(?<=-)\\d+(?=\\))"))
+        (lo + hi) / 2
+      },
+      str_detect(age_group, "\\[\\d+\\+\\)") ~ as.numeric(str_extract(age_group, "\\d+")),
+      TRUE ~ NA_real_
+    )
+  )
+
+# Precompute metrics
+overall_rate_text <- scales::percent(mean(df_clean$readmit_flag, na.rm = TRUE))
+
+subgroup <- df_clean %>%
+  group_by(race) %>%
+  summarise(rate = mean(readmit_flag, na.rm = TRUE), .groups="drop")
+
+highest_subgroup_text <- paste0(subgroup$race[which.max(subgroup$rate)],
+                                " — ",
+                                scales::percent(max(subgroup$rate, na.rm = TRUE)))
+
+gap_text <- scales::percent(max(subgroup$rate,na.rm=TRUE) - min(subgroup$rate,na.rm=TRUE))
+```
+
+# Executive Summary
+
+This analysis explores **30-day readmission** patterns using the public *Diabetes 130-US hospitals (1999–2008)* dataset. 
+
+Key messages:
+- The **overall 30-day readmission rate is about 11%**, consistent with prior analyses of this dataset.
+- **Race subgroup differences are modest** (roughly 9–12%), with overlapping confidence intervals, suggesting no strong racial disparities.
+- **Gender shows almost no difference** in readmission.
+- The strongest predictors of readmission are **clinical complexity**: more diagnoses, longer hospital stays, and greater medication use.
+
+> **Interpretation note:** This dataset is dated and illustrative; findings highlight workflow and methodology, not clinical advice.
+
+
+This analysis explores **30-day readmission** patterns using the public *Diabetes 130-US hospitals (1999–2008)* dataset, focusing on **equity across demographic subgroups** and **interpretable drivers** of risk.
+
+- **Overall 30-day readmission rate:** **`r overall_rate_text`**  
+- **Demographics not significant:** Race and gender coefficients are near 1 with overlapping CIs.
+- **Clinical complexity matters:** Longer stays, more diagnoses, and higher medication counts increase odds of readmission.
+- **Highest subgroup rate (race):** **`r highest_subgroup_text`**  
+- **Gap vs lowest subgroup:** **`r gap_text`**  
+- **Key signals:** **time in hospital**, **number of diagnoses**, and **medication intensity** show monotonic associations with readmission.
+
+> **Interpretation note:** This is an educational analysis on a public dataset; results are illustrative, not clinical guidance.
+
+# Data & Methods
+
+We implement a pragmatic analytics pipeline similar to what health systems use:
+
+```{mermaid}
+flowchart TD
+    A["CSV (Kaggle)"] --> B["MySQL: staging_encounter_raw"]
+    B --> C["MySQL: normalized tables"]
+    C --> D["SQL view: vw_encounter_patient"]
+    D --> E["R: cleaning & fairness"]
+    E --> F["Power BI: dashboard"]
+    E --> G["Exports (CSV / MySQL tables)"]
+```
+
+
+**Outcome**: `readmitted` recoded as **`readmit_flag = 1`** if `"<30"`, else **0**.  
+**Equity**: subgroup rates and 95% CIs via normal approximation.  
+**Model**: logistic regression (simple, interpretable).
+
+# Exploratory Overview
+
+```{r}
+n_encounters <- nrow(df_clean)
+overall_rate <- mean(df_clean$readmit_flag, na.rm=TRUE)
+
+t_overview <- tibble(
+  Metric = c("Encounters", "Overall 30-day readmission rate"),
+  Value  = c(scales::comma(n_encounters), scales::percent(overall_rate))
+)
+
+knitr::kable(t_overview, caption = "Overall snapshot") %>%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+# Readmission by Race (Equity Perspective)
+
+```{r}
+subgroup <- df_clean %>%
+  group_by(race) %>%
+  summarise(
+    n = dplyr::n(),
+    rate = mean(readmit_flag, na.rm = TRUE),
+    se = sqrt(rate * (1 - rate) / n),
+    lcl = pmax(0, rate - 1.96 * se),
+    ucl = pmin(1, rate + 1.96 * se),
+    .groups = "drop"
+  ) %>%
+  arrange(desc(rate))
+
+knitr::kable(subgroup %>%
+               mutate(across(c(rate,lcl,ucl), scales::percent)),
+             caption = "Readmission by race with 95% CI") %>%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+```{r}
+ggplot(subgroup, aes(x = reorder(race, rate), y = rate, fill = rate)) +
+  geom_col() +
+  geom_errorbar(aes(ymin = lcl, ymax = ucl), width = 0.2) +
+  geom_text(aes(label = scales::percent(rate, accuracy=0.1)), hjust=-0.1, size=3.5) +
+  coord_flip() +
+  scale_fill_viridis_c(option = 'plasma') +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0,0.1))) +
+  labs(
+    title = "30-day readmission rate by race",
+    x = NULL, y = "Rate (95% CI)"
+  )
+```
+
+# Readmission by Gender
+
+```{r}
+by_gender <- df_clean %>%
+  filter(!is.na(gender)) %>%
+  group_by(gender) %>%
+  summarise(
+    n = n(),
+    rate = mean(readmit_flag, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+ggplot(by_gender, aes(x = gender, y = rate, fill = gender)) +
+  geom_col() +
+  geom_text(aes(label = scales::percent(rate, accuracy=0.1)), vjust=-0.5, size=3.5) +
+  scale_fill_viridis_d(option = 'plasma') +
+  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0,0.1))) +
+  labs(title = "30-day readmission by gender", x = NULL, y = "Rate")
+```
+
+# Logistic Regression (Interpretable Model)
+
+```{r}
+df_model <- df_clean %>%
+  filter(!is.na(race), !race %in% c("Unknown"),
+         !is.na(gender), !gender %in% c("Unknown")) %>%
+  transmute(
+    readmit_flag = readmit_flag,
+    race   = fct_lump_n(factor(race), n = 5),
+    gender = factor(gender),
+    age_mid = age_mid,
+    time_in_hospital = time_in_hospital,
+    num_medications = num_medications,
+    number_diagnoses = number_diagnoses
+  ) %>%
+  drop_na()
+
+m <- glm(
+  readmit_flag ~ race + gender + age_mid + time_in_hospital +
+    num_medications + number_diagnoses,
+  data = df_model, family = binomial()
+)
+
+or <- broom::tidy(m, conf.int = TRUE, exponentiate = TRUE) %>%
+  mutate(term = str_replace_all(term, "race|gender", ""))
+
+knitr::kable(or %>%
+               transmute(Feature = term,
+                         `Odds Ratio` = round(estimate, 3),
+                         `95% CI (low)` = round(conf.low, 3),
+                         `95% CI (high)` = round(conf.high, 3)),
+             caption = "Logistic regression (odds ratios)") %>%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+```{r}
+or %>% 
+  filter(term != "(Intercept)") %>%
+  mutate(highlight = ifelse(term %in% c("time_in_hospital","num_medications","number_diagnoses"),
+                            "Clinical","Other")) %>%
+  ggplot(aes(x = reorder(term, estimate), y = estimate, color = highlight)) +
+  geom_point(size=3) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0.15) +
+  coord_flip() +
+  geom_hline(yintercept = 1, linetype = 2) +
+  scale_color_manual(values = c("Clinical" = "red", "Other" = "black")) +
+  scale_y_continuous(limits = c(0.8, 1.2), labels = scales::number_format(accuracy=0.01)) +
+  labs(title = "Feature effects (odds ratios with 95% CI)",
+       x = NULL, y = "Odds Ratio (Readmission <30 days)")
+```
+
+
+# Exports for Power BI
+
+```{r}
+subgroup_out <- subgroup %>%
+  mutate(
+    rate = round(rate, 4),
+    lcl  = round(lcl, 4),
+    ucl  = round(ucl, 4)
+  )
+
+enc_slim <- df_clean %>%
+  select(encounter_id, patient_id, race, gender, age_group,
+         time_in_hospital, num_medications, number_diagnoses,
+         readmitted, readmit_flag)
+
+# Write files (for Power BI import)
+dir.create("diabetes_project/data/processed", recursive = TRUE, showWarnings = FALSE)
+readr::write_csv(subgroup_out, "diabetes_project/data/processed/subgroup_equity.csv")
+readr::write_csv(enc_slim,     "diabetes_project/data/processed/encounter_slim.csv")
+
+# Show small previews in report
+knitr::kable(head(subgroup_out, 10), caption = "Preview: Subgroup Equity Export") %>%
+  kableExtra::kable_styling(full_width = FALSE)
+
+knitr::kable(head(enc_slim, 10), caption = "Preview: Encounter Slim Export") %>%
+  kableExtra::kable_styling(full_width = FALSE)
+```
+
+# Findings & Interpretation
+
+- **Demographic predictors (race, gender) were not statistically significant** after adjustment; odds ratios were ~1 with overlapping 95% CIs.
+- **Clinical complexity** (time in hospital, number of diagnoses, medication count) showed positive, statistically significant associations with readmission.
+
+**Summary of results:**
+- The **overall readmission rate is ~11%**.
+- **Race subgroup rates range from ~9% to 12%**, with overlapping CIs → differences are modest and not clearly significant.
+- **Gender rates are nearly identical.**
+- Logistic regression confirms that **clinical complexity (time in hospital, number of diagnoses, medications)**, not demographics, drives readmission risk.
+
+
+- Overall 30-day readmission rate: **`r overall_rate_text`**  
+- Highest subgroup (race): **`r highest_subgroup_text`**  
+- Gap vs lowest subgroup: **`r gap_text`**  
+- Strongest predictors: **time in hospital**, **number of diagnoses**, **medication burden**.  
+
+> **Note:** These are illustrative only, not clinical recommendations.
+
+# Limitations
+
+- Dataset covers 1999–2008, and may not reflect today’s clinical practices.
+- Subgroup labels are limited; race/ethnicity categories are coarse.
+- Readmission coding may not align with modern standards.
+
+# Next Steps
+
+1. Add A1C & glucose metrics to models.  
+2. Build risk-adjusted fairness metrics.  
+3. Export dashboard-ready tables with subgroup CIs.  
+4. Explore oncology datasets to connect personal mission to Mayo’s work.
+
+# Appendix
+
+## SQL: Analysis View
+
+```sql
+CREATE OR REPLACE VIEW vw_encounter_patient AS
+SELECT 
+  e.encounter_id,
+  p.patient_id,
+  r.code AS race,
+  g.code AS gender,
+  a.label AS age_group,
+  e.time_in_hospital,
+  e.num_medications,
+  e.number_diagnoses,
+  cr.code AS readmitted
+FROM encounter e
+JOIN patient p              ON p.patient_id = e.patient_id
+LEFT JOIN code_race r       ON r.race_id = p.race_id
+LEFT JOIN code_gender g     ON g.gender_id = p.gender_id
+LEFT JOIN code_age_group a  ON a.age_group_id = p.age_group_id
+LEFT JOIN code_readmitted cr ON cr.readmitted_id = e.readmitted_id;
+```
+
+## Session Info
+
+```{r}
+sessionInfo()
+dbDisconnect(con)
+```

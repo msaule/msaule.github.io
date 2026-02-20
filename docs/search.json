@@ -1,0 +1,1192 @@
+[
+  {
+    "objectID": "projects/readmission.html",
+    "href": "projects/readmission.html",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/readmission.html#overview",
+    "href": "projects/readmission.html#overview",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Overview",
+    "text": "Overview\nBuilt a full readmission analytics pipeline using SQL, R, and Power BI on 100K+ hospital encounters. Designed a normalized SQL schema, engineered an analysis view, and ran statistical modeling in R to identify what drives 30-day readmissions. Found an overall readmission rate of ~11%, modest subgroup gaps (~2.7%), and clear clinical drivers: length of stay, number of diagnoses, and medication count. Delivered a 3-page Power BI report showing equity metrics, risk patterns, and clinical complexity signals."
+  },
+  {
+    "objectID": "projects/readmission.html#what-i-did",
+    "href": "projects/readmission.html#what-i-did",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/readmission.html#resultsimpact",
+    "href": "projects/readmission.html#resultsimpact",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/readmission.html#tech-stack",
+    "href": "projects/readmission.html#tech-stack",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nData Analysis, Database Management, Problem Solving, Programming, Project Management, UI/UX Design"
+  },
+  {
+    "objectID": "projects/readmission.html#deliverables",
+    "href": "projects/readmission.html#deliverables",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Deliverables",
+    "text": "Deliverables\n\ndiabetes-readmission.sql\ndiabetes-research-report.pdf\ndiabetes_report.pbix\nHospital_Readmission_Equity_Report 1.pdf\nHospital_Readmission_Equity_Report.pdf\nreadmissions-report-final.qmd\nreport-1.pdf\nreport-2.pdf\nreport-3.pdf"
+  },
+  {
+    "objectID": "projects/readmission.html#project-notes",
+    "href": "projects/readmission.html#project-notes",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Built a full readmission analytics pipeline using SQL, R, and Power BI on 100K+ hospital encounters. Designed a normalized SQL schema, engineered an analysis view, and ran statistical modeling in R to identify what drives 30-day readmissions. Found an overall readmission rate of ~11%, modest subgroup gaps (~2.7%), and clear clinical drivers: length of stay, number of diagnoses, and medication count. Delivered a 3-page Power BI report showing equity metrics, risk patterns, and clinical complexity signals. Skills Demonstrated: Data Analysis, Database Management, Problem Solving, Programming, Project Management, UI/UX Design Project Status: Completed Completion Date: September 16, 2025"
+  },
+  {
+    "objectID": "projects/readmission.html#executive-summary",
+    "href": "projects/readmission.html#executive-summary",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Executive Summary",
+    "text": "Executive Summary\nI��ve wanted to find ways to use my skills to contribute to healthcare. This made me think even more about how data and analytics could support doctors, patients, and families.\nSo, I picked up the Diabetes 130-US Hospitals dataset (about 100,000 encounters from 1999��2008) and built a full pipeline using SQL, R, and Power BI. My goal was to take messy data and turn it into something clear and useful: a story about which patients are most likely to be readmitted within 30 days, and why.\nWhat I found:\n\nAbout 11% of patients are readmitted within 30 days.\nThere��s a small but real 2.7% gap between the lowest and highest racial subgroups.\nThe biggest drivers of risk are number of diagnoses, how many medications are prescribed, and how long the patient stays in the hospital.\n\nThis was both a technical challenge and a personal project. It was proof that I can design an end-to-end workflow while keeping the focus on people represented in the dataset."
+  },
+  {
+    "objectID": "projects/readmission.html#data-tools",
+    "href": "projects/readmission.html#data-tools",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Data & Tools",
+    "text": "Data & Tools\n\nDataset: Diabetes 130-US Hospitals (~100k encounters)\nTools: MySQL, R (Quarto), Power BI\nExports: Cleaned CSVs and visuals for BI"
+  },
+  {
+    "objectID": "projects/readmission.html#methods",
+    "href": "projects/readmission.html#methods",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Methods",
+    "text": "Methods\nSQL (data foundation)\nI built a normalized schema in MySQL to handle patients, encounters, diagnoses, and medications. A staging table pulled in the raw CSV, then I cleaned and mapped the categories (race, gender, readmission flags, A1C, glucose levels). From there I created a single analysis view that was easy to query later in R and Power BI.\n\n\n\nerd-sql-report.png\n\n\n\nSQL Code & Comments\n-- ==========================================================\n-- Hospital Readmission Database (Diabetes 130-US Hospitals)\n-- Author: Markuss Saule\n-- ==========================================================\n-- Purpose:\n--   Normalized schema + pipeline for loading and analyzing\n--   ~100k encounters from the Diabetes 130-US Hospitals dataset.\n-- Steps:\n--   0) Create database\n--   1) Reference (code) tables\n--   2) Core entity tables\n--   3) Staging table (mirror CSV)\n--   4) ETL inserts into normalized schema\n--   5) Basic validation queries\n--   6) Analysis view\n-- ==========================================================\n\n-- 0) Create database\nCREATE DATABASE IF NOT EXISTS diabetes_db\nCHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;\nUSE diabetes_db;\n\n-- ==========================================================\n-- 1) Reference (code) tables\n-- ==========================================================\nCREATE TABLE code_race (\nrace_id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,\ncode    VARCHAR(50) NOT NULL UNIQUE\n);\n\nCREATE TABLE code_gender (\ngender_id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,\ncode      VARCHAR(20) NOT NULL UNIQUE\n);\n\nCREATE TABLE code_age_group (\nage_group_id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,\nlabel        VARCHAR(20) NOT NULL UNIQUE,\nlower_bound  TINYINT NULL,\nupper_bound  TINYINT NULL\n);\n\nCREATE TABLE code_admission_type (\nadmission_type_id TINYINT UNSIGNED PRIMARY KEY,\nname              VARCHAR(100) NOT NULL UNIQUE\n);\n\nCREATE TABLE code_discharge_disposition (\ndischarge_disposition_id SMALLINT UNSIGNED PRIMARY KEY,\nname                     VARCHAR(150) NOT NULL UNIQUE\n);\n\nCREATE TABLE code_admission_source (\nadmission_source_id SMALLINT UNSIGNED PRIMARY KEY,\nname                VARCHAR(150) NOT NULL UNIQUE\n);\n\nCREATE TABLE code_readmitted (\nreadmitted_id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,\ncode          VARCHAR(10) NOT NULL UNIQUE  -- '&lt;30', '&gt;30', 'NO'\n);\n\nCREATE TABLE code_a1c_result (\na1c_result_id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,\ncode          VARCHAR(10) NOT NULL UNIQUE\n);\n\nCREATE TABLE code_max_glu_serum (\nmax_glu_serum_id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,\ncode             VARCHAR(10) NOT NULL UNIQUE\n);\n\nCREATE TABLE medical_specialty (\nmedical_specialty_id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,\nname                 VARCHAR(150) NOT NULL UNIQUE\n);\n\nCREATE TABLE medication (\nmedication_id SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,\nname          VARCHAR(100) NOT NULL UNIQUE\n);\n\nCREATE TABLE code_med_status (\nmed_status_id TINYINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,\ncode          VARCHAR(10) NOT NULL UNIQUE   -- 'No', 'Steady', 'Up', 'Down'\n);\n\n-- ==========================================================\n-- 2) Core entity tables\n-- ==========================================================\nCREATE TABLE patient (\npatient_id   BIGINT PRIMARY KEY,          -- from CSV patient_nbr\nrace_id      TINYINT UNSIGNED NULL,\ngender_id    TINYINT UNSIGNED NULL,\nage_group_id TINYINT UNSIGNED NULL,\npayer_code   VARCHAR(20) NULL,\nweight_text  VARCHAR(20) NULL,\nCONSTRAINT fk_patient_race    FOREIGN KEY (race_id) REFERENCES code_race(race_id),\nCONSTRAINT fk_patient_gender  FOREIGN KEY (gender_id) REFERENCES code_gender(gender_id),\nCONSTRAINT fk_patient_agegrp  FOREIGN KEY (age_group_id) REFERENCES code_age_group(age_group_id)\n);\n\nCREATE TABLE encounter (\nencounter_id             BIGINT PRIMARY KEY, -- from CSV\npatient_id               BIGINT NOT NULL,\nadmission_type_id        TINYINT UNSIGNED NULL,\ndischarge_disposition_id SMALLINT UNSIGNED NULL,\nadmission_source_id      SMALLINT UNSIGNED NULL,\ntime_in_hospital         TINYINT UNSIGNED NULL,\nnum_lab_procedures       SMALLINT UNSIGNED NULL,\nnum_procedures           SMALLINT UNSIGNED NULL,\nnum_medications          SMALLINT UNSIGNED NULL,\nnumber_outpatient        SMALLINT UNSIGNED NULL,\nnumber_emergency         SMALLINT UNSIGNED NULL,\nnumber_inpatient         SMALLINT UNSIGNED NULL,\nnumber_diagnoses         TINYINT UNSIGNED NULL,\nmedical_specialty_id     SMALLINT UNSIGNED NULL,\nreadmitted_id            TINYINT UNSIGNED NULL,\na1c_result_id            TINYINT UNSIGNED NULL,\nmax_glu_serum_id         TINYINT UNSIGNED NULL,\nchange_flag              BOOLEAN NULL,    -- 'Ch'-&gt;true, 'No'-&gt;false\ndiabetes_med_flag        BOOLEAN NULL,    -- 'Yes'/'No'\nCONSTRAINT fk_enc_patient     FOREIGN KEY (patient_id) REFERENCES patient(patient_id),\nCONSTRAINT fk_enc_admtype     FOREIGN KEY (admission_type_id) REFERENCES code_admission_type(admission_type_id),\nCONSTRAINT fk_enc_disposition FOREIGN KEY (discharge_disposition_id) REFERENCES code_discharge_disposition(discharge_disposition_id),\nCONSTRAINT fk_enc_admsource   FOREIGN KEY (admission_source_id) REFERENCES code_admission_source(admission_source_id),\nCONSTRAINT fk_enc_med_spec    FOREIGN KEY (medical_specialty_id) REFERENCES medical_specialty(medical_specialty_id),\nCONSTRAINT fk_enc_readmitted  FOREIGN KEY (readmitted_id) REFERENCES code_readmitted(readmitted_id),\nCONSTRAINT fk_enc_a1c         FOREIGN KEY (a1c_result_id) REFERENCES code_a1c_result(a1c_result_id),\nCONSTRAINT fk_enc_maxglu      FOREIGN KEY (max_glu_serum_id) REFERENCES code_max_glu_serum(max_glu_serum_id)\n);\n\nCREATE TABLE encounter_diagnosis (\nencounter_id BIGINT NOT NULL,\nposition_no  TINYINT UNSIGNED NOT NULL,  -- 1,2,3\nicd9_code    VARCHAR(10) NOT NULL,\nPRIMARY KEY (encounter_id, position_no),\nCONSTRAINT fk_ed_enc FOREIGN KEY (encounter_id) REFERENCES encounter(encounter_id)\n);\n\nCREATE TABLE encounter_medication (\nencounter_id  BIGINT NOT NULL,\nmedication_id SMALLINT UNSIGNED NOT NULL,\nmed_status_id TINYINT UNSIGNED NOT NULL,\nPRIMARY KEY (encounter_id, medication_id),\nCONSTRAINT fk_em_enc    FOREIGN KEY (encounter_id)  REFERENCES encounter(encounter_id),\nCONSTRAINT fk_em_med    FOREIGN KEY (medication_id) REFERENCES medication(medication_id),\nCONSTRAINT fk_em_status FOREIGN KEY (med_status_id) REFERENCES code_med_status(med_status_id)\n);\n\n-- ==========================================================\n-- 3) Staging table (mirror CSV for import)\n-- ==========================================================\nDROP TABLE IF EXISTS staging_encounter_raw;\nCREATE TABLE staging_encounter_raw (\nencounter_id    BIGINT,\npatient_nbr     BIGINT,\nrace            VARCHAR(50),\ngender          VARCHAR(20),\nage             VARCHAR(20),\nweight          VARCHAR(20),\nadmission_type_id INT,\ndischarge_disposition_id INT,\nadmission_source_id INT,\ntime_in_hospital INT,\npayer_code      VARCHAR(20),\nmedical_specialty VARCHAR(150),\nnum_lab_procedures INT,\nnum_procedures  INT,\nnum_medications INT,\nnumber_outpatient INT,\nnumber_emergency INT,\nnumber_inpatient INT,\ndiag_1          VARCHAR(10),\ndiag_2          VARCHAR(10),\ndiag_3          VARCHAR(10),\nnumber_diagnoses INT,\nmax_glu_serum   VARCHAR(10),\nA1Cresult       VARCHAR(10),\nmetformin       VARCHAR(10),\nrepaglinide     VARCHAR(10),\nnateglinide     VARCHAR(10),\nchlorpropamide  VARCHAR(10),\nglimepiride     VARCHAR(10),\nacetohexamide   VARCHAR(10),\nglipizide       VARCHAR(10),\nglyburide       VARCHAR(10),\ntolbutamide     VARCHAR(10),\npioglitazone    VARCHAR(10),\nrosiglitazone   VARCHAR(10),\nacarbose        VARCHAR(10),\nmiglitol        VARCHAR(10),\ntroglitazone    VARCHAR(10),\ntolazamide      VARCHAR(10),\nexamide         VARCHAR(10),\ncitoglipton     VARCHAR(10),\ninsulin         VARCHAR(10),\nglyburide_metformin VARCHAR(10),\nglipizide_metformin VARCHAR(10),\nglimepiride_pioglitazone VARCHAR(10),\nmetformin_rosiglitazone VARCHAR(10),\nmetformin_pioglitazone VARCHAR(10),\nchange_raw      VARCHAR(10),\ndiabetesMed     VARCHAR(10),\nreadmitted      VARCHAR(10)\n);\n\n-- ==========================================================\n-- 4) ETL Inserts\n-- ==========================================================\n\n-- Populate reference/code tables\nINSERT IGNORE INTO code_race (code)              SELECT DISTINCT race FROM staging_encounter_raw;\nINSERT IGNORE INTO code_gender (code)            SELECT DISTINCT gender FROM staging_encounter_raw;\nINSERT IGNORE INTO code_age_group (label)        SELECT DISTINCT age FROM staging_encounter_raw;\nINSERT IGNORE INTO code_readmitted (code)        SELECT DISTINCT readmitted FROM staging_encounter_raw;\nINSERT IGNORE INTO code_a1c_result (code)        SELECT DISTINCT A1Cresult FROM staging_encounter_raw;\nINSERT IGNORE INTO code_max_glu_serum (code)     SELECT DISTINCT max_glu_serum FROM staging_encounter_raw;\nINSERT IGNORE INTO medical_specialty (name)\nSELECT DISTINCT medical_specialty FROM staging_encounter_raw WHERE medical_specialty &lt;&gt; '?';\n\nINSERT IGNORE INTO code_admission_type (admission_type_id, name)\nSELECT DISTINCT admission_type_id, CONCAT('Type ', admission_type_id)\nFROM staging_encounter_raw WHERE admission_type_id IS NOT NULL;\n\nINSERT IGNORE INTO code_discharge_disposition (discharge_disposition_id, name)\nSELECT DISTINCT discharge_disposition_id, CONCAT('Disposition ', discharge_disposition_id)\nFROM staging_encounter_raw WHERE discharge_disposition_id IS NOT NULL;\n\nINSERT IGNORE INTO code_admission_source (admission_source_id, name)\nSELECT DISTINCT admission_source_id, CONCAT('Source ', admission_source_id)\nFROM staging_encounter_raw WHERE admission_source_id IS NOT NULL;\n\n-- Patients\nINSERT INTO patient (patient_id, race_id, gender_id, age_group_id, payer_code, weight_text)\nSELECT\ns.patient_nbr,\nr.race_id,\ng.gender_id,\na.age_group_id,\nNULLIF(s.payer_code, '?'),\nNULLIF(s.weight, '?')\nFROM (\nSELECT s1.*\nFROM staging_encounter_raw s1\nJOIN (\nSELECT patient_nbr, MIN(encounter_id) AS min_enc\nFROM staging_encounter_raw\nGROUP BY patient_nbr\n) t ON s1.patient_nbr = t.patient_nbr AND s1.encounter_id = t.min_enc\n) s\nLEFT JOIN code_race r ON r.code = s.race\nLEFT JOIN code_gender g ON g.code = s.gender\nLEFT JOIN code_age_group a ON a.label = s.age;\n\n-- Encounters\nINSERT INTO encounter (\nencounter_id, patient_id, admission_type_id, discharge_disposition_id, admission_source_id,\ntime_in_hospital, num_lab_procedures, num_procedures, num_medications,\nnumber_outpatient, number_emergency, number_inpatient, number_diagnoses,\nmedical_specialty_id, readmitted_id, a1c_result_id, max_glu_serum_id,\nchange_flag, diabetes_med_flag\n)\nSELECT\ns.encounter_id,\ns.patient_nbr,\ns.admission_type_id,\ns.discharge_disposition_id,\ns.admission_source_id,\ns.time_in_hospital,\ns.num_lab_procedures,\ns.num_procedures,\ns.num_medications,\ns.number_outpatient,\ns.number_emergency,\ns.number_inpatient,\ns.number_diagnoses,\nms.medical_specialty_id,\ncr.readmitted_id,\nca.a1c_result_id,\ncg.max_glu_serum_id,\nCASE WHEN s.change_raw = 'Ch' THEN TRUE WHEN s.change_raw = 'No' THEN FALSE ELSE NULL END,\nCASE WHEN s.diabetesMed = 'Yes' THEN TRUE WHEN s.diabetesMed = 'No' THEN FALSE ELSE NULL END\nFROM staging_encounter_raw s\nLEFT JOIN medical_specialty ms ON [ms.name](http://ms.name/) = s.medical_specialty\nLEFT JOIN code_readmitted cr   ON cr.code = s.readmitted\nLEFT JOIN code_a1c_result ca   ON ca.code = s.A1Cresult\nLEFT JOIN code_max_glu_serum cg ON cg.code = s.max_glu_serum;\n\n-- ==========================================================\n-- 5) Validation queries\n-- ==========================================================\nSELECT COUNT(*) AS n_patients FROM patient;\nSELECT COUNT(*) AS n_encounters FROM encounter;\n\nSELECT cr.code AS readmitted, COUNT(*) AS n\nFROM encounter e\nJOIN code_readmitted cr ON cr.readmitted_id = e.readmitted_id\nGROUP BY cr.code;\n\n-- ==========================================================\n-- 6) Analysis view\n-- ==========================================================\nCREATE OR REPLACE VIEW vw_encounter_patient AS\nSELECT\ne.encounter_id,\np.patient_id,\nr.code AS race,\ng.code AS gender,\na.label AS age_group,\ne.time_in_hospital,\ne.num_medications,\ne.number_diagnoses,\ncr.code AS readmitted\nFROM encounter e\nJOIN patient p              ON p.patient_id = e.patient_id\nLEFT JOIN code_race r       ON r.race_id = p.race_id\nLEFT JOIN code_gender g     ON g.gender_id = p.gender_id\nLEFT JOIN code_age_group a  ON a.age_group_id = p.age_group_id\nLEFT JOIN code_readmitted cr ON cr.readmitted_id = e.readmitted_id;\n\nR (analysis & reporting)\nIn R, I cleaned the fields, built a binary readmission flag, and ran exploratory analysis. I also built a logistic regression model to test what factors increased risk of readmission. Finally, I exported cleaned tables for Power BI.\nHospital Readmission Equity Report.pdf\n\nR Code & Comments\n``` r — title: “Hospital Readmission Equity Report” author: “Markuss Saule” date: “9/15/2025” format: html: theme: cosmo toc: true toc-depth: 3 number-sections: true code-copy: true df-print: paged execute: echo: false warning: false message: false fig-cap-location: bottom code-fold: show jupyter: false —\n# Packages\nrequired &lt;- c(\n  \"DBI\",\"RMariaDB\",\"dplyr\",\"tidyr\",\"forcats\",\"ggplot2\",\n  \"broom\",\"scales\",\"stringr\",\"readr\",\"knitr\",\"kableExtra\"\n)\nto_install &lt;- setdiff(required, rownames(installed.packages()))\nif (length(to_install)) install.packages(to_install, quiet = TRUE)\ninvisible(lapply(required, library, character.only = TRUE))\n\n# Utility theme\ntheme_set(theme_minimal(base_size = 13))\ncon &lt;- dbConnect(\n  RMariaDB::MariaDB(),\n  user = \"root\",\n  password = \"x\",\n  dbname = \"diabetes_db\",\n  host = \"127.0.0.1\",\n  port = 3306\n)\n\n# Pull data and clean immediately so summary stats exist for Executive Summary\ndf &lt;- dbGetQuery(con, \"SELECT * FROM vw_encounter_patient;\")\n\ndf_clean &lt;- df %&gt;%\n  mutate(\n    race   = na_if(race, \"Unknown\"),\n    race   = na_if(race, \"?\"),\n    gender = ifelse(gender %in% c(\"Unknown/Invalid\",\"?\"), NA, gender),\n    readmit_flag = ifelse(readmitted == \"&lt;30\", 1, 0),\n    age_mid = dplyr::case_when(\n      str_detect(age_group, \"\\\\[\\\\d+-\\\\d+\\\\)\") ~ {\n        lo &lt;- as.numeric(str_extract(age_group, \"(?&lt;=\\\\[)\\\\d+\"))\n        hi &lt;- as.numeric(str_extract(age_group, \"(?&lt;=-)\\\\d+(?=\\\\))\"))\n        (lo + hi) / 2\n      },\n      str_detect(age_group, \"\\\\[\\\\d+\\\\+\\\\)\") ~ as.numeric(str_extract(age_group, \"\\\\d+\")),\n      TRUE ~ NA_real_\n    )\n  )\n\n# Precompute metrics\noverall_rate_text &lt;- scales::percent(mean(df_clean$readmit_flag, na.rm = TRUE))\n\nsubgroup &lt;- df_clean %&gt;%\n  group_by(race) %&gt;%\n  summarise(rate = mean(readmit_flag, na.rm = TRUE), .groups=\"drop\")\n\nhighest_subgroup_text &lt;- paste0(subgroup$race[which.max(subgroup$rate)],\n                                \" �� \",\n                                scales::percent(max(subgroup$rate, na.rm = TRUE)))\n\ngap_text &lt;- scales::percent(max(subgroup$rate,na.rm=TRUE) - min(subgroup$rate,na.rm=TRUE))\n# Executive Summary\nThis analysis explores 30-day readmission patterns using the public Diabetes 130-US hospitals (1999��2008) dataset.\nKey messages:\n\nThe overall 30-day readmission rate is about 11%, consistent with prior analyses of this dataset.\nRace subgroup differences are modest (roughly 9��12%), with overlapping confidence intervals, suggesting no strong racial disparities.\nGender shows almost no difference in readmission.\nThe strongest predictors of readmission are clinical complexity: more diagnoses, longer hospital stays, and greater medication use.\n\n\nInterpretation note: This dataset is dated and illustrative; findings highlight workflow and methodology, not clinical advice.\n\nThis analysis explores 30-day readmission patterns using the public Diabetes 130-US hospitals (1999��2008) dataset, focusing on equity across demographic subgroups and interpretable drivers of risk.\n\nOverall 30-day readmission rate: r overall_rate_text\n\nDemographics not significant: Race and gender coefficients are near 1 with overlapping CIs.\nClinical complexity matters: Longer stays, more diagnoses, and higher medication counts increase odds of readmission.\nHighest subgroup rate (race): r highest_subgroup_text\n\nGap vs lowest subgroup: r gap_text\n\nKey signals: time in hospital, number of diagnoses, and medication intensity show monotonic associations with readmission.\n\n\nInterpretation note: This is an educational analysis on a public dataset; results are illustrative, not clinical guidance.\n\n# Data & Methods\nWe implement a pragmatic analytics pipeline similar to what health systems use:\n\n\n\n\n\n\n    flowchart TD\n        A[\"CSV (Kaggle)\"] --&gt; B[\"MySQL: staging_encounter_raw\"]\n        B --&gt; C[\"MySQL: normalized tables\"]\n        C --&gt; D[\"SQL view: vw_encounter_patient\"]\n        D --&gt; E[\"R: cleaning & fairness\"]\n        E --&gt; F[\"Power BI: dashboard\"]\n        E --&gt; G[\"Exports (CSV / MySQL tables)\"]\n\n\n\n\n\n\n**Outcome**: `readmitted` recoded as **`readmit_flag = 1`** if `\"&lt;30\"`, else **0**.  \n**Equity**: subgroup rates and 95% CIs via normal approximation.  \n**Model**: logistic regression (simple, interpretable).\n\n# Exploratory Overview\n\n```{.text}\nn_encounters &lt;- nrow(df_clean)\noverall_rate &lt;- mean(df_clean$readmit_flag, na.rm=TRUE)\n\nt_overview &lt;- tibble(\n  Metric = c(\"Encounters\", \"Overall 30-day readmission rate\"),\n  Value  = c(scales::comma(n_encounters), scales::percent(overall_rate))\n)\n\nknitr::kable(t_overview, caption = \"Overall snapshot\") %&gt;%\n  kableExtra::kable_styling(full_width = FALSE)\n```\n\n# Readmission by Race (Equity Perspective)\n\n```{.text}\nsubgroup &lt;- df_clean %&gt;%\n  group_by(race) %&gt;%\n  summarise(\n    n = dplyr::n(),\n    rate = mean(readmit_flag, na.rm = TRUE),\n    se = sqrt(rate * (1 - rate) / n),\n    lcl = pmax(0, rate - 1.96 * se),\n    ucl = pmin(1, rate + 1.96 * se),\n    .groups = \"drop\"\n  ) %&gt;%\n  arrange(desc(rate))\n\nknitr::kable(subgroup %&gt;%\n               mutate(across(c(rate,lcl,ucl), scales::percent)),\n             caption = \"Readmission by race with 95% CI\") %&gt;%\n  kableExtra::kable_styling(full_width = FALSE)\n```\n\n```{.text}\nggplot(subgroup, aes(x = reorder(race, rate), y = rate, fill = rate)) +\n  geom_col() +\n  geom_errorbar(aes(ymin = lcl, ymax = ucl), width = 0.2) +\n  geom_text(aes(label = scales::percent(rate, accuracy=0.1)), hjust=-0.1, size=3.5) +\n  coord_flip() +\n  scale_fill_viridis_c(option = 'plasma') +\n  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0,0.1))) +\n  labs(\n    title = \"30-day readmission rate by race\",\n    x = NULL, y = \"Rate (95% CI)\"\n  )\n```\n\n# Readmission by Gender\n\n```{.text}\nby_gender &lt;- df_clean %&gt;%\n  filter(!is.na(gender)) %&gt;%\n  group_by(gender) %&gt;%\n  summarise(\n    n = n(),\n    rate = mean(readmit_flag, na.rm = TRUE),\n    .groups = \"drop\"\n  )\n\nggplot(by_gender, aes(x = gender, y = rate, fill = gender)) +\n  geom_col() +\n  geom_text(aes(label = scales::percent(rate, accuracy=0.1)), vjust=-0.5, size=3.5) +\n  scale_fill_viridis_d(option = 'plasma') +\n  scale_y_continuous(labels = scales::percent, expand = expansion(mult = c(0,0.1))) +\n  labs(title = \"30-day readmission by gender\", x = NULL, y = \"Rate\")\n```\n\n# Logistic Regression (Interpretable Model)\n\n```{.text}\ndf_model &lt;- df_clean %&gt;%\n  filter(!is.na(race), !race %in% c(\"Unknown\"),\n         !is.na(gender), !gender %in% c(\"Unknown\")) %&gt;%\n  transmute(\n    readmit_flag = readmit_flag,\n    race   = fct_lump_n(factor(race), n = 5),\n    gender = factor(gender),\n    age_mid = age_mid,\n    time_in_hospital = time_in_hospital,\n    num_medications = num_medications,\n    number_diagnoses = number_diagnoses\n  ) %&gt;%\n  drop_na()\n\nm &lt;- glm(\n  readmit_flag ~ race + gender + age_mid + time_in_hospital +\n    num_medications + number_diagnoses,\n  data = df_model, family = binomial()\n)\n\nor &lt;- broom::tidy(m, conf.int = TRUE, exponentiate = TRUE) %&gt;%\n  mutate(term = str_replace_all(term, \"race|gender\", \"\"))\n\nknitr::kable(or %&gt;%\n               transmute(Feature = term,\n                         `Odds Ratio` = round(estimate, 3),\n                         `95% CI (low)` = round(conf.low, 3),\n                         `95% CI (high)` = round(conf.high, 3)),\n             caption = \"Logistic regression (odds ratios)\") %&gt;%\n  kableExtra::kable_styling(full_width = FALSE)\n```\n\n```{.text}\nor %&gt;% \n  filter(term != \"(Intercept)\") %&gt;%\n  mutate(highlight = ifelse(term %in% c(\"time_in_hospital\",\"num_medications\",\"number_diagnoses\"),\n                            \"Clinical\",\"Other\")) %&gt;%\n  ggplot(aes(x = reorder(term, estimate), y = estimate, color = highlight)) +\n  geom_point(size=3) +\n  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0.15) +\n  coord_flip() +\n  geom_hline(yintercept = 1, linetype = 2) +\n  scale_color_manual(values = c(\"Clinical\" = \"red\", \"Other\" = \"black\")) +\n  scale_y_continuous(limits = c(0.8, 1.2), labels = scales::number_format(accuracy=0.01)) +\n  labs(title = \"Feature effects (odds ratios with 95% CI)\",\n       x = NULL, y = \"Odds Ratio (Readmission &lt;30 days)\")\n```\n\n# Exports for Power BI\n\n```{.text}\nsubgroup_out &lt;- subgroup %&gt;%\n  mutate(\n    rate = round(rate, 4),\n    lcl  = round(lcl, 4),\n    ucl  = round(ucl, 4)\n  )\n\nenc_slim &lt;- df_clean %&gt;%\n  select(encounter_id, patient_id, race, gender, age_group,\n         time_in_hospital, num_medications, number_diagnoses,\n         readmitted, readmit_flag)\n\n# Write files (for Power BI import)\ndir.create(\"diabetes_project/data/processed\", recursive = TRUE, showWarnings = FALSE)\nreadr::write_csv(subgroup_out, \"diabetes_project/data/processed/subgroup_equity.csv\")\nreadr::write_csv(enc_slim,     \"diabetes_project/data/processed/encounter_slim.csv\")\n\n# Show small previews in report\nknitr::kable(head(subgroup_out, 10), caption = \"Preview: Subgroup Equity Export\") %&gt;%\n  kableExtra::kable_styling(full_width = FALSE)\n\nknitr::kable(head(enc_slim, 10), caption = \"Preview: Encounter Slim Export\") %&gt;%\n  kableExtra::kable_styling(full_width = FALSE)\n```\n\n# Findings & Interpretation\n\n- **Demographic predictors (race, gender) were not statistically significant** after adjustment; odds ratios were ~1 with overlapping 95% CIs.\n- **Clinical complexity** (time in hospital, number of diagnoses, medication count) showed positive, statistically significant associations with readmission.\n\n**Summary of results:**\n- The **overall readmission rate is ~11%**.\n- **Race subgroup rates range from ~9% to 12%**, with overlapping CIs �� differences are modest and not clearly significant.\n- **Gender rates are nearly identical.**\n- Logistic regression confirms that **clinical complexity (time in hospital, number of diagnoses, medications)**, not demographics, drives readmission risk.\n\n- Overall 30-day readmission rate: **` r overall_rate_text`**  \n- Highest subgroup (race): **` r highest_subgroup_text`**  \n- Gap vs lowest subgroup: **` r gap_text`**  \n- Strongest predictors: **time in hospital**, **number of diagnoses**, **medication burden**.  \n\n&gt; **Note:** These are illustrative only, not clinical recommendations.\n\n# Limitations\n\n- Dataset covers 1999��2008, and may not reflect today��s clinical practices.\n- Subgroup labels are limited; race/ethnicity categories are coarse.\n- Readmission coding may not align with modern standards.\n\n# Next Steps\n\n1. Add A1C & glucose metrics to models.  \n2. Build risk-adjusted fairness metrics.  \n3. Export dashboard-ready tables with subgroup CIs.  \n4. Explore oncology datasets to connect personal mission to Mayo��s work.\n\n# Appendix\n\n## SQL: Analysis View\n\n```sql\nCREATE OR REPLACE VIEW vw_encounter_patient AS\nSELECT \n  e.encounter_id,\n  p.patient_id,\n  r.code AS race,\n  g.code AS gender,\n  a.label AS age_group,\n  e.time_in_hospital,\n  e.num_medications,\n  e.number_diagnoses,\n  cr.code AS readmitted\nFROM encounter e\nJOIN patient p              ON p.patient_id = e.patient_id\nLEFT JOIN code_race r       ON r.race_id = p.race_id\nLEFT JOIN code_gender g     ON g.gender_id = p.gender_id\nLEFT JOIN code_age_group a  ON a.age_group_id = p.age_group_id\nLEFT JOIN code_readmitted cr ON cr.readmitted_id = e.readmitted_id;\n```\n\n## Session Info\n\n```{.text}\nsessionInfo()\ndbDisconnect(con)\n```\n```\nPower BI (storytelling)\nI built a three-page dashboard:\n\nOverview �� overall rate and age breakdown.\nEquity Perspective �� racial disparities, with confidence intervals and a simple gap metric.\nClinical Drivers �� scatterplots and charts showing how diagnoses, medications, and length of stay affect readmission."
+  },
+  {
+    "objectID": "projects/readmission.html#dashboard-snapshots",
+    "href": "projects/readmission.html#dashboard-snapshots",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Dashboard Snapshots",
+    "text": "Dashboard Snapshots\n\nPage 1 �� Overview\n\n11.2% overall readmission rate.\nPatients in their 20s and 30s have the highest risk (~13.8%).\n\nreport-1.pdf\n\n\n\nPage 2 �� Equity Spotlight\n\nRace gap of ~2.7% between lowest and highest subgroup.\nMost groups fall between 10��12%.\n\nreport-2.pdf\n\n\n\nPage 3 �� Clinical Drivers\n\nPatients with 7+ diagnoses, or 12+ medications, face ~13��15% readmission.\nStaying in the hospital longer (7+ days) is also linked to higher risk.\n\nreport-3.pdf"
+  },
+  {
+    "objectID": "projects/readmission.html#key-insights",
+    "href": "projects/readmission.html#key-insights",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Key Insights",
+    "text": "Key Insights\n\nThe overall readmission rate is 11%, in line with national numbers.\nRace gaps exist but are not as large as I expected (still worth attention).\nComplexity (more diagnoses, more meds, longer stays) - drives risk far more than demographics."
+  },
+  {
+    "objectID": "projects/readmission.html#reflections-next-steps",
+    "href": "projects/readmission.html#reflections-next-steps",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Reflections & Next Steps",
+    "text": "Reflections & Next Steps\nThis project reminded me that behind every row in a dataset is a person and a family. I��d explore predictive modeling �� not just describing risk, but actually helping hospitals flag patients early.\nFor me, this wasn��t just about SQL queries and charts. It was about proving to myself that I can take raw data, clean it, analyze it, and tell a story that actually matters."
+  },
+  {
+    "objectID": "projects/readmission.html#downloads",
+    "href": "projects/readmission.html#downloads",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Downloads",
+    "text": "Downloads\ndiabetes_report.pbix\nHospital Readmission Equity Report.pdf\nreadmissions-report-final.qmd\ndiabetes-readmission.sql\ndiabetes-research-report.pdf"
+  },
+  {
+    "objectID": "projects/readmission.html#disclaimer",
+    "href": "projects/readmission.html#disclaimer",
+    "title": "Hospital Readmission Analytics (SQL + R + Power BI)",
+    "section": "Disclaimer",
+    "text": "Disclaimer\nThis project is based on a public dataset and is for educational purposes only."
+  },
+  {
+    "objectID": "projects/lung-cancer.html",
+    "href": "projects/lung-cancer.html",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/lung-cancer.html#overview",
+    "href": "projects/lung-cancer.html#overview",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Overview",
+    "text": "Overview\nAnalyzed 114K SEER lung cancer cases (2004��2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8×, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights."
+  },
+  {
+    "objectID": "projects/lung-cancer.html#what-i-did",
+    "href": "projects/lung-cancer.html#what-i-did",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/lung-cancer.html#resultsimpact",
+    "href": "projects/lung-cancer.html#resultsimpact",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/lung-cancer.html#tech-stack",
+    "href": "projects/lung-cancer.html#tech-stack",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nData Analysis, Problem Solving, Programming, Project Management"
+  },
+  {
+    "objectID": "projects/lung-cancer.html#deliverables",
+    "href": "projects/lung-cancer.html#deliverables",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nCancer-Project 1.pdf\nCancer-Project.pdf\ncancerbi.pbix\ncancerbi.pdf\nCancer_Project.rmd\nlogistic_regression_results.csv\npowerbi-dashboard-snapshot.pdf"
+  },
+  {
+    "objectID": "projects/lung-cancer.html#project-notes",
+    "href": "projects/lung-cancer.html#project-notes",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Analyzed 114K SEER lung cancer cases (2004��2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8×, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights. Skills Demonstrated: Data Analysis, Problem Solving, Programming, Project Management Project Status: Completed Completion Date: October 7, 2025"
+  },
+  {
+    "objectID": "projects/lung-cancer.html#executive-summary",
+    "href": "projects/lung-cancer.html#executive-summary",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Executive Summary",
+    "text": "Executive Summary\nThis project came from something personal. After losing my dad to cancer, I��ve wanted to understand what shapes survival and what doesn��t. I chose to focus on lung cancer because it��s one of the hardest and most common forms to survive.\nI used data from the SEER cancer registry (2004��2015) and built a full analysis in R and Power BI. My goal was to find what really predicts survival in the data, not just what people assume.\nHere��s what stood out:\n\nThe stage of diagnosis changes everything. Patients caught early were eight times more likely to survive two years.\nTumor size and the number of affected lymph nodes both reduced survival odds.\nMen had slightly lower odds of survival than women.\nPeople identified as Asian, Pacific Islander, or American Indian tended to do better than White patients, but those gaps were smaller than I expected.\n\nAcross the dataset, there were over 114,000 cases, and about 25% of patients survived two years.\nWorking on this reminded me that behind every line of data is a person and a story. It made the statistics feel real."
+  },
+  {
+    "objectID": "projects/lung-cancer.html#data-tools",
+    "href": "projects/lung-cancer.html#data-tools",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Data & Tools",
+    "text": "Data & Tools\n\nDataset: SEER 2004��2015 (Lung & Bronchus cancer)\nCases: 114,000 total\nMain metric: 2-year survival\nTools used: R (R Markdown) and Power BI\nExports: Cleaned data and model outputs for visualization"
+  },
+  {
+    "objectID": "projects/lung-cancer.html#methods",
+    "href": "projects/lung-cancer.html#methods",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Methods",
+    "text": "Methods\nI started by filtering the SEER dataset to keep only lung and bronchus cancers diagnosed from 2004 to 2015. I kept the first primary cancers only, since many patients had multiple diagnoses.\nThen I converted survival months into numbers and created binary outcomes:\n\nSurvived at least 2 years\nSurvived at least 5 years (for reference)\n\nAfter cleaning, I ran several tests to explore the data:\n\nChi-square tests for categorical variables like stage, sex, and race\nt-tests and ANOVA for tumor size\nA logistic regression model to see which factors best predicted survival\n\nHere��s what the analysis showed:\n\n\n\nTest\nResult\n\n\n\n\nStage vs survival\nχ� = 24,261, p &lt; 0.001\n\n\nSex vs survival\nχ� = 847, p &lt; 0.001\n\n\nRace vs survival\nχ� = 169, p &lt; 0.001\n\n\n\nAverage tumor size was 61 mm in those who didn��t survive two years and 58 mm in those who did. The difference seems small but was still statistically significant (p = 0.014).\nThe logistic regression made the relationships clearer:\n\n\n\nPredictor\nOdds Ratio\n95% CI\np-value\n\n\n\n\nLocalized stage\n8.13\n(7.76, 8.52)\n&lt; 0.001\n\n\nRegional stage\n3.20\n(3.07, 3.34)\n&lt; 0.001\n\n\nMale\n0.64\n(0.62, 0.67)\n&lt; 0.001\n\n\nRace: Other (AI/AN, A/PI)\n1.52\n(1.40, 1.64)\n&lt; 0.001\n\n\nTumor size\n1.00 (per mm)\n\n&lt; 0.001\n\n\nPositive nodes\n0.98 (per node)\n\n&lt; 0.001\n\n\n\nThe results were clear. The earlier the cancer is caught, the better the chance of survival."
+  },
+  {
+    "objectID": "projects/lung-cancer.html#r-analysis",
+    "href": "projects/lung-cancer.html#r-analysis",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "R Analysis",
+    "text": "R Analysis\nI used R to handle all the cleaning, statistics, and modeling before moving anything to Power BI.\nThe first step was to take the raw SEER export and make sense of it. That meant renaming the long variable names, filtering to lung and bronchus cancers, and converting survival months into actual numbers.\nAfter cleaning, I defined two survival outcomes:\n\nTwo-year survival (main metric)\nFive-year survival (for comparison)\n\nThen I ran several basic tests to see what mattered most.\n\nChi-square tests showed clear differences by stage, sex, and race.\nt-tests and ANOVA helped check tumor size across groups.\nFinally, a logistic regression model tied everything together by predicting who survived two years based on stage, tumor size, lymph nodes, sex, and race.\n\nEach test confirmed what doctors often see in practice.\nStage at diagnosis was the biggest factor, followed by tumor size and how far the cancer had spread through lymph nodes.\nOnce the analysis was complete, I exported the cleaned data and model results as CSVs for visualization in Power BI.\n\nR Code Samples\n\nR Code for Lung Cancer Survival Analysis\nData Cleaning & Setup\n``` r # Load libraries library(tidyverse) library(broom) library(knitr) library(kableExtra)\n# Import SEER dataset seer_raw &lt;- read.csv(“cancer_data.csv”)\n# Rename key columns for easier reference seer &lt;- seer_raw %&gt;% rename( age_grp = Age.recode.with..1.year.olds.and.90., sex = Sex, race = Race.recode..White..Black..Other., site_code = Primary.Site, stage_sum = Summary.stage.2000..1998.2017., dx_year = Year.of.diagnosis, surv_months = Survival.months, tumor_size = CS.tumor.size..2004.2015., nodes_pos = Regional.nodes.positive..1988.. ) %&gt;% filter(site_code &gt;= 340 & site_code &lt;= 349, dx_year &gt;= 2004 & dx_year &lt;= 2015, seq_num == “One primary only”) ```\nSurvival Outcome Creation\nr # Convert survival months and create 2- & 5-year outcomes   seer &lt;- seer %&gt;%     mutate(       surv_months = as.numeric(surv_months),       survived_24m = ifelse(surv_months &gt;= 24, 1, 0),       survived_5yr = ifelse(surv_months &gt;= 60, 1, 0)     )\nStatistical Tests\n``` r # Chi-square tests chisq.test(table(seer\\(stage_sum, seer\\)survived_24m)) chisq.test(table(seer\\(sex, seer\\)survived_24m)) chisq.test(table(seer\\(race, seer\\)survived_24m))\n# t-test & ANOVA seer\\(tumor_size &lt;- as.numeric(seer\\)tumor_size) t.test(tumor_size ~ survived_24m, data = seer) aov(tumor_size ~ stage_sum, data = seer) %&gt;% summary() ```\nLogistic Regression Model\n``` r # Logistic regression for 2-year survival glm_fit &lt;- glm( survived_24m ~ stage_sum + sex + race + tumor_size + nodes_pos, data = seer, family = binomial() )\n# View odds ratios glm_results &lt;- tidy(glm_fit, exponentiate = TRUE, conf.int = TRUE) glm_results %&gt;% select(term, estimate, conf.low, conf.high, p.value) %&gt;% rename( Predictor = term, Odds Ratio = estimate, Lower 95% CI = conf.low, Upper 95% CI = conf.high, p-value = p.value ) ```\nExport for Power BI\n``` r # Export cleaned data and model results write.csv(seer, “seer_lung_clean.csv”, row.names = FALSE)\nglm_results %&gt;% select(term, estimate, conf.low, conf.high, p.value) %&gt;% rename( Predictor = term, Odds_Ratio = estimate, Lower_95_CI = conf.low, Upper_95_CI = conf.high, P_value = p.value ) %&gt;% write.csv(“logistic_regression_results.csv”, row.names = FALSE) ```\n\n[Cancer-Project.pdf](Lung%20Cancer%20Survival%20(SEER%202004%E2%80%932015)%20(R%20%C2%B7%20Power%20B/Cancer-Project.pdf)"
+  },
+  {
+    "objectID": "projects/lung-cancer.html#power-bi-dashboard",
+    "href": "projects/lung-cancer.html#power-bi-dashboard",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Power BI Dashboard",
+    "text": "Power BI Dashboard\nOnce I had the cleaned data, I built a two-page dashboard in Power BI to make the patterns easier to see.\nPage 1 �� Overview\n\n2-year survival by stage, sex, and race\nAverage tumor size and survival rates\nFilters for year, stage, sex, and race\n\n[cancerbi.pdf](Lung%20Cancer%20Survival%20(SEER%202004%E2%80%932015)%20(R%20%C2%B7%20Power%20B/cancerbi.pdf)"
+  },
+  {
+    "objectID": "projects/lung-cancer.html#key-insights",
+    "href": "projects/lung-cancer.html#key-insights",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Key Insights",
+    "text": "Key Insights\n\nStage decides everything. Localized cancers survive at a much higher rate than distant ones.\nTumor size and node spread matter. Larger tumors and higher node counts lower survival odds.\nGender plays a small role. Men have lower odds of survival, even after adjusting for other factors.\nRace differences exist but are modest. Clinical factors dominate.\nEarly detection saves lives. The data makes it impossible to ignore."
+  },
+  {
+    "objectID": "projects/lung-cancer.html#reflection",
+    "href": "projects/lung-cancer.html#reflection",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Reflection",
+    "text": "Reflection\nThis project was different from the others I��ve done. It wasn��t about building models or dashboards for their own sake. It was about trying to understand something that has personally affected my life.\nLooking through this data, I couldn��t help but think about my dad and about how much difference early screening could have made. These records may look like numbers, but they carry real stories and pain behind them.\nThis is what drives me to keep working in data and healthcare. The analytics matter because they can help real people."
+  },
+  {
+    "objectID": "projects/lung-cancer.html#downloads",
+    "href": "projects/lung-cancer.html#downloads",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Downloads",
+    "text": "Downloads\n[logistic_regression_results.csv](Lung%20Cancer%20Survival%20(SEER%202004%E2%80%932015)%20(R%20%C2%B7%20Power%20B/logistic_regression_results.csv)\n[cancerbi.pbix](Lung%20Cancer%20Survival%20(SEER%202004%E2%80%932015)%20(R%20%C2%B7%20Power%20B/cancerbi.pbix)\n[Cancer-Project.pdf](Lung%20Cancer%20Survival%20(SEER%202004%E2%80%932015)%20(R%20%C2%B7%20Power%20B/Cancer-Project%201.pdf)\n[Cancer Project.Rmd](Lung%20Cancer%20Survival%20(SEER%202004%E2%80%932015)%20(R%20%C2%B7%20Power%20B/Cancer_Project.rmd)\n[powerbi-dashboard-snapshot.pdf](Lung%20Cancer%20Survival%20(SEER%202004%E2%80%932015)%20(R%20%C2%B7%20Power%20B/powerbi-dashboard-snapshot.pdf)"
+  },
+  {
+    "objectID": "projects/lung-cancer.html#disclaimer",
+    "href": "projects/lung-cancer.html#disclaimer",
+    "title": "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)",
+    "section": "Disclaimer",
+    "text": "Disclaimer\nThis analysis is based on publicly available SEER data from 2004 to 2015. It��s for educational purposes only and not intended as medical advice."
+  },
+  {
+    "objectID": "projects/hospital-forecast.html",
+    "href": "projects/hospital-forecast.html",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#overview",
+    "href": "projects/hospital-forecast.html#overview",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Overview",
+    "text": "Overview\nAn interactive Excel model that forecasts hospital revenue, cost, and profitability by department. Users can adjust assumptions like cost inflation, readmission reduction, and payer reimbursement to instantly see how operational decisions affect financial outcomes."
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#what-i-did",
+    "href": "projects/hospital-forecast.html#what-i-did",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#resultsimpact",
+    "href": "projects/hospital-forecast.html#resultsimpact",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#tech-stack",
+    "href": "projects/hospital-forecast.html#tech-stack",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nData Analysis, Excel, Forecasting, Risk Modeling, XLOOKUP"
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#deliverables",
+    "href": "projects/hospital-forecast.html#deliverables",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nProject brief: (add file)\nSlides/report: (add file)\nDashboard/model file: (add file)\nSQL/notebook/code bundle: (add file)"
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#project-notes",
+    "href": "projects/hospital-forecast.html#project-notes",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: An interactive Excel model that forecasts hospital revenue, cost, and profitability by department. Users can adjust assumptions like cost inflation, readmission reduction, and payer reimbursement to instantly see how operational decisions affect financial outcomes. Skills Demonstrated: Data Analysis, Excel, Forecasting, Risk Modeling, XLOOKUP Project Status: Planning"
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#project-overview",
+    "href": "projects/hospital-forecast.html#project-overview",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Project Overview",
+    "text": "Project Overview\nThe goal was to design and build a fully functional Hospital Financial Forecasting Dashboard that could simulate future operational performance using dynamic assumptions, automation, and professional-grade visualization.\nThe workbook models how departments in a hospital (Cardiology, Orthopedics, ICU, Oncology, and General Surgery) perform financially under changing operational and payer-mix conditions.\nIt��s built from scratch using advanced Excel formulas, structured references, dynamic arrays, and user-driven controls, and is designed to feel like a real-world analytics tool that leadership could use to plan, forecast, and present to executives."
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#project-objectives",
+    "href": "projects/hospital-forecast.html#project-objectives",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Project Objectives",
+    "text": "Project Objectives\n\nBuild an interactive dashboard for hospital executives to view departmental and global KPIs.\nAllow users to adjust operational and financial levers to simulate different ��what-if�� scenarios.\nAutomate all forecasts and metrics through structured Excel logic, with no manual updates.\nEnsure the final dashboard is clean, intuitive, and presentation-ready."
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#data-structure",
+    "href": "projects/hospital-forecast.html#data-structure",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Data & Structure",
+    "text": "Data & Structure\nThe model is divided into four main sheets, following best practices for professional modeling:\n\n\n\n\n\n\n\nSheet\nPurpose\n\n\n\n\nINPUT_DATA\nContains all baseline monthly data (Jan 2023��Sept 2025).\n\n\nMODEL_ASSUMPTIONS\nHouses user inputs like cost inflation, readmission reduction, and payer adjustments.\n\n\nCALCULATIONS\nPerforms all forecast logic using dynamic, structured formulas.\n\n\nDASHBOARD\nDisplays the final results visually through KPIs, charts, and tables."
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#how-it-works",
+    "href": "projects/hospital-forecast.html#how-it-works",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "How It Works",
+    "text": "How It Works\n\n1. Operational Levers\nUsers can adjust expected volume growth by department to forecast changes in patient volumes.\n\n\n\nDepartment\nVolume Adj %\n\n\n\n\nCardiology\n5%\n\n\nOrthopedics\n10%\n\n\nICU\n4%\n\n\nOncology\n7%\n\n\nGeneral Surgery\n8%\n\n\n\n\n\n\n2. Financial Levers\nUsers can simulate reimbursement and payer mix shifts for each payer category.\nThis lets analysts evaluate how revenue would change if, for example, Medicaid volume increases or private payer reimbursements improve.\n\n\n\nimage.png\n\n\n\n\n\n3. Key Calculations\nIn the CALCULATIONS sheet, baseline data feeds through formulas to calculate:\n\nForecasted Volume �� accounts for volume growth and compounding over time\nForecasted Cost/Patient �� inflation-adjusted using user inputs\nForecasted Readmission Rate �� reduced based on target efficiency\nForecasted Reimbursement % �� adjusted by payer mix assumptions\nForecasted Revenue, Cost, Margin, and Savings �� fully automated through SUMIFS and structured table logic\n\n\n\n\nimage.png\n\n\n\n\n\n4. Dynamic KPIs\nThe dashboard displays both Department-level KPIs (based on the user��s dropdown selection) and Global Hospital KPIs for an overall view.\n\n\n\n\n\n\n\nMetric\nDescription\n\n\n\n\nTotal Forecasted Revenue\nTotal collected revenue per department\n\n\nTotal Forecasted Cost\nInflation-adjusted operating costs\n\n\nForecasted Margin (%)\nProfitability after all expenses\n\n\nReadmission Savings\nEstimated avoided cost from readmission reduction\n\n\nDenied Revenue\nRevenue lost due to claim denials\n\n\n\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#dashboard-features",
+    "href": "projects/hospital-forecast.html#dashboard-features",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Dashboard Features",
+    "text": "Dashboard Features\n\n\n\nimage.png\n\n\nThe final dashboard was designed to look and feel like a professional hospital analytics tool.\nTop Left: User controls for selecting department, payer, and simulation inputs.\nLeft Column: Interactive sliders for adjusting readmission reduction and cost inflation.\nCenter: Department-specific KPIs, quality metrics, and payer-type breakdown.\nRight: Global hospital KPIs, key insights, and performance comparisons."
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#visuals",
+    "href": "projects/hospital-forecast.html#visuals",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Visuals",
+    "text": "Visuals\n\nDepartment Margin % Comparison\nA horizontal bar chart visualizes each department��s profitability, helping identify the weakest-performing areas.\n\n\n\nimage.png\n\n\n\n\n\nRevenue vs. Cost by Department\nA grouped column chart compares revenue and cost for each department side by side, showing whether each operates profitably or at a loss.\n\n\n\nimage.png\n\n\n\n\n\nAdjusted Net Revenue by Payer Type\nA donut chart displays the share of total net revenue across payer categories, offering a quick sense of financial dependency.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#alerts-automation",
+    "href": "projects/hospital-forecast.html#alerts-automation",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Alerts & Automation",
+    "text": "Alerts & Automation\nA ��Performance Alerts�� section automatically updates with contextual warnings, such as:\n\nDepartment operating at a loss. Review cost drivers.\n\nThis alert is condition-based, triggering when a department��s forecasted margin is below 0%.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#user-experience",
+    "href": "projects/hospital-forecast.html#user-experience",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "User Experience",
+    "text": "User Experience\n\nEntirely driven by dropdowns and sliders, making it intuitive even for non-technical users.\nAll color themes follow a consistent blue-gray-orange palette used in professional dashboards.\nEach section is visually separated with borders and titles, so the layout feels balanced and presentation-ready."
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#key-excel-techniques-used",
+    "href": "projects/hospital-forecast.html#key-excel-techniques-used",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Key Excel Techniques Used",
+    "text": "Key Excel Techniques Used\nAdvanced Formulas\n\nSUMIFS, INDEX-MATCH, FORECAST.LINEAR, IFERROR, and FILTER\nCompounding logic for future months\nDynamic named ranges and structured table references\n\nDesign & Usability\n\nConditional formatting for alerts\nCustom formatting for currency, percentages, and units\nConsistent spacing, alignment, and use of color hierarchy\n\nAutomation\n\nInteractive controls using Form Buttons and spin buttons linked to assumption cells\nMacro to export the dashboard as PDF with a timestamped file name"
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#impact-application",
+    "href": "projects/hospital-forecast.html#impact-application",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Impact & Application",
+    "text": "Impact & Application\nThis project demonstrates how Excel can be used not just for analysis, but also as a decision-support tool.\nIt��s something that could realistically help a hospital��s finance or operations department run ��what-if�� scenarios, forecast costs, and present performance to executives.\nFor me, it ties directly into my career focus in Business Analytics and Data Visualization!"
+  },
+  {
+    "objectID": "projects/hospital-forecast.html#reflection",
+    "href": "projects/hospital-forecast.html#reflection",
+    "title": "Hospital Financial Forecasting Dashboard (Excel)",
+    "section": "Reflection",
+    "text": "Reflection\nBuilding this model pushed me to apply nearly every Excel concept I��ve learned, from forecasting functions and dynamic ranges to professional dashboard design and data visualization.\nIt taught me to think like an analyst, but also like a designer, ensuring that every number on screen not only works, but communicates something clearly.\n\nNext Steps:\nI plan to keep refining this model and expand it into a Power BI version later, integrating SQL-based data sources and automated refresh logic.\nAttribution\nDesigned and developed by Markuss Saule."
+  },
+  {
+    "objectID": "projects/fulfillment.html",
+    "href": "projects/fulfillment.html",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/fulfillment.html#overview",
+    "href": "projects/fulfillment.html#overview",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Overview",
+    "text": "Overview\nBuilt a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day��level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights."
+  },
+  {
+    "objectID": "projects/fulfillment.html#what-i-did",
+    "href": "projects/fulfillment.html#what-i-did",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/fulfillment.html#resultsimpact",
+    "href": "projects/fulfillment.html#resultsimpact",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/fulfillment.html#tech-stack",
+    "href": "projects/fulfillment.html#tech-stack",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nCapacity Planning, Operations Research, Optimization, PowerBI, Python, Risk Modeling, SimPy, Supply Chain Analytics"
+  },
+  {
+    "objectID": "projects/fulfillment.html#deliverables",
+    "href": "projects/fulfillment.html#deliverables",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nProject brief: (add file)\nSlides/report: (add file)\nDashboard/model file: (add file)\nSQL/notebook/code bundle: (add file)"
+  },
+  {
+    "objectID": "projects/fulfillment.html#project-notes",
+    "href": "projects/fulfillment.html#project-notes",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Built a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day��level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights. Skills Demonstrated: Capacity Planning, Operations Research, Optimization, PowerBI, Python, Risk Modeling, SimPy, Supply Chain Analytics Project Status: Planning\nThis is not a dashboard-first project.\nThis is a simulation-first system with dashboards layered on top."
+  },
+  {
+    "objectID": "projects/fulfillment.html#what-i-actually-built-high-level",
+    "href": "projects/fulfillment.html#what-i-actually-built-high-level",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "What I Actually Built (High Level)",
+    "text": "What I Actually Built (High Level)\nAt its core, this project is a discrete-event simulation of a fulfillment center, written in Python using SimPy, with:\n\nMinute-level observability\nReal-time alert detection\nStation-level pressure modeling\nSystem-wide risk scoring\nExhaustive staffing optimization via grid search\nClean, analytics-ready outputs for BI tooling\n\nEvery chart you see in Power BI is downstream of this engine."
+  },
+  {
+    "objectID": "projects/fulfillment.html#simulation-architecture",
+    "href": "projects/fulfillment.html#simulation-architecture",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Simulation Architecture",
+    "text": "Simulation Architecture\n\nCore Engine\n\nFramework: SimPy (event-driven simulation)\nTime Horizon: 8-hour shift (480 minutes)\nRandomness: Controlled via fixed random seed for reproducibility\nStations Modeled:\n\nPick\nPack\nSort\nOutbound\n\n\nEach station is represented as a capacity-constrained resource with its own queue, utilization, and service time distribution."
+  },
+  {
+    "objectID": "projects/fulfillment.html#order-flow-model",
+    "href": "projects/fulfillment.html#order-flow-model",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Order Flow Model",
+    "text": "Order Flow Model\nEvery order follows the same lifecycle:\n\nArrival via Poisson process\nPick\nPack\nSort\nOutbound\nCompletion or SLA breach\n\nService times at each station are modeled using exponential distributions, which intentionally introduce realistic variance and queue amplification under load.\nyield env.timeout(random.expovariate(1 / PICK_TIME_MIN))\nThis is what causes bottlenecks to emerge naturally.\nNo hardcoding. No fake pressure."
+  },
+  {
+    "objectID": "projects/fulfillment.html#work-in-process-tracking-wip",
+    "href": "projects/fulfillment.html#work-in-process-tracking-wip",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Work-in-Process Tracking (WIP)",
+    "text": "Work-in-Process Tracking (WIP)\nWIP is explicitly tracked at the system level.\n\nIncremented at order creation\nDecremented at order completion\nSampled continuously\n\nThis allows the model to detect runaway accumulation, one of the earliest signs of systemic failure in real fulfillment centers."
+  },
+  {
+    "objectID": "projects/fulfillment.html#minute-level-observability-layer",
+    "href": "projects/fulfillment.html#minute-level-observability-layer",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Minute-Level Observability Layer",
+    "text": "Minute-Level Observability Layer\nA dedicated observer process samples the system every minute.\nThis is critical.\nIt enables:\n\nSLA drift visualization\nTime-based alerting\nEvent reconstruction\nPower BI time series without post-hoc estimation\n\n\nSampled Metrics\nPer minute:\n\nWIP\nOrders completed\nSLA breaches\nSLA breach rate\nQueue length per station\nActive workers per station\n\nrow = {\n    \"scenario\": scenario_name,\n    \"minute\": int(env.now),\n    \"wip\": int(wip_state[\"wip\"]),\n    \"orders_completed\": completed,\n    \"sla_breaches\": breaches,\n    \"sla_breach_rate\": breach_rate,\n}\nThis is the backbone of Page 1.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/fulfillment.html#real-time-alerting-logic",
+    "href": "projects/fulfillment.html#real-time-alerting-logic",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Real-Time Alerting Logic",
+    "text": "Real-Time Alerting Logic\nAlerts are not post-processed.\nThey are triggered during the simulation.\n\nAlert Types\n\nQueue Blowup\nWIP Runaway\nSLA Drift Red\n\nEach alert fires once per scenario to avoid noise and alert spam.\nif len(res.queue) &gt;= ALERT_QUEUE_LEN:\n    event_type = \"QUEUE_BLOWUP\"\nThis produces the Triggered Risk Events table directly.\nNo weird stuff. No Power BI hacks."
+  },
+  {
+    "objectID": "projects/fulfillment.html#station-level-metrics-engine",
+    "href": "projects/fulfillment.html#station-level-metrics-engine",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Station-Level Metrics Engine",
+    "text": "Station-Level Metrics Engine\nEach station uses a custom StationMetrics class to track:\n\nBusy time\nQueue samples\nMax queue length\nAverage queue length\nQueue pressure\n\nThis is event-based, not sampled blindly.\nself.queue_samples.append({\n    \"time\": env.now,\n    \"station\": self.name,\n    \"queue_length\": len(resource.queue)\n})\nThis allows utilization and queue statistics to remain accurate even under extreme congestion.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/fulfillment.html#absolute-pressure-score-01",
+    "href": "projects/fulfillment.html#absolute-pressure-score-01",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Absolute Pressure Score (0��1)",
+    "text": "Absolute Pressure Score (0��1)\nThis is where the model becomes decision-grade.\nFor each station:\nabs_pressure =\n    0.5 * utilization\n  + 0.5 * (max_queue / 20)\n\nUtilization captures sustained load\nMax queue captures shock events\nValues are clipped to [0, 1]\n\nThis score drives:\n\nBottleneck heatmaps\nScatterplots\nStaffing prioritization\nRisk scoring"
+  },
+  {
+    "objectID": "projects/fulfillment.html#system-wide-risk-score-0100",
+    "href": "projects/fulfillment.html#system-wide-risk-score-0100",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "System-Wide Risk Score (0��100)",
+    "text": "System-Wide Risk Score (0��100)\nRisk is intentionally multi-factor.\nrisk =\n    50 * min(1, sla_rate / 0.20)\n  + 25 * min(1, max_wip / 50)\n  + 25 * top_pressure\nWhy this matters:\n\nSLA alone does not tell the whole story\nWIP predicts collapse before SLA fully degrades\nBottlenecks explain why risk exists\n\nThis score is what executives understand immediately."
+  },
+  {
+    "objectID": "projects/fulfillment.html#scenarios-executed",
+    "href": "projects/fulfillment.html#scenarios-executed",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Scenarios Executed",
+    "text": "Scenarios Executed\n\nBaseline\n\nNormal arrival rate\nDefault staffing\nUsed to establish healthy operating envelope\n\n\n\nPrime Day Surge\n\nElevated arrival rate loaded from YAML config\nSame staffing\nAllows risk to emerge organically\n\n\n\nOptimized Staffing (Grid Search)\nThis is the killer feature."
+  },
+  {
+    "objectID": "projects/fulfillment.html#staffing-optimization-engine",
+    "href": "projects/fulfillment.html#staffing-optimization-engine",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Staffing Optimization Engine",
+    "text": "Staffing Optimization Engine\nI ran a bounded grid search over staffing combinations.\n\nUp to 6 extra headcount\nDistributed across all stations\nThousands of simulated scenarios\nEach evaluated with the same risk model\n\nfor dp in range(MAX_EXTRA_HEADCOUNT + 1):\n    for dpk in range(MAX_EXTRA_HEADCOUNT + 1):\n        for ds in range(MAX_EXTRA_HEADCOUNT + 1):\n            for do in range(MAX_EXTRA_HEADCOUNT + 1):\nEach configuration is simulated end-to-end.\nNo shortcuts. No regression approximations."
+  },
+  {
+    "objectID": "projects/fulfillment.html#optimal-plan-selection-logic",
+    "href": "projects/fulfillment.html#optimal-plan-selection-logic",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Optimal Plan Selection Logic",
+    "text": "Optimal Plan Selection Logic\nFrom all simulated options, the engine selects:\n\nOnly plans below risk threshold\nLowest total headcount\nLowest resulting risk score\n\nbest = feasible.sort_values(\n    [\"extra_headcount\", \"risk_score_0_100\"]\n).head(1)\nThis produces a defensible staffing recommendation, not a guess.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/fulfillment.html#output-artifacts",
+    "href": "projects/fulfillment.html#output-artifacts",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Output Artifacts",
+    "text": "Output Artifacts\nEvery scenario writes clean CSVs:\n\nscenario_summary.csv\nscenario_risk_comparison.csv\nminute_snapshot_&lt;scenario&gt;.csv\nrisk_events_&lt;scenario&gt;.csv\nstation_pressure_&lt;scenario&gt;.csv\nstaffing_optimization_results.csv\nstaffing_optimization_best.csv\n\nThese are directly consumed by Power BI.\nNo manual cleaning. No Excel glue.\n\nAt this point, the system produces structured, analytics-ready outputs at multiple levels: minute-level system state, station-level pressure metrics, scenario-level risk summaries, and optimization results.\nThe Power BI dashboards are not exploratory visuals. They are a presentation and decision layer built directly on top of these outputs to allow operators and leadership to interrogate system behavior, diagnose failure modes, and evaluate mitigation strategies without touching simulation code.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/fulfillment.html#why-this-is-not-a-toy-project",
+    "href": "projects/fulfillment.html#why-this-is-not-a-toy-project",
+    "title": "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)",
+    "section": "Why This Is Not a Toy Project",
+    "text": "Why This Is Not a Toy Project\nThis system:\n\nSeparates simulation, metrics, alerts, and optimization\nProduces reproducible results\nScales to additional stations or policies\nMirrors real fulfillment center failure modes\nConverts analytics into staffing decisions\n\nThis is how operations research actually looks in practice."
+  },
+  {
+    "objectID": "projects/blockchain-fraud.html",
+    "href": "projects/blockchain-fraud.html",
+    "title": "Blockchain + Machine Learning Healthcare Fraud Ledger",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/blockchain-fraud.html#overview",
+    "href": "projects/blockchain-fraud.html#overview",
+    "title": "Blockchain + Machine Learning Healthcare Fraud Ledger",
+    "section": "Overview",
+    "text": "Overview\nBuilt a full fraud-scoring and audit system by combining an XGBoost model with a custom Python blockchain ledger. Scored 1,000+ insurance claims for fraud risk, then stored each claim as a tamper-evident block to create a transparent, auditable record of high-risk activity. Designed the entire pipeline end-to-end with scoring, hashing, validation, and a Streamlit dashboard for analysts."
+  },
+  {
+    "objectID": "projects/blockchain-fraud.html#what-i-did",
+    "href": "projects/blockchain-fraud.html#what-i-did",
+    "title": "Blockchain + Machine Learning Healthcare Fraud Ledger",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/blockchain-fraud.html#resultsimpact",
+    "href": "projects/blockchain-fraud.html#resultsimpact",
+    "title": "Blockchain + Machine Learning Healthcare Fraud Ledger",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/blockchain-fraud.html#tech-stack",
+    "href": "projects/blockchain-fraud.html#tech-stack",
+    "title": "Blockchain + Machine Learning Healthcare Fraud Ledger",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nBlockchain, Data Science, Fraud Analytics, Machine Learning, Transparency"
+  },
+  {
+    "objectID": "projects/blockchain-fraud.html#deliverables",
+    "href": "projects/blockchain-fraud.html#deliverables",
+    "title": "Blockchain + Machine Learning Healthcare Fraud Ledger",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nProject brief: (add file)\nSlides/report: (add file)\nDashboard/model file: (add file)\nSQL/notebook/code bundle: (add file)"
+  },
+  {
+    "objectID": "projects/blockchain-fraud.html#project-notes",
+    "href": "projects/blockchain-fraud.html#project-notes",
+    "title": "Blockchain + Machine Learning Healthcare Fraud Ledger",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Built a full fraud-scoring and audit system by combining an XGBoost model with a custom Python blockchain ledger. Scored 1,000+ insurance claims for fraud risk, then stored each claim as a tamper-evident block to create a transparent, auditable record of high-risk activity. Designed the entire pipeline end-to-end with scoring, hashing, validation, and a Streamlit dashboard for analysts. Skills Demonstrated: Blockchain, Data Science, Fraud Analytics, Machine Learning, Transparency Project Status: Planning"
+  },
+  {
+    "objectID": "projects/blockchain-fraud.html#why-i-built-this",
+    "href": "projects/blockchain-fraud.html#why-i-built-this",
+    "title": "Blockchain + Machine Learning Healthcare Fraud Ledger",
+    "section": "💬 Why I Built This",
+    "text": "💬 Why I Built This\nHealthcare has always been personal for me.\nI grew up around systems that weren��t always transparent or reliable, and I lost my dad partly because of failures in that system. Years later, being treated at Mayo Clinic showed me the opposite, what excellent healthcare feels like when it works the way it should.\nThose two experiences shaped how I think about healthcare,\ngood systems save lives, and broken ones cost them.\nThis project is my way of exploring that intersection using data, machine learning, and even blockchain (yes, actual blockchain, not crypto hype) to build a more transparent, trustworthy way to detect and audit fraudulent healthcare claims.\nI wanted to create something that felt like a real internal tool, not a school assignment. Something with structure, risk scoring, integrity checks, and analytics that someone in healthcare operations could actually use.\nThis system takes real insurance claims data from Kaggle, predicts fraud using a trained XGBoost model, and stores each claim inside a custom blockchain ledger I built from scratch.\nEvery claim becomes a ��block�� that contains:\n\nkey claim metadata\nfinancial information\nthe ML model��s fraud probability\ntimestamp\nSHA-256 hash of the block\nprevious block��s hash\n\nTogether, they form a tamper-evident audit ledger.\nIf someone tries to modify a claim or alter a fraud score, the entire chain breaks.\nThat��s the entire point: trust through structure.\n\n\n1. ML Scoring Pipeline\nI trained an XGBoost model on structured claims data.\nIt processes fields like:\n\nincident type\ninsured occupation\nclaim amounts\ninjury/property/vehicle damage\nincident severity\nand more\n\nIt outputs a fraud probability:\nproba = model.predict_proba(df)[:, 1]\ndf[\"fraud_prob\"] = proba\nThe scored dataset becomes the input to the blockchain.\n\n\n\nimage.png\n\n\n\n\n\n2. Custom Blockchain Implementation\nI implemented the blockchain manually using Python, no libraries, no shortcuts.\nEach block is hashed:\nhashlib.sha256(block_string.encode()).hexdigest()\nAnd each block links to the previous one:\nnew_block.previous_hash = last_block.hash\nIf even one number changes, the entire chain becomes invalid.\nThis turned out to be my favorite part because it forced me to think like a systems engineer, not just a data scientist.\n\n\n\nimage.png\n\n\n\n\n\n3. Fraud Ledger Export\nThe ledger (1,001 blocks including genesis) is exported to a JSON file:\ndata/processed/chain_output.json\nThis is the ��source of truth�� for the whole system.\n\n\n\n4. Interactive Dashboard\nUsing Streamlit, I built a simple dashboard to visualize:\n\ntotal claims\nhigh-risk claims\ntotal exposure\nfraud probability distribution\na high-risk claims table\na block explorer (view a single block��s content)\n\nIt��s not over-engineered, it��s exactly what a fraud analyst would want to look at.\n\n\n\nimage.png\n\n\n\n\n\nimage.png\n\n\n\nWorking with the full pipeline revealed patterns I never would��ve noticed by just looking at the CSV:\n\n22.3% of claims were high-risk (&gt;0.70)\nTotal financial exposure was ~$52.7M\nMulti-vehicle collisions and single-vehicle collisions were the most common incident types\nFraud risk varies pretty widely across states\nThe top 5 riskiest claims had fraud probabilities between 0.983��0.990\n\nThese aren��t ��perfect�� findings, but they��re real, and they demonstrate how ML + structured auditing can complement each other.\n\n\n\nimage.png\n\n\n\nThis project reinforced a few big lessons for me:\n\n\n1. ML is just one piece of a system.\nA model without structure or oversight is basically a guessing engine.\nPutting it inside an auditable pipeline made it feel like it had purpose.\n\n\n2. Transparency matters.\nBeing able to prove that data hasn��t been changed, or detect when it has, matters in healthcare.\n\n\n3. Good engineering feels like building trust.\nHashing, linking, validating - these aren��t ��just code.��\nThey��re mechanisms to enforce honesty.\n\n\n4. My best work happens when it ties back to something personal.\nThis project meant more because of why I built it.\n\napp/                    �� pipeline scripts\nblockchain/             �� custom blockchain core\nml/                     �� model loading + scoring\nmodels/                 �� trained XGBoost fraud model\ndata/raw                �� original claims\ndata/processed          �� scored claims + blockchain ledger\nstreamlit_app.py        �� dashboard\n\n\nI��d add:\n\nprovider-level fraud analytics\nreal anomaly detection (cluster-based)\nper-block SHAP explanations\na real-time API\na tamper-detection demo button in the dashboard\n\nBut honestly, for now, I��m happy with where this landed.\n\nThis project started as ��what if I combined ML with a blockchain��\nand ended as something that genuinely reflects what I care about:\n\nusing data to improve healthcare\nbuilding systems that enforce trust\ndesigning tools that could help real analysts\nand pushing myself beyond just training models\n\nAnd I��m proud of it.\nIf you want to talk to me about this project or anything related to healthcare, ML, or fraud detection, I��m always open to conversations.\nMarkuss Saule"
+  },
+  {
+    "objectID": "projects/ai-scheduling.html",
+    "href": "projects/ai-scheduling.html",
+    "title": "AI-Powered Scheduling & Patient Access Optimization Dashboard",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/ai-scheduling.html#overview",
+    "href": "projects/ai-scheduling.html#overview",
+    "title": "AI-Powered Scheduling & Patient Access Optimization Dashboard",
+    "section": "Overview",
+    "text": "Overview\nBuilt an AI-assisted scheduling dashboard in Power BI that identifies hospital bottlenecks, forecasts patient demand, and recommends operational improvements. Analyzed 25K appointment records, used AI visuals for driver analysis, and delivered a decision-ready tool that highlights delay risks, utilization gaps, and actionable optimization strategies."
+  },
+  {
+    "objectID": "projects/ai-scheduling.html#what-i-did",
+    "href": "projects/ai-scheduling.html#what-i-did",
+    "title": "AI-Powered Scheduling & Patient Access Optimization Dashboard",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/ai-scheduling.html#resultsimpact",
+    "href": "projects/ai-scheduling.html#resultsimpact",
+    "title": "AI-Powered Scheduling & Patient Access Optimization Dashboard",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/ai-scheduling.html#tech-stack",
+    "href": "projects/ai-scheduling.html#tech-stack",
+    "title": "AI-Powered Scheduling & Patient Access Optimization Dashboard",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nAI, Forecasting, Operational Efficiency, PowerBI"
+  },
+  {
+    "objectID": "projects/ai-scheduling.html#deliverables",
+    "href": "projects/ai-scheduling.html#deliverables",
+    "title": "AI-Powered Scheduling & Patient Access Optimization Dashboard",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nHospital_Efficiency_Report.pdf\nHospital_Operations_Efficiency_Dashboard.pbix\nHospital_Scheduling_AI_25K.csv"
+  },
+  {
+    "objectID": "projects/ai-scheduling.html#project-notes",
+    "href": "projects/ai-scheduling.html#project-notes",
+    "title": "AI-Powered Scheduling & Patient Access Optimization Dashboard",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Built an AI-assisted scheduling dashboard in Power BI that identifies hospital bottlenecks, forecasts patient demand, and recommends operational improvements. Analyzed 25K appointment records, used AI visuals for driver analysis, and delivered a decision-ready tool that highlights delay risks, utilization gaps, and actionable optimization strategies. Skills Demonstrated: AI, Forecasting, Operational Efficiency, PowerBI Project Status: Planning\n\nOverview\nAn interactive Power BI dashboard that uses AI-assisted analytics to identify scheduling bottlenecks, forecast patient demand, and recommend optimization strategies for hospital departments.\nBuilt with Copilot integration, this project simulates how healthcare systems can apply data science and automation to improve patient access and operational efficiency.\n\n\n\nObjectives\n\nAnalyze department-level wait times, no-show rates, and utilization trends.\nUse AI forecasting to project future appointment volume.\nIdentify key factors driving scheduling delays through Key Influencers analysis.\nGenerate automated Copilot recommendations for operational improvement.\n\n\n\n\nTools & Skills Used\n\n\n\n\n\n\n\nCategory\nDetails\n\n\n\n\nTools\nPower BI, Copilot Pro, Excel (for synthetic data prep)\n\n\nTechniques\nData modeling, DAX calculations, Key Influencers & Decomposition Tree, forecasting models\n\n\nAI Components\nPower BI Copilot + built-in AI visuals\n\n\nData Size\n25,000 synthetic appointment records\n\n\nKey Metrics\nWait time (minutes), no-show rate (%), utilization (%), lead time (days)\n\n\n\n\n\n\nDashboard Design\n\n\nPage 1 �� Access Overview Dashboard: Operational Summary\n\n\n\nScreenshot 2025-10-30 213821.png\n\n\nPurpose: Provide a high-level overview of scheduling performance.\nKey Features:\n\nKPI Cards: Average wait time, no-show rate, and utilization rate.\nForecast Chart: 6-month projection of appointment demand with AI forecasting.\nBottleneck Analysis: Department-level comparison of wait time and no-show rate.\nDynamic Slicers: Filter by department, provider, insurance type, visit type, and telehealth.\n\nInsight Example:\n\nPediatrics and Cardiology departments show higher no-show rates, while Self-Pay patients experience longer scheduling delays.\n\n\n\n\nPage 2 �� AI-Driven Scheduling Insights & Optimization Scenarios\n\n\n\nScreenshot 2025-10-30 213839.png\n\n\nPurpose: Explore ��why�� delays happen and ��how�� to improve scheduling efficiency.\nKey Features:\n\nKey Influencers Visual: Reveals that Self-Pay patients and April appointments increase the likelihood of 15��21-day waits by 13��18%.\nDecomposition Tree: Explores utilization patterns by Department �� Provider �� Visit Type.\nAI Narrative Section: Copilot summarizes insights and suggests process improvements.\n\nCopilot-Generated Example Insight:\n\n��Telehealth appointments reduce average wait times by 1.6 days. Self-Pay segments show 13% higher delay risk. Recommend prioritizing Q2 Telehealth capacity for Pediatrics and automating Self-Pay verification workflows.��\n\n\n\n\nDataset Summary\n\n\n\nimage.png\n\n\nSynthetic dataset generated to simulate realistic hospital scheduling data with:\n\n25,000 rows across Departments, Providers, Insurance types, and Visit types.\nVariables: Appointment day, slots booked, slots available, wait time (days), no-show flag, utilization ratio, telehealth status, and payer type.\nDerived Columns: Utilization %, Wait Time Band (for Key Influencers), Year-Month.\n\n\n\n\nTechnical Highlights\n\nCreated calculated columns using DAX:\n\nUtilization = SlotsBooked / SlotsAvailable\nWaitTimeBand for categorical AI analysis.\n\nConfigured AI Forecast to predict 3-month future booking trends.\nLeveraged Copilot to produce narrative insights and optimization strategies.\n\n\n\n\nKey Outcomes\n\n\n\n\n\n\n\nGoal\nResult\n\n\n\n\nForecast patient demand\nAchieved 6-month forward projection with confidence interval\n\n\nIdentify bottlenecks\nHighlighted Self-Pay and Pediatrics as delay drivers\n\n\nIntegrate AI decision support\nGenerated Copilot recommendations for resource reallocation\n\n\nCreate executive-ready visuals\nTwo-page Power BI design with interactive slicers and KPIs\n\n\n\n\n\n\nDeliverables\nHospital Operations Efficiency Dashboard.pbix\nHospital_Scheduling_AI_25K.csv\nHospital Efficiency Report.pdf\n\n\n\nReflection\nThis project pushed me to combine healthcare analytics with AI-assisted business intelligence. Instead of only tracking metrics, I built a dashboard that thinks - so forecasting demand, uncovering patterns, and recommending real actions.\nAttribution\nDesigned and developed by Markuss Saule."
+  },
+  {
+    "objectID": "resume.html",
+    "href": "resume.html",
+    "title": "Resume",
+    "section": "",
+    "text": "Download resume: PDF"
+  },
+  {
+    "objectID": "resume.html#summary",
+    "href": "resume.html#summary",
+    "title": "Resume",
+    "section": "Summary",
+    "text": "Summary\nBusiness analytics and data science student focused on high-impact ML and decision support systems."
+  },
+  {
+    "objectID": "resume.html#experience-highlights",
+    "href": "resume.html#experience-highlights",
+    "title": "Resume",
+    "section": "Experience Highlights",
+    "text": "Experience Highlights\n\nBuilt analytics dashboards and operational forecasting workflows.\nDeveloped fraud detection and healthcare optimization projects.\nPresented decision-ready findings to business stakeholders."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Hi, I’m Markuss.",
+    "section": "",
+    "text": "Business Analytics - Data Science - ML\n\n\n\nI build decision-ready analytics and practical machine learning solutions that help teams move faster. My work spans dashboards, forecasting, fraud detection, optimization, and healthcare operations analytics. I focus on clear storytelling, measurable business impact, and models that stakeholders can trust.\n\nView Projects Resume\n\n\n\n\n\n\nFocusAnalytics + ML\n\n\nToolsPython, SQL, R, Power BI\n\n\nStyleFast, clean, explainable"
+  },
+  {
+    "objectID": "index.html#featured-projects",
+    "href": "index.html#featured-projects",
+    "title": "Hi, I’m Markuss.",
+    "section": "Featured Projects",
+    "text": "Featured Projects\n\n\n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nDiscrete-event simulation for staffing pressure, throughput risk, and shift planning decisions.\n\n\nPythonSimPyPower BI\n\n\n \n\n\nMarket Basket Analysis: What Snacks Are Bought Together?\n\n\nAssociation-rule mining to identify product bundles that increase cross-sell opportunities.\n\n\nPythonAprioriRetail\n\n\n \n\n\nBlockchain + Machine Learning Healthcare Fraud Ledger\n\n\nFraud risk scoring with immutable audit trails for transparent healthcare claim governance.\n\n\nPythonMLBlockchain\n\n\n \n\n\nInsurance Fraud Detection\n\n\nClassification pipeline with explainability for triage and investigator prioritization.\n\n\nScikit-LearnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization Dashboard\n\n\nOperational dashboard to reduce delays, improve utilization, and improve access metrics.\n\n\nPower BIOperationsHealthcare\n\n\n \n\n\nHospital Readmission Analytics\n\n\nSQL plus R pipeline on readmissions, risk cohorts, and outcomes reporting for leadership.\n\n\nSQLRPower BI\n\n\n\n\n\nSee all projects"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "A selection of analytics and machine learning projects across operations, finance, healthcare, and risk.\n\n\n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nPython + SimPy simulation and staffing optimization workflow.\n\n\nPythonSimPyPower BI\n\n\n \n\n\nMarket Basket Analysis: What Snacks Are Bought Together?\n\n\nAssociation rules to support product pairing strategy.\n\n\nPythonAprioriRetail\n\n\n \n\n\nBlockchain + Machine Learning Healthcare Fraud Ledger\n\n\nFraud signals with transparent ledger-backed tracking.\n\n\nPythonMLBlockchain\n\n\n \n\n\nInsurance Fraud Detection\n\n\nFraud classifier with SHAP-based explainability.\n\n\nScikit-LearnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization Dashboard\n\n\nAccess optimization and operational KPI monitoring.\n\n\nPower BIHealthcareOps\n\n\n \n\n\nHospital Financial Forecasting Dashboard\n\n\nDepartment-level forecast model in Excel.\n\n\nExcelForecastingFinance\n\n\n \n\n\nEducation, Gender and Wage Inequality (1973-2022)\n\n\nLong-range trend analysis on wage disparity drivers.\n\n\nEconomicsRPolicy\n\n\n \n\n\nBank Loan Risk Rating Dashboard\n\n\nLoan portfolio risk view and borrower segmentation.\n\n\nExcelRiskDashboard\n\n\n \n\n\nLung Cancer Survival (SEER 2004-2015)\n\n\nOutcome analysis by demographics and clinical factors.\n\n\nRPower BIHealthcare\n\n\n \n\n\nHospital Readmission Analytics\n\n\nReadmission trends, risk factors, and equity slices.\n\n\nSQLRPower BI\n\n\n \n\n\nHospital Database System\n\n\nNormalized SQL schema and reporting views for operations.\n\n\nSQLDatabaseETL"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I build practical analytics products that connect machine learning outputs to business decisions.\nMy focus areas include healthcare operations, fraud analytics, forecasting, and decision optimization. I care about technical rigor, clear communication, and deployable results."
+  },
+  {
+    "objectID": "projects/bank-loan.html",
+    "href": "projects/bank-loan.html",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/bank-loan.html#overview",
+    "href": "projects/bank-loan.html#overview",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Overview",
+    "text": "Overview\nBuilt a full loan-risk simulator in Excel that scores 300+ applicants, classifies them into risk tiers, and shows how approval rates shift when credit or DTI weights change. Designed configurable scoring tables, dynamic XLOOKUP logic, and a real-time dashboard that lets managers test lending policies and visualize portfolio risk."
+  },
+  {
+    "objectID": "projects/bank-loan.html#what-i-did",
+    "href": "projects/bank-loan.html#what-i-did",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/bank-loan.html#resultsimpact",
+    "href": "projects/bank-loan.html#resultsimpact",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/bank-loan.html#tech-stack",
+    "href": "projects/bank-loan.html#tech-stack",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nDashboard, Excel, Risk Modeling, XLOOKUP"
+  },
+  {
+    "objectID": "projects/bank-loan.html#deliverables",
+    "href": "projects/bank-loan.html#deliverables",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nBankLoanProject.xlsx"
+  },
+  {
+    "objectID": "projects/bank-loan.html#project-notes",
+    "href": "projects/bank-loan.html#project-notes",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Built a full loan-risk simulator in Excel that scores 300+ applicants, classifies them into risk tiers, and shows how approval rates shift when credit or DTI weights change. Designed configurable scoring tables, dynamic XLOOKUP logic, and a real-time dashboard that lets managers test lending policies and visualize portfolio risk. Skills Demonstrated: Dashboard, Excel, Risk Modeling, XLOOKUP Project Status: Completed\nI wanted to understand how banks score loan applicants and how small policy changes can shift approval rates. So, I built an interactive risk-rating model in Excel that scores 300+ simulated applicants, classifies them into risk tiers, and shows how portfolio approval changes when credit or debt-to-income weights are adjusted.\nThe project combines a full scoring configuration system, a working data model, and a professional-grade dashboard that mirrors the kind of portfolio monitoring tools used in finance and lending."
+  },
+  {
+    "objectID": "projects/bank-loan.html#executive-summary",
+    "href": "projects/bank-loan.html#executive-summary",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Executive Summary",
+    "text": "Executive Summary\n\nObjective: Build a transparent loan risk model with adjustable scoring and dynamic portfolio insights.\nScope: 3-sheet Excel system (Configuration, Applicants, Dashboard) with formulas, XLOOKUP logic, and interactive weight controls.\nOutcome: A functional credit-risk simulator that visualizes approval trends and helps explain how score weighting drives lending decisions."
+  },
+  {
+    "objectID": "projects/bank-loan.html#objective",
+    "href": "projects/bank-loan.html#objective",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Objective",
+    "text": "Objective\nDesign a model that can:\n\nEvaluate applicant data (age, income, credit score, debt ratio, etc.) using point-based scoring.\nAssign a total weighted risk score and classify applicants as High, Medium, or Low risk.\nSimulate policy adjustments by changing the weight of specific factors like Credit Score or Debt-to-Income ratio.\nVisualize portfolio health through KPIs and charts that update dynamically."
+  },
+  {
+    "objectID": "projects/bank-loan.html#loan-scoring-configuration",
+    "href": "projects/bank-loan.html#loan-scoring-configuration",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Loan Scoring Configuration",
+    "text": "Loan Scoring Configuration\nEach scoring factor is fully configurable. Tables define how many points an applicant earns for different ranges:\n\nAge Scoring �� Rewards experience while avoiding overexposure to young, unproven applicants.\nIncome Scoring �� Adds stability points at higher income thresholds.\nDebt-to-Income Scoring �� Penalizes excessive leverage.\nEmployment Years Scoring �� Values job consistency.\nCredit Score Scoring �� Maps ranges to increasing trust levels.\nPrevious Default �� Zero points if ��Yes,�� full points if ��No.��\n\nThe Weights Table lets you rebalance importance across factors. For instance, increasing the Credit or DTI weight instantly changes every applicant��s total score. The Risk Level Table then translates those totals into final classifications: High, Medium, or Low risk.\n\n\n\nScreenshot 2025-10-09 151247.png"
+  },
+  {
+    "objectID": "projects/bank-loan.html#applicant-data-engine",
+    "href": "projects/bank-loan.html#applicant-data-engine",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Applicant Data Engine",
+    "text": "Applicant Data Engine\nThe applicant sheet acts as a live model engine. It holds raw data for 300+ records and processes each row through lookup formulas and conditional logic.\n\nColumns: demographics, financial variables, scoring by factor, weighted total, risk level, and final decision.\nLogic: XLOOKUPs retrieve point values from configuration tables. Weighted totals are calculated dynamically.\nDecision Rule: Loans are auto-approved for Low-risk, sometimes approved for Medium-risk (40% chance), and rejected for High-risk.\n\nConditional formatting highlights approval status and risk categories. The dataset effectively becomes a full miniature credit department, complete with applicant scoring, decision outcomes, and visual segmentation bands (Income, Credit, DTI).\n\n\n\nScreenshot 2025-10-09 151440.png"
+  },
+  {
+    "objectID": "projects/bank-loan.html#dashboard-overview",
+    "href": "projects/bank-loan.html#dashboard-overview",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Dashboard Overview",
+    "text": "Dashboard Overview\nThe final dashboard ties it all together. It��s split into three clear sections:\n1. Portfolio KPIs\nShows total applicants, overall approval rate, average credit score, and default history (all updating automatically as weights change).\n2. What-If Policy Simulator\nTwo spinner controls adjust the weighting of Credit Score and DTI. Managers can test how tightening or loosening criteria affects overall approvals in real time.\n3. Visual Statistics\nThree interactive visuals show:\n\nApplications by Risk Level �� portfolio composition.\nWeighted Loan Score Distribution �� balance of creditworthiness.\nApproval Rate by Risk Level �� efficiency vs. prudence trade-off.\n\n\n\n\nScreenshot 2025-10-09 150840.png"
+  },
+  {
+    "objectID": "projects/bank-loan.html#scoring-logic-example",
+    "href": "projects/bank-loan.html#scoring-logic-example",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Scoring Logic Example",
+    "text": "Scoring Logic Example\nEvery applicant��s WeightedTotal follows this structure:\n= (Age_Points * Age_Weight) +\n  (Income_Points * Income_Weight) +\n  (Credit_Points * Credit_Weight) +\n  (DTI_Points * DTI_Weight) +\n  (Employment_Points * Employment_Weight) +\n  (Default_Points * Default_Weight)\nThe score then maps through the Risk Level Table using an XLOOKUP:\n=XLOOKUP(Q4,risk[Score_Min],risk[Risk_Level],,-1)\nFinally, the Decision column determines approval, using an applicant��s credit score as the deciding factor:\n=IF(R4=\"High\",\"Rejected\",\n   IF(R4=\"Low\",\"Approved\",\n   IF(H4&gt;=700,\"Approved\",\n   IF(RAND()&lt;0.3,\"Approved\",\"Rejected\"))))\nThis blend of business logic and randomization makes the dataset behave like a real-life portfolio."
+  },
+  {
+    "objectID": "projects/bank-loan.html#insights-and-observations",
+    "href": "projects/bank-loan.html#insights-and-observations",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Insights and Observations",
+    "text": "Insights and Observations\nRunning simulations revealed that small weighting shifts have huge downstream effects:\n\nIncreasing DTI Weight by 1 point reduced approvals by nearly 10%.\nRaising Credit Weight rewarded strong credit but slightly penalized high-income applicants with moderate scores.\nThe majority of approved loans came from the Medium risk band, showing that most lending volume lives in the ��gray zone.��\n\nThese results mirror real banking behavior, as every adjustment to a credit policy changes portfolio health and risk exposure."
+  },
+  {
+    "objectID": "projects/bank-loan.html#what-i-learned",
+    "href": "projects/bank-loan.html#what-i-learned",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "What I Learned",
+    "text": "What I Learned\nI learned that credit risk modeling is a balancing act between fairness and caution. Building the configuration tables made me think in a way that a policy analyst would, not just a data student. The simulator showed how subjective ��weights�� directly shape real-world outcomes.\nIt also taught me how powerful Excel can be as an analytical sandbox when designed intentionally, with structure, logic flow, and a visual narrative all in one file."
+  },
+  {
+    "objectID": "projects/bank-loan.html#conclusion",
+    "href": "projects/bank-loan.html#conclusion",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nBuilt a fully functioning bank loan risk simulator in Excel.\nModeled scoring logic for six key applicant factors.\nAutomated approval decisions through dynamic lookups.\nDesigned an interactive dashboard with real-time policy adjustment.\nIdentified approval patterns and risk trade-offs through simulation."
+  },
+  {
+    "objectID": "projects/bank-loan.html#appendix",
+    "href": "projects/bank-loan.html#appendix",
+    "title": "Bank Loan Risk Rating Dashboard (Excel)",
+    "section": "Appendix",
+    "text": "Appendix\nBankLoanProject.xlsx\nAttribution\nDesigned and developed by Markuss Saule."
+  },
+  {
+    "objectID": "projects/education-wage.html",
+    "href": "projects/education-wage.html",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/education-wage.html#overview",
+    "href": "projects/education-wage.html#overview",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "Overview",
+    "text": "Overview\nAnalyzed 50 years of wage data (1973��2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights."
+  },
+  {
+    "objectID": "projects/education-wage.html#what-i-did",
+    "href": "projects/education-wage.html#what-i-did",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/education-wage.html#resultsimpact",
+    "href": "projects/education-wage.html#resultsimpact",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/education-wage.html#tech-stack",
+    "href": "projects/education-wage.html#tech-stack",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nData Analysis, Inequality Research, Labor Economics, R, Visualization"
+  },
+  {
+    "objectID": "projects/education-wage.html#deliverables",
+    "href": "projects/education-wage.html#deliverables",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nProject brief: (add file)\nSlides/report: (add file)\nDashboard/model file: (add file)\nSQL/notebook/code bundle: (add file)"
+  },
+  {
+    "objectID": "projects/education-wage.html#project-notes",
+    "href": "projects/education-wage.html#project-notes",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Analyzed 50 years of wage data (1973��2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights. Skills Demonstrated: Data Analysis, Inequality Research, Labor Economics, R, Visualization Project Status: Planning\nI like understanding why systems work the way they do. Money, education, and opportunity shape so much of a person��s life, and I have seen firsthand how different those systems feel depending on where you grow up. Moving from Europe to the United States made those differences even more obvious.\nAs a first generation college student, wage inequality feels personal to me. It is not just an economics topic. It affects people I know and people like me.\nSo I wanted to create a clear and honest analysis that shows how wages changed across fifty years. I wanted something that feels like a consulting report a policy team could actually use. Something that shows what education really buys people over time and how gender interacts with all of it.\n\nThis project takes a dataset of real wages from 1973 to 2022 and builds a full analytical workflow.\nIt includes:\n\nreshaping the data into a tidy format\nvisualizing long run wage paths\ncomputing the college wage premium\nrunning a regression model with interaction terms\ninterpreting the economic meaning\n\nEverything works together to answer one question.\nHow do education and gender shape long run wage inequality in the United States"
+  },
+  {
+    "objectID": "projects/education-wage.html#data-tidying",
+    "href": "projects/education-wage.html#data-tidying",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "1. Data Tidying",
+    "text": "1. Data Tidying\nThe dataset originally stores each education group in its own column. I converted it into a long format with the standard layout.\n\n\n\nimage.png\n\n\nThis format made visualization and modeling straightforward."
+  },
+  {
+    "objectID": "projects/education-wage.html#trend-visuals",
+    "href": "projects/education-wage.html#trend-visuals",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "2. Trend Visuals",
+    "text": "2. Trend Visuals\nI created line charts showing wages from 1973 to 2022 for five education levels, separated by gender. The patterns are clear.\n\n\n\nimage.png\n\n\nThe main takeaways:\n\nmen earn more at every level\nbachelor and advanced degree wages pull far ahead\nthe high school to bachelor gap expands over time"
+  },
+  {
+    "objectID": "projects/education-wage.html#college-wage-premium",
+    "href": "projects/education-wage.html#college-wage-premium",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "3. College Wage Premium",
+    "text": "3. College Wage Premium\nThe premium is simply bachelor wage minus high school wage.\n\n\n\nimage.png\n\n\nThe premium grows every decade for both genders."
+  },
+  {
+    "objectID": "projects/education-wage.html#regression-model",
+    "href": "projects/education-wage.html#regression-model",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "4. Regression Model",
+    "text": "4. Regression Model\nI used a regression model that includes interactions between gender, education, and year to capture how these factors move together.\n\n\n\nimage.png\n\n\nThis lets the model answer exactly how much faster bachelor wages grow compared to high school wages and how gender changes that growth."
+  },
+  {
+    "objectID": "projects/education-wage.html#education-pays",
+    "href": "projects/education-wage.html#education-pays",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "1. Education Pays",
+    "text": "1. Education Pays\nIn 2022, men with a bachelor degree earned about 49.01 dollars per hour. Men with only a high school diploma earned about 24.08 dollars per hour. Women follow the same structure with lower wages at every level.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/education-wage.html#the-college-wage-premium-has-grown",
+    "href": "projects/education-wage.html#the-college-wage-premium-has-grown",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "2. The College Wage Premium Has Grown",
+    "text": "2. The College Wage Premium Has Grown\nThe model shows bachelor wages grow about 0.279 dollars per hour per year faster than high school wages. Over fifty years, that adds up to about 13.95 dollars per hour of extra advantage."
+  },
+  {
+    "objectID": "projects/education-wage.html#women-catch-up-slowly",
+    "href": "projects/education-wage.html#women-catch-up-slowly",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "3. Women Catch Up Slowly",
+    "text": "3. Women Catch Up Slowly\nWomen��s wages grow about 0.097 dollars per hour per year faster than men��s. This closes the overall gap a little, but not enough to match the patterns for men.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/education-wage.html#men-still-benefit-more-from-higher-education",
+    "href": "projects/education-wage.html#men-still-benefit-more-from-higher-education",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "4. Men Still Benefit More From Higher Education",
+    "text": "4. Men Still Benefit More From Higher Education\nThe three way interaction is negative. This means the education advantage grows faster for men than for women. Both groups gain. Men gain more."
+  },
+  {
+    "objectID": "projects/education-wage.html#inequality-grows-slowly-until-it-does-not",
+    "href": "projects/education-wage.html#inequality-grows-slowly-until-it-does-not",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "1. Inequality grows slowly until it does not",
+    "text": "1. Inequality grows slowly until it does not\nSmall yearly differences turn into massive long run gaps."
+  },
+  {
+    "objectID": "projects/education-wage.html#gender-affects-wages-even-after-you-control-for-education",
+    "href": "projects/education-wage.html#gender-affects-wages-even-after-you-control-for-education",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "2. Gender affects wages even after you control for education",
+    "text": "2. Gender affects wages even after you control for education\nThe model keeps showing this pattern."
+  },
+  {
+    "objectID": "projects/education-wage.html#interaction-terms-matter",
+    "href": "projects/education-wage.html#interaction-terms-matter",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "3. Interaction terms matter",
+    "text": "3. Interaction terms matter\nThey reveal the deeper structure behind long run changes."
+  },
+  {
+    "objectID": "projects/education-wage.html#clean-data-is-everything",
+    "href": "projects/education-wage.html#clean-data-is-everything",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "4. Clean data is everything",
+    "text": "4. Clean data is everything\nThe tidy dataset made the analysis feel smooth and predictable."
+  },
+  {
+    "objectID": "projects/education-wage.html#this-is-real-consulting-work",
+    "href": "projects/education-wage.html#this-is-real-consulting-work",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "5. This is real consulting work",
+    "text": "5. This is real consulting work\nClear question. Clean data. Interpretable model. Actionable insights.\n\ndata                raw and cleaned wage data\nanalysis            descriptive stats and visuals\nmodel               regression and diagnostics\ninsights            narrative interpretation\nreport              final pdf write up\n\n\nadd race and ethnicity\ninclude non linear time trends\nadd occupation controls\ncreate dashboard for policymakers\n\n\nThis project reminded me why I enjoy analytics. A fifty year dataset can feel huge, but with the right structure you can turn it into a simple and meaningful story. Education opens real opportunities. Gender still influences how those opportunities pay out. And the data makes that very clear.\nIf you want to talk about wage inequality or long run economic trends, I am always open to it.\nMarkuss Saule"
+  },
+  {
+    "objectID": "projects/hospital-db.html",
+    "href": "projects/hospital-db.html",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/hospital-db.html#overview",
+    "href": "projects/hospital-db.html#overview",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Overview",
+    "text": "Overview\nDesigned a full 12-table hospital database system with enforced relationships, validation rules, and complete CRUD operations. Built UI forms for patient intake, appointments, billing, and medication management. Implemented transactional inserts, referential integrity, and reporting queries that summarize financial activity by department. A clean, scalable backend foundation for hospital operations."
+  },
+  {
+    "objectID": "projects/hospital-db.html#what-i-did",
+    "href": "projects/hospital-db.html#what-i-did",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/hospital-db.html#resultsimpact",
+    "href": "projects/hospital-db.html#resultsimpact",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/hospital-db.html#tech-stack",
+    "href": "projects/hospital-db.html#tech-stack",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nDatabase Management, Programming, Project Management, UI/UX Design"
+  },
+  {
+    "objectID": "projects/hospital-db.html#deliverables",
+    "href": "projects/hospital-db.html#deliverables",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nhospital-db-project.pptx"
+  },
+  {
+    "objectID": "projects/hospital-db.html#project-notes",
+    "href": "projects/hospital-db.html#project-notes",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Designed a full 12-table hospital database system with enforced relationships, validation rules, and complete CRUD operations. Built UI forms for patient intake, appointments, billing, and medication management. Implemented transactional inserts, referential integrity, and reporting queries that summarize financial activity by department. A clean, scalable backend foundation for hospital operations. Skills Demonstrated: Database Management, Programming, Project Management, UI/UX Design Project Status: Completed\nI built a relational database for a hospital so staff can manage patients, appointments, billing, insurance, and medications all in one place. The goal was simple: fewer errors, better access to the right information, and faster, more reliable care."
+  },
+  {
+    "objectID": "projects/hospital-db.html#executive-summary",
+    "href": "projects/hospital-db.html#executive-summary",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Executive Summary",
+    "text": "Executive Summary\n\nObjective: Create a relational database that supports patient care, staff operations, billing, and insurance claims.\nScope: A 12-table ERD, intuitive UI forms, and full CRUD operations with transactional inserts.\nOutcome: A scalable schema with working examples for create/read/update/delete, and a framework for financial reporting and next steps."
+  },
+  {
+    "objectID": "projects/hospital-db.html#objective",
+    "href": "projects/hospital-db.html#objective",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Objective",
+    "text": "Objective\nDesign a hospital database that can:\n\nTrack patient demographics, history, and appointments.\nCoordinate doctors, nurses, and departments.\nHandle billing, insurance, and medication inventory.\nImprove data access and reduce errors."
+  },
+  {
+    "objectID": "projects/hospital-db.html#erd-overview",
+    "href": "projects/hospital-db.html#erd-overview",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "ERD Overview",
+    "text": "ERD Overview\nTables (12) and their purpose\n\npatient �� Core record with name, blood type, and emergency contact.\ndoctor and nurse �� Separate tables for each role with department assignments.\ndepartment �� Organizes medical staff by specialty (e.g., Cardiology).\nappointment �� Handles scheduling, completion, and cancellation.\nbilling and insurance �� Manage financials, payment status, and coverage type.\nmedical_record, laboratory_test, prescription �� Store treatment details.\nmedication �� Tracks stock quantity and expiration dates.\n\nNaming conventions are consistent, and referential integrity is enforced across all relationships.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/hospital-db.html#ui-forms",
+    "href": "projects/hospital-db.html#ui-forms",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "UI Forms",
+    "text": "UI Forms\nGoals: make the interface intuitive, efficient, and secure.\n\nPatient Registration: Includes fields like first name, last name, date of birth, and blood type. Required fields keep registration quick and accurate.\nAppointment Booking: Uses dropdowns for doctors and departments, with date and time pickers for easy scheduling.\nBilling Dashboard: Displays total amount, payment status, and insurance links so staff have everything in one view.\n\nHelpful extras:\nSearch by last name or patient ID. Validate appointment dates to prevent past bookings. Maintain minimum stock levels. Add alerts for expiring medications or pending payments. These small details save time and prevent mistakes.\n\n\n\nimage.png\n\n\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/hospital-db.html#inserts-and-transactions",
+    "href": "projects/hospital-db.html#inserts-and-transactions",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Inserts and Transactions",
+    "text": "Inserts and Transactions\nI wrote dynamic INSERT statements with subqueries and wrapped them in transactions for consistency. This ensures all related data loads correctly and commits only when the full set is valid.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/hospital-db.html#crud-operations",
+    "href": "projects/hospital-db.html#crud-operations",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "CRUD Operations",
+    "text": "CRUD Operations\n\nCreate and Read: Standard INSERTs and SELECT statements for testing data integrity.\nUpdate: Adjusts record statuses safely while preserving foreign key integrity.\nDelete: Removes cancelled or invalid entries without breaking constraints.\n\n\n\n\nimage.png\n\n\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/hospital-db.html#advanced-example",
+    "href": "projects/hospital-db.html#advanced-example",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Advanced Example",
+    "text": "Advanced Example\nFor financial insights, I created a query that summarizes billing by department using a CASE expression to categorize records by payment status and coverage type. This helps staff identify unpaid or partially covered cases.\n\n\n\nimage.png"
+  },
+  {
+    "objectID": "projects/hospital-db.html#query-gallery",
+    "href": "projects/hospital-db.html#query-gallery",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Query Gallery",
+    "text": "Query Gallery\nI grouped queries into sets to show how they build on each other.\n\nQueries 1��3\n\n\n\nimage.png\n\n\nNotes: basic retrievals and staff reference queries.\n\n\nQueries 4��6\n\n\n\nimage.png\n\n\nNotes: joins and indexing for performance optimization.\n\n\nQueries 7��9\n\n\n\nimage.png\n\n\nNotes: validation and data consistency checks.\n\n\nQueries 10��12\n\n\n\nimage.png\n\n\nNotes: administrative summaries and export-ready outputs."
+  },
+  {
+    "objectID": "projects/hospital-db.html#what-i-learned",
+    "href": "projects/hospital-db.html#what-i-learned",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "What I Learned",
+    "text": "What I Learned\nI learned that hospital databases are about structure and trust. The 12-table ERD built the backbone. Validation rules and form design kept the data clean. Transactions protected consistency. And small touches like CASE reports made the data actually useful for real decisions."
+  },
+  {
+    "objectID": "projects/hospital-db.html#conclusion",
+    "href": "projects/hospital-db.html#conclusion",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nBuilt a scalable 12-table hospital database.\nDesigned user-friendly UI forms.\nImplemented and tested full CRUD functionality.\nAdded safeguards through transactions and validation.\nFuture steps: build a patient portal and connect analytics through Power BI."
+  },
+  {
+    "objectID": "projects/hospital-db.html#appendix",
+    "href": "projects/hospital-db.html#appendix",
+    "title": "Hospital Database System (SQL/DB)",
+    "section": "Appendix",
+    "text": "Appendix\nhospital-db-project.pptx\nAttribution\nDesigned and developed by Markuss Saule."
+  },
+  {
+    "objectID": "projects/insurance-fraud.html",
+    "href": "projects/insurance-fraud.html",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#overview",
+    "href": "projects/insurance-fraud.html#overview",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Overview",
+    "text": "Overview\nBuilt a full fraud-detection pipeline using Logistic Regression, Random Forest, and XGBoost on real insurance claim data. Improved AUC from 0.61 to 0.86 by moving to tree-based models and added SHAP interpretability to explain fraud drivers. Delivered an end-to-end ML system with preprocessing, model training, evaluation, and serialization for real-world scoring."
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#what-i-did",
+    "href": "projects/insurance-fraud.html#what-i-did",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#resultsimpact",
+    "href": "projects/insurance-fraud.html#resultsimpact",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nModel | ROC-AUC | Precision (Fraud) | Recall (Fraud) | Accuracy | | — | — | — | — | — | | Logistic Regression | 0.61 | 0.00 | 0.00 | 0.75 | | Random Forest | 0.86 | 0.55 | 0.12 | 0.76 | | XGBoost | 0.83 | 0.62 | 0.51 | 0.81 |"
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#tech-stack",
+    "href": "projects/insurance-fraud.html#tech-stack",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nFraud Analytics, Machine Learning, Python, SHAP, XGBoost"
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#deliverables",
+    "href": "projects/insurance-fraud.html#deliverables",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nProject brief: (add file)\nSlides/report: (add file)\nDashboard/model file: (add file)\nSQL/notebook/code bundle: (add file)"
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#project-notes",
+    "href": "projects/insurance-fraud.html#project-notes",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Built a full fraud-detection pipeline using Logistic Regression, Random Forest, and XGBoost on real insurance claim data. Improved AUC from 0.61 to 0.86 by moving to tree-based models and added SHAP interpretability to explain fraud drivers. Delivered an end-to-end ML system with preprocessing, model training, evaluation, and serialization for real-world scoring. Skills Demonstrated: Fraud Analytics, Machine Learning, Python, SHAP, XGBoost Project Status: Planning"
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#executive-summary",
+    "href": "projects/insurance-fraud.html#executive-summary",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Executive Summary",
+    "text": "Executive Summary\nInsurance fraud is a massive problem that costs companies billions every year. I wanted to see how far machine learning could go in spotting suspicious claims before they cause damage.\nI built an end-to-end fraud detection pipeline in Python using real insurance claim data - training three models (Logistic Regression, Random Forest, and XGBoost) to identify patterns that suggest fraud.\nAt first, the Logistic Regression model couldn��t catch any fraudulent cases. But once I moved to tree-based methods, accuracy and recall improved dramatically.\nThe Random Forest achieved a ROC-AUC of 0.86, while XGBoost came close at 0.83, both showed strong ability to separate fraudulent from legitimate claims.\nI quickly realized how data science can protect both companies and honest customers."
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#data-tools",
+    "href": "projects/insurance-fraud.html#data-tools",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Data & Tools",
+    "text": "Data & Tools\n\nDataset: 1,000 insurance claim records\nFeatures: 39 total (policy data, claim details, customer demographics, vehicle info)\nTarget variable: fraud_reported (Y/N)\nTools: Python, Pandas, Scikit-Learn, XGBoost, Matplotlib, Seaborn\nEnvironment: VS Code + virtual environment (venv)\n\nThe dataset was slightly imbalanced �� about 25% of claims were fraudulent, creating a realistic challenge for model precision and recall."
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#process",
+    "href": "projects/insurance-fraud.html#process",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Process",
+    "text": "Process\n\n1. Data Cleaning\nAfter importing the dataset, I converted the target variable to binary and checked for missing values.\nNumerical columns used median imputation, categorical columns used the most frequent value.\ndf[\"fraud_reported\"] = df[\"fraud_reported\"].map({\"Y\": 1, \"N\": 0})\n\nnumeric_transformer = Pipeline(steps=[\n    (\"imputer\", SimpleImputer(strategy=\"median\"))\n])\n\ncategorical_transformer = Pipeline(steps=[\n    (\"imputer\", SimpleImputer(strategy=\"most_frequent\")),\n    (\"encoder\", OneHotEncoder(handle_unknown=\"ignore\"))\n])\n\n\n\n2. Preprocessing Pipeline\nUsing Scikit-Learn��s ColumnTransformer, I created a preprocessing pipeline for numeric and categorical features.\nThis made the workflow fully reusable across all models.\npreprocessor = ColumnTransformer(\n    transformers=[\n        (\"num\", numeric_transformer, numeric_features),\n        (\"cat\", categorical_transformer, categorical_features)\n    ]\n)\n\n\n\n3. Model Training\nI trained three models and compared their performance.\nEach model was wrapped in a Pipeline, combining preprocessing and training in one step.\n\n\n\nModel\nDescription\nKey Strength\n\n\n\n\nLogistic Regression\nBaseline model\nSimple and interpretable\n\n\nRandom Forest\nBagging ensemble\nCaptures non-linear relationships\n\n\nXGBoost\nGradient boosting\nOptimized performance and control\n\n\n\n\n\nRandom Forest Example\nrf_clf = Pipeline(steps=[\n    (\"preprocess\", preprocessor),\n    (\"model\", RandomForestClassifier(\n        n_estimators=200,\n        random_state=42,\n        n_jobs=-1\n    ))\n])\nrf_clf.fit(x_train, y_train)\n\n\n\n4. Model Evaluation and Saving\nAfter training, each model was evaluated on precision, recall, F1-score, and ROC-AUC.\nConfusion matrices and ROC curves were visualized using Seaborn and Matplotlib.\ny_pred = rf_clf.predict(x_test)\ny_proba = rf_clf.predict_proba(x_test)[:, 1]\n\nprint(classification_report(y_test, y_pred))\nprint(\"ROC-AUC:\", roc_auc_score(y_test, y_proba))\n\njoblib.dump(rf_clf, \"models/randomforest_model.pkl\")\nAll models were serialized using Joblib, so they can be reloaded for live predictions or API deployment."
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#results",
+    "href": "projects/insurance-fraud.html#results",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Results",
+    "text": "Results\n\n\n\nModel\nROC-AUC\nPrecision (Fraud)\nRecall (Fraud)\nAccuracy\n\n\n\n\nLogistic Regression\n0.61\n0.00\n0.00\n0.75\n\n\nRandom Forest\n0.86\n0.55\n0.12\n0.76\n\n\nXGBoost\n0.83\n0.62\n0.51\n0.81\n\n\n\n\n\nPerformance Comparison\n\n\n\nmodel_auc_comparison.png\n\n\n\n\n\nLogistic Regression\nThe baseline model underperformed �� it failed to detect any fraudulent cases.\nThis confirmed that simple linear models struggle when class imbalance and feature interactions are strong.\n\n\n\nlogreg_confusion_matrix.png\n\n\n\n\n\nlogreg_roc_curve.png\n\n\n\n\n\nRandom Forest\nThe Random Forest model captured meaningful non-linear patterns.\nIt raised the AUC to 0.86, performing best overall in distinguishing fraud from non-fraud.\n\n\n\nrandomforest_confusion_matrix.png\n\n\n\n\n\nrandomforest_roc_curve.png\n\n\n\n\n\nXGBoost\nXGBoost performed similarly to Random Forest but was slightly more balanced �� it caught more fraud cases with fewer false alarms.\n\n\n\nxgboost_confusion_matrix.png\n\n\n\n\n\nxgboost_roc_curve.png"
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#key-insights",
+    "href": "projects/insurance-fraud.html#key-insights",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Key Insights",
+    "text": "Key Insights\n\nLinear models can��t handle complex fraud data.\nThe Logistic Regression model failed to detect non-linear relationships, missing all fraud cases.\nTree-based models excel at imbalance.\nRandom Forest and XGBoost used multiple weak learners to find subtle signals that linear models missed.\nXGBoost provided the best trade-off.\nIt balanced recall (51%) with a strong ROC-AUC (0.83), which is great for early fraud screening.\nFeature engineering could improve recall further.\nFeatures like claim-to-premium ratio or customer tenure trends could expose hidden fraud indicators.\n\n\n\nModel Interpretability (SHAP Analysis)\n\n\n\nxgboost_shap_summary.png\n\n\nAfter training, I used SHAP (SHapley Additive exPlanations) to visualize how each feature influenced fraud predictions. The plot shows that claims labeled as ��Major Damage�� or ��Total Loss�� had the strongest positive impact on the model��s fraud likelihood. Interestingly, customer-level details like hobbies (e.g., chess or cross-fit) and policy premiums also appeared as strong differentiators, suggesting that lifestyle or policy value patterns may indirectly flag higher-risk cases.\nFeatures such as auto year, zip code, and claim amounts had subtler effects, mostly balancing prediction confidence rather than flipping outcomes. Adding SHAP turned the project from a black-box model into one where I could explain why the AI decided a claim looked suspicious."
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#reflection",
+    "href": "projects/insurance-fraud.html#reflection",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Reflection",
+    "text": "Reflection\nThis project taught me how much structure matters in machine learning, and not just which model you choose, but how you prepare and feed the data into it.\nIt was rewarding to see how quickly performance improved once I moved from Logistic Regression to Random Forest and XGBoost.\nThat jump from 0.61 to 0.86 in AUC made me realize that good insight often comes from iteration, not just code.\nWorking through this project helped me get comfortable building end-to-end ML systems, from cleaning data and building pipelines to evaluating, saving, and reusing models."
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#files-outputs",
+    "href": "projects/insurance-fraud.html#files-outputs",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Files & Outputs",
+    "text": "Files & Outputs\n\ntrain_model.py �� training and evaluation pipeline\npredict_sample.py �� sample prediction script\nmodels/ �� saved models (.pkl format)\nCharts:\n\n[model_auc_comparison.png]\n[logreg_confusion_matrix.png]\n[randomforest_confusion_matrix.png]\n[xgboost_confusion_matrix.png]\n[randomforest_roc_curve.png]\n[xgboost_roc_curve.png]\n[xgboost_shap_summary.png]\n\n\nFull training scripts and model files available upon request."
+  },
+  {
+    "objectID": "projects/insurance-fraud.html#next-steps",
+    "href": "projects/insurance-fraud.html#next-steps",
+    "title": "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)",
+    "section": "Next Steps",
+    "text": "Next Steps\n\nApply SMOTE resampling to address class imbalance\nPackage the trained model into a Flask API for live prediction testing\n\nAttribution\nDesigned and developed by Markuss Saule."
+  },
+  {
+    "objectID": "projects/market-basket.html",
+    "href": "projects/market-basket.html",
+    "title": "Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori)",
+    "section": "",
+    "text": "Project cover"
+  },
+  {
+    "objectID": "projects/market-basket.html#overview",
+    "href": "projects/market-basket.html#overview",
+    "title": "Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori)",
+    "section": "Overview",
+    "text": "Overview\nBuilt a full Python market basket engine on 3M+ Instacart orders to uncover real snack-pairing behavior. Engineered a sparse matrix, ran Apriori at scale, and extracted high-lift product combinations retailers can use for cross-sell, promotions, and smarter shelf placement. Turned raw transaction data into clear, actionable retail insights."
+  },
+  {
+    "objectID": "projects/market-basket.html#what-i-did",
+    "href": "projects/market-basket.html#what-i-did",
+    "title": "Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
+  },
+  {
+    "objectID": "projects/market-basket.html#resultsimpact",
+    "href": "projects/market-basket.html#resultsimpact",
+    "title": "Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
+  },
+  {
+    "objectID": "projects/market-basket.html#tech-stack",
+    "href": "projects/market-basket.html#tech-stack",
+    "title": "Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori)",
+    "section": "Tech Stack",
+    "text": "Tech Stack\n\nData Analysis, Machine Learning, Market Basket Modeling, Python, Retail Analytics"
+  },
+  {
+    "objectID": "projects/market-basket.html#deliverables",
+    "href": "projects/market-basket.html#deliverables",
+    "title": "Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori)",
+    "section": "Deliverables",
+    "text": "Deliverables\n\nProject brief: (add file)\nSlides/report: (add file)\nDashboard/model file: (add file)\nSQL/notebook/code bundle: (add file)"
+  },
+  {
+    "objectID": "projects/market-basket.html#project-notes",
+    "href": "projects/market-basket.html#project-notes",
+    "title": "Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Built a full Python market basket engine on 3M+ Instacart orders to uncover real snack-pairing behavior. Engineered a sparse matrix, ran Apriori at scale, and extracted high-lift product combinations retailers can use for cross-sell, promotions, and smarter shelf placement. Turned raw transaction data into clear, actionable retail insights. Skills Demonstrated: Data Analysis, Machine Learning, Market Basket Modeling, Python, Retail Analytics Project Status: Planning"
+  },
+  {
+    "objectID": "projects/market-basket.html#why-i-built-this",
+    "href": "projects/market-basket.html#why-i-built-this",
+    "title": "Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori)",
+    "section": "💬 Why I Built This",
+    "text": "💬 Why I Built This\nThis project started with a simple curiosity:\n��When people buy snacks�� what else ends up in the cart with them?��\nIt sounds small, but in retail and e-commerce, this question is worth so much money.\nEvery product pairing is a potential:\n\nCross-sell\nRecommendation\nBundle\nEnd-cap placement\nInventory insight\n\nI wanted to take a real Instacart dataset (3M+ rows), clean it properly, build a market basket model, and extract real product relationships.\nThis wasn��t just a coding exercise, and it became an end-to-end retail analytics project where I had to handle:\n\nChunked loading of massive CSVs\nSparse matrix engineering\nAssociation rule mining\nData storytelling\nAnd turning raw math into business meaning\n\nAnd guess what!\nIt ended up being one of the cleanest, most practical data analytics projects I��ve done.\n\nThe raw Instacart tables include products, aisles, departments, and 30M+ order rows. I narrowed the scope to the snacks department so the analysis stayed focused and useful.\n\nProduct Lookup Table\nI merged product, aisle, and department files to create a human-readable lookup.\n\n\n\nimage.png\n\n\nThis step gives every product_id a clean name and category, which super important later when rules need to be interpretable.\n\nThe order_products_prior.csv file is huge, so I couldn��t load it in one shot.\nInstead, I streamed it in 250,000-row chunks, keeping only rows where the item belonged to the snacks department.\nThis reduced millions of rows down to something manageable, while keeping all snack purchases in the dataset.\n\nTo run association rules, every order needs to become a list of items.\norder_id | [item1, item2, item3, ...]\nAfter grouping products by order, I narrowed analysis to the top 50 most purchased snacks. Why?\n\nReduces noise\nKeeps the model focused\nSpeeds up computation\nProduces clearer, more actionable rules\n\nThen I built a sparse matrix (orders × items), with boolean values indicating whether each snack was bought in each order.\nThis is the backbone of Apriori.\n\n\n\nimage.png\n\n\n\nI used mlxtend to run Apriori with:\n\nmin_support = 0.003\nmax_len = 3\n\nThen I generated rules using lift as the main metric.\nWhy lift?\nBecause:\n\nLift &gt; 1 = ��happens more often together than by chance.��\n\nPerfect for discovering natural product pairings.\n\n\n\nimage.png\n\n\n\n\n\nA. Top 10 Rules by Lift\nThis chart immediately showed clusters:\n\nGluten-free oat granola + gluten-free granola bars\nAnnie��s Bunny Fruit Snacks pairings\nTrail mix + unsalted nuts\n\n\n\n\nimage.png\n\n\nThese are exactly the kinds of patterns retail teams use for shelf placement or digital recommendations.\n\n\n\nB. Most Frequently Purchased Snacks\nBefore pairings, I checked the leaders by volume.\n\n\n\nimage.png\n\n\nYou can see clear dominance from snack staples (like veggie straws, crisps, etc.).\n\n\n\nC. Support vs Confidence (Colored by Lift)\nScatterplot showing rule quality across three dimensions:\n\nSupport (popularity)\nConfidence (reliability)\nLift (strength)\n\n\n\n\nimage.png\n\n\nThis is the fastest way to spot high-impact rules.\n\n\n\nD. Snack Network Graph\nA fun one: nodes = snacks, edges = rules.\nIt visualizes ��clusters�� of products that shoppers naturally buy in combinations.\n\n\n\nimage.png\n\n\n\nThis dataset seems simple, but the patterns reveal real shopper behavior.\n\n\n1. Health-focused snacks form tight clusters.\nGluten-free bars, oat granola, fruit snacks, and trail mix all appear together.\nThese products complement each other naturally.\n\n\n2. A small set of high-volume snacks drive the department.\nThe distribution is long-tailed.\n15 products dominate the vast majority of snack orders.\n\n\n3. Strong lift values reveal genuine cross-sell opportunities.\nPairs like granola bars + oat granola aren’t random, and they��re real buying habits.\n\n\n4. Apriori is incredibly practical when used well.\nYes, it��s academic on paper.\nBut with clean engineering and smart filtering, it uncovers insights marketing teams can use!\n\nHere��s where this project stops being ��school project�� and becomes an actual business tool:\n\n\n�� End-cap Optimization\nStock high-lift pairs together.\n\n\n�� Bundles & Promo Design\nCreate snack bundles around popular duos.\n\n\n�� Recommendation Engine Input\n��Frequently Bought Together�� items for e-commerce.\n\n\n�� Inventory Planning\nIf product A surges, expect product B to follow.\n\n\n�� A/B Testing Fuel\nTest promotions on high-lift combinations.\n\n\nNotebook: 01_data_cleaning_and_eda.ipynb\nSparse matrix + Apriori code\nAll visualizations generated programmatically\nClean Python pipeline for reproducibility\n\n\nThis project forced me to think like a data scientist.\nIt wasn��t about running Apriori, it was about handling millions of rows, building efficient structures, and turning numbers into insights that matter.\nIt felt like the perfect bridge between:\n\nTechnical skill (Python, sparse matrices, association rules)\nAnalytical thinking\nBusiness decision-making"
+  }
+]

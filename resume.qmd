@@ -1,0 +1,15 @@
+---
+title: "Resume"
+---
+
+Download resume: [PDF](files/resume.pdf)
+
+## Summary
+
+Business analytics and data science student focused on high-impact ML and decision support systems.
+
+## Experience Highlights
+
+- Built analytics dashboards and operational forecasting workflows.
+- Developed fraud detection and healthcare optimization projects.
+- Presented decision-ready findings to business stakeholders.

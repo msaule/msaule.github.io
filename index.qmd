@@ -1,0 +1,41 @@
+---
+title: ""
+---
+
+::: {.hero-wrap}
+::: {.hero}
+::: {.hero-left}
+<div class="kicker">Business Analytics - Data Science - ML</div>
+
+# Hi, I'm Markuss.
+
+I build decision-ready analytics and practical machine learning solutions that help teams move faster. My work spans dashboards, forecasting, fraud detection, optimization, and healthcare operations analytics. I focus on clear storytelling, measurable business impact, and models that stakeholders can trust.
+
+<div class="hero-actions">
+<a class="btn-primary" href="projects.html">View Projects</a>
+<a class="btn-ghost" href="resume.html">Resume</a>
+</div>
+:::
+
+::: {.hero-right}
+::: {.hero-card}
+<div class="hero-row"><span>Focus</span><strong>Analytics + ML</strong></div>
+<div class="hero-row"><span>Tools</span><strong>Python, SQL, R, Power BI</strong></div>
+<div class="hero-row"><span>Style</span><strong>Fast, clean, explainable</strong></div>
+:::
+:::
+:::
+:::
+
+## Featured Projects
+
+::: {.project-grid}
+<a class="project-card" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment project cover"><div class="project-body"><h3>Fulfillment Center Risk Simulation and Staffing Optimization</h3><p>Discrete-event simulation for staffing pressure, throughput risk, and shift planning decisions.</p><div class="chips"><span class="chip">Python</span><span class="chip">SimPy</span><span class="chip">Power BI</span></div></div></a>
+<a class="project-card" href="projects/market-basket.html"><img class="project-thumb" src="images/projects/market-basket/cover.png" alt="Market basket project cover"><div class="project-body"><h3>Market Basket Analysis: What Snacks Are Bought Together?</h3><p>Association-rule mining to identify product bundles that increase cross-sell opportunities.</p><div class="chips"><span class="chip">Python</span><span class="chip">Apriori</span><span class="chip">Retail</span></div></div></a>
+<a class="project-card" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain fraud project cover"><div class="project-body"><h3>Blockchain + Machine Learning Healthcare Fraud Ledger</h3><p>Fraud risk scoring with immutable audit trails for transparent healthcare claim governance.</p><div class="chips"><span class="chip">Python</span><span class="chip">ML</span><span class="chip">Blockchain</span></div></div></a>
+<a class="project-card" href="projects/insurance-fraud.html"><img class="project-thumb" src="images/projects/insurance-fraud/cover.png" alt="Insurance fraud project cover"><div class="project-body"><h3>Insurance Fraud Detection</h3><p>Classification pipeline with explainability for triage and investigator prioritization.</p><div class="chips"><span class="chip">Scikit-Learn</span><span class="chip">XGBoost</span><span class="chip">SHAP</span></div></div></a>
+<a class="project-card" href="projects/ai-scheduling.html"><img class="project-thumb" src="images/projects/ai-scheduling/cover.png" alt="AI scheduling project cover"><div class="project-body"><h3>AI-Powered Scheduling and Patient Access Optimization Dashboard</h3><p>Operational dashboard to reduce delays, improve utilization, and improve access metrics.</p><div class="chips"><span class="chip">Power BI</span><span class="chip">Operations</span><span class="chip">Healthcare</span></div></div></a>
+<a class="project-card" href="projects/readmission.html"><img class="project-thumb" src="images/projects/readmission/cover.png" alt="Readmission analytics project cover"><div class="project-body"><h3>Hospital Readmission Analytics</h3><p>SQL plus R pipeline on readmissions, risk cohorts, and outcomes reporting for leadership.</p><div class="chips"><span class="chip">SQL</span><span class="chip">R</span><span class="chip">Power BI</span></div></div></a>
+:::
+
+<div class="center-link"><a class="btn-ghost" href="projects.html">See all projects</a></div>

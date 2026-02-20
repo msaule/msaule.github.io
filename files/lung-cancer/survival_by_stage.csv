@@ -1,0 +1,11 @@
+"stage_sum","survived_24m","n","Percent"
+"Blank(s)","No",85,0.1
+"Blank(s)","Yes",53,0
+"Distant","No",60891,52.1
+"Distant","Yes",8267,7.1
+"Localized","No",5450,4.7
+"Localized","Yes",10376,8.9
+"Regional","No",13985,12
+"Regional","Yes",9686,8.3
+"Unknown/unstaged","No",7247,6.2
+"Unknown/unstaged","Yes",862,0.7

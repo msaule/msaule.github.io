@@ -1,0 +1,36 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - projects.qmd
+    - resume.qmd
+    - about.qmd
+    - projects/*.qmd
+
+website:
+  title: "Markuss Saule"
+  site-url: "https://msaule.github.io"
+  navbar:
+    left:
+      - text: Home
+        file: index.qmd
+      - text: Projects
+        file: projects.qmd
+      - text: Resume
+        file: resume.qmd
+      - text: About
+        file: about.qmd
+    right:
+      - icon: github
+        href: https://github.com/msaule
+
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: false
+    smooth-scroll: true
+
+execute:
+  enabled: false

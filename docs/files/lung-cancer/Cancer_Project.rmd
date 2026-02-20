@@ -1,0 +1,381 @@
+---
+title: "Lung Cancer Survival (SEER 2004–2015): Data-Driven Insights on Stage and Outcomes"
+author: "Markuss Tomass Saule"
+date: "`r format(Sys.Date())`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    code_folding: "hide"
+    df_print: kable
+  pdf_document:
+    toc: true
+    number_sections: true
+fontsize: 11pt
+---
+
+
+
+# . Overview
+
+This project uses data from the SEER cancer registry to explore patterns in lung and bronchus cancer survival.  
+The goal is to see how clinical and demographic factors—like **stage at diagnosis**, **tumor size**, and **lymph node involvement** relate to the chance of surviving two years after diagnosis.  
+
+I built a complete workflow: loading and cleaning data, defining survival outcomes, running basic statistical tests, and using a logistic regression model to identify the strongest predictors of survival.
+
+**Key Questions**
+- How does stage at diagnosis relate to survival?
+- Are there survival differences by sex or race?
+- Which variables are most predictive of two-year survival?
+
+*Note: Two-year survival is used as the main outcome (because follow-up data beyond five years is limited in this subset).*
+
+
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(broom)
+library(scales)
+library(knitr)
+library(kableExtra)
+library(pander)
+
+# Load CSV
+seer_raw <- read.csv("C:/Users/saule/Downloads/CancerProject/cancer_data.csv")
+
+# Global chunk format/options
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  comment = NA
+)
+
+# Global table style
+options(knitr.kable.NA = "", digits = 2)
+
+
+```
+
+
+# . Renaming long column names into shorter ones:
+```{r}
+# Rename long SEER names to short ones for easier analysis
+seer <- seer_raw %>%
+  dplyr::rename(
+    age_grp      = `Age.recode.with..1.year.olds.and.90.`,
+    sex          = `Sex`,
+    race         = `Race.recode..White..Black..Other.`,
+    site_code    = `Primary.Site`,
+    stage_sum    = `Summary.stage.2000..1998.2017.`,
+    dx_year      = `Year.of.diagnosis`,
+    surv_months  = `Survival.months`,
+    vital_status = `Vital.status.recode..study.cutoff.used.`,
+    tumor_size   = `CS.tumor.size..2004.2015.`,
+    nodes_pos    = `Regional.nodes.positive..1988..`,
+    mets_dx      = `CS.mets.at.dx..2004.2015.`,
+    rad_recode   = `Radiation.recode`,
+    chemo_recode = `Chemotherapy.recode..yes..no.unk.`,
+    no_surg_rsn  = `Reason.no.cancer.directed.surgery`,
+    seq_num      = `Sequence.number`
+  )
+
+# Quick look
+head(seer)
+
+```
+
+# . Defining the Lung Cancer Sample
+(I keep Lung & Bronchus cancers (site codes 340–349), years 2004–2015, and first primary cancers only.)
+
+```{r}
+seer_lung <- seer %>%
+  filter(
+    site_code >= 340 & site_code <= 349,  # Lung & Bronchus
+    dx_year >= 2004 & dx_year <= 2015,
+    seq_num == "One primary only"
+  )
+
+nrow(seer_lung)
+
+
+```
+
+# . Create Survival Outcomes (Primary = 2-Year)
+
+SEER sometimes stores months as zero-padded text (e.g., "0060"). Convert to numeric first, then define outcomes:
+
+2-year survival: surv_months >= 24
+
+5-year survival: surv_months >= 60 (kept for reference)
+
+```{r}
+seer_lung <- seer_lung %>%
+  mutate(
+    surv_months = suppressWarnings(as.numeric(surv_months)),
+    # outcomes
+    survived_24m_num = ifelse(!is.na(surv_months) & surv_months >= 24, 1L, 0L),
+    survived_5yr_num = ifelse(!is.na(surv_months) & surv_months >= 60, 1L, 0L),
+    survived_24m = factor(survived_24m_num, levels = c(0,1), labels = c("No","Yes")),
+    survived_5yr = factor(survived_5yr_num, levels = c(0,1), labels = c("No","Yes"))
+  ) %>%
+  select(-survived_24m_num, -survived_5yr_num)
+
+# sanity checks
+table(seer_lung$survived_24m, useNA="ifany")
+table(seer_lung$survived_5yr, useNA="ifany")
+summary(seer_lung$surv_months)
+
+
+```
+
+# . Descriptive Statistics
+We’ll look at stage and simple survival proportions (2-years).
+
+```{r}
+# Clean descriptive tables
+seer_lung %>%
+  count(stage_sum) %>%
+  kable(caption = "Case Counts by Summary Stage") %>%
+  kable_styling(full_width = FALSE, position = "center")
+
+seer_lung %>%
+  group_by(stage_sum, survived_24m) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  mutate(Percent = round(100 * n / sum(n), 1)) %>%
+  select(stage_sum, survived_24m, Percent) %>%
+  kable(caption = "2-Year Survival Proportions by Stage", digits = 1) %>%
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+
+
+```
+
+# . Chi-Square Tests (2-Year Survival)
+
+```{r}
+pander(chisq.test(table(seer_lung$stage_sum, seer_lung$survived_24m)), caption = "Chi-Square Test: Stage vs 2-Year Survival")
+pander(chisq.test(table(seer_lung$sex, seer_lung$survived_24m)), caption = "Chi-Square Test: Sex vs 2-Year Survival")
+pander(chisq.test(table(seer_lung$race, seer_lung$survived_24m)), caption = "Chi-Square Test: Race vs 2-Year Survival")
+
+
+```
+
+# . t-Test & ANOVA (Tumor Size)
+
+SEER encodes some special values for tumor_size (e.g., 888, 990, 999 = missing/masked). Remove those and NAs. Then compare mean tumor size by 2-year survival (t-test) and across stages (ANOVA).
+
+```{r}
+
+# Ensure numeric
+seer_lung$tumor_size <- suppressWarnings(as.numeric(seer_lung$tumor_size))
+
+# Clean analysis dataset
+seer_lung2 <- seer_lung %>%
+  filter(!is.na(tumor_size), !tumor_size %in% c(888, 990, 999)) %>%
+  mutate(stage_sum = factor(stage_sum))
+
+# Group summary table
+seer_lung2 %>%
+  group_by(survived_24m) %>%
+  summarise(
+    n = n(),
+    mean_tumor = mean(tumor_size, na.rm = TRUE),
+    sd_tumor   = sd(tumor_size, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  kable(caption = "Tumor Size by 2-Year Survival", digits = 1) %>%
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+
+# t-test and ANOVA results
+pander(t.test(tumor_size ~ survived_24m, data = seer_lung2), caption = "t-Test: Tumor Size by 2-Year Survival")
+
+aov_fit <- aov(tumor_size ~ stage_sum, data = seer_lung2)
+pander(summary(aov_fit), caption = "ANOVA: Tumor Size Across Stages")
+
+
+```
+
+# . Logistic Regression (Primary Outcome = 2-Year Survival)
+
+Predictors: stage, sex, race, tumor_size, nodes_pos.
+Clean nodes_pos and ensure all factors have ≥2 levels.
+
+
+```{r}
+# Clean nodes variable
+seer_lung2$nodes_pos <- suppressWarnings(as.numeric(seer_lung2$nodes_pos))
+
+# Build modeling dataset
+seer_lung3 <- seer_lung2 %>%
+  filter(!is.na(sex), !is.na(race), !is.na(stage_sum), !is.na(survived_24m)) %>%
+  filter(stage_sum != "Blank(s)") %>%
+  mutate(
+    sex        = factor(sex),
+    race       = factor(race),
+    stage_sum  = factor(stage_sum),
+    survived_24m = factor(survived_24m, levels = c("No", "Yes"))
+  )
+
+# Logistic regression
+glm_fit <- glm(
+  survived_24m ~ stage_sum + sex + race + tumor_size + nodes_pos,
+  data = seer_lung3,
+  family = binomial()
+)
+
+# Odds ratio table
+glm_results <- tidy(glm_fit, exponentiate = TRUE, conf.int = TRUE)
+
+glm_results %>%
+  select(term, estimate, conf.low, conf.high, p.value) %>%
+  rename(
+    Predictor = term,
+    `Odds Ratio` = estimate,
+    `Lower 95% CI` = conf.low,
+    `Upper 95% CI` = conf.high,
+    `p-value` = p.value
+  ) %>%
+  kable(caption = "Logistic Regression Results (2-Year Survival)", digits = 3) %>%
+  kable_styling(full_width = FALSE, position = "center", bootstrap_options = c("striped", "hover"))
+
+
+```
+
+# . Visualize Odds Ratios (Forest Plot)
+
+
+
+```{r}
+# Clean names for display
+glm_results_clean <- glm_results %>%
+  filter(term != "(Intercept)") %>%
+  mutate(
+    term = recode(term,
+      "stage_sumLocalized" = "Stage: Localized",
+      "stage_sumRegional"  = "Stage: Regional",
+      # If your reference is "Distant", the two above show ORs vs Distant.
+      "sexMale"            = "Male vs Female",
+      "raceBlack"          = "Race: Black",
+      "raceOther"          = "Race: Other (A/PI/AIAN)",
+      "tumor_size"         = "Tumor Size (per mm)",
+      "nodes_pos"          = "Positive Nodes (count)"
+    )
+  )
+
+# Forest plot of ORs with 95% CI
+ggplot(glm_results_clean, aes(x = reorder(term, estimate), y = estimate)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0.15) +
+  geom_hline(yintercept = 1, linetype = "dashed") +
+  coord_flip() +
+  labs(
+    title = "Factors Associated with 2-Year Survival (Logistic Regression)",
+    x = "Predictor",
+    y = "Odds Ratio (95% CI)"
+  ) +
+  theme_minimal(base_size = 12)
+
+
+```
+
+# . Stage vs 2-Year Survival (Visual Summary)
+
+```{r}
+seer_plot <- seer_lung3 %>%
+  group_by(stage_sum, survived_24m) %>%
+  summarise(count = n(), .groups="drop") %>%
+  mutate(perc = count / sum(count))
+
+ggplot(seer_plot, aes(stage_sum, perc, fill = survived_24m)) +
+  geom_col(position = "fill") +
+  scale_y_continuous(labels = percent) +
+  labs(
+    title = "Two-Year Survival by Stage at Diagnosis",
+    x = "Summary Stage",
+    y = "Percent of Patients",
+    fill = "Survived 2 Years"
+  ) +
+  theme_minimal(base_size = 12)
+
+```
+
+# . Interpretation
+
+The logistic regression shows that **stage at diagnosis** has the biggest influence on survival.  
+Patients diagnosed at a **localized** stage were roughly eight times more likely to survive two years than those with distant disease. Those diagnosed at the **regional** stage also showed better odds, though not as dramatically.  
+
+**Tumor size** and **number of positive lymph nodes** were both negatively associated with survival—larger tumors and more affected nodes meant worse outcomes.  
+There were smaller but noticeable differences by **sex** and **race**: men had slightly lower odds of survival, and patients identified as Asian, Pacific Islander, or American Indian tended to do somewhat better than White patients.  
+
+Overall, the findings reflect what’s seen in real life: **early detection and limited spread are the strongest predictors of survival**.
+
+
+# . Limitations
+
+- Some SEER fields include masked or missing data, especially for tumor size and lymph node counts.  
+- Treatment variables like chemotherapy and radiation don’t specify timing or dosage, which limits how much we can infer about their impact.  
+- These analyses are descriptive, not causal—they identify associations, not direct effects.  
+- Two-year survival was used as the main measure because the five-year data in this subset had too few complete cases.
+
+
+# . Conclusion
+
+This analysis shows how national registry data can reveal meaningful patterns in cancer outcomes.  
+Using SEER data from 2004–2015, I found that **earlier stage**, **smaller tumors**, and **fewer positive nodes** are consistently linked to better two-year survival in lung and bronchus cancer.  
+
+These results confirm the importance of early screening and detection. They also show how accessible statistical tools, such as R, can turn large public datasets into clear, actionable insights for healthcare research and decision-making.
+
+```{r}
+# --- EXPORT CLEAN DATA FOR POWER BI ---
+
+# Recreate survival field if not present
+if (!"survived_24m" %in% names(seer_lung)) {
+  seer_lung <- seer_lung %>%
+    mutate(
+      surv_months = suppressWarnings(as.numeric(surv_months)),
+      survived_24m_num = ifelse(!is.na(surv_months) & surv_months >= 24, 1L, 0L),
+      survived_24m = factor(survived_24m_num, levels = c(0,1), labels = c("No","Yes"))
+    ) %>%
+    select(-survived_24m_num)
+}
+
+# 1. Full dataset (optional, for reference)
+write.csv(seer_lung, "seer_lung_clean.csv", row.names = FALSE)
+
+# 2. Stage counts
+seer_stage_counts <- seer_lung %>%
+  count(stage_sum)
+write.csv(seer_stage_counts, "stage_counts.csv", row.names = FALSE)
+
+# 3. 2-Year survival proportions by stage
+seer_survival_summary <- seer_lung %>%
+  filter(!is.na(stage_sum), !is.na(survived_24m)) %>%
+  group_by(stage_sum, survived_24m) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  mutate(Percent = round(100 * n / sum(n), 1))
+write.csv(seer_survival_summary, "survival_by_stage.csv", row.names = FALSE)
+
+# 4. Logistic regression results (odds ratios, etc.)
+glm_export <- glm_results %>%
+  select(term, estimate, conf.low, conf.high, p.value) %>%
+  rename(
+    Predictor = term,
+    Odds_Ratio = estimate,
+    Lower_95_CI = conf.low,
+    Upper_95_CI = conf.high,
+    P_value = p.value
+  )
+write.csv(glm_export, "logistic_regression_results.csv", row.names = FALSE)
+
+# 5. Demographics (sex & race distribution)
+seer_demo <- seer_lung %>%
+  count(sex, race)
+write.csv(seer_demo, "demographics_counts.csv", row.names = FALSE)
+
+message("✅ Export complete: CSV files saved in your working directory.")
+
+```
+
