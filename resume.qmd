@@ -10,21 +10,33 @@ title: "Resume"
 ::: {.resume-layout}
 ::: {.resume-viewer}
 <iframe class="resume-frame" src="files/resume.pdf#view=FitH" title="Markuss Saule Resume"></iframe>
-<p class="resume-note">If the embedded viewer does not load in your browser, use the "Open Resume PDF" button above.</p>
+<p class="resume-note">If the embedded viewer does not load in your browser, open the PDF directly with the button above.</p>
 :::
 
 ::: {.resume-timeline}
 ## Experience Timeline
 
-<div class="timeline-item"><h4>2026 - IT Project Management Intern, Volvo Group</h4><p>Selected for a summer role supporting project execution, cross-functional delivery, and operational outcomes in a global enterprise environment.</p></div>
-<div class="timeline-item"><h4>2025-2026 - Analytics and ML Portfolio Development</h4><p>Built end-to-end analytics projects across healthcare operations, fraud detection, forecasting, and optimization with executive-ready storytelling.</p></div>
-<div class="timeline-item"><h4>Academic Focus - Business Analytics and Data Science</h4><p>Applied quantitative analysis, modeling, and dashboarding to real datasets with emphasis on business relevance and implementation.</p></div>
+<div class="timeline-item"><h4>Incoming 2026 - Volvo Group, Business Intelligence and Analytics Intern</h4><ul><li>Supporting internal analytics for operational decision-making in enterprise environments.</li><li>Expected focus: SQL workflows, KPI design, BI reporting, and performance diagnostics.</li></ul></div>
 
-## Core Strengths
+<div class="timeline-item"><h4>Oct 2024 - Present: BYU-Idaho Online Employment and Scheduling, Data and Campaign Analytics Coordinator</h4><ul><li>Optimized a $4,000 Meta campaign and generated 1,150+ qualified applicants.</li><li>Built KPI dashboards that increased hiring engagement by 320%.</li><li>Designed an AI-assisted screening workflow for 1,000+ applicants.</li></ul></div>
 
-- Translating technical findings into clear strategic decisions
-- Building reliable analytics pipelines from raw data to insight
-- Creating persuasive dashboards and narratives for stakeholders
-- Prioritizing measurable impact over purely academic analysis
+<div class="timeline-item"><h4>Jun 2025 - Sep 2025: Fresno State University Sports, Digital Data and Insights Coordinator</h4><ul><li>Built a sponsor scoring model for 350+ prospects using fit and outreach metrics.</li><li>Automated dashboards that reduced weekly reporting time by 70%.</li><li>Guided multi-channel strategy using performance segmentation across 4+ channels.</li></ul></div>
+
+<div class="timeline-item"><h4>Aug 2023 - Jul 2024: American Councils (US State Department), City Lead and Project Manager</h4><ul><li>Tracked participation and demographic data for 550+ program applicants.</li><li>Facilitated six data-informed leadership workshops with measurement loops.</li><li>Produced structured cross-border reporting for grant-compliance workflows.</li></ul></div>
+
+<div class="timeline-item"><h4>Jun 2021 - Oct 2021: Ministry of Health of Latvia, Marketing and Analytics Intern</h4><ul><li>Analyzed vaccination trends for a national COVID campaign reaching 20,000+ people.</li><li>Aligned insight-sharing across three departments to improve campaign precision.</li></ul></div>
+
+## Education and Credentials
+
+- BYU-Idaho: BS Business Analytics (Apr 2027 target), 4.0 GPA
+- Minors: Statistics, Supply Chain Management
+- Certifications: Google BI, Google PM, Google Digital Marketing and E-commerce, IBM Business Analyst, DataCamp SQL Associate
+
+## Project Signature
+
+- Fraud modeling plus blockchain audit architecture for healthcare claims
+- Simulation-led staffing optimization for fulfillment operations
+- Readmission risk modeling with SQL, R, and BI integration
+- 114K+ case survival analysis on SEER lung cancer data
 :::
 :::

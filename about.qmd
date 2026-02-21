@@ -2,29 +2,41 @@
 title: "About"
 ---
 
-## What I Do
+## Background
 
-I help organizations make better decisions with data, fast.
+I am a Business Analytics student at BYU-Idaho (4.0 GPA) building a long-term career at the intersection of analytics, operations, and systems strategy. My academic path is deliberately technical and operational: Business Analytics major with minors in Statistics and Supply Chain Management.
 
-My work sits at the intersection of business analytics, machine learning, and operational strategy. I build systems that do more than explain the past; they guide the next best action with clarity and confidence.
+## What Drives My Work
 
-## How I Work
+I think in systems:
 
-- I start with the decision, not the dashboard.
-- I prioritize business impact over technical theater.
-- I design outputs that leaders can trust and teams can execute.
+- bottlenecks
+- risk surfaces
+- thresholds for intervention
+- tradeoffs under real constraints
 
-## Domains I Care About
+I am not interested in surface-level reporting. I am interested in building analytics that change decisions.
 
-- Healthcare operations and patient access
-- Fraud detection and risk analytics
-- Forecasting and resource optimization
-- Executive storytelling with data
+Healthcare impact is personal for me. Family health challenges shaped how I think about meaningful work. That is why I am deeply committed to operational and platform-level analytics that improve patient outcomes and system reliability.
 
-## Why Teams Work With Me
+## Technical Profile
 
-I combine technical depth with business communication. That means fewer black-box deliverables and more decision tools that stakeholders actually use.
+- Python: pandas, NumPy, scikit-learn, XGBoost, SHAP, simulation
+- SQL: joins, CTEs, normalization, optimization, analytics views
+- R: tidyverse, regression, statistical modeling
+- BI: Power BI (DAX, decomposition trees, KPI design), Excel forecasting
+- Systems: ETL workflows, relational schema design, reproducible pipelines
 
-If your team needs analytics that are practical, explainable, and outcome-oriented, we should connect.
+## Working Style
+
+- high ownership
+- high intensity
+- strategic and long-horizon
+- values-driven and impact-focused
+- most effective in autonomous, complex build environments
+
+## One-Line Identity
+
+Data and analytics builder designing decision-grade systems for complex organizations, with a focus on operational risk, healthcare impact, and systems thinking.
 
 [Connect on LinkedIn](https://www.linkedin.com/in/markuss-saule/)

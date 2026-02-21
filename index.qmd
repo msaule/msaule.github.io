@@ -8,57 +8,70 @@ title: ""
 
 ### Markuss Saule
 
-`Business Analytics` `Data Science` `Machine Learning`
+<div class="identity-line">Data and Analytics Specialist</div>
 
-I design analytics products that turn complexity into clear business action.
+`Business Analytics` `Statistics` `Supply Chain Systems`
+
+I am a systems-first analytics builder focused on operational risk, bottlenecks, and decision thresholds in complex organizations.
 
 <div class="profile-links">
 <a class="btn-primary" href="https://www.linkedin.com/in/markuss-saule/" target="_blank" rel="noopener">LinkedIn</a>
-<a class="btn-ghost" href="files/resume.pdf" target="_blank" rel="noopener">Download Resume</a>
+<a class="btn-ghost" href="files/resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
 </div>
 
 <div class="profile-meta">
-<div><span>Focus</span><strong>Healthcare Ops</strong></div>
-<div><span>Strength</span><strong>Decision Intelligence</strong></div>
-<div><span>Stack</span><strong>Python, SQL, R, Power BI</strong></div>
-<div><span>Approach</span><strong>Executive-ready storytelling</strong></div>
+<div><span>GPA</span><strong>4.0</strong></div>
+<div><span>Degree</span><strong>BS Business Analytics</strong></div>
+<div><span>Minors</span><strong>Statistics, Supply Chain</strong></div>
+<div><span>Core Stack</span><strong>Python, SQL, R, Power BI</strong></div>
 </div>
 :::
 
 ::: {.home-main}
 ::: {.hero-panel}
-<div class="kicker">Healthcare Operations Analytics | Risk Intelligence | Applied Machine Learning</div>
+<div class="kicker">Decision-Grade Analytics for Complex Systems</div>
 
-# I build analytics systems leaders can act on.
+# I build decision engines, not decorative dashboards.
 
-From forecasting and fraud detection to operations optimization, I deliver work that improves throughput, reduces risk, and strengthens strategic decisions. My projects are engineered for clarity: every model, dashboard, and recommendation is built to answer one question, **what should the business do next?**
+I am a Business Analytics student at BYU-Idaho building high-consequence analytics for healthcare, logistics, and enterprise operations. My work is designed for environments where tradeoffs matter and decisions carry real cost.
+
+Healthcare is personal to me. Family health challenges shaped how I define impact, and why I care about platform-level systems that improve outcomes at scale.
 
 <div class="hero-actions">
 <a class="btn-primary" href="projects.html">View Projects</a>
-<a class="btn-ghost" href="resume.html">Open Resume</a>
+<a class="btn-ghost" href="resume.html">Experience Timeline</a>
 </div>
 :::
 
-## Core Capabilities
+## Operating Doctrine
 
-::: {.skill-grid}
-<div class="skill-card"><h4>Decision-Ready Dashboards</h4><p>Executive-facing analytics that prioritize action, not noise.</p></div>
-<div class="skill-card"><h4>Predictive Modeling</h4><p>Forecasting and risk models aligned to measurable KPIs.</p></div>
-<div class="skill-card"><h4>Fraud and Risk Analytics</h4><p>Detection pipelines with explainability and operational usability.</p></div>
-<div class="skill-card"><h4>Healthcare Optimization</h4><p>Capacity, scheduling, and access improvements with data-backed plans.</p></div>
+::: {.operating-grid}
+<div class="op-card"><h4>Systems First</h4><p>I model the full system before choosing metrics. Local optimization without systems context is noise.</p></div>
+<div class="op-card"><h4>Risk Explicitly</h4><p>I surface thresholds, failure modes, and confidence bounds so leaders can act under uncertainty.</p></div>
+<div class="op-card"><h4>Bottlenecks Before Features</h4><p>I prioritize constraints that limit throughput, access, and quality before adding complexity.</p></div>
+<div class="op-card"><h4>Tradeoffs Over Vanity KPIs</h4><p>I design analytics around decision consequences, not dashboard aesthetics.</p></div>
 :::
+
+## Selected Outcomes
+
+<div class="metric-strip">
+<div class="metric-pill"><strong>1,150+</strong><span>Qualified applicants from optimized Meta campaigns</span></div>
+<div class="metric-pill"><strong>320%</strong><span>Hiring engagement lift from KPI dashboarding</span></div>
+<div class="metric-pill"><strong>70%</strong><span>Reporting time reduction via automation</span></div>
+<div class="metric-pill"><strong>114K+</strong><span>SEER patient records modeled for survival analysis</span></div>
+</div>
 
 ## Featured Projects
 
 ::: {.project-grid}
-<a class="project-card" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment simulation visual"><div class="project-body"><div class="card-title">Fulfillment Center Risk Simulation and Staffing Optimization</div><p>Discrete-event simulation to improve staffing resilience and service-level performance.</p><div class="chips"><span class="chip">Python</span><span class="chip">SimPy</span><span class="chip">Power BI</span></div></div></a>
-<a class="project-card" href="projects/market-basket.html"><img class="project-thumb" src="images/projects/market-basket/cover.png" alt="Market basket analysis chart"><div class="project-body"><div class="card-title">Market Basket Analysis: What Snacks Are Bought Together?</div><p>Association-rule analytics that surface cross-sell opportunities and product bundles.</p><div class="chips"><span class="chip">Python</span><span class="chip">Apriori</span><span class="chip">Retail</span></div></div></a>
-<a class="project-card" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain fraud architecture"><div class="project-body"><div class="card-title">Blockchain + Machine Learning Healthcare Fraud Ledger</div><p>Fraud scoring plus immutable audit records for transparent healthcare oversight.</p><div class="chips"><span class="chip">Python</span><span class="chip">ML</span><span class="chip">Blockchain</span></div></div></a>
-<a class="project-card" href="projects/insurance-fraud.html"><img class="project-thumb" src="images/projects/insurance-fraud/cover.png" alt="Insurance model performance chart"><div class="project-body"><div class="card-title">Insurance Fraud Detection</div><p>High-performing fraud models with explainability for investigation prioritization.</p><div class="chips"><span class="chip">Scikit-Learn</span><span class="chip">XGBoost</span><span class="chip">SHAP</span></div></div></a>
-<a class="project-card" href="projects/ai-scheduling.html"><img class="project-thumb" src="images/projects/ai-scheduling/cover.png" alt="Scheduling dashboard"><div class="project-body"><div class="card-title">AI-Powered Scheduling and Patient Access Optimization</div><p>Operational dashboard targeting wait-time reduction and access efficiency.</p><div class="chips"><span class="chip">Power BI</span><span class="chip">Healthcare Ops</span><span class="chip">AI</span></div></div></a>
-<a class="project-card" href="projects/readmission.html"><img class="project-thumb" src="images/projects/readmission/cover.png" alt="Readmission database visual"><div class="project-body"><div class="card-title">Hospital Readmission Analytics</div><p>Readmission risk insights across cohorts, outcomes, and equity dimensions.</p><div class="chips"><span class="chip">SQL</span><span class="chip">R</span><span class="chip">Power BI</span></div></div></a>
+<a class="project-card" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment simulation visual"><div class="project-body"><div class="card-title">Fulfillment Center Risk Simulation and Staffing Optimization</div><p>SimPy-based engine with pressure scoring, risk signals, and staffing search for high-load operations.</p><div class="chips"><span class="chip">Python</span><span class="chip">SimPy</span><span class="chip">Optimization</span></div></div></a>
+<a class="project-card" href="projects/market-basket.html"><img class="project-thumb" src="images/projects/market-basket/cover.png" alt="Market basket analysis chart"><div class="project-body"><div class="card-title">Market Basket Analysis: What Snacks Are Bought Together?</div><p>Apriori and association-rule mining on large retail baskets for smarter bundling and merchandising.</p><div class="chips"><span class="chip">Python</span><span class="chip">Apriori</span><span class="chip">Lift/Confidence</span></div></div></a>
+<a class="project-card" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain fraud architecture"><div class="project-body"><div class="card-title">Blockchain + ML Healthcare Fraud Ledger</div><p>XGBoost fraud scoring combined with tamper-evident records for trust and auditability.</p><div class="chips"><span class="chip">XGBoost</span><span class="chip">SHA-256</span><span class="chip">Streamlit</span></div></div></a>
+<a class="project-card" href="projects/insurance-fraud.html"><img class="project-thumb" src="images/projects/insurance-fraud/cover.png" alt="Insurance model performance chart"><div class="project-body"><div class="card-title">Insurance Fraud Detection</div><p>Model comparison from logistic regression to XGBoost with SHAP explainability and deployment artifacts.</p><div class="chips"><span class="chip">scikit-learn</span><span class="chip">XGBoost</span><span class="chip">SHAP</span></div></div></a>
+<a class="project-card" href="projects/ai-scheduling.html"><img class="project-thumb" src="images/projects/ai-scheduling/cover.png" alt="Scheduling dashboard"><div class="project-body"><div class="card-title">AI-Powered Scheduling and Patient Access Optimization</div><p>Healthcare operations dashboard with forecasting, decomposition, and capacity visibility.</p><div class="chips"><span class="chip">Power BI</span><span class="chip">Forecasting</span><span class="chip">Healthcare Ops</span></div></div></a>
+<a class="project-card" href="projects/readmission.html"><img class="project-thumb" src="images/projects/readmission/cover.png" alt="Readmission database visual"><div class="project-body"><div class="card-title">Hospital Readmission Analytics</div><p>SQL schema design + R modeling + BI outputs to isolate readmission risk drivers and equity patterns.</p><div class="chips"><span class="chip">SQL</span><span class="chip">R</span><span class="chip">Power BI</span></div></div></a>
 :::
 
-<div class="center-link"><a class="btn-ghost" href="projects.html">Explore all projects</a></div>
+<div class="center-link"><a class="btn-ghost" href="projects.html">See full project archive</a></div>
 :::
 :::
