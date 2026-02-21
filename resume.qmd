@@ -2,14 +2,29 @@
 title: "Resume"
 ---
 
-Download resume: [PDF](files/resume.pdf)
+<div class="resume-actions">
+<a class="btn-primary" href="files/resume.pdf" target="_blank" rel="noopener">Open Resume PDF</a>
+<a class="btn-ghost" href="https://www.linkedin.com/in/markuss-saule/" target="_blank" rel="noopener">LinkedIn Profile</a>
+</div>
 
-## Summary
+::: {.resume-layout}
+::: {.resume-viewer}
+<iframe class="resume-frame" src="files/resume.pdf#view=FitH" title="Markuss Saule Resume"></iframe>
+<p class="resume-note">If the embedded viewer does not load in your browser, use the "Open Resume PDF" button above.</p>
+:::
 
-Business analytics and data science student focused on high-impact ML and decision support systems.
+::: {.resume-timeline}
+## Experience Timeline
 
-## Experience Highlights
+<div class="timeline-item"><h4>2026 - IT Project Management Intern, Volvo Group</h4><p>Selected for a summer role supporting project execution, cross-functional delivery, and operational outcomes in a global enterprise environment.</p></div>
+<div class="timeline-item"><h4>2025-2026 - Analytics and ML Portfolio Development</h4><p>Built end-to-end analytics projects across healthcare operations, fraud detection, forecasting, and optimization with executive-ready storytelling.</p></div>
+<div class="timeline-item"><h4>Academic Focus - Business Analytics and Data Science</h4><p>Applied quantitative analysis, modeling, and dashboarding to real datasets with emphasis on business relevance and implementation.</p></div>
 
-- Built analytics dashboards and operational forecasting workflows.
-- Developed fraud detection and healthcare optimization projects.
-- Presented decision-ready findings to business stakeholders.
+## Core Strengths
+
+- Translating technical findings into clear strategic decisions
+- Building reliable analytics pipelines from raw data to insight
+- Creating persuasive dashboards and narratives for stakeholders
+- Prioritizing measurable impact over purely academic analysis
+:::
+:::

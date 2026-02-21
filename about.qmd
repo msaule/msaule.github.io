@@ -2,6 +2,29 @@
 title: "About"
 ---
 
-I build practical analytics products that connect machine learning outputs to business decisions.
+## What I Do
 
-My focus areas include healthcare operations, fraud analytics, forecasting, and decision optimization. I care about technical rigor, clear communication, and deployable results.
+I help organizations make better decisions with data, fast.
+
+My work sits at the intersection of business analytics, machine learning, and operational strategy. I build systems that do more than explain the past; they guide the next best action with clarity and confidence.
+
+## How I Work
+
+- I start with the decision, not the dashboard.
+- I prioritize business impact over technical theater.
+- I design outputs that leaders can trust and teams can execute.
+
+## Domains I Care About
+
+- Healthcare operations and patient access
+- Fraud detection and risk analytics
+- Forecasting and resource optimization
+- Executive storytelling with data
+
+## Why Teams Work With Me
+
+I combine technical depth with business communication. That means fewer black-box deliverables and more decision tools that stakeholders actually use.
+
+If your team needs analytics that are practical, explainable, and outcome-oriented, we should connect.
+
+[Connect on LinkedIn](https://www.linkedin.com/in/markuss-saule/)

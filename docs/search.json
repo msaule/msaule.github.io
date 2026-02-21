@@ -599,49 +599,84 @@
     "href": "resume.html",
     "title": "Resume",
     "section": "",
-    "text": "Download resume: PDF"
+    "text": "Open Resume PDF LinkedIn Profile"
   },
   {
-    "objectID": "resume.html#summary",
-    "href": "resume.html#summary",
+    "objectID": "resume.html#experience-timeline",
+    "href": "resume.html#experience-timeline",
     "title": "Resume",
-    "section": "Summary",
-    "text": "Summary\nBusiness analytics and data science student focused on high-impact ML and decision support systems."
+    "section": "Experience Timeline",
+    "text": "Experience Timeline\n\n\n2026 - IT Project Management Intern, Volvo Group\n\n\nSelected for a summer role supporting project execution, cross-functional delivery, and operational outcomes in a global enterprise environment.\n\n\n\n\n2025-2026 - Analytics and ML Portfolio Development\n\n\nBuilt end-to-end analytics projects across healthcare operations, fraud detection, forecasting, and optimization with executive-ready storytelling.\n\n\n\n\nAcademic Focus - Business Analytics and Data Science\n\n\nApplied quantitative analysis, modeling, and dashboarding to real datasets with emphasis on business relevance and implementation."
   },
   {
-    "objectID": "resume.html#experience-highlights",
-    "href": "resume.html#experience-highlights",
+    "objectID": "resume.html#core-strengths",
+    "href": "resume.html#core-strengths",
     "title": "Resume",
-    "section": "Experience Highlights",
-    "text": "Experience Highlights\n\nBuilt analytics dashboards and operational forecasting workflows.\nDeveloped fraud detection and healthcare optimization projects.\nPresented decision-ready findings to business stakeholders."
+    "section": "Core Strengths",
+    "text": "Core Strengths\n\nTranslating technical findings into clear strategic decisions\nBuilding reliable analytics pipelines from raw data to insight\nCreating persuasive dashboards and narratives for stakeholders\nPrioritizing measurable impact over purely academic analysis"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Hi, I’m Markuss.",
+    "title": "I build analytics systems leaders can act on.",
     "section": "",
-    "text": "Business Analytics - Data Science - ML\n\n\n\nI build decision-ready analytics and practical machine learning solutions that help teams move faster. My work spans dashboards, forecasting, fraud detection, optimization, and healthcare operations analytics. I focus on clear storytelling, measurable business impact, and models that stakeholders can trust.\n\nView Projects Resume\n\n\n\n\n\n\nFocusAnalytics + ML\n\n\nToolsPython, SQL, R, Power BI\n\n\nStyleFast, clean, explainable"
+    "text": "Business Analytics Data Science Machine Learning\nI design analytics products that turn complexity into clear business action.\n\nLinkedIn Download Resume\n\n\n\nFocusHealthcare Ops\n\n\nStrengthDecision Intelligence\n\n\nStackPython, SQL, R, Power BI\n\n\nApproachExecutive-ready storytelling\n\n\n\n\n\n\n\nHealthcare Operations Analytics | Risk Intelligence | Applied Machine Learning\n\n\n\nFrom forecasting and fraud detection to operations optimization, I deliver work that improves throughput, reduces risk, and strengthens strategic decisions. My projects are engineered for clarity: every model, dashboard, and recommendation is built to answer one question, what should the business do next?\n\nView Projects Open Resume\n\n\n\n\n\n\n\n\n\nExecutive-facing analytics that prioritize action, not noise.\n\n\n\n\n\nForecasting and risk models aligned to measurable KPIs.\n\n\n\n\n\nDetection pipelines with explainability and operational usability.\n\n\n\n\n\nCapacity, scheduling, and access improvements with data-backed plans.\n\n\n\n\n\n\n\n\n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nDiscrete-event simulation to improve staffing resilience and service-level performance.\n\n\nPythonSimPyPower BI\n\n\n \n\n\nMarket Basket Analysis: What Snacks Are Bought Together?\n\n\nAssociation-rule analytics that surface cross-sell opportunities and product bundles.\n\n\nPythonAprioriRetail\n\n\n \n\n\nBlockchain + Machine Learning Healthcare Fraud Ledger\n\n\nFraud scoring plus immutable audit records for transparent healthcare oversight.\n\n\nPythonMLBlockchain\n\n\n \n\n\nInsurance Fraud Detection\n\n\nHigh-performing fraud models with explainability for investigation prioritization.\n\n\nScikit-LearnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization\n\n\nOperational dashboard targeting wait-time reduction and access efficiency.\n\n\nPower BIHealthcare OpsAI\n\n\n \n\n\nHospital Readmission Analytics\n\n\nReadmission risk insights across cohorts, outcomes, and equity dimensions.\n\n\nSQLRPower BI\n\n\n\n\n\nExplore all projects"
+  },
+  {
+    "objectID": "index.html#core-capabilities",
+    "href": "index.html#core-capabilities",
+    "title": "I build analytics systems leaders can act on.",
+    "section": "",
+    "text": "Executive-facing analytics that prioritize action, not noise.\n\n\n\n\n\nForecasting and risk models aligned to measurable KPIs.\n\n\n\n\n\nDetection pipelines with explainability and operational usability.\n\n\n\n\n\nCapacity, scheduling, and access improvements with data-backed plans."
   },
   {
     "objectID": "index.html#featured-projects",
     "href": "index.html#featured-projects",
-    "title": "Hi, I’m Markuss.",
-    "section": "Featured Projects",
-    "text": "Featured Projects\n\n\n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nDiscrete-event simulation for staffing pressure, throughput risk, and shift planning decisions.\n\n\nPythonSimPyPower BI\n\n\n \n\n\nMarket Basket Analysis: What Snacks Are Bought Together?\n\n\nAssociation-rule mining to identify product bundles that increase cross-sell opportunities.\n\n\nPythonAprioriRetail\n\n\n \n\n\nBlockchain + Machine Learning Healthcare Fraud Ledger\n\n\nFraud risk scoring with immutable audit trails for transparent healthcare claim governance.\n\n\nPythonMLBlockchain\n\n\n \n\n\nInsurance Fraud Detection\n\n\nClassification pipeline with explainability for triage and investigator prioritization.\n\n\nScikit-LearnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization Dashboard\n\n\nOperational dashboard to reduce delays, improve utilization, and improve access metrics.\n\n\nPower BIOperationsHealthcare\n\n\n \n\n\nHospital Readmission Analytics\n\n\nSQL plus R pipeline on readmissions, risk cohorts, and outcomes reporting for leadership.\n\n\nSQLRPower BI\n\n\n\n\n\nSee all projects"
+    "title": "I build analytics systems leaders can act on.",
+    "section": "",
+    "text": "Fulfillment Center Risk Simulation and Staffing Optimization\n\n\nDiscrete-event simulation to improve staffing resilience and service-level performance.\n\n\nPythonSimPyPower BI\n\n\n \n\n\nMarket Basket Analysis: What Snacks Are Bought Together?\n\n\nAssociation-rule analytics that surface cross-sell opportunities and product bundles.\n\n\nPythonAprioriRetail\n\n\n \n\n\nBlockchain + Machine Learning Healthcare Fraud Ledger\n\n\nFraud scoring plus immutable audit records for transparent healthcare oversight.\n\n\nPythonMLBlockchain\n\n\n \n\n\nInsurance Fraud Detection\n\n\nHigh-performing fraud models with explainability for investigation prioritization.\n\n\nScikit-LearnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization\n\n\nOperational dashboard targeting wait-time reduction and access efficiency.\n\n\nPower BIHealthcare OpsAI\n\n\n \n\n\nHospital Readmission Analytics\n\n\nReadmission risk insights across cohorts, outcomes, and equity dimensions.\n\n\nSQLRPower BI\n\n\n\n\n\nExplore all projects"
   },
   {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "A selection of analytics and machine learning projects across operations, finance, healthcare, and risk.\n\n\n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nPython + SimPy simulation and staffing optimization workflow.\n\n\nPythonSimPyPower BI\n\n\n \n\n\nMarket Basket Analysis: What Snacks Are Bought Together?\n\n\nAssociation rules to support product pairing strategy.\n\n\nPythonAprioriRetail\n\n\n \n\n\nBlockchain + Machine Learning Healthcare Fraud Ledger\n\n\nFraud signals with transparent ledger-backed tracking.\n\n\nPythonMLBlockchain\n\n\n \n\n\nInsurance Fraud Detection\n\n\nFraud classifier with SHAP-based explainability.\n\n\nScikit-LearnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization Dashboard\n\n\nAccess optimization and operational KPI monitoring.\n\n\nPower BIHealthcareOps\n\n\n \n\n\nHospital Financial Forecasting Dashboard\n\n\nDepartment-level forecast model in Excel.\n\n\nExcelForecastingFinance\n\n\n \n\n\nEducation, Gender and Wage Inequality (1973-2022)\n\n\nLong-range trend analysis on wage disparity drivers.\n\n\nEconomicsRPolicy\n\n\n \n\n\nBank Loan Risk Rating Dashboard\n\n\nLoan portfolio risk view and borrower segmentation.\n\n\nExcelRiskDashboard\n\n\n \n\n\nLung Cancer Survival (SEER 2004-2015)\n\n\nOutcome analysis by demographics and clinical factors.\n\n\nRPower BIHealthcare\n\n\n \n\n\nHospital Readmission Analytics\n\n\nReadmission trends, risk factors, and equity slices.\n\n\nSQLRPower BI\n\n\n \n\n\nHospital Database System\n\n\nNormalized SQL schema and reporting views for operations.\n\n\nSQLDatabaseETL"
+    "text": "Each project below is designed around business impact: clearer decisions, lower risk, stronger performance.\n\n\n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nSimulation-driven staffing strategy and throughput risk mitigation.\n\n\nPythonSimPyPower BI\n\n\n \n\n\nMarket Basket Analysis: What Snacks Are Bought Together?\n\n\nProduct affinity mining to inform promotion and shelf strategy.\n\n\nPythonAprioriRetail\n\n\n \n\n\nBlockchain + Machine Learning Healthcare Fraud Ledger\n\n\nSecure, traceable fraud workflows with predictive risk signals.\n\n\nPythonMLBlockchain\n\n\n \n\n\nInsurance Fraud Detection\n\n\nModel comparison and explainability for claims fraud triage.\n\n\nScikit-LearnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization\n\n\nCapacity and scheduling intelligence for healthcare operations.\n\n\nPower BIHealthcareOperations\n\n\n \n\n\nHospital Financial Forecasting Dashboard\n\n\nDepartment-level forecasting to support budget and planning decisions.\n\n\nExcelForecastingFinance\n\n\n \n\n\nEducation, Gender and Wage Inequality (1973-2022)\n\n\nLong-horizon inequality analysis with policy-relevant segmentation.\n\n\nEconomicsRPolicy\n\n\n \n\n\nBank Loan Risk Rating Dashboard\n\n\nPortfolio risk visibility and borrower-level decision support.\n\n\nExcelRiskDashboard\n\n\n \n\n\nLung Cancer Survival (SEER 2004-2015)\n\n\nClinical and demographic outcome analysis for survival insights.\n\n\nRPower BIHealthcare\n\n\n \n\n\nHospital Readmission Analytics\n\n\nReadmission benchmarking and equity-aware operational reporting.\n\n\nSQLRPower BI\n\n\n \n\n\nHospital Database System\n\n\nNormalized relational schema and reporting-ready SQL foundations.\n\n\nSQLDatabaseETL"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "I build practical analytics products that connect machine learning outputs to business decisions.\nMy focus areas include healthcare operations, fraud analytics, forecasting, and decision optimization. I care about technical rigor, clear communication, and deployable results."
+    "text": "I help organizations make better decisions with data, fast.\nMy work sits at the intersection of business analytics, machine learning, and operational strategy. I build systems that do more than explain the past; they guide the next best action with clarity and confidence."
+  },
+  {
+    "objectID": "about.html#what-i-do",
+    "href": "about.html#what-i-do",
+    "title": "About",
+    "section": "",
+    "text": "I help organizations make better decisions with data, fast.\nMy work sits at the intersection of business analytics, machine learning, and operational strategy. I build systems that do more than explain the past; they guide the next best action with clarity and confidence."
+  },
+  {
+    "objectID": "about.html#how-i-work",
+    "href": "about.html#how-i-work",
+    "title": "About",
+    "section": "How I Work",
+    "text": "How I Work\n\nI start with the decision, not the dashboard.\nI prioritize business impact over technical theater.\nI design outputs that leaders can trust and teams can execute."
+  },
+  {
+    "objectID": "about.html#domains-i-care-about",
+    "href": "about.html#domains-i-care-about",
+    "title": "About",
+    "section": "Domains I Care About",
+    "text": "Domains I Care About\n\nHealthcare operations and patient access\nFraud detection and risk analytics\nForecasting and resource optimization\nExecutive storytelling with data"
+  },
+  {
+    "objectID": "about.html#why-teams-work-with-me",
+    "href": "about.html#why-teams-work-with-me",
+    "title": "About",
+    "section": "Why Teams Work With Me",
+    "text": "Why Teams Work With Me\nI combine technical depth with business communication. That means fewer black-box deliverables and more decision tools that stakeholders actually use.\nIf your team needs analytics that are practical, explainable, and outcome-oriented, we should connect.\nConnect on LinkedIn"
   },
   {
     "objectID": "projects/bank-loan.html",

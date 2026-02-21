@@ -22,6 +22,8 @@ website:
       - text: About
         file: about.qmd
     right:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/markuss-saule/
       - icon: github
         href: https://github.com/msaule
 
