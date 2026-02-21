@@ -1,4 +1,4 @@
----
+ï»¿---
 title: "AI-Powered Scheduling & Patient Access Optimization Dashboard"
 ---
 
@@ -66,7 +66,7 @@ Built with **Copilot integration**, this project simulates how healthcare system
 
 ### Dashboard Design
 
-### **Page 1 €” Access Overview Dashboard: Operational Summary**
+### **Page 1 - Access Overview Dashboard: Operational Summary**
 
 ![Screenshot 2025-10-30 213821.png](../images/projects/ai-scheduling/Screenshot_2025-10-30_213821.png)
 
@@ -86,21 +86,21 @@ Built with **Copilot integration**, this project simulates how healthcare system
 
 ---
 
-### **Page 2 €” AI-Driven Scheduling Insights & Optimization Scenarios**
+### **Page 2 - AI-Driven Scheduling Insights & Optimization Scenarios**
 
 ![Screenshot 2025-10-30 213839.png](../images/projects/ai-scheduling/Screenshot_2025-10-30_213839.png)
 
-**Purpose:** Explore €œwhy€ delays happen and €œhow€ to improve scheduling efficiency.
+**Purpose:** Explore -why- delays happen and -how- to improve scheduling efficiency.
 
 **Key Features:**
 
-- **Key Influencers Visual:** Reveals that Self-Pay patients and April appointments increase the likelihood of 15€“21-day waits by 13€“18%.
-- **Decomposition Tree:** Explores utilization patterns by Department †’ Provider †’ Visit Type.
+- **Key Influencers Visual:** Reveals that Self-Pay patients and April appointments increase the likelihood of 15-21-day waits by 13-18%.
+- **Decomposition Tree:** Explores utilization patterns by Department - Provider - Visit Type.
 - **AI Narrative Section:** Copilot summarizes insights and suggests process improvements.
 
 **Copilot-Generated Example Insight:**
 
-> €œTelehealth appointments reduce average wait times by 1.6 days. Self-Pay segments show 13% higher delay risk. Recommend prioritizing Q2 Telehealth capacity for Pediatrics and automating Self-Pay verification workflows.€
+> -Telehealth appointments reduce average wait times by 1.6 days. Self-Pay segments show 13% higher delay risk. Recommend prioritizing Q2 Telehealth capacity for Pediatrics and automating Self-Pay verification workflows.-
 > 
 
 ---

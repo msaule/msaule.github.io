@@ -1,4 +1,4 @@
----
+Ôªø---
 title: "Hospital Financial Forecasting Dashboard (Excel)"
 ---
 
@@ -42,14 +42,14 @@ The goal was to design and build a fully functional **Hospital Financial Forecas
 
 The workbook models how departments in a hospital (Cardiology, Orthopedics, ICU, Oncology, and General Surgery) perform financially under changing operational and payer-mix conditions.
 
-ItÄôs built from scratch using advanced Excel formulas, structured references, dynamic arrays, and user-driven controls, and is designed to feel like a real-world analytics tool that leadership could use to plan, forecast, and present to executives.
+It-s built from scratch using advanced Excel formulas, structured references, dynamic arrays, and user-driven controls, and is designed to feel like a real-world analytics tool that leadership could use to plan, forecast, and present to executives.
 
 ---
 
 ## Project Objectives
 
 - Build an **interactive dashboard** for hospital executives to view departmental and global KPIs.
-- Allow users to adjust **operational and financial levers** to simulate different Äúwhat-ifÄù scenarios.
+- Allow users to adjust **operational and financial levers** to simulate different -what-if- scenarios.
 - Automate all forecasts and metrics through structured Excel logic, with no manual updates.
 - Ensure the final dashboard is **clean, intuitive, and presentation-ready.**
 
@@ -61,7 +61,7 @@ The model is divided into four main sheets, following best practices for profess
 
 | Sheet | Purpose |
 | --- | --- |
-| `INPUT_DATA` | Contains all baseline monthly data (Jan 2023ÄìSept 2025). |
+| `INPUT_DATA` | Contains all baseline monthly data (Jan 2023-Sept 2025). |
 | `MODEL_ASSUMPTIONS` | Houses user inputs like cost inflation, readmission reduction, and payer adjustments. |
 | `CALCULATIONS` | Performs all forecast logic using dynamic, structured formulas. |
 | `DASHBOARD` | Displays the final results visually through KPIs, charts, and tables. |
@@ -98,11 +98,11 @@ This lets analysts evaluate how revenue would change if, for example, Medicaid v
 
 In the `CALCULATIONS` sheet, baseline data feeds through formulas to calculate:
 
-- **Forecasted Volume** Üí accounts for volume growth and compounding over time
-- **Forecasted Cost/Patient** Üí inflation-adjusted using user inputs
-- **Forecasted Readmission Rate** Üí reduced based on target efficiency
-- **Forecasted Reimbursement %** Üí adjusted by payer mix assumptions
-- **Forecasted Revenue, Cost, Margin, and Savings** Üí fully automated through SUMIFS and structured table logic
+- **Forecasted Volume** - accounts for volume growth and compounding over time
+- **Forecasted Cost/Patient** - inflation-adjusted using user inputs
+- **Forecasted Readmission Rate** - reduced based on target efficiency
+- **Forecasted Reimbursement %** - adjusted by payer mix assumptions
+- **Forecasted Revenue, Cost, Margin, and Savings** - fully automated through SUMIFS and structured table logic
 
 ![image.png](../images/projects/hospital-forecast/image 1.png)
 
@@ -110,7 +110,7 @@ In the `CALCULATIONS` sheet, baseline data feeds through formulas to calculate:
 
 ### 4. **Dynamic KPIs**
 
-The dashboard displays both **Department-level KPIs** (based on the userÄôs dropdown selection) and **Global Hospital KPIs** for an overall view.
+The dashboard displays both **Department-level KPIs** (based on the user-s dropdown selection) and **Global Hospital KPIs** for an overall view.
 
 | Metric | Description |
 | --- | --- |
@@ -144,7 +144,7 @@ The final dashboard was designed to look and feel like a professional hospital a
 
 ### Department Margin % Comparison
 
-A horizontal bar chart visualizes each departmentÄôs profitability, helping identify the weakest-performing areas.
+A horizontal bar chart visualizes each department-s profitability, helping identify the weakest-performing areas.
 
 ![image.png](../images/projects/hospital-forecast/image 4.png)
 
@@ -168,12 +168,12 @@ A donut chart displays the share of total net revenue across payer categories, o
 
 ## Alerts & Automation
 
-A ÄúPerformance AlertsÄù section automatically updates with contextual warnings, such as:
+A -Performance Alerts- section automatically updates with contextual warnings, such as:
 
 > Department operating at a loss. Review cost drivers.
 > 
 
-This alert is condition-based, triggering when a departmentÄôs forecasted margin is below 0%.
+This alert is condition-based, triggering when a department-s forecasted margin is below 0%.
 
 ![image.png](../images/projects/hospital-forecast/image 7.png)
 
@@ -212,7 +212,7 @@ Automation
 
 This project demonstrates how Excel can be used not just for analysis, but also as a **decision-support tool**.
 
-ItÄôs something that could realistically help a hospitalÄôs finance or operations department run Äúwhat-ifÄù scenarios, forecast costs, and present performance to executives.
+It-s something that could realistically help a hospital-s finance or operations department run -what-if- scenarios, forecast costs, and present performance to executives.
 
 For me, it ties directly into my career focus in **Business Analytics and Data Visualization!**
 
@@ -220,7 +220,7 @@ For me, it ties directly into my career focus in **Business Analytics and Data V
 
 ## Reflection
 
-Building this model pushed me to apply nearly every Excel concept IÄôve learned, from forecasting functions and dynamic ranges to professional dashboard design and data visualization.
+Building this model pushed me to apply nearly every Excel concept I-ve learned, from forecasting functions and dynamic ranges to professional dashboard design and data visualization.
 
 It taught me to think like an analyst, but also like a designer, ensuring that every number on screen not only works, but communicates something clearly.
 

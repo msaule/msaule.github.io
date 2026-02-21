@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Blockchain + Machine Learning Healthcare Fraud Ledger – Markuss Saule</title>
+<title>blockchain-fraud – Markuss Saule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -230,26 +230,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Description: Built a full fraud-scoring and audit system by combining an XGBoost model with a custom Python blockchain ledger. Scored 1,000+ insurance claims for fraud risk, then stored each claim as a tamper-evident block to create a transparent, auditable record of high-risk activity. Designed the entire pipeline end-to-end with scoring, hashing, validation, and a Streamlit dashboard for analysts. Skills Demonstrated: Blockchain, Data Science, Fraud Analytics, Machine Learning, Transparency Project Status: Planning</p>
 </section>
 <section id="why-i-built-this" class="level2">
-<h2 class="anchored" data-anchor-id="why-i-built-this"><strong>💬 Why I Built This</strong></h2>
+<h2 class="anchored" data-anchor-id="why-i-built-this">Why I Built This</h2>
 <p>Healthcare has always been personal for me.</p>
-<p>I grew up around systems that weren��t always transparent or reliable, and I lost my dad partly because of failures in that system. Years later, being treated at Mayo Clinic showed me the opposite, what excellent healthcare feels like when it works the way it should.</p>
+<p>I grew up around systems that weren-t always transparent or reliable, and I lost my dad partly because of failures in that system. Years later, being treated at Mayo Clinic showed me the opposite, what excellent healthcare feels like when it works the way it should.</p>
 <p>Those two experiences shaped how I think about healthcare,</p>
 <p><strong>good systems save lives, and broken ones cost them.</strong></p>
 <p>This project is my way of exploring that intersection using data, machine learning, and even blockchain (yes, actual blockchain, not crypto hype) to build a more transparent, trustworthy way to detect and audit fraudulent healthcare claims.</p>
 <p>I wanted to create something that felt like a <em>real internal tool</em>, not a school assignment. Something with structure, risk scoring, integrity checks, and analytics that someone in healthcare operations could actually use.</p>
 <p>This system takes real insurance claims data from Kaggle, predicts fraud using a trained XGBoost model, and stores each claim inside a custom blockchain ledger I built from scratch.</p>
-<p>Every claim becomes a ��block�� that contains:</p>
+<p>Every claim becomes a -block- that contains:</p>
 <ul>
 <li>key claim metadata</li>
 <li>financial information</li>
-<li>the ML model��s fraud probability</li>
+<li>the ML model-s fraud probability</li>
 <li>timestamp</li>
 <li>SHA-256 hash of the block</li>
-<li>previous block��s hash</li>
+<li>previous block-s hash</li>
 </ul>
 <p>Together, they form a <strong>tamper-evident audit ledger</strong>.</p>
 <p>If someone tries to modify a claim or alter a fraud score, the entire chain breaks.</p>
-<p>That��s the entire point: <strong>trust through structure</strong>.</p>
+<p>That-s the entire point: <strong>trust through structure</strong>.</p>
 <hr>
 <section id="ml-scoring-pipeline" class="level3">
 <h3 class="anchored" data-anchor-id="ml-scoring-pipeline"><strong>1. ML Scoring Pipeline</strong></h3>
@@ -296,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="fraud-ledger-export"><strong>3. Fraud Ledger Export</strong></h3>
 <p>The ledger (1,001 blocks including genesis) is exported to a JSON file:</p>
 <pre><code>data/processed/chain_output.json</code></pre>
-<p>This is the ��source of truth�� for the whole system.</p>
+<p>This is the -source of truth- for the whole system.</p>
 <hr>
 </section>
 <section id="interactive-dashboard" class="level3">
@@ -308,9 +308,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>total exposure</li>
 <li>fraud probability distribution</li>
 <li>a high-risk claims table</li>
-<li>a block explorer (view a single block��s content)</li>
+<li>a block explorer (view a single block-s content)</li>
 </ul>
-<p>It��s not over-engineered, it��s exactly what a fraud analyst would want to look at.</p>
+<p>It-s not over-engineered, it-s exactly what a fraud analyst would want to look at.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/projects/blockchain-fraud/image 2.png" class="img-fluid figure-img"></p>
@@ -324,15 +324,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <hr>
-<p>Working with the full pipeline revealed patterns I never would��ve noticed by just looking at the CSV:</p>
+<p>Working with the full pipeline revealed patterns I never would-ve noticed by just looking at the CSV:</p>
 <ul>
 <li><strong>22.3% of claims were high-risk (&gt;0.70)</strong></li>
 <li><strong>Total financial exposure was ~$52.7M</strong></li>
 <li>Multi-vehicle collisions and single-vehicle collisions were the most common incident types</li>
 <li>Fraud risk varies pretty widely across states</li>
-<li>The top 5 riskiest claims had fraud probabilities between <strong>0.983��0.990</strong></li>
+<li>The top 5 riskiest claims had fraud probabilities between <strong>0.983-0.990</strong></li>
 </ul>
-<p>These aren��t ��perfect�� findings, but they��re real, and they demonstrate how ML + structured auditing can complement each other.</p>
+<p>These aren-t -perfect- findings, but they-re real, and they demonstrate how ML + structured auditing can complement each other.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/projects/blockchain-fraud/image 4.png" class="img-fluid figure-img"></p>
@@ -349,27 +349,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="transparency-matters." class="level3">
 <h3 class="anchored" data-anchor-id="transparency-matters."><strong>2. Transparency matters.</strong></h3>
-<p>Being able to prove that data hasn��t been changed, or detect when it has, matters in healthcare.</p>
+<p>Being able to prove that data hasn-t been changed, or detect when it has, matters in healthcare.</p>
 </section>
 <section id="good-engineering-feels-like-building-trust." class="level3">
 <h3 class="anchored" data-anchor-id="good-engineering-feels-like-building-trust."><strong>3. Good engineering feels like building trust.</strong></h3>
-<p>Hashing, linking, validating - these aren��t ��just code.��</p>
-<p>They��re mechanisms to enforce honesty.</p>
+<p>Hashing, linking, validating - these aren-t -just code.-</p>
+<p>They-re mechanisms to enforce honesty.</p>
 </section>
 <section id="my-best-work-happens-when-it-ties-back-to-something-personal." class="level3">
 <h3 class="anchored" data-anchor-id="my-best-work-happens-when-it-ties-back-to-something-personal."><strong>4. My best work happens when it ties back to something personal.</strong></h3>
 <p>This project meant more because of why I built it.</p>
 <hr>
-<pre><code>app/                    �� pipeline scripts
-blockchain/             �� custom blockchain core
-ml/                     �� model loading + scoring
-models/                 �� trained XGBoost fraud model
-data/raw                �� original claims
-data/processed          �� scored claims + blockchain ledger
-streamlit_app.py        �� dashboard
+<pre><code>app/                    - pipeline scripts
+blockchain/             - custom blockchain core
+ml/                     - model loading + scoring
+models/                 - trained XGBoost fraud model
+data/raw                - original claims
+data/processed          - scored claims + blockchain ledger
+streamlit_app.py        - dashboard
 </code></pre>
 <hr>
-<p>I��d add:</p>
+<p>I-d add:</p>
 <ul>
 <li>provider-level fraud analytics</li>
 <li>real anomaly detection (cluster-based)</li>
@@ -377,9 +377,9 @@ streamlit_app.py        �� dashboard
 <li>a real-time API</li>
 <li>a tamper-detection demo button in the dashboard</li>
 </ul>
-<p>But honestly, for now, I��m happy with where this landed.</p>
+<p>But honestly, for now, I-m happy with where this landed.</p>
 <hr>
-<p>This project started as ��what if I combined ML with a blockchain��</p>
+<p>This project started as -what if I combined ML with a blockchain-</p>
 <p>and ended as something that genuinely reflects what I care about:</p>
 <ul>
 <li>using data to improve healthcare</li>
@@ -387,8 +387,8 @@ streamlit_app.py        �� dashboard
 <li>designing tools that could help real analysts</li>
 <li>and pushing myself beyond just training models</li>
 </ul>
-<p>And I��m proud of it.</p>
-<p>If you want to talk to me about this project or anything related to healthcare, ML, or fraud detection, I��m always open to conversations.</p>
+<p>And I-m proud of it.</p>
+<p>If you want to talk to me about this project or anything related to healthcare, ML, or fraud detection, I-m always open to conversations.</p>
 <p><strong>Markuss Saule</strong></p>
 
 

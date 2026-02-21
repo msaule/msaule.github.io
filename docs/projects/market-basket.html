@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori) – Markuss Saule</title>
+<title>market-basket – Markuss Saule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -195,9 +195,9 @@ ul.task-list li input[type="checkbox"] {
 <p>Description: Built a full Python market basket engine on 3M+ Instacart orders to uncover real snack-pairing behavior. Engineered a sparse matrix, ran Apriori at scale, and extracted high-lift product combinations retailers can use for cross-sell, promotions, and smarter shelf placement. Turned raw transaction data into clear, actionable retail insights. Skills Demonstrated: Data Analysis, Machine Learning, Market Basket Modeling, Python, Retail Analytics Project Status: Planning</p>
 </section>
 <section id="why-i-built-this" class="level2">
-<h2 class="anchored" data-anchor-id="why-i-built-this"><strong>💬 Why I Built This</strong></h2>
+<h2 class="anchored" data-anchor-id="why-i-built-this">Why I Built This</h2>
 <p>This project started with a simple curiosity:</p>
-<p><strong>��When people buy snacks�� what <em>else</em> ends up in the cart with them?��</strong></p>
+<p><strong>-When people buy snacks- what <em>else</em> ends up in the cart with them?-</strong></p>
 <p>It sounds small, but in retail and e-commerce, this question is worth so much money.</p>
 <p>Every product pairing is a potential:</p>
 <ul>
@@ -208,7 +208,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Inventory insight</li>
 </ul>
 <p>I wanted to take a real Instacart dataset (3M+ rows), clean it properly, build a <strong>market basket model</strong>, and extract real <strong>product relationships</strong>.</p>
-<p>This wasn��t just a coding exercise, and it became an end-to-end retail analytics project where I had to handle:</p>
+<p>This wasn-t just a coding exercise, and it became an end-to-end retail analytics project where I had to handle:</p>
 <ul>
 <li>Chunked loading of massive CSVs</li>
 <li>Sparse matrix engineering</li>
@@ -217,7 +217,7 @@ ul.task-list li input[type="checkbox"] {
 <li>And turning raw math into business meaning</li>
 </ul>
 <p>And guess what!</p>
-<p>It ended up being one of the cleanest, most <em>practical</em> data analytics projects I��ve done.</p>
+<p>It ended up being one of the cleanest, most <em>practical</em> data analytics projects I-ve done.</p>
 <hr>
 <p>The raw Instacart tables include products, aisles, departments, and 30M+ order rows. I narrowed the scope to the <strong>snacks</strong> department so the analysis stayed focused and useful.</p>
 <section id="product-lookup-table" class="level3">
@@ -231,7 +231,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>This step gives every <code>product_id</code> a clean name and category, which super important later when rules need to be interpretable.</p>
 <hr>
-<p>The <code>order_products_prior.csv</code> file is huge, so I couldn��t load it in one shot.</p>
+<p>The <code>order_products_prior.csv</code> file is huge, so I couldn-t load it in one shot.</p>
 <p>Instead, I streamed it in <strong>250,000-row chunks</strong>, keeping only rows where the item belonged to the snacks department.</p>
 <p>This reduced millions of rows down to something manageable, while keeping all snack purchases in the dataset.</p>
 <hr>
@@ -244,7 +244,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Speeds up computation</li>
 <li>Produces clearer, more actionable rules</li>
 </ul>
-<p>Then I built a <strong>sparse matrix</strong> (orders × items), with boolean values indicating whether each snack was bought in each order.</p>
+<p>Then I built a <strong>sparse matrix</strong> (orders x items), with boolean values indicating whether each snack was bought in each order.</p>
 <p>This is the backbone of Apriori.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -262,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Why lift?</p>
 <p>Because:</p>
 <blockquote class="blockquote">
-<p>Lift &gt; 1 = ��happens more often together than by chance.��</p>
+<p>Lift &gt; 1 = -happens more often together than by chance.-</p>
 </blockquote>
 <p>Perfect for discovering natural product pairings.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -278,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This chart immediately showed clusters:</p>
 <ul>
 <li>Gluten-free oat granola + gluten-free granola bars</li>
-<li>Annie��s Bunny Fruit Snacks pairings</li>
+<li>Annie-s Bunny Fruit Snacks pairings</li>
 <li>Trail mix + unsalted nuts</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
@@ -322,7 +322,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="d.-snack-network-graph" class="level3">
 <h3 class="anchored" data-anchor-id="d.-snack-network-graph"><strong>D. Snack Network Graph</strong></h3>
 <p>A fun one: nodes = snacks, edges = rules.</p>
-<p>It visualizes ��clusters�� of products that shoppers naturally buy in combinations.</p>
+<p>It visualizes -clusters- of products that shoppers naturally buy in combinations.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/projects/market-basket/image 6.png" class="img-fluid figure-img"></p>
@@ -344,33 +344,33 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="strong-lift-values-reveal-genuine-cross-sell-opportunities." class="level3">
 <h3 class="anchored" data-anchor-id="strong-lift-values-reveal-genuine-cross-sell-opportunities."><strong>3. Strong lift values reveal genuine cross-sell opportunities.</strong></h3>
-<p>Pairs like granola bars + oat granola aren’t random, and they��re real buying habits.</p>
+<p>Pairs like granola bars + oat granola aren’t random, and they-re real buying habits.</p>
 </section>
 <section id="apriori-is-incredibly-practical-when-used-well." class="level3">
 <h3 class="anchored" data-anchor-id="apriori-is-incredibly-practical-when-used-well."><strong>4. Apriori is incredibly practical when used well.</strong></h3>
-<p>Yes, it��s academic on paper.</p>
+<p>Yes, it-s academic on paper.</p>
 <p>But with clean engineering and smart filtering, it uncovers insights marketing teams can use!</p>
 <hr>
-<p>Here��s where this project stops being ��school project�� and becomes <strong>an actual business tool</strong>:</p>
+<p>Here-s where this project stops being -school project- and becomes <strong>an actual business tool</strong>:</p>
 </section>
 <section id="end-cap-optimization" class="level3">
-<h3 class="anchored" data-anchor-id="end-cap-optimization"><strong>�� End-cap Optimization</strong></h3>
+<h3 class="anchored" data-anchor-id="end-cap-optimization"><strong>- End-cap Optimization</strong></h3>
 <p>Stock high-lift pairs together.</p>
 </section>
 <section id="bundles-promo-design" class="level3">
-<h3 class="anchored" data-anchor-id="bundles-promo-design"><strong>�� Bundles &amp; Promo Design</strong></h3>
+<h3 class="anchored" data-anchor-id="bundles-promo-design"><strong>- Bundles &amp; Promo Design</strong></h3>
 <p>Create snack bundles around popular duos.</p>
 </section>
 <section id="recommendation-engine-input" class="level3">
-<h3 class="anchored" data-anchor-id="recommendation-engine-input"><strong>�� Recommendation Engine Input</strong></h3>
-<p>��Frequently Bought Together�� items for e-commerce.</p>
+<h3 class="anchored" data-anchor-id="recommendation-engine-input"><strong>- Recommendation Engine Input</strong></h3>
+<p>-Frequently Bought Together- items for e-commerce.</p>
 </section>
 <section id="inventory-planning" class="level3">
-<h3 class="anchored" data-anchor-id="inventory-planning"><strong>�� Inventory Planning</strong></h3>
+<h3 class="anchored" data-anchor-id="inventory-planning"><strong>- Inventory Planning</strong></h3>
 <p>If product A surges, expect product B to follow.</p>
 </section>
 <section id="ab-testing-fuel" class="level3">
-<h3 class="anchored" data-anchor-id="ab-testing-fuel"><strong>�� A/B Testing Fuel</strong></h3>
+<h3 class="anchored" data-anchor-id="ab-testing-fuel"><strong>- A/B Testing Fuel</strong></h3>
 <p>Test promotions on high-lift combinations.</p>
 <hr>
 <ul>
@@ -381,7 +381,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <hr>
 <p>This project forced me to think like a data scientist.</p>
-<p>It wasn��t about running Apriori, it was about handling millions of rows, building efficient structures, and turning numbers into insights that matter.</p>
+<p>It wasn-t about running Apriori, it was about handling millions of rows, building efficient structures, and turning numbers into insights that matter.</p>
 <p>It felt like the perfect bridge between:</p>
 <ul>
 <li><strong>Technical skill</strong> (Python, sparse matrices, association rules)</li>

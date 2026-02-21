@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lung Cancer Survival (SEER 2004-2015) (R + Power BI) – Markuss Saule</title>
+<title>lung-cancer – Markuss Saule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -190,7 +190,7 @@ window.Quarto = {
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Analyzed 114K SEER lung cancer cases (2004��2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8×, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights.</p>
+<p>Analyzed 114K SEER lung cancer cases (2004-2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8x, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights.</p>
 </section>
 <section id="what-i-did" class="level2">
 <h2 class="anchored" data-anchor-id="what-i-did">What I Did</h2>
@@ -224,13 +224,13 @@ window.Quarto = {
 </section>
 <section id="project-notes" class="level2">
 <h2 class="anchored" data-anchor-id="project-notes">Project Notes</h2>
-<p>Description: Analyzed 114K SEER lung cancer cases (2004��2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8×, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights. Skills Demonstrated: Data Analysis, Problem Solving, Programming, Project Management Project Status: Completed Completion Date: October 7, 2025</p>
+<p>Description: Analyzed 114K SEER lung cancer cases (2004-2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8x, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights. Skills Demonstrated: Data Analysis, Problem Solving, Programming, Project Management Project Status: Completed Completion Date: October 7, 2025</p>
 </section>
 <section id="executive-summary" class="level2">
 <h2 class="anchored" data-anchor-id="executive-summary"><strong>Executive Summary</strong></h2>
-<p>This project came from something personal. After losing my dad to cancer, I��ve wanted to understand what shapes survival and what doesn��t. I chose to focus on lung cancer because it��s one of the hardest and most common forms to survive.</p>
-<p>I used data from the <strong>SEER cancer registry (2004��2015)</strong> and built a full analysis in <strong>R</strong> and <strong>Power BI</strong>. My goal was to find what really predicts survival in the data, not just what people assume.</p>
-<p>Here��s what stood out:</p>
+<p>This project came from something personal. After losing my dad to cancer, I-ve wanted to understand what shapes survival and what doesn-t. I chose to focus on lung cancer because it-s one of the hardest and most common forms to survive.</p>
+<p>I used data from the <strong>SEER cancer registry (2004-2015)</strong> and built a full analysis in <strong>R</strong> and <strong>Power BI</strong>. My goal was to find what really predicts survival in the data, not just what people assume.</p>
+<p>Here-s what stood out:</p>
 <ul>
 <li>The stage of diagnosis changes everything. Patients caught early were <strong>eight times more likely</strong> to survive two years.</li>
 <li>Tumor size and the number of affected lymph nodes both reduced survival odds.</li>
@@ -244,7 +244,7 @@ window.Quarto = {
 <section id="data-tools" class="level2">
 <h2 class="anchored" data-anchor-id="data-tools"><strong>Data &amp; Tools</strong></h2>
 <ul>
-<li><strong>Dataset:</strong> SEER 2004��2015 (Lung &amp; Bronchus cancer)</li>
+<li><strong>Dataset:</strong> SEER 2004-2015 (Lung &amp; Bronchus cancer)</li>
 <li><strong>Cases:</strong> 114,000 total</li>
 <li><strong>Main metric:</strong> 2-year survival</li>
 <li><strong>Tools used:</strong> R (R Markdown) and Power BI</li>
@@ -266,7 +266,7 @@ window.Quarto = {
 <li><strong>t-tests and ANOVA</strong> for tumor size</li>
 <li>A <strong>logistic regression model</strong> to see which factors best predicted survival</li>
 </ul>
-<p>Here��s what the analysis showed:</p>
+<p>Here-s what the analysis showed:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -277,19 +277,19 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>Stage vs survival</td>
-<td>χ� = 24,261, p &lt; 0.001</td>
+<td>χ = 24,261, p &lt; 0.001</td>
 </tr>
 <tr class="even">
 <td>Sex vs survival</td>
-<td>χ� = 847, p &lt; 0.001</td>
+<td>χ = 847, p &lt; 0.001</td>
 </tr>
 <tr class="odd">
 <td>Race vs survival</td>
-<td>χ� = 169, p &lt; 0.001</td>
+<td>χ = 169, p &lt; 0.001</td>
 </tr>
 </tbody>
 </table>
-<p>Average tumor size was 61 mm in those who didn��t survive two years and 58 mm in those who did. The difference seems small but was still statistically significant (p = 0.014).</p>
+<p>Average tumor size was 61 mm in those who didn-t survive two years and 58 mm in those who did. The difference seems small but was still statistically significant (p = 0.014).</p>
 <p>The logistic regression made the relationships clearer:</p>
 <table class="caption-top table">
 <thead>
@@ -387,7 +387,7 @@ window.Quarto = {
 <section id="power-bi-dashboard" class="level2">
 <h2 class="anchored" data-anchor-id="power-bi-dashboard"><strong>Power BI Dashboard</strong></h2>
 <p>Once I had the cleaned data, I built a two-page dashboard in Power BI to make the patterns easier to see.</p>
-<p><strong>Page 1 �� Overview</strong></p>
+<p><strong>Page 1 - Overview</strong></p>
 <ul>
 <li>2-year survival by stage, sex, and race</li>
 <li>Average tumor size and survival rates</li>
@@ -409,8 +409,8 @@ window.Quarto = {
 </section>
 <section id="reflection" class="level2">
 <h2 class="anchored" data-anchor-id="reflection"><strong>Reflection</strong></h2>
-<p>This project was different from the others I��ve done. It wasn��t about building models or dashboards for their own sake. It was about trying to understand something that has personally affected my life.</p>
-<p>Looking through this data, I couldn��t help but think about my dad and about how much difference early screening could have made. These records may look like numbers, but they carry real stories and pain behind them.</p>
+<p>This project was different from the others I-ve done. It wasn-t about building models or dashboards for their own sake. It was about trying to understand something that has personally affected my life.</p>
+<p>Looking through this data, I couldn-t help but think about my dad and about how much difference early screening could have made. These records may look like numbers, but they carry real stories and pain behind them.</p>
 <p>This is what drives me to keep working in data and healthcare. The analytics matter because they can help real people.</p>
 <hr>
 </section>
@@ -425,7 +425,7 @@ window.Quarto = {
 </section>
 <section id="disclaimer" class="level2">
 <h2 class="anchored" data-anchor-id="disclaimer"><strong>Disclaimer</strong></h2>
-<p>This analysis is based on publicly available SEER data from 2004 to 2015. It��s for educational purposes only and not intended as medical advice.</p>
+<p>This analysis is based on publicly available SEER data from 2004 to 2015. It-s for educational purposes only and not intended as medical advice.</p>
 
 
 </section>

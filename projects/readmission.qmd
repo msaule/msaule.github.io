@@ -1,4 +1,4 @@
----
+ï»¿---
 title: "Hospital Readmission Analytics (SQL + R + Power BI)"
 ---
 
@@ -44,14 +44,14 @@ Completion Date: September 16, 2025
 
 ## **Executive Summary**
 
-I€™ve wanted to find ways to use my skills to contribute to healthcare. This made me think even more about how data and analytics could support doctors, patients, and families.
+I-ve wanted to find ways to use my skills to contribute to healthcare. This made me think even more about how data and analytics could support doctors, patients, and families.
 
-So, I picked up the **Diabetes 130-US Hospitals dataset** (about 100,000 encounters from 1999€“2008) and built a full pipeline using **SQL, R, and Power BI**. My goal was to take messy data and turn it into something clear and useful: a story about which patients are most likely to be readmitted within 30 days, and why.
+So, I picked up the **Diabetes 130-US Hospitals dataset** (about 100,000 encounters from 1999-2008) and built a full pipeline using **SQL, R, and Power BI**. My goal was to take messy data and turn it into something clear and useful: a story about which patients are most likely to be readmitted within 30 days, and why.
 
 **What I found:**
 
 - About **11% of patients** are readmitted within 30 days.
-- There€™s a small but real **2.7% gap** between the lowest and highest racial subgroups.
+- There-s a small but real **2.7% gap** between the lowest and highest racial subgroups.
 - The biggest drivers of risk are **number of diagnoses, how many medications are prescribed, and how long the patient stays in the hospital.**
 
 This was both a technical challenge and a personal project. It was proof that I can design an end-to-end workflow while keeping the focus on people represented in the dataset.
@@ -482,7 +482,7 @@ In R, I cleaned the fields, built a binary readmission flag, and ran exploratory
       summarise(rate = mean(readmit_flag, na.rm = TRUE), .groups="drop")
     
     highest_subgroup_text <- paste0(subgroup$race[which.max(subgroup$rate)],
-                                    " €” ",
+                                    " - ",
                                     scales::percent(max(subgroup$rate, na.rm = TRUE)))
     
     gap_text <- scales::percent(max(subgroup$rate,na.rm=TRUE) - min(subgroup$rate,na.rm=TRUE))
@@ -490,17 +490,17 @@ In R, I cleaned the fields, built a binary readmission flag, and ran exploratory
     
     # Executive Summary
     
-    This analysis explores **30-day readmission** patterns using the public *Diabetes 130-US hospitals (1999€“2008)* dataset. 
+    This analysis explores **30-day readmission** patterns using the public *Diabetes 130-US hospitals (1999-2008)* dataset. 
     
     Key messages:
     - The **overall 30-day readmission rate is about 11%**, consistent with prior analyses of this dataset.
-    - **Race subgroup differences are modest** (roughly 9€“12%), with overlapping confidence intervals, suggesting no strong racial disparities.
+    - **Race subgroup differences are modest** (roughly 9-12%), with overlapping confidence intervals, suggesting no strong racial disparities.
     - **Gender shows almost no difference** in readmission.
     - The strongest predictors of readmission are **clinical complexity**: more diagnoses, longer hospital stays, and greater medication use.
     
     > **Interpretation note:** This dataset is dated and illustrative; findings highlight workflow and methodology, not clinical advice.
     
-    This analysis explores **30-day readmission** patterns using the public *Diabetes 130-US hospitals (1999€“2008)* dataset, focusing on **equity across demographic subgroups** and **interpretable drivers** of risk.
+    This analysis explores **30-day readmission** patterns using the public *Diabetes 130-US hospitals (1999-2008)* dataset, focusing on **equity across demographic subgroups** and **interpretable drivers** of risk.
     
     - **Overall 30-day readmission rate:** **` r overall_rate_text`**  
     - **Demographics not significant:** Race and gender coefficients are near 1 with overlapping CIs.
@@ -685,7 +685,7 @@ In R, I cleaned the fields, built a binary readmission flag, and ran exploratory
     
     **Summary of results:**
     - The **overall readmission rate is ~11%**.
-    - **Race subgroup rates range from ~9% to 12%**, with overlapping CIs †’ differences are modest and not clearly significant.
+    - **Race subgroup rates range from ~9% to 12%**, with overlapping CIs - differences are modest and not clearly significant.
     - **Gender rates are nearly identical.**
     - Logistic regression confirms that **clinical complexity (time in hospital, number of diagnoses, medications)**, not demographics, drives readmission risk.
     
@@ -698,7 +698,7 @@ In R, I cleaned the fields, built a binary readmission flag, and ran exploratory
     
     # Limitations
     
-    - Dataset covers 1999€“2008, and may not reflect today€™s clinical practices.
+    - Dataset covers 1999-2008, and may not reflect today-s clinical practices.
     - Subgroup labels are limited; race/ethnicity categories are coarse.
     - Readmission coding may not align with modern standards.
     
@@ -707,7 +707,7 @@ In R, I cleaned the fields, built a binary readmission flag, and ran exploratory
     1. Add A1C & glucose metrics to models.  
     2. Build risk-adjusted fairness metrics.  
     3. Export dashboard-ready tables with subgroup CIs.  
-    4. Explore oncology datasets to connect personal mission to Mayo€™s work.
+    4. Explore oncology datasets to connect personal mission to Mayo-s work.
     
     # Appendix
     
@@ -746,15 +746,15 @@ In R, I cleaned the fields, built a binary readmission flag, and ran exploratory
 
 I built a three-page dashboard:
 
-1. **Overview** €“ overall rate and age breakdown.
-2. **Equity Perspective** €“ racial disparities, with confidence intervals and a simple gap metric.
-3. **Clinical Drivers** €“ scatterplots and charts showing how diagnoses, medications, and length of stay affect readmission.
+1. **Overview** - overall rate and age breakdown.
+2. **Equity Perspective** - racial disparities, with confidence intervals and a simple gap metric.
+3. **Clinical Drivers** - scatterplots and charts showing how diagnoses, medications, and length of stay affect readmission.
 
 ---
 
 ## **Dashboard Snapshots**
 
-### Page 1 €“ Overview
+### Page 1 - Overview
 
 - 11.2% overall readmission rate.
 - Patients in their 20s and 30s have the highest risk (~13.8%).
@@ -763,18 +763,18 @@ I built a three-page dashboard:
 
 ---
 
-### Page 2 €“ Equity Spotlight
+### Page 2 - Equity Spotlight
 
 - Race gap of ~2.7% between lowest and highest subgroup.
-- Most groups fall between 10€“12%.
+- Most groups fall between 10-12%.
 
 [report-2.pdf](../files/readmission/report-2.pdf)
 
 ---
 
-### Page 3 €“ Clinical Drivers
+### Page 3 - Clinical Drivers
 
-- Patients with 7+ diagnoses, or 12+ medications, face ~13€“15% readmission.
+- Patients with 7+ diagnoses, or 12+ medications, face ~13-15% readmission.
 - Staying in the hospital longer (7+ days) is also linked to higher risk.
 
 [report-3.pdf](../files/readmission/report-3.pdf)
@@ -791,9 +791,9 @@ I built a three-page dashboard:
 
 ## **Reflections & Next Steps**
 
-This project reminded me that behind every row in a dataset is a person and a family. I€™d explore predictive modeling €” not just describing risk, but actually helping hospitals flag patients early.
+This project reminded me that behind every row in a dataset is a person and a family. I-d explore predictive modeling - not just describing risk, but actually helping hospitals flag patients early.
 
-For me, this wasn€™t just about SQL queries and charts. It was about proving to myself that I can take raw data, clean it, analyze it, and tell a story that actually matters.
+For me, this wasn-t just about SQL queries and charts. It was about proving to myself that I can take raw data, clean it, analyze it, and tell a story that actually matters.
 
 ---
 

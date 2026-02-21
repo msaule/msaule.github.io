@@ -1,4 +1,4 @@
----
+ï»¿---
 title: "Fulfillment Center Risk Simulation & Staffing Optimization (Python + SimPy + Power BI)"
 ---
 
@@ -6,7 +6,7 @@ title: "Fulfillment Center Risk Simulation & Staffing Optimization (Python + Sim
 
 ## Overview
 
-Built a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day€“level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights.
+Built a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day-level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights.
 
 ## What I Did
 
@@ -32,7 +32,7 @@ Delivered an analysis workflow with decision-ready outputs and reusable artifact
 ## Project Notes
 
 
-Description: Built a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day€“level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights.
+Description: Built a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day-level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights.
 Skills Demonstrated: Capacity Planning, Operations Research, Optimization, PowerBI, Python, Risk Modeling, SimPy, Supply Chain Analytics
 Project Status: Planning
 
@@ -199,7 +199,7 @@ This allows utilization and queue statistics to remain accurate even under extre
 
 ---
 
-## Absolute Pressure Score (0€“1)
+## Absolute Pressure Score (0-1)
 
 This is where the model becomes decision-grade.
 
@@ -224,7 +224,7 @@ This score drives:
 
 ---
 
-## System-Wide Risk Score (0€“100)
+## System-Wide Risk Score (0-100)
 
 Risk is intentionally **multi-factor**.
 

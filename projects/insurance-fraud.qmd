@@ -1,4 +1,4 @@
----
+Ôªø---
 title: "Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP)"
 ---
 
@@ -42,7 +42,7 @@ Insurance fraud is a massive problem that costs companies billions every year. I
 
 I built an end-to-end **fraud detection pipeline in Python** using real insurance claim data - training three models (Logistic Regression, Random Forest, and XGBoost) to identify patterns that suggest fraud.
 
-At first, the Logistic Regression model couldnÄôt catch any fraudulent cases. But once I moved to tree-based methods, accuracy and recall improved dramatically.
+At first, the Logistic Regression model couldn-t catch any fraudulent cases. But once I moved to tree-based methods, accuracy and recall improved dramatically.
 
 The **Random Forest** achieved a **ROC-AUC of 0.86**, while **XGBoost** came close at **0.83,** both showed strong ability to separate fraudulent from legitimate claims.
 
@@ -58,7 +58,7 @@ I quickly realized how data science can protect both companies and honest custom
 - **Tools:** Python, Pandas, Scikit-Learn, XGBoost, Matplotlib, Seaborn
 - **Environment:** VS Code + virtual environment (`venv`)
 
-The dataset was slightly imbalanced Äî about **25% of claims were fraudulent**, creating a realistic challenge for model precision and recall.
+The dataset was slightly imbalanced - about **25% of claims were fraudulent**, creating a realistic challenge for model precision and recall.
 
 ---
 
@@ -87,7 +87,7 @@ categorical_transformer = Pipeline(steps=[
 
 ### **2. Preprocessing Pipeline**
 
-Using Scikit-LearnÄôs `ColumnTransformer`, I created a preprocessing pipeline for numeric and categorical features.
+Using Scikit-Learn-s `ColumnTransformer`, I created a preprocessing pipeline for numeric and categorical features.
 
 This made the workflow fully reusable across all models.
 
@@ -168,7 +168,7 @@ All models were serialized using **Joblib**, so they can be reloaded for live pr
 
 ### **Logistic Regression**
 
-The baseline model underperformed Äî it failed to detect any fraudulent cases.
+The baseline model underperformed - it failed to detect any fraudulent cases.
 
 This confirmed that simple linear models struggle when class imbalance and feature interactions are strong.
 
@@ -192,7 +192,7 @@ It raised the AUC to **0.86**, performing best overall in distinguishing fraud f
 
 ### **XGBoost**
 
-XGBoost performed similarly to Random Forest but was slightly more balanced Äî it caught more fraud cases with fewer false alarms.
+XGBoost performed similarly to Random Forest but was slightly more balanced - it caught more fraud cases with fewer false alarms.
 
 ![xgboost_confusion_matrix.png](../images/projects/insurance-fraud/xgboost_confusion_matrix.png)
 
@@ -202,7 +202,7 @@ XGBoost performed similarly to Random Forest but was slightly more balanced Äî i
 
 ## **Key Insights**
 
-1. **Linear models canÄôt handle complex fraud data.**
+1. **Linear models can-t handle complex fraud data.**
     
     The Logistic Regression model failed to detect non-linear relationships, missing all fraud cases.
     
@@ -225,7 +225,7 @@ XGBoost performed similarly to Random Forest but was slightly more balanced Äî i
 
 ![xgboost_shap_summary.png](../images/projects/insurance-fraud/xgboost_shap_summary.png)
 
-After training, I used **SHAP (SHapley Additive exPlanations)** to visualize how each feature influenced fraud predictions. The plot shows that claims labeled as **ÄúMajor DamageÄù** or **ÄúTotal LossÄù** had the strongest positive impact on the modelÄôs fraud likelihood. Interestingly, customer-level details like **hobbies (e.g., chess or cross-fit)** and **policy premiums** also appeared as strong differentiators, suggesting that lifestyle or policy value patterns may indirectly flag higher-risk cases.
+After training, I used **SHAP (SHapley Additive exPlanations)** to visualize how each feature influenced fraud predictions. The plot shows that claims labeled as **-Major Damage-** or **-Total Loss-** had the strongest positive impact on the model-s fraud likelihood. Interestingly, customer-level details like **hobbies (e.g., chess or cross-fit)** and **policy premiums** also appeared as strong differentiators, suggesting that lifestyle or policy value patterns may indirectly flag higher-risk cases.
 
 Features such as **auto year**, **zip code**, and **claim amounts** had subtler effects, mostly balancing prediction confidence rather than flipping outcomes. Adding SHAP turned the project from a black-box model into one where I could explain *why* the AI decided a claim looked suspicious.
 
@@ -245,9 +245,9 @@ Working through this project helped me get comfortable building **end-to-end ML 
 
 ## **Files & Outputs**
 
-- `train_model.py` Äî training and evaluation pipeline
-- `predict_sample.py` Äî sample prediction script
-- `models/` Äî saved models (`.pkl` format)
+- `train_model.py` - training and evaluation pipeline
+- `predict_sample.py` - sample prediction script
+- `models/` - saved models (`.pkl` format)
 - Charts:
     - `[model_auc_comparison.png]`
     - `[logreg_confusion_matrix.png]`

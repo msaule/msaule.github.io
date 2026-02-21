@@ -29,9 +29,9 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 34px 34px;
-  opacity: 0.3;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 140px 140px;
+  opacity: 0.08;
   z-index: -1;
 }
 
@@ -59,6 +59,14 @@ p, li {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 800;
   letter-spacing: 0.02em;
+  max-width: none !important;
+  white-space: nowrap;
+}
+
+#quarto-header .navbar-title {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: nowrap;
 }
 
 #quarto-header .navbar-nav .nav-link {
@@ -95,6 +103,8 @@ p, li {
     margin-left: 0 !important;
     margin-right: 0 !important;
     justify-self: start;
+    width: max-content;
+    min-width: 240px;
   }
 
   #quarto-header #navbarCollapse {
@@ -107,6 +117,7 @@ p, li {
     margin-right: 0 !important;
     justify-content: center;
     flex-wrap: nowrap;
+    width: 100%;
   }
 
   #quarto-header ul.navbar-nav.ms-auto {
@@ -299,6 +310,10 @@ p, li {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin: 1.15rem 0 1.25rem;
+}
+
+.home-main .project-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .project-card {

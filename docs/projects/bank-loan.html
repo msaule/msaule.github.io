@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Bank Loan Risk Rating Dashboard (Excel) – Markuss Saule</title>
+<title>bank-loan – Markuss Saule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -218,14 +218,14 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="loan-scoring-configuration">Loan Scoring Configuration</h2>
 <p>Each scoring factor is fully configurable. Tables define how many points an applicant earns for different ranges:</p>
 <ul>
-<li><strong>Age Scoring</strong> �� Rewards experience while avoiding overexposure to young, unproven applicants.</li>
-<li><strong>Income Scoring</strong> �� Adds stability points at higher income thresholds.</li>
-<li><strong>Debt-to-Income Scoring</strong> �� Penalizes excessive leverage.</li>
-<li><strong>Employment Years Scoring</strong> �� Values job consistency.</li>
-<li><strong>Credit Score Scoring</strong> �� Maps ranges to increasing trust levels.</li>
-<li><strong>Previous Default</strong> �� Zero points if ��Yes,�� full points if ��No.��</li>
+<li><strong>Age Scoring</strong> - Rewards experience while avoiding overexposure to young, unproven applicants.</li>
+<li><strong>Income Scoring</strong> - Adds stability points at higher income thresholds.</li>
+<li><strong>Debt-to-Income Scoring</strong> - Penalizes excessive leverage.</li>
+<li><strong>Employment Years Scoring</strong> - Values job consistency.</li>
+<li><strong>Credit Score Scoring</strong> - Maps ranges to increasing trust levels.</li>
+<li><strong>Previous Default</strong> - Zero points if -Yes,- full points if -No.-</li>
 </ul>
-<p>The <strong>Weights Table</strong> lets you rebalance importance across factors. For instance, increasing the Credit or DTI weight instantly changes every applicant��s total score. The <strong>Risk Level Table</strong> then translates those totals into final classifications: High, Medium, or Low risk.</p>
+<p>The <strong>Weights Table</strong> lets you rebalance importance across factors. For instance, increasing the Credit or DTI weight instantly changes every applicant-s total score. The <strong>Risk Level Table</strong> then translates those totals into final classifications: High, Medium, or Low risk.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/projects/bank-loan/Screenshot_2025-10-09_151247.png" class="img-fluid figure-img"></p>
@@ -253,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="dashboard-overview" class="level2">
 <h2 class="anchored" data-anchor-id="dashboard-overview">Dashboard Overview</h2>
-<p>The final dashboard ties it all together. It��s split into three clear sections:</p>
+<p>The final dashboard ties it all together. It-s split into three clear sections:</p>
 <p><strong>1. Portfolio KPIs</strong></p>
 <p>Shows total applicants, overall approval rate, average credit score, and default history (all updating automatically as weights change).</p>
 <p><strong>2. What-If Policy Simulator</strong></p>
@@ -261,9 +261,9 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>3. Visual Statistics</strong></p>
 <p>Three interactive visuals show:</p>
 <ul>
-<li><strong>Applications by Risk Level</strong> �� portfolio composition.</li>
-<li><strong>Weighted Loan Score Distribution</strong> �� balance of creditworthiness.</li>
-<li><strong>Approval Rate by Risk Level</strong> �� efficiency vs.&nbsp;prudence trade-off.</li>
+<li><strong>Applications by Risk Level</strong> - portfolio composition.</li>
+<li><strong>Weighted Loan Score Distribution</strong> - balance of creditworthiness.</li>
+<li><strong>Approval Rate by Risk Level</strong> - efficiency vs.&nbsp;prudence trade-off.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -275,7 +275,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="scoring-logic-example" class="level2">
 <h2 class="anchored" data-anchor-id="scoring-logic-example">Scoring Logic Example</h2>
-<p>Every applicant��s <strong>WeightedTotal</strong> follows this structure:</p>
+<p>Every applicant-s <strong>WeightedTotal</strong> follows this structure:</p>
 <pre><code>= (Age_Points * Age_Weight) +
   (Income_Points * Income_Weight) +
   (Credit_Points * Credit_Weight) +
@@ -284,7 +284,7 @@ ul.task-list li input[type="checkbox"] {
   (Default_Points * Default_Weight)</code></pre>
 <p>The score then maps through the <strong>Risk Level Table</strong> using an XLOOKUP:</p>
 <pre><code>=XLOOKUP(Q4,risk[Score_Min],risk[Risk_Level],,-1)</code></pre>
-<p>Finally, the <strong>Decision</strong> column determines approval, using an applicant��s credit score as the deciding factor:</p>
+<p>Finally, the <strong>Decision</strong> column determines approval, using an applicant-s credit score as the deciding factor:</p>
 <pre><code>=IF(R4="High","Rejected",
    IF(R4="Low","Approved",
    IF(H4&gt;=700,"Approved",
@@ -298,14 +298,14 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Increasing <strong>DTI Weight</strong> by 1 point reduced approvals by nearly 10%.</li>
 <li>Raising <strong>Credit Weight</strong> rewarded strong credit but slightly penalized high-income applicants with moderate scores.</li>
-<li>The majority of approved loans came from the Medium risk band, showing that most lending volume lives in the ��gray zone.��</li>
+<li>The majority of approved loans came from the Medium risk band, showing that most lending volume lives in the -gray zone.-</li>
 </ul>
 <p>These results mirror real banking behavior, as every adjustment to a credit policy changes portfolio health and risk exposure.</p>
 <hr>
 </section>
 <section id="what-i-learned" class="level2">
 <h2 class="anchored" data-anchor-id="what-i-learned">What I Learned</h2>
-<p>I learned that credit risk modeling is a balancing act between fairness and caution. Building the configuration tables made me think in a way that a policy analyst would, not just a data student. The simulator showed how subjective ��weights�� directly shape real-world outcomes.</p>
+<p>I learned that credit risk modeling is a balancing act between fairness and caution. Building the configuration tables made me think in a way that a policy analyst would, not just a data student. The simulator showed how subjective -weights- directly shape real-world outcomes.</p>
 <p>It also taught me how powerful Excel can be as an analytical sandbox when designed intentionally, with structure, logic flow, and a visual narrative all in one file.</p>
 <hr>
 </section>

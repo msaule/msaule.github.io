@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Fulfillment Center Risk Simulation &amp; Staffing Optimization (Python + SimPy + Power BI) – Markuss Saule</title>
+<title>fulfillment – Markuss Saule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="overview" class="level2">
 <h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>Built a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day��level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights.</p>
+<p>Built a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day-level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights.</p>
 </section>
 <section id="what-i-did" class="level2">
 <h2 class="anchored" data-anchor-id="what-i-did">What I Did</h2>
@@ -227,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="project-notes" class="level2">
 <h2 class="anchored" data-anchor-id="project-notes">Project Notes</h2>
-<p>Description: Built a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day��level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights. Skills Demonstrated: Capacity Planning, Operations Research, Optimization, PowerBI, Python, Risk Modeling, SimPy, Supply Chain Analytics Project Status: Planning</p>
+<p>Description: Built a discrete-event simulation of a fulfillment center in Python using SimPy to model order flow, queues, utilization, SLA breaches, and WIP under normal and Prime Day-level demand. Implemented minute-level observability, real-time alert detection, station-level pressure scoring, and a multi-factor operational risk model. Ran an exhaustive staffing grid search to identify the minimum headcount required to reduce risk below target thresholds, then surfaced results through a 4-page Power BI dashboard for decision-ready staffing and risk mitigation insights. Skills Demonstrated: Capacity Planning, Operations Research, Optimization, PowerBI, Python, Risk Modeling, SimPy, Supply Chain Analytics Project Status: Planning</p>
 <p>This is not a dashboard-first project.</p>
 <p>This is a <strong>simulation-first system</strong> with dashboards layered on top.</p>
 </section>
@@ -377,8 +377,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 </section>
-<section id="absolute-pressure-score-01" class="level2">
-<h2 class="anchored" data-anchor-id="absolute-pressure-score-01">Absolute Pressure Score (0��1)</h2>
+<section id="absolute-pressure-score-0-1" class="level2">
+<h2 class="anchored" data-anchor-id="absolute-pressure-score-0-1">Absolute Pressure Score (0-1)</h2>
 <p>This is where the model becomes decision-grade.</p>
 <p>For each station:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>abs_pressure <span class="op">=</span></span>
@@ -398,8 +398,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <hr>
 </section>
-<section id="system-wide-risk-score-0100" class="level2">
-<h2 class="anchored" data-anchor-id="system-wide-risk-score-0100">System-Wide Risk Score (0��100)</h2>
+<section id="system-wide-risk-score-0-100" class="level2">
+<h2 class="anchored" data-anchor-id="system-wide-risk-score-0-100">System-Wide Risk Score (0-100)</h2>
 <p>Risk is intentionally <strong>multi-factor</strong>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>risk <span class="op">=</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">50</span> <span class="op">*</span> <span class="bu">min</span>(<span class="dv">1</span>, sla_rate <span class="op">/</span> <span class="fl">0.20</span>)</span>

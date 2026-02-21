@@ -1,4 +1,4 @@
----
+ï»¿---
 title: "Education, Gender and Wage Inequality (1973-2022)"
 ---
 
@@ -6,7 +6,7 @@ title: "Education, Gender and Wage Inequality (1973-2022)"
 
 ## Overview
 
-Analyzed 50 years of wage data (1973€“2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights.
+Analyzed 50 years of wage data (1973-2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights.
 
 ## What I Did
 
@@ -32,12 +32,12 @@ Delivered an analysis workflow with decision-ready outputs and reusable artifact
 ## Project Notes
 
 
-Description: Analyzed 50 years of wage data (1973€“2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights.
+Description: Analyzed 50 years of wage data (1973-2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights.
 Skills Demonstrated: Data Analysis, Inequality Research, Labor Economics, R, Visualization
 Project Status: Planning
 
 
-I like understanding why systems work the way they do. Money, education, and opportunity shape so much of a person€™s life, and I have seen firsthand how different those systems feel depending on where you grow up. Moving from Europe to the United States made those differences even more obvious.
+I like understanding why systems work the way they do. Money, education, and opportunity shape so much of a person-s life, and I have seen firsthand how different those systems feel depending on where you grow up. Moving from Europe to the United States made those differences even more obvious.
 
 As a first generation college student, wage inequality feels personal to me. It is not just an economics topic. It affects people I know and people like me.
 
@@ -124,7 +124,7 @@ The model shows bachelor wages grow about 0.279 dollars per hour per year faster
 
 ## 3. Women Catch Up Slowly
 
-Women€™s wages grow about 0.097 dollars per hour per year faster than men€™s. This closes the overall gap a little, but not enough to match the patterns for men.
+Women-s wages grow about 0.097 dollars per hour per year faster than men-s. This closes the overall gap a little, but not enough to match the patterns for men.
 
 ![image.png](../images/projects/education-wage/image 5.png)
 

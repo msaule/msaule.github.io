@@ -1,4 +1,4 @@
----
+ï»¿---
 title: "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)"
 ---
 
@@ -6,7 +6,7 @@ title: "Lung Cancer Survival (SEER 2004-2015) (R + Power BI)"
 
 ## Overview
 
-Analyzed 114K SEER lung cancer cases (2004€“2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8Ã—, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights.
+Analyzed 114K SEER lung cancer cases (2004-2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8x, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights.
 
 ## What I Did
 
@@ -35,18 +35,18 @@ Delivered an analysis workflow with decision-ready outputs and reusable artifact
 ## Project Notes
 
 
-Description: Analyzed 114K SEER lung cancer cases (2004€“2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8Ã—, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights.
+Description: Analyzed 114K SEER lung cancer cases (2004-2015) to identify the strongest predictors of 2-year survival. Built a full R workflow with data cleaning, statistical tests, and logistic regression, then visualized results in Power BI. Found stage at diagnosis increases survival odds by 8x, with tumor size, lymph node spread, sex, and race as secondary predictors. Clear, clinical-quality survival analysis with interpretable insights.
 Skills Demonstrated: Data Analysis, Problem Solving, Programming, Project Management
 Project Status: Completed
 Completion Date: October 7, 2025
 
 ## **Executive Summary**
 
-This project came from something personal. After losing my dad to cancer, I€™ve wanted to understand what shapes survival and what doesn€™t. I chose to focus on lung cancer because it€™s one of the hardest and most common forms to survive.
+This project came from something personal. After losing my dad to cancer, I-ve wanted to understand what shapes survival and what doesn-t. I chose to focus on lung cancer because it-s one of the hardest and most common forms to survive.
 
-I used data from the **SEER cancer registry (2004€“2015)** and built a full analysis in **R** and **Power BI**. My goal was to find what really predicts survival in the data, not just what people assume.
+I used data from the **SEER cancer registry (2004-2015)** and built a full analysis in **R** and **Power BI**. My goal was to find what really predicts survival in the data, not just what people assume.
 
-Here€™s what stood out:
+Here-s what stood out:
 
 - The stage of diagnosis changes everything. Patients caught early were **eight times more likely** to survive two years.
 - Tumor size and the number of affected lymph nodes both reduced survival odds.
@@ -61,7 +61,7 @@ Working on this reminded me that behind every line of data is a person and a sto
 
 ## **Data & Tools**
 
-- **Dataset:** SEER 2004€“2015 (Lung & Bronchus cancer)
+- **Dataset:** SEER 2004-2015 (Lung & Bronchus cancer)
 - **Cases:** 114,000 total
 - **Main metric:** 2-year survival
 - **Tools used:** R (R Markdown) and Power BI
@@ -84,15 +84,15 @@ After cleaning, I ran several tests to explore the data:
 - **t-tests and ANOVA** for tumor size
 - A **logistic regression model** to see which factors best predicted survival
 
-Here€™s what the analysis showed:
+Here-s what the analysis showed:
 
 | Test | Result |
 | --- | --- |
-| Stage vs survival | Ï‡² = 24,261, p < 0.001 |
-| Sex vs survival | Ï‡² = 847, p < 0.001 |
-| Race vs survival | Ï‡² = 169, p < 0.001 |
+| Stage vs survival | Ï‡ = 24,261, p < 0.001 |
+| Sex vs survival | Ï‡ = 847, p < 0.001 |
+| Race vs survival | Ï‡ = 169, p < 0.001 |
 
-Average tumor size was 61 mm in those who didn€™t survive two years and 58 mm in those who did. The difference seems small but was still statistically significant (p = 0.014).
+Average tumor size was 61 mm in those who didn-t survive two years and 58 mm in those who did. The difference seems small but was still statistically significant (p = 0.014).
 
 The logistic regression made the relationships clearer:
 
@@ -237,7 +237,7 @@ Once the analysis was complete, I exported the cleaned data and model results as
 
 Once I had the cleaned data, I built a two-page dashboard in Power BI to make the patterns easier to see.
 
-**Page 1 €“ Overview**
+**Page 1 - Overview**
 
 - 2-year survival by stage, sex, and race
 - Average tumor size and survival rates
@@ -259,9 +259,9 @@ Once I had the cleaned data, I built a two-page dashboard in Power BI to make th
 
 ## **Reflection**
 
-This project was different from the others I€™ve done. It wasn€™t about building models or dashboards for their own sake. It was about trying to understand something that has personally affected my life.
+This project was different from the others I-ve done. It wasn-t about building models or dashboards for their own sake. It was about trying to understand something that has personally affected my life.
 
-Looking through this data, I couldn€™t help but think about my dad and about how much difference early screening could have made. These records may look like numbers, but they carry real stories and pain behind them.
+Looking through this data, I couldn-t help but think about my dad and about how much difference early screening could have made. These records may look like numbers, but they carry real stories and pain behind them.
 
 This is what drives me to keep working in data and healthcare. The analytics matter because they can help real people.
 
@@ -283,4 +283,4 @@ This is what drives me to keep working in data and healthcare. The analytics mat
 
 ## **Disclaimer**
 
-This analysis is based on publicly available SEER data from 2004 to 2015. It€™s for educational purposes only and not intended as medical advice.
+This analysis is based on publicly available SEER data from 2004 to 2015. It-s for educational purposes only and not intended as medical advice.

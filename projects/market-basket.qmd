@@ -1,4 +1,4 @@
----
+ï»¿---
 title: "Market Basket Analysis: What Snacks Are Bought Together? (Python + Apriori)"
 ---
 
@@ -36,11 +36,11 @@ Description: Built a full Python market basket engine on 3M+ Instacart orders to
 Skills Demonstrated: Data Analysis, Machine Learning, Market Basket Modeling, Python, Retail Analytics
 Project Status: Planning
 
-## **ğŸ’¬ Why I Built This**
+## Why I Built This
 
 This project started with a simple curiosity:
 
-**€œWhen people buy snacks€¦ what *else* ends up in the cart with them?€**
+**-When people buy snacks- what *else* ends up in the cart with them?-**
 
 It sounds small, but in retail and e-commerce, this question is worth so much money.
 
@@ -54,7 +54,7 @@ Every product pairing is a potential:
 
 I wanted to take a real Instacart dataset (3M+ rows), clean it properly, build a **market basket model**, and extract real **product relationships**.
 
-This wasn€™t just a coding exercise, and it became an end-to-end retail analytics project where I had to handle:
+This wasn-t just a coding exercise, and it became an end-to-end retail analytics project where I had to handle:
 
 - Chunked loading of massive CSVs
 - Sparse matrix engineering
@@ -64,7 +64,7 @@ This wasn€™t just a coding exercise, and it became an end-to-end retail analytic
 
 And guess what!
 
-It ended up being one of the cleanest, most *practical* data analytics projects I€™ve done.
+It ended up being one of the cleanest, most *practical* data analytics projects I-ve done.
 
 ---
 
@@ -82,7 +82,7 @@ This step gives every `product_id` a clean name and category, which super import
 ---
 
 
-The `order_products_prior.csv` file is huge, so I couldn€™t load it in one shot.
+The `order_products_prior.csv` file is huge, so I couldn-t load it in one shot.
 
 Instead, I streamed it in **250,000-row chunks**, keeping only rows where the item belonged to the snacks department.
 
@@ -104,7 +104,7 @@ After grouping products by order, I narrowed analysis to the **top 50 most purch
 - Speeds up computation
 - Produces clearer, more actionable rules
 
-Then I built a **sparse matrix** (orders Ã— items), with boolean values indicating whether each snack was bought in each order.
+Then I built a **sparse matrix** (orders x items), with boolean values indicating whether each snack was bought in each order.
 
 This is the backbone of Apriori.
 
@@ -124,7 +124,7 @@ Why lift?
 
 Because:
 
-> Lift > 1 = €œhappens more often together than by chance.€
+> Lift > 1 = -happens more often together than by chance.-
 > 
 
 Perfect for discovering natural product pairings.
@@ -139,7 +139,7 @@ Perfect for discovering natural product pairings.
 This chart immediately showed clusters:
 
 - Gluten-free oat granola + gluten-free granola bars
-- Annie€™s Bunny Fruit Snacks pairings
+- Annie-s Bunny Fruit Snacks pairings
 - Trail mix + unsalted nuts
 
 ![image.png](../images/projects/market-basket/image 3.png)
@@ -176,7 +176,7 @@ This is the fastest way to spot *high-impact* rules.
 
 A fun one: nodes = snacks, edges = rules.
 
-It visualizes €œclusters€ of products that shoppers naturally buy in combinations.
+It visualizes -clusters- of products that shoppers naturally buy in combinations.
 
 ![image.png](../images/projects/market-basket/image 6.png)
 
@@ -199,36 +199,36 @@ The distribution is long-tailed.
 
 ### **3. Strong lift values reveal genuine cross-sell opportunities.**
 
-Pairs like granola bars + oat granola aren't random, and they€™re real buying habits.
+Pairs like granola bars + oat granola aren't random, and they-re real buying habits.
 
 ### **4. Apriori is incredibly practical when used well.**
 
-Yes, it€™s academic on paper.
+Yes, it-s academic on paper.
 
 But with clean engineering and smart filtering, it uncovers insights marketing teams can use!
 
 ---
 
 
-Here€™s where this project stops being €œschool project€ and becomes **an actual business tool**:
+Here-s where this project stops being -school project- and becomes **an actual business tool**:
 
-### **œ” End-cap Optimization**
+### **- End-cap Optimization**
 
 Stock high-lift pairs together.
 
-### **œ” Bundles & Promo Design**
+### **- Bundles & Promo Design**
 
 Create snack bundles around popular duos.
 
-### **œ” Recommendation Engine Input**
+### **- Recommendation Engine Input**
 
-€œFrequently Bought Together€ items for e-commerce.
+-Frequently Bought Together- items for e-commerce.
 
-### **œ” Inventory Planning**
+### **- Inventory Planning**
 
 If product A surges, expect product B to follow.
 
-### **œ” A/B Testing Fuel**
+### **- A/B Testing Fuel**
 
 Test promotions on high-lift combinations.
 
@@ -245,7 +245,7 @@ Test promotions on high-lift combinations.
 
 This project forced me to think like a data scientist.
 
-It wasn€™t about running Apriori, it was about handling millions of rows, building efficient structures, and turning numbers into insights that matter.
+It wasn-t about running Apriori, it was about handling millions of rows, building efficient structures, and turning numbers into insights that matter.
 
 It felt like the perfect bridge between:
 

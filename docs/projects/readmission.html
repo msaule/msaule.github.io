@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Hospital Readmission Analytics (SQL + R + Power BI) – Markuss Saule</title>
+<title>readmission – Markuss Saule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -239,12 +239,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="executive-summary" class="level2">
 <h2 class="anchored" data-anchor-id="executive-summary"><strong>Executive Summary</strong></h2>
-<p>I��ve wanted to find ways to use my skills to contribute to healthcare. This made me think even more about how data and analytics could support doctors, patients, and families.</p>
-<p>So, I picked up the <strong>Diabetes 130-US Hospitals dataset</strong> (about 100,000 encounters from 1999��2008) and built a full pipeline using <strong>SQL, R, and Power BI</strong>. My goal was to take messy data and turn it into something clear and useful: a story about which patients are most likely to be readmitted within 30 days, and why.</p>
+<p>I-ve wanted to find ways to use my skills to contribute to healthcare. This made me think even more about how data and analytics could support doctors, patients, and families.</p>
+<p>So, I picked up the <strong>Diabetes 130-US Hospitals dataset</strong> (about 100,000 encounters from 1999-2008) and built a full pipeline using <strong>SQL, R, and Power BI</strong>. My goal was to take messy data and turn it into something clear and useful: a story about which patients are most likely to be readmitted within 30 days, and why.</p>
 <p><strong>What I found:</strong></p>
 <ul>
 <li>About <strong>11% of patients</strong> are readmitted within 30 days.</li>
-<li>There��s a small but real <strong>2.7% gap</strong> between the lowest and highest racial subgroups.</li>
+<li>There-s a small but real <strong>2.7% gap</strong> between the lowest and highest racial subgroups.</li>
 <li>The biggest drivers of risk are <strong>number of diagnoses, how many medications are prescribed, and how long the patient stays in the hospital.</strong></li>
 </ul>
 <p>This was both a technical challenge and a personal project. It was proof that I can design an end-to-end workflow while keeping the focus on people represented in the dataset.</p>
@@ -646,23 +646,23 @@ subgroup &lt;- df_clean %&gt;%
   summarise(rate = mean(readmit_flag, na.rm = TRUE), .groups="drop")
 
 highest_subgroup_text &lt;- paste0(subgroup$race[which.max(subgroup$rate)],
-                                " �� ",
+                                " - ",
                                 scales::percent(max(subgroup$rate, na.rm = TRUE)))
 
 gap_text &lt;- scales::percent(max(subgroup$rate,na.rm=TRUE) - min(subgroup$rate,na.rm=TRUE))</code></pre>
 <p># Executive Summary</p>
-<p>This analysis explores <strong>30-day readmission</strong> patterns using the public <em>Diabetes 130-US hospitals (1999��2008)</em> dataset.</p>
+<p>This analysis explores <strong>30-day readmission</strong> patterns using the public <em>Diabetes 130-US hospitals (1999-2008)</em> dataset.</p>
 <p>Key messages:</p>
 <ul>
 <li>The <strong>overall 30-day readmission rate is about 11%</strong>, consistent with prior analyses of this dataset.</li>
-<li><strong>Race subgroup differences are modest</strong> (roughly 9��12%), with overlapping confidence intervals, suggesting no strong racial disparities.</li>
+<li><strong>Race subgroup differences are modest</strong> (roughly 9-12%), with overlapping confidence intervals, suggesting no strong racial disparities.</li>
 <li><strong>Gender shows almost no difference</strong> in readmission.</li>
 <li>The strongest predictors of readmission are <strong>clinical complexity</strong>: more diagnoses, longer hospital stays, and greater medication use.</li>
 </ul>
 <blockquote class="blockquote">
 <p><strong>Interpretation note:</strong> This dataset is dated and illustrative; findings highlight workflow and methodology, not clinical advice.</p>
 </blockquote>
-<p>This analysis explores <strong>30-day readmission</strong> patterns using the public <em>Diabetes 130-US hospitals (1999��2008)</em> dataset, focusing on <strong>equity across demographic subgroups</strong> and <strong>interpretable drivers</strong> of risk.</p>
+<p>This analysis explores <strong>30-day readmission</strong> patterns using the public <em>Diabetes 130-US hospitals (1999-2008)</em> dataset, focusing on <strong>equity across demographic subgroups</strong> and <strong>interpretable drivers</strong> of risk.</p>
 <ul>
 <li><strong>Overall 30-day readmission rate:</strong> <strong><code>r overall_rate_text</code></strong><br>
 </li>
@@ -858,7 +858,7 @@ knitr::kable(head(enc_slim, 10), caption = "Preview: Encounter Slim Export") %&g
 
 **Summary of results:**
 - The **overall readmission rate is ~11%**.
-- **Race subgroup rates range from ~9% to 12%**, with overlapping CIs �� differences are modest and not clearly significant.
+- **Race subgroup rates range from ~9% to 12%**, with overlapping CIs - differences are modest and not clearly significant.
 - **Gender rates are nearly identical.**
 - Logistic regression confirms that **clinical complexity (time in hospital, number of diagnoses, medications)**, not demographics, drives readmission risk.
 
@@ -871,7 +871,7 @@ knitr::kable(head(enc_slim, 10), caption = "Preview: Encounter Slim Export") %&g
 
 # Limitations
 
-- Dataset covers 1999��2008, and may not reflect today��s clinical practices.
+- Dataset covers 1999-2008, and may not reflect today-s clinical practices.
 - Subgroup labels are limited; race/ethnicity categories are coarse.
 - Readmission coding may not align with modern standards.
 
@@ -880,7 +880,7 @@ knitr::kable(head(enc_slim, 10), caption = "Preview: Encounter Slim Export") %&g
 1. Add A1C &amp; glucose metrics to models.  
 2. Build risk-adjusted fairness metrics.  
 3. Export dashboard-ready tables with subgroup CIs.  
-4. Explore oncology datasets to connect personal mission to Mayo��s work.
+4. Explore oncology datasets to connect personal mission to Mayo-s work.
 
 # Appendix
 
@@ -916,16 +916,16 @@ dbDisconnect(con)
 <p><strong>Power BI (storytelling)</strong></p>
 <p>I built a three-page dashboard:</p>
 <ol type="1">
-<li><strong>Overview</strong> �� overall rate and age breakdown.</li>
-<li><strong>Equity Perspective</strong> �� racial disparities, with confidence intervals and a simple gap metric.</li>
-<li><strong>Clinical Drivers</strong> �� scatterplots and charts showing how diagnoses, medications, and length of stay affect readmission.</li>
+<li><strong>Overview</strong> - overall rate and age breakdown.</li>
+<li><strong>Equity Perspective</strong> - racial disparities, with confidence intervals and a simple gap metric.</li>
+<li><strong>Clinical Drivers</strong> - scatterplots and charts showing how diagnoses, medications, and length of stay affect readmission.</li>
 </ol>
 <hr>
 </section>
 <section id="dashboard-snapshots" class="level2">
 <h2 class="anchored" data-anchor-id="dashboard-snapshots"><strong>Dashboard Snapshots</strong></h2>
-<section id="page-1-overview" class="level3">
-<h3 class="anchored" data-anchor-id="page-1-overview">Page 1 �� Overview</h3>
+<section id="page-1---overview" class="level3">
+<h3 class="anchored" data-anchor-id="page-1---overview">Page 1 - Overview</h3>
 <ul>
 <li>11.2% overall readmission rate.</li>
 <li>Patients in their 20s and 30s have the highest risk (~13.8%).</li>
@@ -933,19 +933,19 @@ dbDisconnect(con)
 <p><a href="../files/readmission/report-1.pdf">report-1.pdf</a></p>
 <hr>
 </section>
-<section id="page-2-equity-spotlight" class="level3">
-<h3 class="anchored" data-anchor-id="page-2-equity-spotlight">Page 2 �� Equity Spotlight</h3>
+<section id="page-2---equity-spotlight" class="level3">
+<h3 class="anchored" data-anchor-id="page-2---equity-spotlight">Page 2 - Equity Spotlight</h3>
 <ul>
 <li>Race gap of ~2.7% between lowest and highest subgroup.</li>
-<li>Most groups fall between 10��12%.</li>
+<li>Most groups fall between 10-12%.</li>
 </ul>
 <p><a href="../files/readmission/report-2.pdf">report-2.pdf</a></p>
 <hr>
 </section>
-<section id="page-3-clinical-drivers" class="level3">
-<h3 class="anchored" data-anchor-id="page-3-clinical-drivers">Page 3 �� Clinical Drivers</h3>
+<section id="page-3---clinical-drivers" class="level3">
+<h3 class="anchored" data-anchor-id="page-3---clinical-drivers">Page 3 - Clinical Drivers</h3>
 <ul>
-<li>Patients with 7+ diagnoses, or 12+ medications, face ~13��15% readmission.</li>
+<li>Patients with 7+ diagnoses, or 12+ medications, face ~13-15% readmission.</li>
 <li>Staying in the hospital longer (7+ days) is also linked to higher risk.</li>
 </ul>
 <p><a href="../files/readmission/report-3.pdf">report-3.pdf</a></p>
@@ -963,8 +963,8 @@ dbDisconnect(con)
 </section>
 <section id="reflections-next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="reflections-next-steps"><strong>Reflections &amp; Next Steps</strong></h2>
-<p>This project reminded me that behind every row in a dataset is a person and a family. I��d explore predictive modeling �� not just describing risk, but actually helping hospitals flag patients early.</p>
-<p>For me, this wasn��t just about SQL queries and charts. It was about proving to myself that I can take raw data, clean it, analyze it, and tell a story that actually matters.</p>
+<p>This project reminded me that behind every row in a dataset is a person and a family. I-d explore predictive modeling - not just describing risk, but actually helping hospitals flag patients early.</p>
+<p>For me, this wasn-t just about SQL queries and charts. It was about proving to myself that I can take raw data, clean it, analyze it, and tell a story that actually matters.</p>
 <hr>
 </section>
 <section id="downloads" class="level2">

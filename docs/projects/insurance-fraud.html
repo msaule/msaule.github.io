@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Insurance Fraud Detection (Python + Scikit-Learn + XGBoost + SHAP) – Markuss Saule</title>
+<title>insurance-fraud – Markuss Saule</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -233,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="executive-summary"><strong>Executive Summary</strong></h2>
 <p>Insurance fraud is a massive problem that costs companies billions every year. I wanted to see how far machine learning could go in spotting suspicious claims before they cause damage.</p>
 <p>I built an end-to-end <strong>fraud detection pipeline in Python</strong> using real insurance claim data - training three models (Logistic Regression, Random Forest, and XGBoost) to identify patterns that suggest fraud.</p>
-<p>At first, the Logistic Regression model couldn��t catch any fraudulent cases. But once I moved to tree-based methods, accuracy and recall improved dramatically.</p>
+<p>At first, the Logistic Regression model couldn-t catch any fraudulent cases. But once I moved to tree-based methods, accuracy and recall improved dramatically.</p>
 <p>The <strong>Random Forest</strong> achieved a <strong>ROC-AUC of 0.86</strong>, while <strong>XGBoost</strong> came close at <strong>0.83,</strong> both showed strong ability to separate fraudulent from legitimate claims.</p>
 <p>I quickly realized how data science can protect both companies and honest customers.</p>
 <hr>
@@ -247,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Tools:</strong> Python, Pandas, Scikit-Learn, XGBoost, Matplotlib, Seaborn</li>
 <li><strong>Environment:</strong> VS Code + virtual environment (<code>venv</code>)</li>
 </ul>
-<p>The dataset was slightly imbalanced �� about <strong>25% of claims were fraudulent</strong>, creating a realistic challenge for model precision and recall.</p>
+<p>The dataset was slightly imbalanced - about <strong>25% of claims were fraudulent</strong>, creating a realistic challenge for model precision and recall.</p>
 <hr>
 </section>
 <section id="process" class="level2">
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="preprocessing-pipeline" class="level3">
 <h3 class="anchored" data-anchor-id="preprocessing-pipeline"><strong>2. Preprocessing Pipeline</strong></h3>
-<p>Using Scikit-Learn��s <code>ColumnTransformer</code>, I created a preprocessing pipeline for numeric and categorical features.</p>
+<p>Using Scikit-Learn-s <code>ColumnTransformer</code>, I created a preprocessing pipeline for numeric and categorical features.</p>
 <p>This made the workflow fully reusable across all models.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>preprocessor <span class="op">=</span> ColumnTransformer(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    transformers<span class="op">=</span>[</span>
@@ -388,7 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="logistic-regression"><strong>Logistic Regression</strong></h3>
-<p>The baseline model underperformed �� it failed to detect any fraudulent cases.</p>
+<p>The baseline model underperformed - it failed to detect any fraudulent cases.</p>
 <p>This confirmed that simple linear models struggle when class imbalance and feature interactions are strong.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -424,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="xgboost" class="level3">
 <h3 class="anchored" data-anchor-id="xgboost"><strong>XGBoost</strong></h3>
-<p>XGBoost performed similarly to Random Forest but was slightly more balanced �� it caught more fraud cases with fewer false alarms.</p>
+<p>XGBoost performed similarly to Random Forest but was slightly more balanced - it caught more fraud cases with fewer false alarms.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/projects/insurance-fraud/xgboost_confusion_matrix.png" class="img-fluid figure-img"></p>
@@ -443,7 +443,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="key-insights" class="level2">
 <h2 class="anchored" data-anchor-id="key-insights"><strong>Key Insights</strong></h2>
 <ol type="1">
-<li><p><strong>Linear models can��t handle complex fraud data.</strong></p>
+<li><p><strong>Linear models can-t handle complex fraud data.</strong></p>
 <p>The Logistic Regression model failed to detect non-linear relationships, missing all fraud cases.</p></li>
 <li><p><strong>Tree-based models excel at imbalance.</strong></p>
 <p>Random Forest and XGBoost used multiple weak learners to find subtle signals that linear models missed.</p></li>
@@ -461,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>xgboost_shap_summary.png</figcaption>
 </figure>
 </div>
-<p>After training, I used <strong>SHAP (SHapley Additive exPlanations)</strong> to visualize how each feature influenced fraud predictions. The plot shows that claims labeled as <strong>��Major Damage��</strong> or <strong>��Total Loss��</strong> had the strongest positive impact on the model��s fraud likelihood. Interestingly, customer-level details like <strong>hobbies (e.g., chess or cross-fit)</strong> and <strong>policy premiums</strong> also appeared as strong differentiators, suggesting that lifestyle or policy value patterns may indirectly flag higher-risk cases.</p>
+<p>After training, I used <strong>SHAP (SHapley Additive exPlanations)</strong> to visualize how each feature influenced fraud predictions. The plot shows that claims labeled as <strong>-Major Damage-</strong> or <strong>-Total Loss-</strong> had the strongest positive impact on the model-s fraud likelihood. Interestingly, customer-level details like <strong>hobbies (e.g., chess or cross-fit)</strong> and <strong>policy premiums</strong> also appeared as strong differentiators, suggesting that lifestyle or policy value patterns may indirectly flag higher-risk cases.</p>
 <p>Features such as <strong>auto year</strong>, <strong>zip code</strong>, and <strong>claim amounts</strong> had subtler effects, mostly balancing prediction confidence rather than flipping outcomes. Adding SHAP turned the project from a black-box model into one where I could explain <em>why</em> the AI decided a claim looked suspicious.</p>
 <hr>
 </section>
@@ -477,9 +477,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="files-outputs" class="level2">
 <h2 class="anchored" data-anchor-id="files-outputs"><strong>Files &amp; Outputs</strong></h2>
 <ul>
-<li><code>train_model.py</code> �� training and evaluation pipeline</li>
-<li><code>predict_sample.py</code> �� sample prediction script</li>
-<li><code>models/</code> �� saved models (<code>.pkl</code> format)</li>
+<li><code>train_model.py</code> - training and evaluation pipeline</li>
+<li><code>predict_sample.py</code> - sample prediction script</li>
+<li><code>models/</code> - saved models (<code>.pkl</code> format)</li>
 <li>Charts:
 <ul>
 <li><code>[model_auc_comparison.png]</code></li>
