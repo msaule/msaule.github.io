@@ -26,7 +26,6 @@ body {
     radial-gradient(1100px 760px at 52% 112%, rgba(59, 200, 255, 0.11), transparent 70%),
     linear-gradient(180deg, #070d16 0%, #0b1423 52%, #0c1626 100%);
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 body::before {
