@@ -10,7 +10,7 @@ title: ""
 
 <div class="identity-line">Data and Analytics Specialist</div>
 
-`Business Analytics` `Statistics` `Supply Chain Systems`
+`Business Analytics` `Statistics` `Data Science`
 
 I am a systems-first analytics builder focused on operational risk, bottlenecks, and decision thresholds in complex organizations.
 
@@ -22,7 +22,7 @@ I am a systems-first analytics builder focused on operational risk, bottlenecks,
 <div class="profile-meta">
 <div><span>GPA</span><strong>4.0</strong></div>
 <div><span>Degree</span><strong>BS Business Analytics</strong></div>
-<div><span>Minors</span><strong>Statistics, Supply Chain</strong></div>
+<div><span>Minors</span><strong>Statistics, Data Science</strong></div>
 <div><span>Core Stack</span><strong>Python, SQL, R, Power BI</strong></div>
 </div>
 :::

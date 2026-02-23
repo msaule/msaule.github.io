@@ -29,7 +29,7 @@ title: "Resume"
 ## Education and Credentials
 
 - BYU-Idaho: BS Business Analytics (Apr 2027 target), 4.0 GPA
-- Minors: Statistics, Supply Chain Management
+- Minors: Statistics, Data Science
 - Certifications: Google BI, Google PM, Google Digital Marketing and E-commerce, IBM Business Analyst, DataCamp SQL Associate
 
 ## Project Signature

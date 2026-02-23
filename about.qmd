@@ -4,7 +4,7 @@ title: "About"
 
 ## Background
 
-I am a Business Analytics student at BYU-Idaho (4.0 GPA) building a long-term career at the intersection of analytics, operations, and systems strategy. My academic path is deliberately technical and operational: Business Analytics major with minors in Statistics and Supply Chain Management.
+I am a Business Analytics student at BYU-Idaho (4.0 GPA) building a long-term career at the intersection of analytics, operations, and systems strategy. My academic path is deliberately technical and operational: Business Analytics major with minors in Statistics and Data Science.
 
 ## What Drives My Work
 
