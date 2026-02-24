@@ -11,6 +11,7 @@ project:
 website:
   title: "Markuss Saule"
   site-url: "https://msaule.github.io"
+  favicon: images/favicon.svg
   navbar:
     left:
       - text: Home

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MS">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3bc8ff"/>
+      <stop offset="100%" stop-color="#7ea2ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#0b1423"/>
+  <rect x="3" y="3" width="58" height="58" rx="13" fill="none" stroke="#2b3f5d" stroke-width="2"/>
+  <text
+    x="32"
+    y="40"
+    text-anchor="middle"
+    font-family="Manrope, Segoe UI, Arial, sans-serif"
+    font-size="27"
+    font-weight="800"
+    letter-spacing="1"
+    fill="url(#g)">MS</text>
+</svg>
