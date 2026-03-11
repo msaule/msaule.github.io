@@ -1,0 +1,10 @@
+# MERCURY reproduction commands
+
+python -m mercury.cli.app bundle-report --output-dir outputs/final_full_bundle --seed-count 1 --sweep-spec configs/sweeps/flash_crash_resilience_grid.yaml --render-html
+
+# Component workflow
+python -m mercury.cli.app benchmark --output-dir outputs/final_full_bundle/benchmark
+python -m mercury.cli.app plot-benchmark --summary outputs/final_full_bundle/benchmark/summary.json --leaderboard outputs/final_full_bundle/benchmark/leaderboard.json --output-dir outputs/final_full_bundle/plots/benchmark
+python -m mercury.cli.app report-benchmark --summary outputs/final_full_bundle/benchmark/summary.json --leaderboard outputs/final_full_bundle/benchmark/leaderboard.json --benchmark-plots-dir outputs/final_full_bundle/plots/benchmark --output outputs/final_full_bundle/research_report.md --sweep-summary outputs/final_full_bundle/sweep/summary.json --sweep-spec outputs/final_full_bundle/sweep/spec.json --sweep-leaderboard outputs/final_full_bundle/sweep/leaderboard.json --sweep-plots-dir outputs/final_full_bundle/plots/sweep
+# Sweep workflow was included in this bundle
+python -m mercury.cli.app plot-sweep --summary outputs/final_full_bundle/sweep/summary.json --spec outputs/final_full_bundle/sweep/spec.json --leaderboard outputs/final_full_bundle/sweep/leaderboard.json --output-dir outputs/final_full_bundle/plots/sweep

@@ -34,6 +34,7 @@ title: "Resume"
 
 ## Project Signature
 
+- MERCURY market microstructure lab with multi-agent exchange simulation, flash-crash experiments, and reproducible research publishing
 - Fraud modeling plus blockchain audit architecture for healthcare claims
 - Simulation-led staffing optimization for fulfillment operations
 - Readmission risk modeling with SQL, R, and BI integration

@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - files/mercury-market-sim/**
   render:
     - index.qmd
     - projects.qmd
