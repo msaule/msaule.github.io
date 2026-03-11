@@ -6,13 +6,14 @@ title: ""
 ::: {.profile-sidebar}
 ![](images/profile/markuss-headshot.jpg){.profile-photo}
 
-<div class="profile-focus">Data Science</div>
-
 ### Markuss Saule
 
-<div class="identity-line">Decision-grade analytics for healthcare, markets, and operations</div>
+<div class="identity-line">Data and Analytics Specialist</div>
 
-<div class="profile-disciplines"><span class="discipline-pill">Business Analytics</span><span class="discipline-pill">Statistics</span></div>
+<div class="profile-disciplines">
+<div class="discipline-row"><span class="discipline-pill">Business Analytics</span><span class="discipline-pill">Statistics</span></div>
+<div class="discipline-row"><span class="discipline-pill">Data Science</span></div>
+</div>
 
 I am a systems-first analytics builder focused on operational risk, bottlenecks, and decision thresholds in complex organizations.
 

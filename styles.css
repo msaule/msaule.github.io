@@ -167,34 +167,22 @@ p, li {
   margin-bottom: 0.15rem;
 }
 
-.profile-focus {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 0 0.6rem;
-  padding: 0.28rem 0.7rem;
-  border-radius: 999px;
-  border: 1px solid rgba(96, 229, 191, 0.26);
-  background: rgba(96, 229, 191, 0.08);
-  color: #c8f8ea;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
 .identity-line {
   color: #c3d6f6;
   font-size: 0.93rem;
   margin-bottom: 0.6rem;
-  line-height: 1.45;
 }
 
 .profile-disciplines {
+  display: grid;
+  gap: 0.42rem;
+  margin-bottom: 0.75rem;
+}
+
+.discipline-row {
   display: flex;
   gap: 0.45rem;
   flex-wrap: wrap;
-  margin-bottom: 0.75rem;
 }
 
 .discipline-pill {
@@ -290,6 +278,8 @@ p, li {
     linear-gradient(160deg, rgba(14, 23, 37, 0.98), rgba(8, 13, 22, 0.98));
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+}
+
 .flagship-banner {
   width: 100%;
   display: block;

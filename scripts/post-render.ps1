@@ -14,4 +14,4 @@ $redirect = @"
 </html>
 "@
 
-Set-Content -Path (Join-Path $PSScriptRoot "..\\index.html") -Value $redirect -Encoding UTF8
+Set-Content -Path (Join-Path $PSScriptRoot "..\\index.html") -Value $redirect -Encoding Ascii
