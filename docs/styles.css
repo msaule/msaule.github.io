@@ -167,10 +167,47 @@ p, li {
   margin-bottom: 0.15rem;
 }
 
+.profile-focus {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 0.6rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(96, 229, 191, 0.26);
+  background: rgba(96, 229, 191, 0.08);
+  color: #c8f8ea;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .identity-line {
   color: #c3d6f6;
   font-size: 0.93rem;
   margin-bottom: 0.6rem;
+  line-height: 1.45;
+}
+
+.profile-disciplines {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.discipline-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.24rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid #335178;
+  background: var(--chip);
+  color: #cfe0fb;
+  font-size: 0.74rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .profile-links {
@@ -244,10 +281,7 @@ p, li {
 }
 
 .flagship-panel {
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
-  gap: 1rem;
-  align-items: stretch;
+  display: block;
   border-radius: 22px;
   padding: 1rem;
   margin: 0.95rem 0 1.25rem;
@@ -256,27 +290,21 @@ p, li {
     linear-gradient(160deg, rgba(14, 23, 37, 0.98), rgba(8, 13, 22, 0.98));
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
-}
-
-.flagship-media {
-  min-width: 0;
+.flagship-banner {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  object-position: center;
   border-radius: 18px;
-  overflow: hidden;
   border: 1px solid var(--line-soft);
   background: #0b1320;
-}
-
-.flagship-media img {
-  width: 100%;
-  height: 100%;
-  min-height: 340px;
-  display: block;
-  object-fit: cover;
+  margin-bottom: 1rem;
 }
 
 .flagship-copy {
   min-width: 0;
-  padding: 0.15rem 0.1rem;
+  padding: 0.15rem 0.2rem 0.1rem;
 }
 
 .eyebrow {
@@ -599,12 +627,8 @@ p, li {
     grid-template-columns: 1fr;
   }
 
-  .flagship-panel {
-    grid-template-columns: 1fr;
-  }
-
-  .flagship-media img {
-    min-height: 280px;
+  .flagship-banner {
+    aspect-ratio: 16 / 8;
   }
 
   .project-grid {

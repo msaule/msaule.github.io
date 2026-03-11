@@ -6,11 +6,13 @@ title: ""
 ::: {.profile-sidebar}
 ![](images/profile/markuss-headshot.jpg){.profile-photo}
 
+<div class="profile-focus">Data Science</div>
+
 ### Markuss Saule
 
-<div class="identity-line">Data and Analytics Specialist</div>
+<div class="identity-line">Decision-grade analytics for healthcare, markets, and operations</div>
 
-`Business Analytics` `Statistics` `Data Science`
+<div class="profile-disciplines"><span class="discipline-pill">Business Analytics</span><span class="discipline-pill">Statistics</span></div>
 
 I am a systems-first analytics builder focused on operational risk, bottlenecks, and decision thresholds in complex organizations.
 
@@ -48,9 +50,7 @@ Healthcare is personal to me. Family health challenges shaped how I define impac
 <div class="section-intro">MERCURY extends the portfolio beyond dashboards and into full-system market design: exchange mechanics, stress testing, fragmented venues, and reproducible research artifacts.</div>
 
 ::: {.flagship-panel}
-<div class="flagship-media">
-<img src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape">
-</div>
+<img class="flagship-banner" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape">
 <div class="flagship-copy">
 <div class="eyebrow">New flagship build</div>
 

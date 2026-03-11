@@ -3,6 +3,8 @@ project:
   output-dir: docs
   resources:
     - files/mercury-market-sim/**
+  post-render:
+    - powershell -ExecutionPolicy Bypass -File scripts/post-render.ps1
   render:
     - index.qmd
     - projects.qmd

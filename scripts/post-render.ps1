@@ -1,4 +1,5 @@
-﻿<!doctype html>
+$redirect = @"
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -11,3 +12,6 @@
   <p>Redirecting to <a href="/docs/">/docs/</a>...</p>
 </body>
 </html>
+"@
+
+Set-Content -Path (Join-Path $PSScriptRoot "..\\index.html") -Value $redirect -Encoding UTF8
