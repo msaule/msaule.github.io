@@ -44,15 +44,23 @@ body {
   font-family: "Manrope", system-ui, sans-serif;
   color: var(--text);
   min-height: 100vh;
-  background-color: var(--bg);
-  background:
-    radial-gradient(1600px 1000px at 8% -18%, rgba(126, 162, 255, 0.15), transparent 60%),
-    radial-gradient(1400px 900px at 92% -12%, rgba(96, 229, 191, 0.1), transparent 55%),
-    radial-gradient(1200px 800px at 50% 120%, rgba(59, 200, 255, 0.07), transparent 60%),
-    linear-gradient(180deg, var(--bg) 0%, #080e1a 50%, #0a1220 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: var(--bg);
   line-height: 1.6;
+  position: relative;
+}
+
+/* Seamless gradient overlay — single fixed layer, no seams */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(80vw 60vh at 8% 10%, rgba(126, 162, 255, 0.15), transparent 60%),
+    radial-gradient(70vw 55vh at 92% 15%, rgba(96, 229, 191, 0.10), transparent 55%),
+    radial-gradient(60vw 50vh at 50% 85%, rgba(59, 200, 255, 0.07), transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, #080e1a 50%, #0a1220 100%);
 }
 
 /* Film grain */
@@ -68,7 +76,6 @@ body::before {
   background-size: 200px 200px;
 }
 
-body::after { content: none; }
 
 /* Scroll progress bar */
 .scroll-progress {
