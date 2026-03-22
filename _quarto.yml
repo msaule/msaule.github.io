@@ -36,6 +36,8 @@ format:
   html:
     theme: darkly
     css: styles.css
+    include-after-body:
+      - text: <script src="enhancements.js"></script>
     toc: false
     smooth-scroll: true
 

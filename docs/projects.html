@@ -155,8 +155,28 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>Each project below is designed around business impact: clearer decisions, lower risk, stronger performance.</p>
-<div class="project-grid">
-<a class="project-card" href="projects/mercury-market-sim.html"><img class="project-thumb" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY project cover">
+<div class="filter-bar">
+<button class="filter-btn active" data-filter="all">
+All
+</button>
+<button class="filter-btn" data-filter="simulation">
+Simulation
+</button>
+<button class="filter-btn" data-filter="ml">
+Machine Learning
+</button>
+<button class="filter-btn" data-filter="healthcare">
+Healthcare
+</button>
+<button class="filter-btn" data-filter="bi">
+BI / Dashboards
+</button>
+<button class="filter-btn" data-filter="data-eng">
+Data Engineering
+</button>
+</div>
+<div class="project-grid reveal-stagger">
+<a class="project-card" data-category="simulation ml" href="projects/mercury-market-sim.html"><img class="project-thumb" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY project cover">
 <div class="project-body">
 <div class="card-topline">
 <span class="project-badge">Flagship</span>
@@ -171,7 +191,7 @@ Research-grade multi-agent exchange simulation for liquidity stress, fragmentati
 <span class="chip">Python</span><span class="chip">Simulation</span><span class="chip">Market Structure</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment project cover">
+</a> <a class="project-card" data-category="simulation" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment project cover">
 <div class="project-body">
 <div class="card-title">
 Fulfillment Center Risk Simulation and Staffing Optimization
@@ -183,7 +203,7 @@ Simulation-driven staffing strategy and throughput risk mitigation.
 <span class="chip">Python</span><span class="chip">SimPy</span><span class="chip">Power BI</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/market-basket.html"><img class="project-thumb" src="images/projects/market-basket/cover.png" alt="Market basket project cover">
+</a> <a class="project-card" data-category="ml" href="projects/market-basket.html"><img class="project-thumb" src="images/projects/market-basket/cover.png" alt="Market basket project cover">
 <div class="project-body">
 <div class="card-title">
 Market Basket Analysis: What Snacks Are Bought Together?
@@ -195,7 +215,7 @@ Product affinity mining to inform promotion and shelf strategy.
 <span class="chip">Python</span><span class="chip">Apriori</span><span class="chip">Retail</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain project cover">
+</a> <a class="project-card" data-category="ml healthcare" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain project cover">
 <div class="project-body">
 <div class="card-title">
 Blockchain + Machine Learning Healthcare Fraud Ledger
@@ -207,7 +227,7 @@ Secure, traceable fraud workflows with predictive risk signals.
 <span class="chip">Python</span><span class="chip">ML</span><span class="chip">Blockchain</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/insurance-fraud.html"><img class="project-thumb" src="images/projects/insurance-fraud/cover.png" alt="Insurance fraud project cover">
+</a> <a class="project-card" data-category="ml" href="projects/insurance-fraud.html"><img class="project-thumb" src="images/projects/insurance-fraud/cover.png" alt="Insurance fraud project cover">
 <div class="project-body">
 <div class="card-title">
 Insurance Fraud Detection
@@ -219,7 +239,7 @@ Model comparison and explainability for claims fraud triage.
 <span class="chip">Scikit-Learn</span><span class="chip">XGBoost</span><span class="chip">SHAP</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/ai-scheduling.html"><img class="project-thumb" src="images/projects/ai-scheduling/cover.png" alt="AI scheduling project cover">
+</a> <a class="project-card" data-category="bi healthcare" href="projects/ai-scheduling.html"><img class="project-thumb" src="images/projects/ai-scheduling/cover.png" alt="AI scheduling project cover">
 <div class="project-body">
 <div class="card-title">
 AI-Powered Scheduling and Patient Access Optimization
@@ -231,7 +251,7 @@ Capacity and scheduling intelligence for healthcare operations.
 <span class="chip">Power BI</span><span class="chip">Healthcare</span><span class="chip">Operations</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/hospital-forecast.html"><img class="project-thumb" src="images/projects/hospital-forecast/cover.png" alt="Hospital forecast project cover">
+</a> <a class="project-card" data-category="bi healthcare" href="projects/hospital-forecast.html"><img class="project-thumb" src="images/projects/hospital-forecast/cover.png" alt="Hospital forecast project cover">
 <div class="project-body">
 <div class="card-title">
 Hospital Financial Forecasting Dashboard
@@ -243,7 +263,7 @@ Department-level forecasting to support budget and planning decisions.
 <span class="chip">Excel</span><span class="chip">Forecasting</span><span class="chip">Finance</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/education-wage.html"><img class="project-thumb" src="images/projects/education-wage/cover.png" alt="Education wage project cover">
+</a> <a class="project-card" data-category="bi" href="projects/education-wage.html"><img class="project-thumb" src="images/projects/education-wage/cover.png" alt="Education wage project cover">
 <div class="project-body">
 <div class="card-title">
 Education, Gender and Wage Inequality (1973-2022)
@@ -255,7 +275,7 @@ Long-horizon inequality analysis with policy-relevant segmentation.
 <span class="chip">Economics</span><span class="chip">R</span><span class="chip">Policy</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/bank-loan.html"><img class="project-thumb" src="images/projects/bank-loan/cover.png" alt="Bank loan risk project cover">
+</a> <a class="project-card" data-category="bi" href="projects/bank-loan.html"><img class="project-thumb" src="images/projects/bank-loan/cover.png" alt="Bank loan risk project cover">
 <div class="project-body">
 <div class="card-title">
 Bank Loan Risk Rating Dashboard
@@ -267,7 +287,7 @@ Portfolio risk visibility and borrower-level decision support.
 <span class="chip">Excel</span><span class="chip">Risk</span><span class="chip">Dashboard</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/lung-cancer.html"><img class="project-thumb" src="images/projects/lung-cancer/cover.png" alt="Lung cancer project cover">
+</a> <a class="project-card" data-category="healthcare" href="projects/lung-cancer.html"><img class="project-thumb" src="images/projects/lung-cancer/cover.png" alt="Lung cancer project cover">
 <div class="project-body">
 <div class="card-title">
 Lung Cancer Survival (SEER 2004-2015)
@@ -279,7 +299,7 @@ Clinical and demographic outcome analysis for survival insights.
 <span class="chip">R</span><span class="chip">Power BI</span><span class="chip">Healthcare</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/readmission.html"><img class="project-thumb" src="images/projects/readmission/cover.png" alt="Readmission project cover">
+</a> <a class="project-card" data-category="data-eng healthcare" href="projects/readmission.html"><img class="project-thumb" src="images/projects/readmission/cover.png" alt="Readmission project cover">
 <div class="project-body">
 <div class="card-title">
 Hospital Readmission Analytics
@@ -291,7 +311,7 @@ Readmission benchmarking and equity-aware operational reporting.
 <span class="chip">SQL</span><span class="chip">R</span><span class="chip">Power BI</span>
 </div>
 </div>
-</a> <a class="project-card" href="projects/hospital-db.html"><img class="project-thumb" src="images/projects/hospital-db/cover.png" alt="Hospital database project cover">
+</a> <a class="project-card" data-category="data-eng" href="projects/hospital-db.html"><img class="project-thumb" src="images/projects/hospital-db/cover.png" alt="Hospital database project cover">
 <div class="project-body">
 <div class="card-title">
 Hospital Database System
@@ -303,7 +323,7 @@ Normalized relational schema and reporting-ready SQL foundations.
 <span class="chip">SQL</span><span class="chip">Database</span><span class="chip">ETL</span>
 </div>
 </div>
-</a><p><a class="project-card" href="projects/hospital-db.html"></a></p>
+</a><p><a class="project-card" data-category="data-eng" href="projects/hospital-db.html"></a></p>
 </div>
 
 
@@ -710,6 +730,7 @@ Normalized relational schema and reporting-ready SQL foundations.
   });
   </script>
 </div> <!-- /content -->
+<script src="enhancements.js"></script>
 
 
 

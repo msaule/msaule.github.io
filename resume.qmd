@@ -2,19 +2,19 @@
 title: "Resume"
 ---
 
-<div class="resume-actions">
+<div class="resume-actions reveal">
 <a class="btn-primary" href="files/resume.pdf" target="_blank" rel="noopener">Open Resume PDF</a>
 <a class="btn-ghost" href="https://www.linkedin.com/in/markuss-saule/" target="_blank" rel="noopener">LinkedIn Profile</a>
 </div>
 
 ::: {.resume-layout}
-::: {.resume-viewer}
+::: {.resume-viewer .reveal}
 <iframe class="resume-frame" src="files/resume.pdf#view=FitH" title="Markuss Saule Resume"></iframe>
 <p class="resume-note">If the embedded viewer does not load in your browser, open the PDF directly with the button above.</p>
 :::
 
 ::: {.resume-timeline}
-## Experience Timeline
+## <span class="gradient-text">Experience Timeline</span>
 
 <div class="timeline-item"><h4>Incoming 2026 - Volvo Group, Business Intelligence and Analytics Intern</h4><ul><li>Supporting internal analytics for operational decision-making in enterprise environments.</li><li>Expected focus: SQL workflows, KPI design, BI reporting, and performance diagnostics.</li></ul></div>
 
@@ -26,13 +26,13 @@ title: "Resume"
 
 <div class="timeline-item"><h4>Jun 2021 - Oct 2021: Ministry of Health of Latvia, Marketing and Analytics Intern</h4><ul><li>Analyzed vaccination trends for a national COVID campaign reaching 20,000+ people.</li><li>Aligned insight-sharing across three departments to improve campaign precision.</li></ul></div>
 
-## Education and Credentials
+## <span class="gradient-text">Education and Credentials</span>
 
 - BYU-Idaho: BS Business Analytics (Apr 2027 target), 4.0 GPA
 - Minors: Statistics, Data Science
 - Certifications: Google BI, Google PM, Google Digital Marketing and E-commerce, IBM Business Analyst, DataCamp SQL Associate
 
-## Project Signature
+## <span class="gradient-text">Project Signature</span>
 
 - MERCURY market microstructure lab with multi-agent exchange simulation, flash-crash experiments, and reproducible research publishing
 - Fraud modeling plus blockchain audit architecture for healthcare claims

@@ -1,42 +1,56 @@
 ---
-title: "About"
+title: ""
 ---
 
-## Background
+<div class="about-hero reveal">
+<h1 class="gradient-text-animated">About Me</h1>
+<p class="about-lead">Business Analytics student at BYU-Idaho building decision-grade analytics for complex organizations.</p>
+</div>
 
-I am a Business Analytics student at BYU-Idaho (4.0 GPA) building a long-term career at the intersection of analytics, operations, and systems strategy. My academic path is deliberately technical and operational: Business Analytics major with minors in Statistics and Data Science.
+<div class="about-grid">
 
-## What Drives My Work
+<div class="about-section reveal">
+<h2>Background</h2>
+<p>I am a Business Analytics student at BYU-Idaho (4.0 GPA) with minors in Statistics and Data Science. I am building a long-term career at the intersection of analytics, operations, and systems strategy. My academic path is deliberately technical and operational.</p>
+<p>Healthcare impact is personal for me. Family health challenges shaped how I think about meaningful work. That is why I am deeply committed to operational and platform-level analytics that improve patient outcomes and system reliability.</p>
+</div>
 
-I think in systems:
+<div class="about-section reveal">
+<h2>What Drives My Work</h2>
+<div class="about-values">
+<div class="value-item"><div class="value-icon">&#9670;</div><div><strong>Bottlenecks</strong><p>Constraints that limit throughput, access, and quality</p></div></div>
+<div class="value-item"><div class="value-icon">&#9670;</div><div><strong>Risk Surfaces</strong><p>Where uncertainty meets real cost and consequence</p></div></div>
+<div class="value-item"><div class="value-icon">&#9670;</div><div><strong>Intervention Thresholds</strong><p>Knowing when to act, not just what to measure</p></div></div>
+<div class="value-item"><div class="value-icon">&#9670;</div><div><strong>Real Constraints</strong><p>Tradeoffs under actual operating conditions</p></div></div>
+</div>
+<p style="margin-top: 1rem; color: var(--muted);">I am not interested in surface-level reporting. I am interested in building analytics that change decisions.</p>
+</div>
 
-- bottlenecks
-- risk surfaces
-- thresholds for intervention
-- tradeoffs under real constraints
+</div>
 
-I am not interested in surface-level reporting. I am interested in building analytics that change decisions.
+<div class="about-tech reveal">
+<h2><span class="gradient-text">Technical Stack</span></h2>
+<div class="tech-grid">
+<div class="tech-card"><h4>Python</h4><p>pandas, NumPy, scikit-learn, XGBoost, SHAP, simulation</p></div>
+<div class="tech-card"><h4>SQL</h4><p>Joins, CTEs, normalization, optimization, analytics views</p></div>
+<div class="tech-card"><h4>R</h4><p>tidyverse, regression, statistical modeling</p></div>
+<div class="tech-card"><h4>BI Tools</h4><p>Power BI (DAX, decomposition trees, KPI design), Excel forecasting</p></div>
+<div class="tech-card"><h4>Systems</h4><p>ETL workflows, relational schema design, reproducible pipelines</p></div>
+</div>
+</div>
 
-Healthcare impact is personal for me. Family health challenges shaped how I think about meaningful work. That is why I am deeply committed to operational and platform-level analytics that improve patient outcomes and system reliability.
+<div class="about-working-style reveal">
+<h2><span class="gradient-text">Working Style</span></h2>
+<div class="style-grid">
+<div class="style-item"><span class="style-icon">&#9654;</span><span>High ownership</span></div>
+<div class="style-item"><span class="style-icon">&#9654;</span><span>High intensity</span></div>
+<div class="style-item"><span class="style-icon">&#9654;</span><span>Strategic and long-horizon</span></div>
+<div class="style-item"><span class="style-icon">&#9654;</span><span>Values-driven and impact-focused</span></div>
+<div class="style-item"><span class="style-icon">&#9654;</span><span>Most effective in autonomous, complex build environments</span></div>
+</div>
+</div>
 
-## Technical Profile
-
-- Python: pandas, NumPy, scikit-learn, XGBoost, SHAP, simulation
-- SQL: joins, CTEs, normalization, optimization, analytics views
-- R: tidyverse, regression, statistical modeling
-- BI: Power BI (DAX, decomposition trees, KPI design), Excel forecasting
-- Systems: ETL workflows, relational schema design, reproducible pipelines
-
-## Working Style
-
-- high ownership
-- high intensity
-- strategic and long-horizon
-- values-driven and impact-focused
-- most effective in autonomous, complex build environments
-
-## One-Line Identity
-
-Data and analytics builder designing decision-grade systems for complex organizations, with a focus on operational risk, healthcare impact, and systems thinking.
-
-[Connect on LinkedIn](https://www.linkedin.com/in/markuss-saule/)
+<div class="about-cta reveal">
+<p>Data and analytics builder designing decision-grade systems for complex organizations, with a focus on operational risk, healthcare impact, and systems thinking.</p>
+<a class="btn-primary" href="https://www.linkedin.com/in/markuss-saule/" target="_blank" rel="noopener">Connect on LinkedIn</a>
+</div>

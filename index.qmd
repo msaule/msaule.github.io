@@ -31,14 +31,14 @@ I am a systems-first analytics builder focused on operational risk, bottlenecks,
 :::
 
 ::: {.home-main}
-::: {.hero-panel}
-<div class="kicker">Decision-Grade Analytics for Complex Systems</div>
+::: {.hero-panel .reveal}
+<div class="kicker">// Decision-Grade Analytics for Complex Systems</div>
 
-# I build decision engines, not decorative dashboards.
+<h1 class="hero-h1"><span class="gradient-text-animated">I build </span><span class="typed-text gradient-text-animated" data-phrases='["decision engines.","risk models.","simulation labs.","analytics systems."]'></span></h1>
 
-I am a Business Analytics student at BYU-Idaho building high-consequence analytics for healthcare, market systems, and enterprise operations. My work is designed for environments where tradeoffs matter and decisions carry real cost.
+<p class="hero-subtitle">Business Analytics student at BYU-Idaho building high-consequence analytics for healthcare, market systems, and enterprise operations. My work is designed for environments where tradeoffs matter and decisions carry real cost.</p>
 
-Healthcare is personal to me. Family health challenges shaped how I define impact, and why I care about platform-level systems that improve outcomes at scale.
+<p class="hero-personal">Healthcare is personal to me. Family health challenges shaped how I define impact, and why I care about platform-level systems that improve outcomes at scale.</p>
 
 <div class="hero-actions">
 <a class="btn-primary" href="projects.html">View Projects</a>
@@ -46,14 +46,14 @@ Healthcare is personal to me. Family health challenges shaped how I define impac
 </div>
 :::
 
-## New Flagship
+## <span class="gradient-text">New Flagship</span>
 
 <div class="section-intro">MERCURY extends the portfolio beyond dashboards and into full-system market design: exchange mechanics, stress testing, fragmented venues, and reproducible research artifacts.</div>
 
-::: {.flagship-panel}
+::: {.flagship-panel .reveal-scale}
 <img class="flagship-banner" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape">
 <div class="flagship-copy">
-<div class="eyebrow">New flagship build</div>
+<div class="eyebrow">// Flagship build</div>
 
 ### MERCURY: Market Microstructure Simulation Lab
 
@@ -61,11 +61,11 @@ MERCURY is a research-grade multi-agent exchange simulator built around a contin
 
 It combines the engine and the communication layer: benchmark suites, parameter sweeps, publication-grade plots, and a reproducible research report that makes the system legible without opening the codebase first.
 
-<div class="flagship-stats">
-<div class="flagship-stat"><strong>18</strong><span>built-in benchmark scenarios</span></div>
-<div class="flagship-stat"><strong>67</strong><span>passing tests across the simulation core</span></div>
+<div class="flagship-stats reveal-stagger">
+<div class="flagship-stat"><strong data-count="18">0</strong><span>built-in benchmark scenarios</span></div>
+<div class="flagship-stat"><strong data-count="67">0</strong><span>passing tests across the simulation core</span></div>
 <div class="flagship-stat"><strong>45 to 9</strong><span>flash-crash detections after circuit breaker intervention</span></div>
-<div class="flagship-stat"><strong>0.8201</strong><span>mean cross-asset dislocation captured in spillover runs</span></div>
+<div class="flagship-stat"><strong data-count="0.8201">0</strong><span>mean cross-asset dislocation captured in spillover runs</span></div>
 </div>
 
 <div class="hero-actions">
@@ -75,27 +75,27 @@ It combines the engine and the communication layer: benchmark suites, parameter 
 </div>
 :::
 
-## Operating Doctrine
+## <span class="gradient-text">Operating Doctrine</span>
 
-::: {.operating-grid}
+::: {.operating-grid .reveal-stagger}
 <div class="op-card"><h4>Systems First</h4><p>I model the full system before choosing metrics. Local optimization without systems context is noise.</p></div>
 <div class="op-card"><h4>Risk Explicitly</h4><p>I surface thresholds, failure modes, and confidence bounds so leaders can act under uncertainty.</p></div>
 <div class="op-card"><h4>Bottlenecks Before Features</h4><p>I prioritize constraints that limit throughput, access, and quality before adding complexity.</p></div>
 <div class="op-card"><h4>Tradeoffs Over Vanity KPIs</h4><p>I design analytics around decision consequences, not dashboard aesthetics.</p></div>
 :::
 
-## Selected Outcomes
+## <span class="gradient-text">Selected Outcomes</span>
 
-<div class="metric-strip">
-<div class="metric-pill"><strong>1,150+</strong><span>Qualified applicants from optimized Meta campaigns</span></div>
-<div class="metric-pill"><strong>320%</strong><span>Hiring engagement lift from KPI dashboarding</span></div>
-<div class="metric-pill"><strong>70%</strong><span>Reporting time reduction via automation</span></div>
-<div class="metric-pill"><strong>114K+</strong><span>SEER patient records modeled for survival analysis</span></div>
+<div class="metric-strip reveal-stagger">
+<div class="metric-pill"><strong data-count="1150" data-suffix="+">0</strong><span>Qualified applicants from optimized Meta campaigns</span></div>
+<div class="metric-pill"><strong data-count="320" data-suffix="%">0</strong><span>Hiring engagement lift via KPI dashboarding</span></div>
+<div class="metric-pill"><strong data-count="70" data-suffix="%">0</strong><span>Reporting time reduction via automation</span></div>
+<div class="metric-pill"><strong data-count="114" data-suffix="K+">0</strong><span>SEER patient records modeled for survival analysis</span></div>
 </div>
 
-## Featured Projects
+## <span class="gradient-text">Featured Projects</span>
 
-::: {.project-grid}
+::: {.project-grid .reveal-stagger}
 <a class="project-card" href="projects/mercury-market-sim.html"><img class="project-thumb" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape"><div class="project-body"><div class="card-topline"><span class="project-badge">Flagship</span></div><div class="card-title">MERCURY: Market Microstructure Simulation Lab</div><p>Research-grade exchange simulation for liquidity stress, flash crashes, venue fragmentation, and fee-aware strategy interaction.</p><div class="chips"><span class="chip">Python</span><span class="chip">Simulation</span><span class="chip">Market Microstructure</span></div></div></a>
 <a class="project-card" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment simulation visual"><div class="project-body"><div class="card-title">Fulfillment Center Risk Simulation and Staffing Optimization</div><p>SimPy-based engine with pressure scoring, risk signals, and staffing search for high-load operations.</p><div class="chips"><span class="chip">Python</span><span class="chip">SimPy</span><span class="chip">Optimization</span></div></div></a>
 <a class="project-card" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain fraud architecture"><div class="project-body"><div class="card-title">Blockchain + ML Healthcare Fraud Ledger</div><p>XGBoost fraud scoring combined with tamper-evident records for trust and auditability.</p><div class="chips"><span class="chip">XGBoost</span><span class="chip">SHA-256</span><span class="chip">Streamlit</span></div></div></a>
