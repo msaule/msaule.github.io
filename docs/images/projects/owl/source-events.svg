@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#0e1726"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="400" fill="url(#bg)" rx="12"/>
+  <rect width="600" height="400" fill="none" stroke="#1e3050" stroke-width="1" rx="12"/>
+
+  <!-- Title -->
+  <text x="30" y="35" fill="#3bc8ff" font-size="14" font-weight="700" font-family="sans-serif">Event Distribution by Source</text>
+  <text x="30" y="52" fill="#8a9fc0" font-size="10" font-family="sans-serif">14 events across 6 data sources</text>
+
+  <!-- Bar chart -->
+  <g transform="translate(30, 80)">
+    <!-- Y axis labels -->
+    <text x="75" y="10" fill="#8a9fc0" font-size="10" font-family="sans-serif" text-anchor="end">Gmail</text>
+    <text x="75" y="60" fill="#8a9fc0" font-size="10" font-family="sans-serif" text-anchor="end">Calendar</text>
+    <text x="75" y="110" fill="#8a9fc0" font-size="10" font-family="sans-serif" text-anchor="end">GitHub</text>
+    <text x="75" y="160" fill="#8a9fc0" font-size="10" font-family="sans-serif" text-anchor="end">Slack</text>
+    <text x="75" y="210" fill="#8a9fc0" font-size="10" font-family="sans-serif" text-anchor="end">Shopify</text>
+    <text x="75" y="260" fill="#8a9fc0" font-size="10" font-family="sans-serif" text-anchor="end">Files</text>
+
+    <!-- Bars (Gmail: 3, Calendar: 3, GitHub: 3, Slack: 3, Shopify: 1, Files: 1) -->
+    <!-- Gmail = 3 -->
+    <rect x="90" y="-2" width="270" height="24" rx="4" fill="rgba(234,67,53,0.2)" stroke="rgba(234,67,53,0.4)" stroke-width="1"/>
+    <rect x="90" y="-2" width="270" height="24" rx="4" fill="rgba(234,67,53,0.15)"/>
+    <text x="370" y="16" fill="#EA4335" font-size="13" font-weight="600" font-family="monospace">3</text>
+
+    <!-- Calendar = 3 -->
+    <rect x="90" y="48" width="270" height="24" rx="4" fill="rgba(66,133,244,0.2)" stroke="rgba(66,133,244,0.4)" stroke-width="1"/>
+    <text x="370" y="66" fill="#4285F4" font-size="13" font-weight="600" font-family="monospace">3</text>
+
+    <!-- GitHub = 3 -->
+    <rect x="90" y="98" width="270" height="24" rx="4" fill="rgba(168,85,247,0.2)" stroke="rgba(168,85,247,0.4)" stroke-width="1"/>
+    <text x="370" y="116" fill="#A855F7" font-size="13" font-weight="600" font-family="monospace">3</text>
+
+    <!-- Slack = 3 -->
+    <rect x="90" y="148" width="270" height="24" rx="4" fill="rgba(224,30,90,0.2)" stroke="rgba(224,30,90,0.4)" stroke-width="1"/>
+    <text x="370" y="166" fill="#E01E5A" font-size="13" font-weight="600" font-family="monospace">3</text>
+
+    <!-- Shopify = 1 -->
+    <rect x="90" y="198" width="90" height="24" rx="4" fill="rgba(150,191,72,0.2)" stroke="rgba(150,191,72,0.4)" stroke-width="1"/>
+    <text x="190" y="216" fill="#96BF48" font-size="13" font-weight="600" font-family="monospace">1</text>
+
+    <!-- Files = 1 -->
+    <rect x="90" y="248" width="90" height="24" rx="4" fill="rgba(255,179,71,0.2)" stroke="rgba(255,179,71,0.4)" stroke-width="1"/>
+    <text x="190" y="266" fill="#FFB347" font-size="13" font-weight="600" font-family="monospace">1</text>
+  </g>
+
+  <!-- Bottom: confidence breakdown -->
+  <g transform="translate(30, 370)">
+    <text x="0" y="0" fill="#8a9fc0" font-size="9" font-family="sans-serif">Avg Confidence:</text>
+    <text x="90" y="0" fill="#22C55E" font-size="9" font-weight="600" font-family="monospace">85.75%</text>
+    <text x="160" y="0" fill="#8a9fc0" font-size="9" font-family="sans-serif">Cross-source:</text>
+    <text x="240" y="0" fill="#3bc8ff" font-size="9" font-weight="600" font-family="monospace">100%</text>
+    <text x="290" y="0" fill="#8a9fc0" font-size="9" font-family="sans-serif">Urgency spread:</text>
+    <circle cx="385" cy="-3" r="4" fill="#EF4444"/><text x="395" y="0" fill="#8a9fc0" font-size="9">1 urgent</text>
+    <circle cx="455" cy="-3" r="4" fill="#FBBF24"/><text x="465" y="0" fill="#8a9fc0" font-size="9">1 important</text>
+    <circle cx="545" cy="-3" r="4" fill="#22C55E"/><text x="555" y="0" fill="#8a9fc0" font-size="9">2</text>
+  </g>
+</svg>

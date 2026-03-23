@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 525" width="1200" height="525">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#060a12"/>
+      <stop offset="100%" stop-color="#0e1726"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3bc8ff"/>
+      <stop offset="50%" stop-color="#7ea2ff"/>
+      <stop offset="100%" stop-color="#60e5bf"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFB347"/>
+      <stop offset="100%" stop-color="#FF8C00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="525" fill="url(#bg)"/>
+  <rect width="1200" height="525" fill="none" stroke="#1e3050" stroke-width="1" rx="12"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.04" stroke="#3bc8ff">
+    <line x1="0" y1="100" x2="1200" y2="100"/>
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="300" x2="1200" y2="300"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="525"/>
+    <line x1="400" y1="0" x2="400" y2="525"/>
+    <line x1="600" y1="0" x2="600" y2="525"/>
+    <line x1="800" y1="0" x2="800" y2="525"/>
+    <line x1="1000" y1="0" x2="1000" y2="525"/>
+  </g>
+
+  <!-- Knowledge Graph Visualization (left side) -->
+  <g transform="translate(100, 262)">
+    <!-- Edges -->
+    <line x1="0" y1="0" x2="120" y2="-80" stroke="#3B82F6" stroke-width="1.5" opacity="0.3"/>
+    <line x1="0" y1="0" x2="140" y2="60" stroke="#3B82F6" stroke-width="1.5" opacity="0.3"/>
+    <line x1="120" y1="-80" x2="260" y2="-110" stroke="#A855F7" stroke-width="1.5" opacity="0.3"/>
+    <line x1="120" y1="-80" x2="200" y2="-20" stroke="#22C55E" stroke-width="1.2" opacity="0.25"/>
+    <line x1="140" y1="60" x2="260" y2="-110" stroke="#A855F7" stroke-width="1.2" opacity="0.25"/>
+    <line x1="140" y1="60" x2="280" y2="80" stroke="#FFB347" stroke-width="1.2" opacity="0.25"/>
+    <line x1="200" y1="-20" x2="340" y2="-60" stroke="#FFB347" stroke-width="1.5" opacity="0.3"/>
+    <line x1="260" y1="-110" x2="340" y2="-60" stroke="#22C55E" stroke-width="1.2" opacity="0.25"/>
+    <line x1="280" y1="80" x2="380" y2="20" stroke="#EF4444" stroke-width="1.2" opacity="0.25"/>
+    <line x1="340" y1="-60" x2="380" y2="20" stroke="#3B82F6" stroke-width="1.2" opacity="0.25"/>
+
+    <!-- Nodes -->
+    <circle cx="0" cy="0" r="14" fill="#3B82F6" filter="url(#softglow)" opacity="0.9"/>
+    <text x="0" y="-20" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">Sarah Chen</text>
+
+    <circle cx="120" cy="-80" r="12" fill="#3B82F6" filter="url(#softglow)" opacity="0.9"/>
+    <text x="120" y="-98" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">James Park</text>
+
+    <circle cx="140" cy="60" r="11" fill="#3B82F6" filter="url(#softglow)" opacity="0.9"/>
+    <text x="140" y="82" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">Maria Gonzalez</text>
+
+    <circle cx="260" cy="-110" r="16" fill="#A855F7" filter="url(#softglow)" opacity="0.9"/>
+    <text x="260" y="-132" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">Nexus AI</text>
+
+    <circle cx="280" cy="80" r="13" fill="#A855F7" filter="url(#softglow)" opacity="0.9"/>
+    <text x="280" y="102" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">Apex Corp</text>
+
+    <circle cx="200" cy="-20" r="10" fill="#A855F7" filter="url(#softglow)" opacity="0.9"/>
+    <text x="200" y="-36" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">CloudScale</text>
+
+    <circle cx="340" cy="-60" r="12" fill="#22C55E" filter="url(#softglow)" opacity="0.9"/>
+    <text x="340" y="-78" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">Project Aurora</text>
+
+    <circle cx="380" cy="20" r="10" fill="#FFB347" filter="url(#softglow)" opacity="0.9"/>
+    <text x="380" y="-2" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">Series B</text>
+
+    <circle cx="440" cy="-30" r="9" fill="#FFB347" filter="url(#softglow)" opacity="0.9"/>
+    <text x="440" y="-46" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">API Migration</text>
+
+    <circle cx="430" cy="70" r="9" fill="#EF4444" filter="url(#softglow)" opacity="0.9"/>
+    <text x="430" y="90" fill="#e8f0ff" font-size="10" font-family="sans-serif" text-anchor="middle" opacity="0.85">San Francisco</text>
+  </g>
+
+  <!-- Right side: OWL branding + stats -->
+  <g transform="translate(680, 60)">
+    <!-- OWL eyes -->
+    <circle cx="210" cy="50" r="22" fill="none" stroke="#FFB347" stroke-width="2.5" filter="url(#glow)" opacity="0.9"/>
+    <circle cx="270" cy="50" r="22" fill="none" stroke="#FFB347" stroke-width="2.5" filter="url(#glow)" opacity="0.9"/>
+    <circle cx="210" cy="50" r="8" fill="#FFB347" opacity="0.95"/>
+    <circle cx="270" cy="50" r="8" fill="#FFB347" opacity="0.95"/>
+    <circle cx="213" cy="47" r="2.5" fill="#fff" opacity="0.9"/>
+    <circle cx="273" cy="47" r="2.5" fill="#fff" opacity="0.9"/>
+
+    <!-- Title -->
+    <text x="240" y="105" fill="#e8f0ff" font-size="32" font-weight="800" font-family="sans-serif" text-anchor="middle" letter-spacing="-0.5">OWL</text>
+    <text x="240" y="128" fill="#8a9fc0" font-size="12" font-family="sans-serif" text-anchor="middle">Your AI that never sleeps</text>
+
+    <!-- Stats cards -->
+    <g transform="translate(40, 160)">
+      <rect x="0" y="0" width="170" height="55" rx="8" fill="#0e1726" stroke="#1e3050" stroke-width="1"/>
+      <text x="15" y="23" fill="#3bc8ff" font-size="22" font-weight="700" font-family="monospace">10</text>
+      <text x="50" y="23" fill="#8a9fc0" font-size="11" font-family="sans-serif">entities tracked</text>
+      <rect x="15" y="34" width="140" height="4" rx="2" fill="#1e3050"/>
+      <rect x="15" y="34" width="100" height="4" rx="2" fill="#3bc8ff" opacity="0.6"/>
+
+      <rect x="190" y="0" width="170" height="55" rx="8" fill="#0e1726" stroke="#1e3050" stroke-width="1"/>
+      <text x="205" y="23" fill="#A855F7" font-size="22" font-weight="700" font-family="monospace">14</text>
+      <text x="240" y="23" fill="#8a9fc0" font-size="11" font-family="sans-serif">events ingested</text>
+      <rect x="205" y="34" width="140" height="4" rx="2" fill="#1e3050"/>
+      <rect x="205" y="34" width="120" height="4" rx="2" fill="#A855F7" opacity="0.6"/>
+
+      <rect x="0" y="70" width="170" height="55" rx="8" fill="#0e1726" stroke="#1e3050" stroke-width="1"/>
+      <text x="15" y="93" fill="#22C55E" font-size="22" font-weight="700" font-family="monospace">4</text>
+      <text x="38" y="93" fill="#8a9fc0" font-size="11" font-family="sans-serif">discoveries surfaced</text>
+      <rect x="15" y="104" width="140" height="4" rx="2" fill="#1e3050"/>
+      <rect x="15" y="104" width="56" height="4" rx="2" fill="#22C55E" opacity="0.6"/>
+
+      <rect x="190" y="70" width="170" height="55" rx="8" fill="#0e1726" stroke="#1e3050" stroke-width="1"/>
+      <text x="205" y="93" fill="#FFB347" font-size="22" font-weight="700" font-family="monospace">6</text>
+      <text x="228" y="93" fill="#8a9fc0" font-size="11" font-family="sans-serif">data sources</text>
+      <rect x="205" y="104" width="140" height="4" rx="2" fill="#1e3050"/>
+      <rect x="205" y="104" width="140" height="4" rx="2" fill="#FFB347" opacity="0.6"/>
+    </g>
+
+    <!-- Source pills -->
+    <g transform="translate(40, 310)">
+      <rect x="0" y="0" width="55" height="22" rx="6" fill="rgba(234,67,53,0.15)"/><text x="28" y="15" fill="#EA4335" font-size="9" font-family="sans-serif" text-anchor="middle">Gmail</text>
+      <rect x="62" y="0" width="65" height="22" rx="6" fill="rgba(66,133,244,0.15)"/><text x="95" y="15" fill="#4285F4" font-size="9" font-family="sans-serif" text-anchor="middle">Calendar</text>
+      <rect x="134" y="0" width="57" height="22" rx="6" fill="rgba(168,85,247,0.15)"/><text x="163" y="15" fill="#A855F7" font-size="9" font-family="sans-serif" text-anchor="middle">GitHub</text>
+      <rect x="198" y="0" width="48" height="22" rx="6" fill="rgba(224,30,90,0.15)"/><text x="222" y="15" fill="#E01E5A" font-size="9" font-family="sans-serif" text-anchor="middle">Slack</text>
+      <rect x="253" y="0" width="57" height="22" rx="6" fill="rgba(150,191,72,0.15)"/><text x="282" y="15" fill="#96BF48" font-size="9" font-family="sans-serif" text-anchor="middle">Shopify</text>
+      <rect x="317" y="0" width="45" height="22" rx="6" fill="rgba(255,179,71,0.15)"/><text x="340" y="15" fill="#FFB347" font-size="9" font-family="sans-serif" text-anchor="middle">Files</text>
+    </g>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(40, 490)">
+    <circle cx="0" cy="0" r="4" fill="#3B82F6"/><text x="10" y="4" fill="#8a9fc0" font-size="9" font-family="sans-serif">Person</text>
+    <circle cx="70" cy="0" r="4" fill="#A855F7"/><text x="80" y="4" fill="#8a9fc0" font-size="9" font-family="sans-serif">Company</text>
+    <circle cx="155" cy="0" r="4" fill="#22C55E"/><text x="165" y="4" fill="#8a9fc0" font-size="9" font-family="sans-serif">Project</text>
+    <circle cx="225" cy="0" r="4" fill="#FFB347"/><text x="235" y="4" fill="#8a9fc0" font-size="9" font-family="sans-serif">Topic</text>
+    <circle cx="285" cy="0" r="4" fill="#EF4444"/><text x="295" y="4" fill="#8a9fc0" font-size="9" font-family="sans-serif">Location</text>
+  </g>
+</svg>

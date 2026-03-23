@@ -48,29 +48,29 @@ I am a systems-first analytics builder focused on operational risk, bottlenecks,
 
 ## <span class="gradient-text">New Flagship</span>
 
-<div class="section-intro">MERCURY extends the portfolio beyond dashboards and into full-system market design: exchange mechanics, stress testing, fragmented venues, and reproducible research artifacts.</div>
+<div class="section-intro">OWL is the most ambitious system I've built — a full autonomous AI daemon with a knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes. Open source.</div>
 
 ::: {.flagship-panel .reveal-scale}
-<img class="flagship-banner" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape">
+<img class="flagship-banner" src="images/projects/owl/cover.svg" alt="OWL knowledge graph and dashboard">
 <div class="flagship-copy">
 <div class="eyebrow">// Flagship build</div>
 
-### MERCURY: Market Microstructure Simulation Lab
+### OWL: Autonomous AI Discovery Daemon
 
-MERCURY is a research-grade multi-agent exchange simulator built around a continuous double auction, endogenous price formation, heterogeneous trading agents, fragmented venues, and fee-aware venue economics.
+OWL is a local-first Node.js daemon that watches your data sources — email, calendar, GitHub, Slack, Shopify — builds a living world model, and surfaces high-value discoveries when something matters. Desktop app, web dashboard, MCP server, Docker, and CLI.
 
-It combines the engine and the communication layer: benchmark suites, parameter sweeps, publication-grade plots, and a reproducible research report that makes the system legible without opening the codebase first.
+It combines real-time data ingestion, LLM-powered analysis, cross-source correlation, anomaly detection, and a learning feedback loop into a single system that runs quietly on your machine with zero cloud dependencies.
 
 <div class="flagship-stats reveal-stagger">
-<div class="flagship-stat"><strong data-count="18">0</strong><span>built-in benchmark scenarios</span></div>
-<div class="flagship-stat"><strong data-count="67">0</strong><span>passing tests across the simulation core</span></div>
-<div class="flagship-stat"><strong>45 to 9</strong><span>flash-crash detections after circuit breaker intervention</span></div>
-<div class="flagship-stat"><strong data-count="0.8201">0</strong><span>mean cross-asset dislocation captured in spillover runs</span></div>
+<div class="flagship-stat"><strong data-count="98">0</strong><span>passing tests across the full system</span></div>
+<div class="flagship-stat"><strong data-count="7">0</strong><span>data source plugins with unified contract</span></div>
+<div class="flagship-stat"><strong data-count="8">0</strong><span>delivery channels with rich formatting</span></div>
+<div class="flagship-stat"><strong data-count="5">0</strong><span>deployment modes: CLI, Desktop, Web, Docker, MCP</span></div>
 </div>
 
 <div class="hero-actions">
-<a class="btn-primary" href="projects/mercury-market-sim.html">Explore MERCURY</a>
-<a class="btn-ghost" href="files/mercury-market-sim/research_report.html" target="_blank" rel="noopener">Open Research Report</a>
+<a class="btn-primary" href="projects/owl.html">Explore OWL</a>
+<a class="btn-ghost" href="https://github.com/msaule/owl" target="_blank" rel="noopener">View on GitHub</a>
 </div>
 </div>
 :::
@@ -96,12 +96,12 @@ It combines the engine and the communication layer: benchmark suites, parameter 
 ## <span class="gradient-text">Featured Projects</span>
 
 ::: {.project-grid .reveal-stagger}
-<a class="project-card" href="projects/mercury-market-sim.html"><img class="project-thumb" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape"><div class="project-body"><div class="card-topline"><span class="project-badge">Flagship</span></div><div class="card-title">MERCURY: Market Microstructure Simulation Lab</div><p>Research-grade exchange simulation for liquidity stress, flash crashes, venue fragmentation, and fee-aware strategy interaction.</p><div class="chips"><span class="chip">Python</span><span class="chip">Simulation</span><span class="chip">Market Microstructure</span></div></div></a>
+<a class="project-card" href="projects/owl.html"><img class="project-thumb" src="images/projects/owl/cover.svg" alt="OWL knowledge graph"><div class="project-body"><div class="card-topline"><span class="project-badge">Flagship</span></div><div class="card-title">OWL: Autonomous AI Discovery Daemon</div><p>Local-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.</p><div class="chips"><span class="chip">Node.js</span><span class="chip">Electron</span><span class="chip">SQLite</span><span class="chip">LLM</span></div></div></a>
+<a class="project-card" href="projects/mercury-market-sim.html"><img class="project-thumb" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape"><div class="project-body"><div class="card-title">MERCURY: Market Microstructure Simulation Lab</div><p>Research-grade exchange simulation for liquidity stress, flash crashes, venue fragmentation, and fee-aware strategy interaction.</p><div class="chips"><span class="chip">Python</span><span class="chip">Simulation</span><span class="chip">Market Microstructure</span></div></div></a>
 <a class="project-card" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment simulation visual"><div class="project-body"><div class="card-title">Fulfillment Center Risk Simulation and Staffing Optimization</div><p>SimPy-based engine with pressure scoring, risk signals, and staffing search for high-load operations.</p><div class="chips"><span class="chip">Python</span><span class="chip">SimPy</span><span class="chip">Optimization</span></div></div></a>
 <a class="project-card" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain fraud architecture"><div class="project-body"><div class="card-title">Blockchain + ML Healthcare Fraud Ledger</div><p>XGBoost fraud scoring combined with tamper-evident records for trust and auditability.</p><div class="chips"><span class="chip">XGBoost</span><span class="chip">SHA-256</span><span class="chip">Streamlit</span></div></div></a>
 <a class="project-card" href="projects/insurance-fraud.html"><img class="project-thumb" src="images/projects/insurance-fraud/cover.png" alt="Insurance model performance chart"><div class="project-body"><div class="card-title">Insurance Fraud Detection</div><p>Model comparison from logistic regression to XGBoost with SHAP explainability and deployment artifacts.</p><div class="chips"><span class="chip">scikit-learn</span><span class="chip">XGBoost</span><span class="chip">SHAP</span></div></div></a>
 <a class="project-card" href="projects/ai-scheduling.html"><img class="project-thumb" src="images/projects/ai-scheduling/cover.png" alt="Scheduling dashboard"><div class="project-body"><div class="card-title">AI-Powered Scheduling and Patient Access Optimization</div><p>Healthcare operations dashboard with forecasting, decomposition, and capacity visibility.</p><div class="chips"><span class="chip">Power BI</span><span class="chip">Forecasting</span><span class="chip">Healthcare Ops</span></div></div></a>
-<a class="project-card" href="projects/readmission.html"><img class="project-thumb" src="images/projects/readmission/cover.png" alt="Readmission database visual"><div class="project-body"><div class="card-title">Hospital Readmission Analytics</div><p>SQL schema design + R modeling + BI outputs to isolate readmission risk drivers and equity patterns.</p><div class="chips"><span class="chip">SQL</span><span class="chip">R</span><span class="chip">Power BI</span></div></div></a>
 :::
 
 <div class="center-link"><a class="btn-ghost" href="projects.html">See full project archive</a></div>

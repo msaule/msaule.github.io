@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#0e1726"/>
+    </linearGradient>
+    <linearGradient id="ring-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFB347"/>
+      <stop offset="100%" stop-color="#FF8C00"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="600" height="400" fill="url(#bg)" rx="12"/>
+  <rect width="600" height="400" fill="none" stroke="#1e3050" stroke-width="1" rx="12"/>
+
+  <!-- Title -->
+  <text x="300" y="35" fill="#FFB347" font-size="14" font-weight="700" font-family="sans-serif" text-anchor="middle">OWL Score — World Awareness Metric</text>
+
+  <!-- Large score ring -->
+  <g transform="translate(160, 200)">
+    <!-- Background ring -->
+    <circle cx="0" cy="0" r="85" fill="none" stroke="#1e3050" stroke-width="12"/>
+    <!-- Score arc (42/100 = ~151 degrees out of 360) -->
+    <circle cx="0" cy="0" r="85" fill="none" stroke="url(#ring-grad)" stroke-width="12" stroke-linecap="round"
+            stroke-dasharray="226 308" transform="rotate(-90)" filter="url(#glow)" opacity="0.9"/>
+    <!-- Score text -->
+    <text x="0" y="-8" fill="#e8f0ff" font-size="48" font-weight="800" font-family="sans-serif" text-anchor="middle">42</text>
+    <text x="0" y="18" fill="#8a9fc0" font-size="14" font-family="sans-serif" text-anchor="middle">/ 100</text>
+    <text x="0" y="40" fill="#FBBF24" font-size="12" font-weight="600" font-family="sans-serif" text-anchor="middle">Growing</text>
+  </g>
+
+  <!-- Score breakdown (right side) -->
+  <g transform="translate(310, 100)">
+    <text x="0" y="0" fill="#e8f0ff" font-size="12" font-weight="600" font-family="sans-serif">Score Breakdown</text>
+
+    <!-- Freshness -->
+    <text x="0" y="32" fill="#8a9fc0" font-size="10" font-family="sans-serif">Freshness</text>
+    <text x="230" y="32" fill="#EF4444" font-size="10" font-weight="600" font-family="monospace">0 / 25</text>
+    <rect x="0" y="38" width="230" height="6" rx="3" fill="#1e3050"/>
+    <rect x="0" y="38" width="0" height="6" rx="3" fill="#EF4444"/>
+
+    <!-- Coverage -->
+    <text x="0" y="66" fill="#8a9fc0" font-size="10" font-family="sans-serif">Coverage</text>
+    <text x="230" y="66" fill="#22C55E" font-size="10" font-weight="600" font-family="monospace">20 / 20</text>
+    <rect x="0" y="72" width="230" height="6" rx="3" fill="#1e3050"/>
+    <rect x="0" y="72" width="230" height="6" rx="3" fill="#22C55E" opacity="0.7"/>
+
+    <!-- Discoveries -->
+    <text x="0" y="100" fill="#8a9fc0" font-size="10" font-family="sans-serif">Discoveries</text>
+    <text x="230" y="100" fill="#FBBF24" font-size="10" font-weight="600" font-family="monospace">2 / 20</text>
+    <rect x="0" y="106" width="230" height="6" rx="3" fill="#1e3050"/>
+    <rect x="0" y="106" width="23" height="6" rx="3" fill="#FBBF24"/>
+
+    <!-- Feedback -->
+    <text x="0" y="134" fill="#8a9fc0" font-size="10" font-family="sans-serif">Feedback</text>
+    <text x="230" y="134" fill="#EF4444" font-size="10" font-weight="600" font-family="monospace">0 / 15</text>
+    <rect x="0" y="140" width="230" height="6" rx="3" fill="#1e3050"/>
+    <rect x="0" y="140" width="0" height="6" rx="3" fill="#EF4444"/>
+
+    <!-- Sources -->
+    <text x="0" y="168" fill="#8a9fc0" font-size="10" font-family="sans-serif">Sources</text>
+    <text x="230" y="168" fill="#22C55E" font-size="10" font-weight="600" font-family="monospace">10 / 10</text>
+    <rect x="0" y="174" width="230" height="6" rx="3" fill="#1e3050"/>
+    <rect x="0" y="174" width="230" height="6" rx="3" fill="#22C55E" opacity="0.7"/>
+
+    <!-- Health -->
+    <text x="0" y="202" fill="#8a9fc0" font-size="10" font-family="sans-serif">Health</text>
+    <text x="230" y="202" fill="#22C55E" font-size="10" font-weight="600" font-family="monospace">10 / 10</text>
+    <rect x="0" y="208" width="230" height="6" rx="3" fill="#1e3050"/>
+    <rect x="0" y="208" width="230" height="6" rx="3" fill="#22C55E" opacity="0.7"/>
+  </g>
+
+  <!-- Bottom note -->
+  <text x="300" y="380" fill="#8a9fc0" font-size="9" font-family="sans-serif" text-anchor="middle">Score improves as OWL ingests more data, surfaces discoveries, and receives user feedback</text>
+</svg>

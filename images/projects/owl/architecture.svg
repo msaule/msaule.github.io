@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="600" height="420">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0%" stop-color="#0a0a0f"/>
+      <stop offset="100%" stop-color="#0e1726"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="600" height="420" fill="url(#bg)" rx="12"/>
+  <rect width="600" height="420" fill="none" stroke="#1e3050" stroke-width="1" rx="12"/>
+
+  <!-- Title -->
+  <text x="300" y="32" fill="#e8f0ff" font-size="14" font-weight="700" font-family="sans-serif" text-anchor="middle">System Architecture</text>
+
+  <!-- Data Sources (left) -->
+  <g transform="translate(20, 65)">
+    <text x="55" y="0" fill="#8a9fc0" font-size="9" font-weight="600" font-family="sans-serif" text-anchor="middle" letter-spacing="0.5">DATA SOURCES</text>
+    <rect x="0" y="12" width="110" height="28" rx="6" fill="rgba(234,67,53,0.12)" stroke="rgba(234,67,53,0.3)" stroke-width="1"/><text x="55" y="31" fill="#EA4335" font-size="10" font-family="sans-serif" text-anchor="middle">Gmail</text>
+    <rect x="0" y="48" width="110" height="28" rx="6" fill="rgba(66,133,244,0.12)" stroke="rgba(66,133,244,0.3)" stroke-width="1"/><text x="55" y="67" fill="#4285F4" font-size="10" font-family="sans-serif" text-anchor="middle">Google Calendar</text>
+    <rect x="0" y="84" width="110" height="28" rx="6" fill="rgba(168,85,247,0.12)" stroke="rgba(168,85,247,0.3)" stroke-width="1"/><text x="55" y="103" fill="#A855F7" font-size="10" font-family="sans-serif" text-anchor="middle">GitHub</text>
+    <rect x="0" y="120" width="110" height="28" rx="6" fill="rgba(224,30,90,0.12)" stroke="rgba(224,30,90,0.3)" stroke-width="1"/><text x="55" y="139" fill="#E01E5A" font-size="10" font-family="sans-serif" text-anchor="middle">Slack</text>
+    <rect x="0" y="156" width="110" height="28" rx="6" fill="rgba(150,191,72,0.12)" stroke="rgba(150,191,72,0.3)" stroke-width="1"/><text x="55" y="175" fill="#96BF48" font-size="10" font-family="sans-serif" text-anchor="middle">Shopify</text>
+    <rect x="0" y="192" width="110" height="28" rx="6" fill="rgba(255,179,71,0.12)" stroke="rgba(255,179,71,0.3)" stroke-width="1"/><text x="55" y="211" fill="#FFB347" font-size="10" font-family="sans-serif" text-anchor="middle">Local Files</text>
+    <rect x="0" y="228" width="110" height="28" rx="6" fill="rgba(59,200,255,0.12)" stroke="rgba(59,200,255,0.3)" stroke-width="1"/><text x="55" y="247" fill="#3bc8ff" font-size="10" font-family="sans-serif" text-anchor="middle">+ Custom Plugins</text>
+  </g>
+
+  <!-- Arrows: sources → core -->
+  <g stroke="#3bc8ff" stroke-width="1" opacity="0.3" fill="none">
+    <path d="M135,105 C170,105 170,185 205,185"/>
+    <path d="M135,135 C170,135 170,185 205,185"/>
+    <path d="M135,165 C170,165 170,185 205,185"/>
+    <path d="M135,195 C170,195 170,195 205,195"/>
+    <path d="M135,225 C170,225 170,205 205,205"/>
+    <path d="M135,255 C170,255 170,215 205,215"/>
+  </g>
+
+  <!-- Core Engine (center) -->
+  <g transform="translate(205, 95)">
+    <rect x="0" y="0" width="190" height="220" rx="10" fill="#0e1726" stroke="#3bc8ff" stroke-width="1.5" opacity="0.8"/>
+    <text x="95" y="24" fill="#3bc8ff" font-size="11" font-weight="700" font-family="sans-serif" text-anchor="middle">OWL CORE ENGINE</text>
+
+    <rect x="12" y="38" width="166" height="24" rx="5" fill="rgba(59,200,255,0.08)" stroke="rgba(59,200,255,0.2)" stroke-width="1"/><text x="95" y="55" fill="#e8f0ff" font-size="9" font-family="sans-serif" text-anchor="middle">SQLite World Model</text>
+    <rect x="12" y="68" width="166" height="24" rx="5" fill="rgba(59,200,255,0.08)" stroke="rgba(59,200,255,0.2)" stroke-width="1"/><text x="95" y="85" fill="#e8f0ff" font-size="9" font-family="sans-serif" text-anchor="middle">Entity Resolution + Graph</text>
+    <rect x="12" y="98" width="166" height="24" rx="5" fill="rgba(59,200,255,0.08)" stroke="rgba(59,200,255,0.2)" stroke-width="1"/><text x="95" y="115" fill="#e8f0ff" font-size="9" font-family="sans-serif" text-anchor="middle">Discovery Engine (LLM)</text>
+    <rect x="12" y="128" width="166" height="24" rx="5" fill="rgba(59,200,255,0.08)" stroke="rgba(59,200,255,0.2)" stroke-width="1"/><text x="95" y="145" fill="#e8f0ff" font-size="9" font-family="sans-serif" text-anchor="middle">Anomaly Detection</text>
+    <rect x="12" y="158" width="80" height="24" rx="5" fill="rgba(59,200,255,0.08)" stroke="rgba(59,200,255,0.2)" stroke-width="1"/><text x="52" y="175" fill="#e8f0ff" font-size="9" font-family="sans-serif" text-anchor="middle">Patterns</text>
+    <rect x="98" y="158" width="80" height="24" rx="5" fill="rgba(59,200,255,0.08)" stroke="rgba(59,200,255,0.2)" stroke-width="1"/><text x="138" y="175" fill="#e8f0ff" font-size="9" font-family="sans-serif" text-anchor="middle">Learning</text>
+    <rect x="12" y="188" width="166" height="24" rx="5" fill="rgba(255,179,71,0.1)" stroke="rgba(255,179,71,0.3)" stroke-width="1"/><text x="95" y="205" fill="#FFB347" font-size="9" font-family="sans-serif" text-anchor="middle">Cron Scheduler + Daemon</text>
+  </g>
+
+  <!-- Arrows: core → outputs -->
+  <g stroke="#60e5bf" stroke-width="1" opacity="0.3" fill="none">
+    <path d="M400,155 C430,155 430,105 455,105"/>
+    <path d="M400,185 C430,185 430,165 455,165"/>
+    <path d="M400,215 C430,215 430,225 455,225"/>
+    <path d="M400,245 C430,245 430,285 455,285"/>
+    <path d="M400,275 C430,275 430,345 455,345"/>
+  </g>
+
+  <!-- Output Interfaces (right) -->
+  <g transform="translate(455, 65)">
+    <text x="65" y="0" fill="#8a9fc0" font-size="9" font-weight="600" font-family="sans-serif" text-anchor="middle" letter-spacing="0.5">INTERFACES</text>
+
+    <rect x="0" y="14" width="130" height="48" rx="6" fill="rgba(96,229,191,0.1)" stroke="rgba(96,229,191,0.3)" stroke-width="1"/>
+    <text x="65" y="35" fill="#60e5bf" font-size="10" font-weight="600" font-family="sans-serif" text-anchor="middle">Desktop App</text>
+    <text x="65" y="50" fill="#8a9fc0" font-size="8" font-family="sans-serif" text-anchor="middle">Electron + System Tray</text>
+
+    <rect x="0" y="74" width="130" height="48" rx="6" fill="rgba(96,229,191,0.1)" stroke="rgba(96,229,191,0.3)" stroke-width="1"/>
+    <text x="65" y="95" fill="#60e5bf" font-size="10" font-weight="600" font-family="sans-serif" text-anchor="middle">Web Dashboard</text>
+    <text x="65" y="110" fill="#8a9fc0" font-size="8" font-family="sans-serif" text-anchor="middle">D3.js Knowledge Graph</text>
+
+    <rect x="0" y="134" width="130" height="48" rx="6" fill="rgba(96,229,191,0.1)" stroke="rgba(96,229,191,0.3)" stroke-width="1"/>
+    <text x="65" y="155" fill="#60e5bf" font-size="10" font-weight="600" font-family="sans-serif" text-anchor="middle">MCP Server</text>
+    <text x="65" y="170" fill="#8a9fc0" font-size="8" font-family="sans-serif" text-anchor="middle">Claude / Cursor / Windsurf</text>
+
+    <rect x="0" y="194" width="130" height="48" rx="6" fill="rgba(96,229,191,0.1)" stroke="rgba(96,229,191,0.3)" stroke-width="1"/>
+    <text x="65" y="215" fill="#60e5bf" font-size="10" font-weight="600" font-family="sans-serif" text-anchor="middle">CLI + Channels</text>
+    <text x="65" y="230" fill="#8a9fc0" font-size="8" font-family="sans-serif" text-anchor="middle">Telegram, Slack, Discord...</text>
+
+    <rect x="0" y="254" width="130" height="48" rx="6" fill="rgba(96,229,191,0.1)" stroke="rgba(96,229,191,0.3)" stroke-width="1"/>
+    <text x="65" y="275" fill="#60e5bf" font-size="10" font-weight="600" font-family="sans-serif" text-anchor="middle">Docker</text>
+    <text x="65" y="290" fill="#8a9fc0" font-size="8" font-family="sans-serif" text-anchor="middle">Containerized daemon</text>
+  </g>
+
+  <!-- Bottom label -->
+  <text x="300" y="405" fill="#8a9fc0" font-size="9" font-family="sans-serif" text-anchor="middle">100% local-first · Zero cloud dependencies · Your data never leaves your machine</text>
+</svg>
