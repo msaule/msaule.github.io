@@ -4,7 +4,14 @@ title: ""
 
 ::: {.home-shell}
 ::: {.profile-sidebar}
-![](images/profile/markuss-headshot.jpg){.profile-photo}
+<img
+  class="profile-photo"
+  src="images/profile/markuss-headshot-840.jpg"
+  alt="Markuss Saule headshot"
+  width="840"
+  height="1176"
+  fetchpriority="high"
+>
 
 ### Markuss Saule
 
