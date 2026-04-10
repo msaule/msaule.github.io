@@ -1,0 +1,56 @@
+---
+title: "Hospital Price Variation and Medicare Benchmarking"
+---
+
+![Project cover](../images/projects/hospital-prices/cover.svg){.cover-image}
+
+## Overview
+
+This project analyzes how much hospital submitted charges can vary for the same inpatient service, and how those charges compare with Medicare payments for comparable stays. Using 2023 CMS inpatient hospital pricing data, I built a benchmarking report that compares DRG-level charges across states, regions, and hospital market contexts to show where pricing gaps widen most sharply.
+
+::: {.hero-actions}
+[Open HTML Report](../files/hospital-prices/hospital-price-variation-report.html){.btn-primary target="_blank" rel="noopener"}
+[Back to Project Archive](../projects.html){.btn-ghost}
+:::
+
+## What I Did
+
+- Focused the analysis on comparable inpatient services so price dispersion could be evaluated on an apples-to-apples basis.
+- Benchmarked submitted hospital charges against Medicare payments to quantify the charge-to-payment gap instead of looking at charge levels in isolation.
+- Segmented results by census region, state, and metro status to surface where pricing patterns remain structurally different.
+- Packaged the full analysis as a polished, self-contained HTML report suitable for portfolio review and stakeholder sharing.
+
+## Results/Impact
+
+- Found a wide gap inside the same focus DRG: about `$30,936` at the 10th percentile versus about `$133,639` at the 90th percentile.
+- Identified a strong regional payment disconnect: in the West, median submitted charges were about `5.1x` median Medicare payments for the same DRG.
+- Showed that metropolitan hospitals tend to post much higher submitted charges than small-town and rural hospitals even when Medicare payments stay comparatively close.
+- Quantified sharp state-level dispersion, with reported median charges ranging from about `$24,611` in Maryland to about `$148,155` in Nevada for the focal service.
+
+## Tech Stack
+
+- R
+- Quarto
+- CMS inpatient hospital pricing data
+- Medicare payment benchmarking
+- Regional and state segmentation
+- ggplot-based analytical reporting
+
+## Deliverables
+
+- [Self-contained HTML report](../files/hospital-prices/hospital-price-variation-report.html)
+- Source notebook / script bundle: (add file)
+- Supporting data extract: (add file)
+
+## Key Findings
+
+::: {.operating-grid}
+<div class="op-card"><h4>Comparable Services, Very Different Prices</h4><p>The analysis isolates a common inpatient service and still finds a dramatic spread between low-charge and high-charge hospitals.</p></div>
+<div class="op-card"><h4>Charges And Payments Diverge</h4><p>Submitted charges often move far more than Medicare payments, which makes the gap itself a more useful signal than list price alone.</p></div>
+<div class="op-card"><h4>Regional Structure Matters</h4><p>The strongest differences are not random noise. Region, state, and metro context all shape where hospitals sit in the pricing distribution.</p></div>
+<div class="op-card"><h4>Useful For Benchmarking</h4><p>This is the kind of analysis that helps frame pricing conversations around relative position, not just single-hospital anecdotes.</p></div>
+:::
+
+## Why It Matters
+
+Healthcare pricing is easy to discuss abstractly and hard to benchmark well. This project turns that conversation into a structured comparison problem: same service, same payment reference point, different hospital context. That makes the output more useful for understanding variation, pricing posture, and where a hospital sits relative to peers.

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Hospital Price Variation cover</title>
+  <desc id="desc">Abstract cover showing charge versus payment gaps across states and regions.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08111f"/>
+      <stop offset="55%" stop-color="#0c1628"/>
+      <stop offset="100%" stop-color="#06101a"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3bc8ff"/>
+      <stop offset="100%" stop-color="#7ea2ff"/>
+    </linearGradient>
+    <linearGradient id="mint" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#60e5bf"/>
+      <stop offset="100%" stop-color="#3bc8ff"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="1290" cy="120" r="260" fill="#3bc8ff" opacity="0.09"/>
+  <circle cx="1450" cy="760" r="260" fill="#60e5bf" opacity="0.08"/>
+  <circle cx="260" cy="810" r="280" fill="#7ea2ff" opacity="0.08"/>
+
+  <rect x="74" y="72" width="1452" height="756" rx="30" fill="none" stroke="rgba(126,162,255,0.18)"/>
+  <rect x="94" y="92" width="760" height="716" rx="28" fill="rgba(10,18,32,0.78)" stroke="rgba(96,229,191,0.14)"/>
+  <rect x="890" y="92" width="616" height="716" rx="28" fill="rgba(10,18,32,0.62)" stroke="rgba(59,200,255,0.16)"/>
+
+  <text x="146" y="188" fill="#7ea2ff" font-size="24" font-family="JetBrains Mono, monospace" letter-spacing="3">HEALTHCARE PRICING ANALYTICS</text>
+  <text x="146" y="278" fill="#e8f0ff" font-size="74" font-weight="800" font-family="Plus Jakarta Sans, Arial, sans-serif">Hospital Price Variation</text>
+  <text x="146" y="356" fill="#e8f0ff" font-size="74" font-weight="800" font-family="Plus Jakarta Sans, Arial, sans-serif">and Medicare Benchmarking</text>
+  <text x="146" y="432" fill="#b9c8df" font-size="29" font-family="Manrope, Arial, sans-serif">State, regional, and service-level analysis of how submitted</text>
+  <text x="146" y="474" fill="#b9c8df" font-size="29" font-family="Manrope, Arial, sans-serif">hospital charges diverge from Medicare payments.</text>
+
+  <rect x="146" y="560" width="286" height="146" rx="22" fill="rgba(59,200,255,0.08)" stroke="rgba(59,200,255,0.24)"/>
+  <text x="180" y="612" fill="#8fcfff" font-size="18" font-family="JetBrains Mono, monospace" letter-spacing="2">WEST REGION GAP</text>
+  <text x="180" y="675" fill="#ffffff" font-size="72" font-weight="800" font-family="Plus Jakarta Sans, Arial, sans-serif" filter="url(#glow)">5.1x</text>
+  <text x="180" y="714" fill="#b9c8df" font-size="22" font-family="Manrope, Arial, sans-serif">median charge to payment ratio</text>
+
+  <rect x="466" y="560" width="286" height="146" rx="22" fill="rgba(126,162,255,0.08)" stroke="rgba(126,162,255,0.24)"/>
+  <text x="500" y="612" fill="#b8c6ff" font-size="18" font-family="JetBrains Mono, monospace" letter-spacing="2">STATE SPREAD</text>
+  <text x="500" y="666" fill="#ffffff" font-size="42" font-weight="800" font-family="Plus Jakarta Sans, Arial, sans-serif">$24.6K to $148.2K</text>
+  <text x="500" y="714" fill="#b9c8df" font-size="22" font-family="Manrope, Arial, sans-serif">median charge range in the focal service</text>
+
+  <rect x="962" y="172" width="476" height="236" rx="24" fill="rgba(8,14,24,0.85)" stroke="rgba(59,200,255,0.18)"/>
+  <text x="1008" y="225" fill="#9acfff" font-size="18" font-family="JetBrains Mono, monospace" letter-spacing="2">CHARGE VS PAYMENT</text>
+  <line x1="1022" y1="366" x2="1386" y2="366" stroke="rgba(255,255,255,0.16)" stroke-width="2"/>
+  <rect x="1040" y="300" width="262" height="36" rx="18" fill="url(#cyan)"/>
+  <rect x="1040" y="246" width="80" height="36" rx="18" fill="url(#mint)"/>
+  <text x="1320" y="327" fill="#dce8fb" font-size="20" font-family="Manrope, Arial, sans-serif">Submitted charge</text>
+  <text x="1140" y="273" fill="#dce8fb" font-size="20" font-family="Manrope, Arial, sans-serif">Medicare payment</text>
+
+  <rect x="962" y="446" width="476" height="256" rx="24" fill="rgba(8,14,24,0.85)" stroke="rgba(96,229,191,0.18)"/>
+  <text x="1008" y="499" fill="#90ebcc" font-size="18" font-family="JetBrains Mono, monospace" letter-spacing="2">REGIONAL AND STATE DISPERSION</text>
+  <path d="M1038 640 L1112 594 L1176 620 L1248 560 L1310 582 L1368 530" fill="none" stroke="url(#mint)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1038" cy="640" r="9" fill="#60e5bf"/>
+  <circle cx="1112" cy="594" r="9" fill="#60e5bf"/>
+  <circle cx="1176" cy="620" r="9" fill="#60e5bf"/>
+  <circle cx="1248" cy="560" r="9" fill="#60e5bf"/>
+  <circle cx="1310" cy="582" r="9" fill="#60e5bf"/>
+  <circle cx="1368" cy="530" r="9" fill="#60e5bf"/>
+  <text x="1038" y="680" fill="#b9c8df" font-size="22" font-family="Manrope, Arial, sans-serif">Same service, sharply different price tiers across geography.</text>
+</svg>
