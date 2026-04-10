@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../images/projects/hospital-prices/cover.svg" class="cover-image img-fluid figure-img"></p>
+<p><img src="../images/projects/hospital-prices/cover.png" class="cover-image img-fluid figure-img"></p>
 <figcaption>Project cover</figcaption>
 </figure>
 </div>
@@ -174,6 +174,15 @@ ul.task-list li input[type="checkbox"] {
 <li>Benchmarked submitted hospital charges against Medicare payments to quantify the charge-to-payment gap instead of looking at charge levels in isolation.</li>
 <li>Segmented results by census region, state, and metro status to surface where pricing patterns remain structurally different.</li>
 <li>Packaged the full analysis as a polished, self-contained HTML report suitable for portfolio review and stakeholder sharing.</li>
+</ul>
+</section>
+<section id="analytical-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="analytical-workflow">Analytical Workflow</h2>
+<ul>
+<li>Imported and cleaned the 2023 CMS inpatient hospital pricing extract in R, then narrowed the analysis to DRGs with enough reporting density to support fair comparisons.</li>
+<li>Built a focal comparison around a high-volume inpatient service so the charts would compare like with like instead of mixing unrelated procedures.</li>
+<li>Computed percentile spread, state medians, regional medians, and charge-to-payment ratios to translate raw hospital charge tables into interpretable benchmark views.</li>
+<li>Designed the report sequence to move from service-level dispersion, to regional gaps, to state-level spread, and then to the charge-versus-payment disconnect.</li>
 </ul>
 </section>
 <section id="resultsimpact" class="level2">
@@ -203,6 +212,25 @@ ul.task-list li input[type="checkbox"] {
 <li>Source notebook / script bundle: (add file)</li>
 <li>Supporting data extract: (add file)</li>
 </ul>
+</section>
+<section id="report-visuals" class="level2">
+<h2 class="anchored" data-anchor-id="report-visuals">Report Visuals</h2>
+<div class="viz-grid">
+<div class="viz-card">
+<p><img src="../images/projects/hospital-prices/regional-gap.png" class="img-fluid"> <strong>Regional charge gap.</strong> For the focal DRG, submitted charges sit far above Medicare payments in every region, with the West showing the widest separation.</p>
+</div>
+<div class="viz-card">
+<p><img src="../images/projects/hospital-prices/state-map.png" class="img-fluid"> <strong>State median spread.</strong> Even within one inpatient service, median submitted charges vary sharply across states instead of clustering around a narrow benchmark.</p>
+</div>
+</div>
+<div class="viz-grid">
+<div class="viz-card">
+<p><img src="../images/projects/hospital-prices/payment-scatter.png" class="img-fluid"> <strong>Payment disconnect.</strong> Higher submitted charges do not buy proportionally higher Medicare payments, which is exactly why the pricing gap is the better operational signal.</p>
+</div>
+<div class="viz-card">
+<p><img src="../images/projects/hospital-prices/cover.png" class="img-fluid"> <strong>Within-service dispersion.</strong> The same DRG can occupy very different low-end and high-end price tiers depending on hospital context.</p>
+</div>
+</div>
 </section>
 <section id="key-findings" class="level2">
 <h2 class="anchored" data-anchor-id="key-findings">Key Findings</h2>
@@ -241,9 +269,18 @@ This is the kind of analysis that helps frame pricing conversations around relat
 </div>
 </div>
 </section>
+<section id="what-a-stakeholder-should-take-from-this" class="level2">
+<h2 class="anchored" data-anchor-id="what-a-stakeholder-should-take-from-this">What A Stakeholder Should Take From This</h2>
+<p>This report is useful because it reframes hospital price variation as a benchmarking problem instead of a headline problem. If the same inpatient service can sit in radically different price tiers, then a hospital needs to understand its pricing posture relative to peers, not just its own internal trend. The clearest signal is not whether a charge is high in absolute terms, but how far it sits from comparable hospitals and how wide the gap is relative to Medicare payment benchmarks.</p>
+<p>For leadership, that matters in at least three ways. First, it helps identify where pricing may be difficult to defend in payer or employer negotiations. Second, it clarifies whether regional norms are doing most of the explanatory work or whether a hospital is positioned unusually high even within its own market. Third, it creates a cleaner bridge between descriptive pricing analysis and the next layer of work: payer mix, margin, reimbursement strategy, and price transparency.</p>
+</section>
 <section id="why-it-matters" class="level2">
 <h2 class="anchored" data-anchor-id="why-it-matters">Why It Matters</h2>
 <p>Healthcare pricing is easy to discuss abstractly and hard to benchmark well. This project turns that conversation into a structured comparison problem: same service, same payment reference point, different hospital context. That makes the output more useful for understanding variation, pricing posture, and where a hospital sits relative to peers.</p>
+</section>
+<section id="limits-and-next-questions" class="level2">
+<h2 class="anchored" data-anchor-id="limits-and-next-questions">Limits And Next Questions</h2>
+<p>The analysis is intentionally descriptive. It shows where price dispersion exists and how submitted charges diverge from Medicare payments, but it does not claim that charges translate directly into realized collections or patient liability. A logical next step would be to layer in payer-specific reimbursements, service mix within DRGs, ownership type, and hospital financial performance so the pricing posture can be interpreted with more business context.</p>
 
 
 </section>

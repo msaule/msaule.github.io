@@ -308,6 +308,13 @@
     "text": "What I Did\n\nFocused the analysis on comparable inpatient services so price dispersion could be evaluated on an apples-to-apples basis.\nBenchmarked submitted hospital charges against Medicare payments to quantify the charge-to-payment gap instead of looking at charge levels in isolation.\nSegmented results by census region, state, and metro status to surface where pricing patterns remain structurally different.\nPackaged the full analysis as a polished, self-contained HTML report suitable for portfolio review and stakeholder sharing."
   },
   {
+    "objectID": "projects/hospital-prices.html#analytical-workflow",
+    "href": "projects/hospital-prices.html#analytical-workflow",
+    "title": "Hospital Price Variation and Medicare Benchmarking",
+    "section": "Analytical Workflow",
+    "text": "Analytical Workflow\n\nImported and cleaned the 2023 CMS inpatient hospital pricing extract in R, then narrowed the analysis to DRGs with enough reporting density to support fair comparisons.\nBuilt a focal comparison around a high-volume inpatient service so the charts would compare like with like instead of mixing unrelated procedures.\nComputed percentile spread, state medians, regional medians, and charge-to-payment ratios to translate raw hospital charge tables into interpretable benchmark views.\nDesigned the report sequence to move from service-level dispersion, to regional gaps, to state-level spread, and then to the charge-versus-payment disconnect."
+  },
+  {
     "objectID": "projects/hospital-prices.html#resultsimpact",
     "href": "projects/hospital-prices.html#resultsimpact",
     "title": "Hospital Price Variation and Medicare Benchmarking",
@@ -329,6 +336,13 @@
     "text": "Deliverables\n\nSelf-contained HTML report\nSource notebook / script bundle: (add file)\nSupporting data extract: (add file)"
   },
   {
+    "objectID": "projects/hospital-prices.html#report-visuals",
+    "href": "projects/hospital-prices.html#report-visuals",
+    "title": "Hospital Price Variation and Medicare Benchmarking",
+    "section": "Report Visuals",
+    "text": "Report Visuals\n\n\n Regional charge gap. For the focal DRG, submitted charges sit far above Medicare payments in every region, with the West showing the widest separation.\n\n\n State median spread. Even within one inpatient service, median submitted charges vary sharply across states instead of clustering around a narrow benchmark.\n\n\n\n\n Payment disconnect. Higher submitted charges do not buy proportionally higher Medicare payments, which is exactly why the pricing gap is the better operational signal.\n\n\n Within-service dispersion. The same DRG can occupy very different low-end and high-end price tiers depending on hospital context."
+  },
+  {
     "objectID": "projects/hospital-prices.html#key-findings",
     "href": "projects/hospital-prices.html#key-findings",
     "title": "Hospital Price Variation and Medicare Benchmarking",
@@ -336,11 +350,25 @@
     "text": "Key Findings\n\n\n\nComparable Services, Very Different Prices\n\n\nThe analysis isolates a common inpatient service and still finds a dramatic spread between low-charge and high-charge hospitals.\n\n\n\n\nCharges And Payments Diverge\n\n\nSubmitted charges often move far more than Medicare payments, which makes the gap itself a more useful signal than list price alone.\n\n\n\n\nRegional Structure Matters\n\n\nThe strongest differences are not random noise. Region, state, and metro context all shape where hospitals sit in the pricing distribution.\n\n\n\n\nUseful For Benchmarking\n\n\nThis is the kind of analysis that helps frame pricing conversations around relative position, not just single-hospital anecdotes."
   },
   {
+    "objectID": "projects/hospital-prices.html#what-a-stakeholder-should-take-from-this",
+    "href": "projects/hospital-prices.html#what-a-stakeholder-should-take-from-this",
+    "title": "Hospital Price Variation and Medicare Benchmarking",
+    "section": "What A Stakeholder Should Take From This",
+    "text": "What A Stakeholder Should Take From This\nThis report is useful because it reframes hospital price variation as a benchmarking problem instead of a headline problem. If the same inpatient service can sit in radically different price tiers, then a hospital needs to understand its pricing posture relative to peers, not just its own internal trend. The clearest signal is not whether a charge is high in absolute terms, but how far it sits from comparable hospitals and how wide the gap is relative to Medicare payment benchmarks.\nFor leadership, that matters in at least three ways. First, it helps identify where pricing may be difficult to defend in payer or employer negotiations. Second, it clarifies whether regional norms are doing most of the explanatory work or whether a hospital is positioned unusually high even within its own market. Third, it creates a cleaner bridge between descriptive pricing analysis and the next layer of work: payer mix, margin, reimbursement strategy, and price transparency."
+  },
+  {
     "objectID": "projects/hospital-prices.html#why-it-matters",
     "href": "projects/hospital-prices.html#why-it-matters",
     "title": "Hospital Price Variation and Medicare Benchmarking",
     "section": "Why It Matters",
     "text": "Why It Matters\nHealthcare pricing is easy to discuss abstractly and hard to benchmark well. This project turns that conversation into a structured comparison problem: same service, same payment reference point, different hospital context. That makes the output more useful for understanding variation, pricing posture, and where a hospital sits relative to peers."
+  },
+  {
+    "objectID": "projects/hospital-prices.html#limits-and-next-questions",
+    "href": "projects/hospital-prices.html#limits-and-next-questions",
+    "title": "Hospital Price Variation and Medicare Benchmarking",
+    "section": "Limits And Next Questions",
+    "text": "Limits And Next Questions\nThe analysis is intentionally descriptive. It shows where price dispersion exists and how submitted charges diverge from Medicare payments, but it does not claim that charges translate directly into realized collections or patient liability. A logical next step would be to layer in payer-specific reimbursements, service mix within DRGs, ownership type, and hospital financial performance so the pricing posture can be interpreted with more business context."
   },
   {
     "objectID": "projects/hospital-db.html",
@@ -931,6 +959,13 @@
     "text": "What I Did\n\nBuilt a hospital-level analytical workflow around occupancy, bed size, teaching status, rural context, and risk-adjusted mortality outcomes.\nFit and compared multiple regression specifications, including simple linear, multivariable, quadratic, and rural-interaction models.\nRan model diagnostics and hypothesis testing so the interpretation rests on more than a single coefficient table.\nFramed the findings for stakeholder use, emphasizing predictive signal and operational interpretation rather than overstating causality."
   },
   {
+    "objectID": "projects/dying-on-the-margin.html#analytical-workflow",
+    "href": "projects/dying-on-the-margin.html#analytical-workflow",
+    "title": "Dying on the Margin: Capacity Utilization and Mortality",
+    "section": "Analytical Workflow",
+    "text": "Analytical Workflow\n\nConstructed the sample around U.S. acute care hospitals with the variables needed to compare occupancy, discharges, bed count, and risk-adjusted heart-failure mortality on the same analytic frame.\nStarted with a simple linear model, then progressively added controls and structure to test whether the occupancy signal held up under a stronger specification.\nAdded a quadratic term to test whether the relationship bends at different utilization levels rather than staying mechanically linear across the whole range.\nTested a rural interaction to see whether the occupancy slope itself changes by hospital setting, then reviewed diagnostic outputs to check model behavior and outlier influence."
+  },
+  {
     "objectID": "projects/dying-on-the-margin.html#resultsimpact",
     "href": "projects/dying-on-the-margin.html#resultsimpact",
     "title": "Dying on the Margin: Capacity Utilization and Mortality",
@@ -952,6 +987,13 @@
     "text": "Deliverables\n\nSelf-contained HTML report\nSource notebook / script bundle: (add file)\nSupporting data extract: (add file)"
   },
   {
+    "objectID": "projects/dying-on-the-margin.html#report-visuals",
+    "href": "projects/dying-on-the-margin.html#report-visuals",
+    "title": "Dying on the Margin: Capacity Utilization and Mortality",
+    "section": "Report Visuals",
+    "text": "Report Visuals\n\n\n Rural versus urban prediction curves. Rural hospitals remain at a higher predicted mortality level, even though the occupancy slope itself is not meaningfully different.\n\n\n Model diagnostics. Residual and influence checks help keep the interpretation disciplined instead of relying on coefficient tables alone.\n\n\n\n\n Variable structure. The exploratory view shows how occupancy, mortality, bed count, and discharges relate before formal modeling.\n\n\n Nonlinear occupancy pattern. The headline visual shows why a purely linear story would miss important structure in the relationship."
+  },
+  {
     "objectID": "projects/dying-on-the-margin.html#analytical-takeaways",
     "href": "projects/dying-on-the-margin.html#analytical-takeaways",
     "title": "Dying on the Margin: Capacity Utilization and Mortality",
@@ -959,11 +1001,25 @@
     "text": "Analytical Takeaways\n\n\n\nOccupancy Is Not Just An Ops Metric\n\n\nThe analysis treats utilization as a risk signal tied to outcomes, not only as a throughput or efficiency measure.\n\n\n\n\nNonlinearity Matters\n\n\nA quadratic model fits better than a purely linear story, which is exactly what you want to test when thresholds and strain may matter.\n\n\n\n\nContext Changes Interpretation\n\n\nRural status and bed size alter the picture, so capacity cannot be interpreted responsibly without hospital context.\n\n\n\n\nPredictive, Not Causal\n\n\nThe right reading is disciplined: these models identify signal and structure, not a simplistic causal claim that fuller hospitals are inherently safer."
   },
   {
+    "objectID": "projects/dying-on-the-margin.html#what-the-findings-mean",
+    "href": "projects/dying-on-the-margin.html#what-the-findings-mean",
+    "title": "Dying on the Margin: Capacity Utilization and Mortality",
+    "section": "What The Findings Mean",
+    "text": "What The Findings Mean\nThe most important contribution of this project is not just that occupancy was statistically significant. It is that the relationship becomes more interpretable once the model stops pretending the entire occupancy range behaves the same way. The quadratic fit suggests there is structure in how utilization and mortality move together, and the rural comparison shows that baseline context still matters even when the occupancy slope itself does not break apart cleanly by geography.\nThat matters for operators because capacity is rarely a neutral efficiency metric. It sits inside staffing constraints, referral patterns, service mix, transfer behavior, and the overall maturity of the hospital system. The right stakeholder takeaway is not to maximize occupancy or minimize occupancy blindly. It is to treat utilization as a signal that needs context, thresholds, and model-based interpretation."
+  },
+  {
     "objectID": "projects/dying-on-the-margin.html#why-it-matters",
     "href": "projects/dying-on-the-margin.html#why-it-matters",
     "title": "Dying on the Margin: Capacity Utilization and Mortality",
     "section": "Why It Matters",
     "text": "Why It Matters\nThis project fits the kind of healthcare analytics work I care about most: operational questions with real outcome stakes, ambiguous signals, and the need for careful interpretation. Capacity decisions sit at the intersection of access, staffing, quality, and risk. This report shows how to approach that problem rigorously instead of reducing it to a single occupancy target."
+  },
+  {
+    "objectID": "projects/dying-on-the-margin.html#limits-and-next-questions",
+    "href": "projects/dying-on-the-margin.html#limits-and-next-questions",
+    "title": "Dying on the Margin: Capacity Utilization and Mortality",
+    "section": "Limits And Next Questions",
+    "text": "Limits And Next Questions\nThis is still observational analysis, so the strongest claim here is predictive structure rather than causality. A next step would be to segment by service mix, ownership type, or hospital referral role, and to test whether similar patterns hold for other outcome measures beyond heart-failure mortality. That would make the capacity signal even more useful for operations and quality teams deciding where to investigate further."
   },
   {
     "objectID": "projects/fulfillment.html",
