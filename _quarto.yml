@@ -2,6 +2,8 @@ project:
   type: website
   output-dir: docs
   resources:
+    - enhancements.js
+    - files/radiology-value-pipeline/**
     - files/mercury-market-sim/**
     - files/hospital-prices/**
     - files/dying-on-the-margin/**
@@ -39,7 +41,7 @@ format:
     theme: darkly
     css: styles.css
     include-after-body:
-      - text: <script src="enhancements.js"></script>
+      - text: <script>(function(){var s=document.createElement('script');s.src=window.location.pathname.indexOf('/projects/')!==-1?'../enhancements.js':'enhancements.js';document.body.appendChild(s);}());</script>
     toc: false
     smooth-scroll: true
 

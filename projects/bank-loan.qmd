@@ -70,7 +70,7 @@ Each scoring factor is fully configurable. Tables define how many points an appl
 - **Credit Score Scoring** - Maps ranges to increasing trust levels.
 - **Previous Default** - Zero points if -Yes,- full points if -No.-
 
-The **Weights Table** lets you rebalance importance across factors. For instance, increasing the Credit or DTI weight instantly changes every applicant-s total score. The **Risk Level Table** then translates those totals into final classifications: High, Medium, or Low risk.
+The **Weights Table** lets you rebalance importance across factors. For instance, increasing the Credit or DTI weight instantly changes every applicant's total score. The **Risk Level Table** then translates those totals into final classifications: High, Medium, or Low risk.
 
 ![Screenshot 2025-10-09 151247.png](../images/projects/bank-loan/Screenshot_2025-10-09_151247.png)
 
@@ -92,7 +92,7 @@ Conditional formatting highlights approval status and risk categories. The datas
 
 ## Dashboard Overview
 
-The final dashboard ties it all together. It-s split into three clear sections:
+The final dashboard ties it all together. It's split into three clear sections:
 
 **1. Portfolio KPIs**
 
@@ -116,7 +116,7 @@ Three interactive visuals show:
 
 ## Scoring Logic Example
 
-Every applicant-s **WeightedTotal** follows this structure:
+Every applicant's **WeightedTotal** follows this structure:
 
 ```
 = (Age_Points * Age_Weight) +
@@ -133,7 +133,7 @@ The score then maps through the **Risk Level Table** using an XLOOKUP:
 =XLOOKUP(Q4,risk[Score_Min],risk[Risk_Level],,-1)
 ```
 
-Finally, the **Decision** column determines approval, using an applicant-s credit score as the deciding factor:
+Finally, the **Decision** column determines approval, using an applicant's credit score as the deciding factor:
 
 ```
 =IF(R4="High","Rejected",

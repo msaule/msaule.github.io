@@ -42,7 +42,7 @@ Insurance fraud is a massive problem that costs companies billions every year. I
 
 I built an end-to-end **fraud detection pipeline in Python** using real insurance claim data - training three models (Logistic Regression, Random Forest, and XGBoost) to identify patterns that suggest fraud.
 
-At first, the Logistic Regression model couldn-t catch any fraudulent cases. But once I moved to tree-based methods, accuracy and recall improved dramatically.
+At first, the Logistic Regression model couldn't catch any fraudulent cases. But once I moved to tree-based methods, accuracy and recall improved dramatically.
 
 The **Random Forest** achieved a **ROC-AUC of 0.86**, while **XGBoost** came close at **0.83,** both showed strong ability to separate fraudulent from legitimate claims.
 
@@ -87,7 +87,7 @@ categorical_transformer = Pipeline(steps=[
 
 ### **2. Preprocessing Pipeline**
 
-Using Scikit-Learn-s `ColumnTransformer`, I created a preprocessing pipeline for numeric and categorical features.
+Using Scikit-Learn's `ColumnTransformer`, I created a preprocessing pipeline for numeric and categorical features.
 
 This made the workflow fully reusable across all models.
 
@@ -202,7 +202,7 @@ XGBoost performed similarly to Random Forest but was slightly more balanced - it
 
 ## **Key Insights**
 
-1. **Linear models can-t handle complex fraud data.**
+1. **Linear models can't handle complex fraud data.**
     
     The Logistic Regression model failed to detect non-linear relationships, missing all fraud cases.
     
@@ -225,7 +225,7 @@ XGBoost performed similarly to Random Forest but was slightly more balanced - it
 
 ![xgboost_shap_summary.png](../images/projects/insurance-fraud/xgboost_shap_summary.png)
 
-After training, I used **SHAP (SHapley Additive exPlanations)** to visualize how each feature influenced fraud predictions. The plot shows that claims labeled as **-Major Damage-** or **-Total Loss-** had the strongest positive impact on the model-s fraud likelihood. Interestingly, customer-level details like **hobbies (e.g., chess or cross-fit)** and **policy premiums** also appeared as strong differentiators, suggesting that lifestyle or policy value patterns may indirectly flag higher-risk cases.
+After training, I used **SHAP (SHapley Additive exPlanations)** to visualize how each feature influenced fraud predictions. The plot shows that claims labeled as **-Major Damage-** or **-Total Loss-** had the strongest positive impact on the model's fraud likelihood. Interestingly, customer-level details like **hobbies (e.g., chess or cross-fit)** and **policy premiums** also appeared as strong differentiators, suggesting that lifestyle or policy value patterns may indirectly flag higher-risk cases.
 
 Features such as **auto year**, **zip code**, and **claim amounts** had subtler effects, mostly balancing prediction confidence rather than flipping outcomes. Adding SHAP turned the project from a black-box model into one where I could explain *why* the AI decided a claim looked suspicious.
 

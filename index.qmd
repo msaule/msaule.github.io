@@ -53,31 +53,31 @@ I am a systems-first analytics builder focused on operational risk, bottlenecks,
 </div>
 :::
 
-## <span class="gradient-text">New Flagship</span>
+## <span class="gradient-text">Flagship Project</span>
 
-<div class="section-intro">OWL is the most ambitious system I've built — a full autonomous AI daemon with a knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes. Open source.</div>
+<div class="section-intro">Radiology Value Pipeline is the strongest healthcare analytics and AI project in this portfolio: a local-first radiology workflow platform with model orchestration, human review, audit trails, governance surfaces, and Power BI reporting.</div>
 
 ::: {.flagship-panel .reveal-scale}
-<img class="flagship-banner" src="images/projects/owl/cover.svg" alt="OWL knowledge graph and dashboard">
+<img class="flagship-banner" src="images/projects/radiology-value-pipeline/cover.png" alt="Radiology Value Pipeline clinical AI review workspace">
 <div class="flagship-copy">
 <div class="eyebrow">// Flagship build</div>
 
-### OWL: Autonomous AI Discovery Daemon
+### Radiology Value Pipeline
 
-OWL is a local-first Node.js daemon that watches your data sources — email, calendar, GitHub, Slack, Shopify — builds a living world model, and surfaces high-value discoveries when something matters. Desktop app, web dashboard, MCP server, Docker, and CLI.
+Radiology Value Pipeline is a production-style MVP for a radiology workflow copilot. It supports chest X-ray and brain MRI workflows, registers studies, runs modality-aware model services, persists findings and report drafts, captures human feedback, and publishes dashboard-ready operational, clinical quality, and governance data.
 
-It combines real-time data ingestion, LLM-powered analysis, cross-source correlation, anomaly detection, and a learning feedback loop into a single system that runs quietly on your machine with zero cloud dependencies.
+The project is intentionally disciplined: AI outputs are assistive suggestions only, the radiologist remains the author of record, and every run is traceable through model versions, prompt versions, audit events, feedback, discrepancy analysis, and Power BI marts.
 
 <div class="flagship-stats reveal-stagger">
-<div class="flagship-stat"><strong data-count="98">0</strong><span>passing tests across the full system</span></div>
-<div class="flagship-stat"><strong data-count="7">0</strong><span>data source plugins with unified contract</span></div>
-<div class="flagship-stat"><strong data-count="8">0</strong><span>delivery channels with rich formatting</span></div>
-<div class="flagship-stat"><strong data-count="5">0</strong><span>deployment modes: CLI, Desktop, Web, Docker, MCP</span></div>
+<div class="flagship-stat"><strong data-count="76">0</strong><span>processed chest X-ray and brain MRI studies</span></div>
+<div class="flagship-stat"><strong data-count="304">0</strong><span>workflow agent runs with prompt lineage</span></div>
+<div class="flagship-stat"><strong data-count="858">0</strong><span>dashboard fact rows for operations, quality, and governance</span></div>
+<div class="flagship-stat"><strong data-count="0.9828">0</strong><span>held-out brain MRI macro AUC in benchmark testing</span></div>
 </div>
 
 <div class="hero-actions">
-<a class="btn-primary" href="projects/owl.html">Explore OWL</a>
-<a class="btn-ghost" href="https://github.com/msaule/owl" target="_blank" rel="noopener">View on GitHub</a>
+<a class="btn-primary" href="projects/radiology-value-pipeline.html">Explore the Project</a>
+<a class="btn-ghost" href="files/radiology-value-pipeline/radiology_value_pipeline_mayo_portfolio.pdf" target="_blank" rel="noopener">Open Project PDF</a>
 </div>
 </div>
 :::
@@ -94,16 +94,17 @@ It combines real-time data ingestion, LLM-powered analysis, cross-source correla
 ## <span class="gradient-text">Selected Outcomes</span>
 
 <div class="metric-strip reveal-stagger">
-<div class="metric-pill"><strong data-count="1150" data-suffix="+">0</strong><span>Qualified applicants from optimized Meta campaigns</span></div>
-<div class="metric-pill"><strong data-count="320" data-suffix="%">0</strong><span>Hiring engagement lift via KPI dashboarding</span></div>
-<div class="metric-pill"><strong data-count="70" data-suffix="%">0</strong><span>Reporting time reduction via automation</span></div>
+<div class="metric-pill"><strong data-count="76">0</strong><span>Processed imaging studies in the flagship radiology AI platform</span></div>
+<div class="metric-pill"><strong data-count="304">0</strong><span>Workflow agent runs tracked with prompt and model lineage</span></div>
+<div class="metric-pill"><strong data-count="858">0</strong><span>Dashboard fact rows for operations, quality, and governance</span></div>
 <div class="metric-pill"><strong data-count="114" data-suffix="K+">0</strong><span>SEER patient records modeled for survival analysis</span></div>
 </div>
 
 ## <span class="gradient-text">Featured Projects</span>
 
 ::: {.project-grid .reveal-stagger}
-<a class="project-card" href="projects/owl.html"><img class="project-thumb" src="images/projects/owl/cover.svg" alt="OWL knowledge graph"><div class="project-body"><div class="card-topline"><span class="project-badge">Flagship</span></div><div class="card-title">OWL: Autonomous AI Discovery Daemon</div><p>Local-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.</p><div class="chips"><span class="chip">Node.js</span><span class="chip">Electron</span><span class="chip">SQLite</span><span class="chip">LLM</span></div></div></a>
+<a class="project-card" href="projects/radiology-value-pipeline.html"><img class="project-thumb" src="images/projects/radiology-value-pipeline/cover.png" alt="Radiology Value Pipeline review workspace"><div class="project-body"><div class="card-topline"><span class="project-badge">Flagship</span></div><div class="card-title">Radiology Value Pipeline</div><p>Clinical AI workflow platform for chest X-ray and brain MRI review, governed model runs, human feedback, audit trails, and Power BI reporting.</p><div class="chips"><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Clinical AI</span><span class="chip">Power BI</span></div></div></a>
+<a class="project-card" href="projects/owl.html"><img class="project-thumb" src="images/projects/owl/cover.svg" alt="OWL knowledge graph"><div class="project-body"><div class="card-topline"><span class="project-badge">Open Source</span></div><div class="card-title">OWL: Autonomous AI Discovery Daemon</div><p>Local-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.</p><div class="chips"><span class="chip">Node.js</span><span class="chip">Electron</span><span class="chip">SQLite</span><span class="chip">LLM</span></div></div></a>
 <a class="project-card" href="projects/mercury-market-sim.html"><img class="project-thumb" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape"><div class="project-body"><div class="card-title">MERCURY: Market Microstructure Simulation Lab</div><p>Research-grade exchange simulation for liquidity stress, flash crashes, venue fragmentation, and fee-aware strategy interaction.</p><div class="chips"><span class="chip">Python</span><span class="chip">Simulation</span><span class="chip">Market Microstructure</span></div></div></a>
 <a class="project-card" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment simulation visual"><div class="project-body"><div class="card-title">Fulfillment Center Risk Simulation and Staffing Optimization</div><p>SimPy-based engine with pressure scoring, risk signals, and staffing search for high-load operations.</p><div class="chips"><span class="chip">Python</span><span class="chip">SimPy</span><span class="chip">Optimization</span></div></div></a>
 <a class="project-card" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain fraud architecture"><div class="project-body"><div class="card-title">Blockchain + ML Healthcare Fraud Ledger</div><p>XGBoost fraud scoring combined with tamper-evident records for trust and auditability.</p><div class="chips"><span class="chip">XGBoost</span><span class="chip">SHA-256</span><span class="chip">Streamlit</span></div></div></a>

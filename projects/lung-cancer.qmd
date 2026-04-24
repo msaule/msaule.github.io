@@ -42,11 +42,11 @@ Completion Date: October 7, 2025
 
 ## **Executive Summary**
 
-This project came from something personal. After losing my dad to cancer, I-ve wanted to understand what shapes survival and what doesn-t. I chose to focus on lung cancer because it-s one of the hardest and most common forms to survive.
+This project came from something personal. After losing my dad to cancer, I've wanted to understand what shapes survival and what doesn't. I chose to focus on lung cancer because it's one of the hardest and most common forms to survive.
 
 I used data from the **SEER cancer registry (2004-2015)** and built a full analysis in **R** and **Power BI**. My goal was to find what really predicts survival in the data, not just what people assume.
 
-Here-s what stood out:
+Here's what stood out:
 
 - The stage of diagnosis changes everything. Patients caught early were **eight times more likely** to survive two years.
 - Tumor size and the number of affected lymph nodes both reduced survival odds.
@@ -67,6 +67,13 @@ Working on this reminded me that behind every line of data is a person and a sto
 - **Tools used:** R (R Markdown) and Power BI
 - **Exports:** Cleaned data and model outputs for visualization
 
+## **Visual Highlights**
+
+::: {.viz-grid}
+<div class="viz-card"><img src="../images/projects/lung-cancer/survival-by-stage.png" alt="Two-year survival by SEER stage"><p><strong>Stage dominates survival.</strong> Localized disease had a 65.6% two-year survival rate versus 12.0% for distant disease.</p></div>
+<div class="viz-card"><img src="../images/projects/lung-cancer/odds-ratio-drivers.png" alt="Logistic regression odds ratios for two-year survival"><p><strong>The model is interpretable.</strong> Stage, sex, race, lymph nodes, and tumor size are surfaced as transparent survival drivers.</p></div>
+:::
+
 ---
 
 ## **Methods**
@@ -84,7 +91,7 @@ After cleaning, I ran several tests to explore the data:
 - **t-tests and ANOVA** for tumor size
 - A **logistic regression model** to see which factors best predicted survival
 
-Here-s what the analysis showed:
+Here's what the analysis showed:
 
 | Test | Result |
 | --- | --- |
@@ -92,7 +99,7 @@ Here-s what the analysis showed:
 | Sex vs survival | χ = 847, p < 0.001 |
 | Race vs survival | χ = 169, p < 0.001 |
 
-Average tumor size was 61 mm in those who didn-t survive two years and 58 mm in those who did. The difference seems small but was still statistically significant (p = 0.014).
+Average tumor size was 61 mm in those who didn't survive two years and 58 mm in those who did. The difference seems small but was still statistically significant (p = 0.014).
 
 The logistic regression made the relationships clearer:
 
@@ -259,9 +266,9 @@ Once I had the cleaned data, I built a two-page dashboard in Power BI to make th
 
 ## **Reflection**
 
-This project was different from the others I-ve done. It wasn-t about building models or dashboards for their own sake. It was about trying to understand something that has personally affected my life.
+This project was different from the others I've done. It wasn't about building models or dashboards for their own sake. It was about trying to understand something that has personally affected my life.
 
-Looking through this data, I couldn-t help but think about my dad and about how much difference early screening could have made. These records may look like numbers, but they carry real stories and pain behind them.
+Looking through this data, I couldn't help but think about my dad and about how much difference early screening could have made. These records may look like numbers, but they carry real stories and pain behind them.
 
 This is what drives me to keep working in data and healthcare. The analytics matter because they can help real people.
 
@@ -283,4 +290,4 @@ This is what drives me to keep working in data and healthcare. The analytics mat
 
 ## **Disclaimer**
 
-This analysis is based on publicly available SEER data from 2004 to 2015. It-s for educational purposes only and not intended as medical advice.
+This analysis is based on publicly available SEER data from 2004 to 2015. It's for educational purposes only and not intended as medical advice.

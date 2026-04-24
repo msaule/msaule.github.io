@@ -37,7 +37,7 @@ Skills Demonstrated: Data Analysis, Inequality Research, Labor Economics, R, Vis
 Project Status: Planning
 
 
-I like understanding why systems work the way they do. Money, education, and opportunity shape so much of a person-s life, and I have seen firsthand how different those systems feel depending on where you grow up. Moving from Europe to the United States made those differences even more obvious.
+I like understanding why systems work the way they do. Money, education, and opportunity shape so much of a person's life, and I have seen firsthand how different those systems feel depending on where you grow up. Moving from Europe to the United States made those differences even more obvious.
 
 As a first generation college student, wage inequality feels personal to me. It is not just an economics topic. It affects people I know and people like me.
 
@@ -124,7 +124,7 @@ The model shows bachelor wages grow about 0.279 dollars per hour per year faster
 
 ## 3. Women Catch Up Slowly
 
-Women-s wages grow about 0.097 dollars per hour per year faster than men-s. This closes the overall gap a little, but not enough to match the patterns for men.
+Women's wages grow about 0.097 dollars per hour per year faster than men's. This closes the overall gap a little, but not enough to match the patterns for men.
 
 ![image.png](../images/projects/education-wage/image 5.png)
 

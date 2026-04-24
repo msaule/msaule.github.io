@@ -1019,6 +1019,69 @@ a { color: var(--accent); }
   object-fit: cover;
 }
 
+figure:has(.cover-image) figcaption {
+  display: none;
+}
+
+.mayo-hero-panel,
+.mayo-model-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: linear-gradient(165deg, rgba(14, 23, 38, 0.97), rgba(8, 14, 24, 0.97));
+  box-shadow: var(--shadow-sm);
+  padding: 1.2rem;
+  margin: 1rem 0 1.35rem;
+}
+
+.mayo-hero-panel p:last-child,
+.mayo-model-card p:last-child {
+  margin-bottom: 0;
+}
+
+.mayo-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 1rem 0 1.3rem;
+}
+
+.mayo-metric {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xs);
+  background: rgba(21, 32, 53, 0.72);
+  padding: 1rem;
+}
+
+.mayo-metric strong {
+  display: block;
+  color: var(--accent-2);
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 1.55rem;
+  line-height: 1;
+  margin-bottom: 0.45rem;
+}
+
+.mayo-metric span {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.mayo-card-title {
+  color: var(--text);
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0 0 0.6rem;
+}
+
+.mayo-pdf-frame {
+  width: 100%;
+  min-height: 720px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xs);
+  background: var(--bg-soft);
+}
+
 .viz-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1474,6 +1537,7 @@ code {
   .project-grid,
   .metric-strip,
   .flagship-stats,
+  .mayo-metric-grid,
   .viz-grid {
     grid-template-columns: 1fr;
   }

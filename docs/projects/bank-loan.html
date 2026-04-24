@@ -226,7 +226,7 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Credit Score Scoring</strong> - Maps ranges to increasing trust levels.</li>
 <li><strong>Previous Default</strong> - Zero points if -Yes,- full points if -No.-</li>
 </ul>
-<p>The <strong>Weights Table</strong> lets you rebalance importance across factors. For instance, increasing the Credit or DTI weight instantly changes every applicant-s total score. The <strong>Risk Level Table</strong> then translates those totals into final classifications: High, Medium, or Low risk.</p>
+<p>The <strong>Weights Table</strong> lets you rebalance importance across factors. For instance, increasing the Credit or DTI weight instantly changes every applicant’s total score. The <strong>Risk Level Table</strong> then translates those totals into final classifications: High, Medium, or Low risk.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/projects/bank-loan/Screenshot_2025-10-09_151247.png" class="img-fluid figure-img"></p>
@@ -254,7 +254,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="dashboard-overview" class="level2">
 <h2 class="anchored" data-anchor-id="dashboard-overview">Dashboard Overview</h2>
-<p>The final dashboard ties it all together. It-s split into three clear sections:</p>
+<p>The final dashboard ties it all together. It’s split into three clear sections:</p>
 <p><strong>1. Portfolio KPIs</strong></p>
 <p>Shows total applicants, overall approval rate, average credit score, and default history (all updating automatically as weights change).</p>
 <p><strong>2. What-If Policy Simulator</strong></p>
@@ -276,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="scoring-logic-example" class="level2">
 <h2 class="anchored" data-anchor-id="scoring-logic-example">Scoring Logic Example</h2>
-<p>Every applicant-s <strong>WeightedTotal</strong> follows this structure:</p>
+<p>Every applicant’s <strong>WeightedTotal</strong> follows this structure:</p>
 <pre><code>= (Age_Points * Age_Weight) +
   (Income_Points * Income_Weight) +
   (Credit_Points * Credit_Weight) +
@@ -285,7 +285,7 @@ ul.task-list li input[type="checkbox"] {
   (Default_Points * Default_Weight)</code></pre>
 <p>The score then maps through the <strong>Risk Level Table</strong> using an XLOOKUP:</p>
 <pre><code>=XLOOKUP(Q4,risk[Score_Min],risk[Risk_Level],,-1)</code></pre>
-<p>Finally, the <strong>Decision</strong> column determines approval, using an applicant-s credit score as the deciding factor:</p>
+<p>Finally, the <strong>Decision</strong> column determines approval, using an applicant’s credit score as the deciding factor:</p>
 <pre><code>=IF(R4="High","Rejected",
    IF(R4="Low","Approved",
    IF(H4&gt;=700,"Approved",
@@ -732,7 +732,7 @@ ul.task-list li input[type="checkbox"] {
   });
   </script>
 </div> <!-- /content -->
-<script src="enhancements.js"></script>
+<script>(function(){var s=document.createElement('script');s.src=window.location.pathname.indexOf('/projects/')!==-1?'../enhancements.js':'enhancements.js';document.body.appendChild(s);}());</script>
 
 
 

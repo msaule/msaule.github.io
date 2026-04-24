@@ -301,7 +301,7 @@
   }
 
   // ── Init Everything ──
-  document.addEventListener("DOMContentLoaded", () => {
+  function initEnhancements() {
     initReveal();
     initCardGlow();
     initCounters();
@@ -313,5 +313,11 @@
     initFooter();
     initNavbarShrink();
     initProgressBar();
-  });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initEnhancements);
+  } else {
+    initEnhancements();
+  }
 })();
