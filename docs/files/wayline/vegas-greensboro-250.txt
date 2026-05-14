@@ -1,0 +1,178 @@
+ROAD TRIP SUMMARY
+- Start: Las Vegas, NV
+- End: Greensboro, NC
+- Total distance: 2256 mi
+- Total estimated drive time: 32h 47m
+- Number of driving days: 3
+- Gas stop interval: 250 mi
+- Fastest route overview: US-93 S -> I-11 S -> US-95 S -> I-40 E -> US-270 E
+- Preset: balanced
+- Gas style: standard
+- Trip Quality Score: 67/100
+- Score summary: Usable trip, but a few tradeoffs pull down comfort, stop quality, or detour efficiency.
+- Score breakdown:
+  - Route efficiency: 14.6/22
+  - Comfort balance: 6.1/20
+  - Fuel stops: 16.2/18
+  - Overnight stays: 15.6/18
+  - Practicality: 6.5/14
+  - Preference match: 7.6/8
+- Why:
+  - One or more drive days push a little hard and increase fatigue risk.
+  - Fuel stops stay dependable, with strong chains or strong review signals.
+  - Overnight areas have solid hotel depth and practical interstate access.
+  - At least one day runs long enough that an early start matters.
+- Predicted fit: 86%
+- Prediction confidence: high
+- Prediction summary: This itinerary looks like a strong fit based on balance, stop quality, and low-friction routing.
+- Main drivers:
+  - balanced daily mileage
+  - late-day fatigue risk
+  - strong overall trip quality
+
+DAY 1
+- Start location: Las Vegas, NV
+- End overnight city: Tucumcari, NM
+- Estimated miles: 752 mi
+- Estimated driving time: 10h 49m
+- Main route overview: US-93 S -> I-11 S -> US-95 S -> I-40 E
+- Recommended gas stops:
+  1. Forest Meadows Chevron Flagstaff | Chevron | 357 W Forest Meadows St, Flagstaff, AZ 86001 | around trip mile 250 | 4.1 (434 reviews) | about 3.0 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Chevron chain profile.
+     - Solid quality signal compared with nearby options.
+  2. Former East Pueblo Texaco Service Station | TA | 1100 E Santa Fe Ave, Grants, NM 87020 | around trip mile 500 | 5.0 (1 reviews) | about 2.9 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred TA chain profile.
+     - Easy on-and-off the main route.
+  3. Love's Travel Stop | Love's | 1900 S Mountain Rd, Tucumcari, NM 88401 | around trip mile 750 | 3.5 (908 reviews) | about 3.1 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Love's chain profile.
+     - Easy on-and-off the main route.
+- Recommended hotel options:
+  1. Holiday Inn Express & Suites Tucumcari by IHG | Holiday Inn Express | 2624 S Adams St, Tucumcari, NM 88401 | 4.0 (994 reviews) | about 8.6 mi off-route
+  2. La Quinta Inn & Suites by Wyndham Tucumcari | La Quinta | 2516 S Adams St, Tucumcari, NM 88401 | 4.1 (1,057 reviews) | about 8.7 mi off-route
+  3. Blaze-in-Saddle RV Park | 2500 E Rte 66 Blvd, Tucumcari, NM 88401 | 4.8 (825 reviews) | about 6.3 mi off-route
+  4. Motel Safari | 722 E Rte 66 Blvd, Tucumcari, NM 88401 | 4.9 (629 reviews) | about 7.6 mi off-route
+- Why stop here:
+  - Keeps the driving days well balanced.
+  - Several solid hotel options cluster in the same area.
+  - Strong chain coverage led by Holiday Inn Express.
+- Notes:
+  - Overnight area chosen for hotel density, food options, and easy interstate access.
+  - The best-rated hotel cluster near Tucumcari, NM sits a few miles off the highway.
+
+DAY 2
+- Start location: Tucumcari, NM
+- End overnight city: Forrest City, AR
+- Estimated miles: 781 mi
+- Estimated driving time: 11h 4m
+- Main route overview: I-40 E -> US-270 E
+- Recommended gas stops:
+  1. Love's Country Store | Love's | 1001 W 3rd St, Elk City, OK 73644 | around trip mile 1000 | 4.2 (82 reviews) | about 6.6 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Love's chain profile.
+     - Strong ratings and enough reviews to trust the stop.
+  2. Love's Travel Stop | Love's | 214 OK-100, Webbers Falls, OK 74470 | around trip mile 1250 | 3.7 (537 reviews) | about 2.5 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Love's chain profile.
+     - Easy on-and-off the main route.
+  3. Exxon | Exxon | 1414 N Main St, Brinkley, AR 72021 | around trip mile 1505 | 4.0 (650 reviews) | about 6.0 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Exxon chain profile.
+     - Solid quality signal compared with nearby options.
+- Recommended hotel options:
+  1. Hampton Inn Forrest City | Hampton Inn | 300 Holiday Dr, Forrest City, AR 72335 | 4.4 (877 reviews) | about 3.2 mi off-route
+  2. Holiday Inn Express & Suites Forrest City by IHG | Holiday Inn Express | 220 Eldridge Rd, Forrest City, AR 72335 | 4.2 (1,021 reviews) | about 3.2 mi off-route
+  3. Home2 Suites by Hilton Forrest City | Home2 Suites | 42 Eldridge Rd, Forrest City, AR 72335 | 4.6 (96 reviews) | about 3.0 mi off-route
+  4. Comfort Suites Forrest City | Comfort Suites | 320 Holiday Dr, Forrest City, AR 72335 | 4.5 (897 reviews) | about 3.2 mi off-route
+- Why stop here:
+  - Keeps the driving days well balanced.
+  - Several solid hotel options cluster in the same area.
+  - Strong chain coverage led by Hampton Inn.
+- Notes:
+  - Overnight area chosen for hotel density, food options, and easy interstate access.
+
+DAY 3
+- Start location: Forrest City, AR
+- End destination: Greensboro, NC
+- Estimated miles: 723 mi
+- Estimated driving time: 10h 54m
+- Main route overview: I-40 E -> I-65 S -> I-24 E -> I-73 N -> I-840 E
+- Recommended gas stops:
+  1. Pilot Travel Center | Pilot | 2320 TN-46, Dickson, TN 37055 | around trip mile 1755 | 4.1 (2,324 reviews) | about 1.3 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Pilot chain profile.
+     - Solid quality signal compared with nearby options.
+  2. Exxon | Exxon | 109 Sharon Dr, Dandridge, TN 37725 | around trip mile 2000 | 3.9 (65 reviews) | about 0.7 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Exxon chain profile.
+     - Easy on-and-off the main route.
+  3. Exxon | Exxon | 3028 W Gate City Blvd, Greensboro, NC 27403 | around trip mile 2250 | 3.7 (246 reviews) | about 1.3 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Exxon chain profile.
+     - Easy on-and-off the main route.
+- Recommended hotel options:
+  1. No overnight hotel needed on the final day.
+- Notes:
+  - Final day into Greensboro; the route stays interstate-heavy until the last approach.
+
+GOOGLE MAPS EXPORT
+- Full route: https://www.google.com/maps/dir/?api=1&origin=Las+Vegas%2C+NV&destination=Greensboro%2C+NC&travelmode=driving&origin_place_id=ChIJ0X31pIK3voARo3mz1ebVzDo&destination_place_id=ChIJeXvHOD8ZU4gRyBK-eJTEuZM&waypoints=357+W+Forest+Meadows+St%2C+Flagstaff%2C+AZ+86001%7C1100+E+Santa+Fe+Ave%2C+Grants%2C+NM+87020%7C1900+S+Mountain+Rd%2C+Tucumcari%2C+NM+88401%7C2624+S+Adams+St%2C+Tucumcari%2C+NM+88401%7C214+OK-100%2C+Webbers+Falls%2C+OK+74470%7C300+Holiday+Dr%2C+Forrest+City%2C+AR+72335%7C2320+TN-46%2C+Dickson%2C+TN+37055%7C109+Sharon+Dr%2C+Dandridge%2C+TN+37725%7C3028+W+Gate+City+Blvd%2C+Greensboro%2C+NC+27403&waypoint_place_ids=ChIJ6ygg6HyPLYcRstdswqp4-2k%7CChIJuTOcZgCbI4cRovJL-6KH_rc%7CChIJsb5Bfr5XG4cRVeUU7ErFuSg%7CChIJk9buZItXG4cRV7JJiX-tqS8%7CChIJ861pdILztYcRfQsDwROYUlI%7CChIJIwNM-Sjw1IcRhEh4LCgVFZA%7CChIJxwpqBgKlZIgRLeCtfKqT9dM%7CChIJo5FI2mPyW4gR38jV_hT0gsE%7CChIJlVaRFy0aU4gRGX1Q9P61KUg
+- Day 1: https://www.google.com/maps/dir/?api=1&origin=Las+Vegas%2C+NV&destination=2624+S+Adams+St%2C+Tucumcari%2C+NM+88401&travelmode=driving&origin_place_id=ChIJ0X31pIK3voARo3mz1ebVzDo&destination_place_id=ChIJk9buZItXG4cRV7JJiX-tqS8&waypoints=357+W+Forest+Meadows+St%2C+Flagstaff%2C+AZ+86001%7C1100+E+Santa+Fe+Ave%2C+Grants%2C+NM+87020%7C1900+S+Mountain+Rd%2C+Tucumcari%2C+NM+88401&waypoint_place_ids=ChIJ6ygg6HyPLYcRstdswqp4-2k%7CChIJuTOcZgCbI4cRovJL-6KH_rc%7CChIJsb5Bfr5XG4cRVeUU7ErFuSg
+- Day 2: https://www.google.com/maps/dir/?api=1&origin=2624+S+Adams+St%2C+Tucumcari%2C+NM+88401&destination=300+Holiday+Dr%2C+Forrest+City%2C+AR+72335&travelmode=driving&origin_place_id=ChIJk9buZItXG4cRV7JJiX-tqS8&destination_place_id=ChIJIwNM-Sjw1IcRhEh4LCgVFZA&waypoints=1001+W+3rd+St%2C+Elk+City%2C+OK+73644%7C214+OK-100%2C+Webbers+Falls%2C+OK+74470%7C1414+N+Main+St%2C+Brinkley%2C+AR+72021&waypoint_place_ids=ChIJY-XV3Kvlq4cRIQc5hVwaoL4%7CChIJ861pdILztYcRfQsDwROYUlI%7CChIJVQW2ADSe1IcRCHACeOnAcvA
+- Day 3: https://www.google.com/maps/dir/?api=1&origin=300+Holiday+Dr%2C+Forrest+City%2C+AR+72335&destination=Greensboro%2C+NC&travelmode=driving&origin_place_id=ChIJIwNM-Sjw1IcRhEh4LCgVFZA&destination_place_id=ChIJeXvHOD8ZU4gRyBK-eJTEuZM&waypoints=2320+TN-46%2C+Dickson%2C+TN+37055%7C109+Sharon+Dr%2C+Dandridge%2C+TN+37725%7C3028+W+Gate+City+Blvd%2C+Greensboro%2C+NC+27403&waypoint_place_ids=ChIJxwpqBgKlZIgRLeCtfKqT9dM%7CChIJo5FI2mPyW4gR38jV_hT0gsE%7CChIJlVaRFy0aU4gRGX1Q9P61KUg
+- Note: These links open live driving directions in Google Maps. Day links are the most reliable export on mobile because waypoint support varies by platform.
+- Full-route note: The full-trip Google Maps route was condensed to fit Google Maps waypoint limits. Day links keep the exact stop order.
+- Share link: https://wayline.vercel.app/planner/?origin=Las+Vegas%2C+NV&destination=Greensboro%2C+NC&drivingDays=3&gasIntervalMiles=250&preset=balanced&gasStyle=standard&dogFriendlyHotels=0&saferStops=1&autoplan=1
+
+FULL ORDERED LIST OF ALL GAS STOPS
+  1. Forest Meadows Chevron Flagstaff | Chevron | 357 W Forest Meadows St, Flagstaff, AZ 86001 | around trip mile 250 | 4.1 (434 reviews) | about 3.0 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Chevron chain profile.
+     - Solid quality signal compared with nearby options.
+  2. Former East Pueblo Texaco Service Station | TA | 1100 E Santa Fe Ave, Grants, NM 87020 | around trip mile 500 | 5.0 (1 reviews) | about 2.9 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred TA chain profile.
+     - Easy on-and-off the main route.
+  3. Love's Travel Stop | Love's | 1900 S Mountain Rd, Tucumcari, NM 88401 | around trip mile 750 | 3.5 (908 reviews) | about 3.1 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Love's chain profile.
+     - Easy on-and-off the main route.
+  4. Love's Country Store | Love's | 1001 W 3rd St, Elk City, OK 73644 | around trip mile 1000 | 4.2 (82 reviews) | about 6.6 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Love's chain profile.
+     - Strong ratings and enough reviews to trust the stop.
+  5. Love's Travel Stop | Love's | 214 OK-100, Webbers Falls, OK 74470 | around trip mile 1250 | 3.7 (537 reviews) | about 2.5 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Love's chain profile.
+     - Easy on-and-off the main route.
+  6. Exxon | Exxon | 1414 N Main St, Brinkley, AR 72021 | around trip mile 1505 | 4.0 (650 reviews) | about 6.0 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Exxon chain profile.
+     - Solid quality signal compared with nearby options.
+  7. Pilot Travel Center | Pilot | 2320 TN-46, Dickson, TN 37055 | around trip mile 1755 | 4.1 (2,324 reviews) | about 1.3 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Pilot chain profile.
+     - Solid quality signal compared with nearby options.
+  8. Exxon | Exxon | 109 Sharon Dr, Dandridge, TN 37725 | around trip mile 2000 | 3.9 (65 reviews) | about 0.7 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Exxon chain profile.
+     - Easy on-and-off the main route.
+  9. Exxon | Exxon | 3028 W Gate City Blvd, Greensboro, NC 27403 | around trip mile 2250 | 3.7 (246 reviews) | about 1.3 mi off-route
+     - Close to the ideal fuel window for this leg.
+     - Matches the preferred Exxon chain profile.
+     - Easy on-and-off the main route.
+
+FULL ORDERED LIST OF OVERNIGHT STOPS
+  1. Tucumcari, NM | around trip mile 752 | 4 hotel picks
+     - Keeps the driving days well balanced.
+     - Several solid hotel options cluster in the same area.
+     - Strong chain coverage led by Holiday Inn Express.
+  2. Forrest City, AR | around trip mile 1533 | 4 hotel picks
+     - Keeps the driving days well balanced.
+     - Several solid hotel options cluster in the same area.
+     - Strong chain coverage led by Hampton Inn.
+
+CAVEATS
+- The best-rated hotel cluster near Tucumcari, NM sits a few miles off the highway.

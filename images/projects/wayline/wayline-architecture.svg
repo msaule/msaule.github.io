@@ -1,0 +1,64 @@
+<svg width="1280" height="900" viewBox="0 0 1280 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="900" fill="#F6F1E8"/>
+  <text x="96" y="88" fill="#1B1714" font-size="42" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Wayline system overview</text>
+  <text x="96" y="124" fill="#5E564D" font-size="20" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">How the web app, backend, security layer, and mapping services fit together.</text>
+
+  <rect x="96" y="176" width="248" height="152" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
+  <text x="126" y="220" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Browser UI</text>
+  <text x="126" y="254" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Planner page</text>
+  <text x="126" y="282" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Google map preview</text>
+  <text x="126" y="310" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Exports and share links</text>
+
+  <rect x="392" y="176" width="300" height="152" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
+  <text x="422" y="220" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Vercel API routes</text>
+  <text x="422" y="254" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">/api/app-state</text>
+  <text x="422" y="282" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">/api/session</text>
+  <text x="422" y="310" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">/api/plan-trip and analytics</text>
+
+  <rect x="740" y="176" width="204" height="152" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
+  <text x="770" y="220" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Redis</text>
+  <text x="770" y="254" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Sessions</text>
+  <text x="770" y="282" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Quota</text>
+  <text x="770" y="310" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Rate limits</text>
+
+  <rect x="992" y="176" width="192" height="152" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
+  <text x="1022" y="220" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Google</text>
+  <text x="1022" y="254" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Routes API</text>
+  <text x="1022" y="282" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Places API</text>
+
+  <rect x="160" y="438" width="314" height="182" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
+  <text x="190" y="482" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Trip engine</text>
+  <text x="190" y="516" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Route shaping and day splitting</text>
+  <text x="190" y="548" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Fuel-stop search and ranking</text>
+  <text x="190" y="580" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Hotel clustering and</text>
+  <text x="190" y="608" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">overnight selection</text>
+
+  <rect x="494" y="438" width="292" height="182" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
+  <text x="524" y="482" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Scoring + prediction</text>
+  <text x="524" y="516" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Trip Quality Score</text>
+  <text x="524" y="548" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Feature engineering</text>
+  <text x="524" y="580" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Predicted fit</text>
+  <text x="524" y="608" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">explanation</text>
+
+  <rect x="806" y="438" width="314" height="182" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
+  <text x="836" y="482" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Analytics + dataset</text>
+  <text x="836" y="516" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Event tracking</text>
+  <text x="836" y="548" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Redis-backed</text>
+  <text x="836" y="576" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">dataset rows</text>
+  <text x="836" y="608" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">JSON and CSV export scripts</text>
+
+  <rect x="304" y="706" width="672" height="122" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
+  <text x="334" y="750" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">User outputs</text>
+  <text x="334" y="784" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Interactive map, Google Maps handoff, share link,</text>
+  <text x="334" y="812" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">JSON and text export, printable PDF</text>
+
+  <path d="M344 252H392" stroke="#7A6F62" stroke-width="3" stroke-linecap="round"/>
+  <path d="M692 252H740" stroke="#7A6F62" stroke-width="3" stroke-linecap="round"/>
+  <path d="M944 252H992" stroke="#7A6F62" stroke-width="3" stroke-linecap="round"/>
+  <path d="M542 328V384H318V438" stroke="#7A6F62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M542 328V384H640V438" stroke="#7A6F62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M542 328V384H963V438" stroke="#7A6F62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M317 620V664H640V706" stroke="#7A6F62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M640 620V706" stroke="#7A6F62" stroke-width="3" stroke-linecap="round"/>
+  <path d="M963 620V664H640V706" stroke="#7A6F62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
