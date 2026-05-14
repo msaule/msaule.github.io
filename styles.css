@@ -1112,6 +1112,13 @@ figure:has(.cover-image) figcaption {
   transition: transform 0.4s ease;
 }
 
+.viz-card img.diagram-image {
+  object-fit: contain;
+  padding: 0.6rem;
+  box-sizing: border-box;
+  background: #f6f1e8;
+}
+
 .viz-card:hover img { transform: scale(1.03); }
 
 .viz-card p {

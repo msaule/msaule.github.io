@@ -50,12 +50,12 @@ The project goes beyond plotting a route. It combines route orchestration, fuel-
 
 ::: {.viz-grid}
 ::: {.viz-card}
-![Wayline architecture diagram](../images/projects/wayline/wayline-architecture.svg)
+![Wayline architecture diagram](../images/projects/wayline/wayline-architecture.svg){.diagram-image}
 <strong>Architecture.</strong> The app separates the browser experience, server-side route orchestration, Google Maps services, Redis-backed sessions, quota controls, and export generation.
 :::
 
 ::: {.viz-card}
-![Wayline ML and analytics diagram](../images/projects/wayline/wayline-ml-analytics.svg)
+![Wayline ML and analytics diagram](../images/projects/wayline/wayline-ml-analytics.svg){.diagram-image}
 <strong>Analytics layer.</strong> Trip features, scoring outputs, and product events are structured so future model training and funnel analysis can build on clean data.
 :::
 :::

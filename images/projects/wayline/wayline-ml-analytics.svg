@@ -1,5 +1,5 @@
-<svg width="1280" height="872" viewBox="0 0 1280 872" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1280" height="872" fill="#F6F1E8"/>
+<svg width="1280" height="900" viewBox="0 0 1280 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="900" fill="#F6F1E8"/>
   <text x="96" y="88" fill="#1B1714" font-size="42" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Wayline analytics and ML flow</text>
   <text x="96" y="124" fill="#5E564D" font-size="20" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">How a generated trip becomes scores, predictions, and model-ready data.</text>
 
@@ -7,7 +7,8 @@
   <text x="126" y="228" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Planner output</text>
   <text x="126" y="264" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Distance and drive time</text>
   <text x="126" y="292" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Gas stops and detours</text>
-  <text x="126" y="320" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Hotel choices and overnight areas</text>
+  <text x="126" y="320" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Hotel choices and</text>
+  <text x="126" y="348" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">overnight areas</text>
 
   <rect x="438" y="182" width="388" height="174" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
   <text x="468" y="228" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Feature engineering</text>
@@ -25,17 +26,17 @@
   <rect x="150" y="452" width="364" height="188" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
   <text x="180" y="498" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Event instrumentation</text>
   <text x="180" y="534" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">planner_page_view</text>
-  <text x="180" y="562" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">trip_plan_started / succeeded / failed</text>
-  <text x="180" y="590" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">export, share, and Maps clicks</text>
+  <text x="180" y="562" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">trip plan start/success/fail</text>
+  <text x="180" y="590" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">export and share clicks</text>
 
   <rect x="554" y="452" width="556" height="188" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
   <text x="584" y="498" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Dataset row for future modeling</text>
   <text x="584" y="534" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Route metadata, distance, stop counts,</text>
   <text x="584" y="562" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">ratings, detours</text>
-  <text x="584" y="590" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Trip Quality Score, predicted fit, confidence band</text>
-  <text x="584" y="618" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Interaction labels like exports and Google Maps opens</text>
+  <text x="584" y="590" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Trip score, predicted fit, confidence band</text>
+  <text x="584" y="618" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Export and Google Maps interaction labels</text>
 
-  <rect x="302" y="722" width="676" height="106" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
+  <rect x="302" y="722" width="676" height="132" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
   <text x="332" y="766" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Portfolio value</text>
   <text x="332" y="800" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Explainable scoring, product analytics, feature engineering,</text>
   <text x="332" y="828" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">and a clean path to supervised learning</text>

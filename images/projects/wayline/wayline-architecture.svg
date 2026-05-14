@@ -13,7 +13,7 @@
   <text x="422" y="220" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Vercel API routes</text>
   <text x="422" y="254" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">/api/app-state</text>
   <text x="422" y="282" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">/api/session</text>
-  <text x="422" y="310" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">/api/plan-trip and analytics</text>
+  <text x="422" y="310" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">/api/plan-trip + events</text>
 
   <rect x="740" y="176" width="204" height="152" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
   <text x="770" y="220" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Redis</text>
@@ -34,18 +34,18 @@
   <text x="190" y="608" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">overnight selection</text>
 
   <rect x="494" y="438" width="292" height="182" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
-  <text x="524" y="482" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Scoring + prediction</text>
+  <text x="524" y="482" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Scoring layer</text>
   <text x="524" y="516" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Trip Quality Score</text>
   <text x="524" y="548" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Feature engineering</text>
   <text x="524" y="580" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Predicted fit</text>
-  <text x="524" y="608" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">explanation</text>
+  <text x="524" y="608" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Explainability</text>
 
   <rect x="806" y="438" width="314" height="182" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
   <text x="836" y="482" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">Analytics + dataset</text>
   <text x="836" y="516" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Event tracking</text>
   <text x="836" y="548" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Redis-backed</text>
   <text x="836" y="576" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">dataset rows</text>
-  <text x="836" y="608" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">JSON and CSV export scripts</text>
+  <text x="836" y="608" fill="#6A6259" font-size="18" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif">Export-ready data</text>
 
   <rect x="304" y="706" width="672" height="122" rx="18" fill="#FFFDF8" stroke="#D9D0C4" stroke-width="2"/>
   <text x="334" y="750" fill="#1B1714" font-size="26" font-family="'SF Pro Text', 'Helvetica Neue', Arial, sans-serif" font-weight="700">User outputs</text>
