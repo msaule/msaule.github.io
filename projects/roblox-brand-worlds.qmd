@@ -1,0 +1,113 @@
+---
+title: "Roblox Immersive Brand Worlds"
+subtitle: "3D environment production, brand activations, and spatial product systems at 6.5B+ visit scale"
+---
+
+![Black Adam Roblox event world environment](../images/projects/roblox-brand-worlds/cover.jpg){.cover-image}
+
+## Overview
+
+Before I moved heavily into analytics, machine learning, and decision systems, I spent years building immersive worlds on Roblox. This was not small hobby work. Across shipped games and brand experiences I contributed to, the total reach is 6.5B+ place visits.
+
+The work sits at the intersection of 3D production, spatial product design, live digital events, and consumer-scale brand execution. I built environments, terrain, vehicles, background architecture, props, city layouts, world expansions, event spaces, and branded interactive locations for games and campaigns connected to major entertainment and consumer brands.
+
+That background matters because it taught me how to build for real users under real constraints: performance budgets, client direction, player flow, launch timing, brand approvals, and environments that need to make sense the first second a user lands in them.
+
+## Scale Signal
+
+::: {.mayo-metric-grid}
+<div class="mayo-metric"><strong>6.5B+</strong><span>place visits across shipped experiences</span></div>
+<div class="mayo-metric"><strong>10 yrs</strong><span>on Roblox as builder, artist, and production contributor</span></div>
+<div class="mayo-metric"><strong>30+</strong><span>vehicles created for Anomic's revamp</span></div>
+<div class="mayo-metric"><strong>Global IP</strong><span>music, film, toy, beauty, nonprofit, and game brands</span></div>
+</div>
+:::
+
+## What I Built
+
+- Built 3D environments, terrain, vehicles, props, background architecture, and branded spaces for shipped Roblox experiences.
+- Led or supported world build work for brand activations involving Warner Music, DC's Black Adam, Bakugan, L'Oreal, JDRF, and other global IP ecosystems.
+- Helped create early interactive music-event environments during the first major wave of Roblox concert and launch-party activations.
+- Worked as a 3D Artist, Environment Artist, World Build Lead, Texture Artist, Builder, and Roblox DevRel QA Tester.
+- Designed spaces around user flow, orientation, visual hierarchy, performance constraints, gameplay readability, and live-event spectacle.
+- Received personal commendation from Roblox CEO David Baszucki for contributions during the early interactive concert era on Roblox.
+
+## Visual Work
+
+::: {.viz-grid}
+::: {.viz-card}
+![Bakugan Roblox lobby environment](../images/projects/roblox-brand-worlds/bakugan-lobby.jpg)
+<strong>Bakugan Battle League.</strong> Large-scale lobby/world production for a branded Roblox experience connected to a global toy and entertainment franchise.
+:::
+
+::: {.viz-card}
+![Roblox city world environment](../images/projects/roblox-brand-worlds/city-world.jpg)
+<strong>City-scale environment design.</strong> Spatial layout, landmarks, terrain, roads, atmosphere, and visual composition built for player movement and readability.
+:::
+
+::: {.viz-card}
+![Futuristic Roblox interior environment](../images/projects/roblox-brand-worlds/futuristic-interior.jpg)
+<strong>Interior production.</strong> High-polish environment composition with lighting, scale, sightlines, and theme consistency.
+:::
+:::
+
+## Selected Production History
+
+| Project | Role | Contribution |
+|---|---|---|
+| Dreamworld RP | 3D Artist | Built terrain environments, background buildings, nature props, vehicles, and world population assets. |
+| Spirit Guides | 3D Environment Artist | Created stylized environment props, modified environments, and supported expansion updates. |
+| Black Adam Event | 3D World Build Lead | Built the Justice Hall area and surrounding environments for the main Roblox promotional event tied to the film. |
+| Bakugan Battle League | 3D Modeler and World Build | Created building assets and supported a full lobby redesign for a global toy and entertainment IP. |
+| Infinite Canvas | 3D Artist | Built assets and supported outsourced projects, including work connected to creator-led Roblox collaborations. |
+| Anomic | 3D Artist | Created 30+ vehicles for a major game revamp. |
+| Specter | 3D Artist | Created new ghost models as part of a creature and realism revamp. |
+| JDRF One World | 3D Artist and Environment Artist | Built main world environments and props to turn a nonprofit client's event vision into an interactive space. |
+| Ava Max Heaven and Hell Launch Party | Environment Artist and 3D Modeler | Helped shape the map design, built dominant Heaven and Hell environments, props, and catalog assets for an early Roblox music activation. |
+
+## Why This Belongs in an Analytics Portfolio
+
+At first glance this looks like creative production. It is also product systems work.
+
+Every high-traffic Roblox world has hidden analytics logic even before a dashboard exists:
+
+- Spawn placement controls first impressions and early drop-off.
+- Pathing controls whether players understand what to do.
+- Landmarks control orientation.
+- Asset density affects performance and device accessibility.
+- Event spaces need to support crowd behavior, camera angles, social movement, and branded moments.
+- Client IP work requires translating abstract brand goals into interactive layouts users can actually navigate.
+
+That is why this experience fits the rest of my portfolio. My analytics work today is about systems, constraints, bottlenecks, and decisions. Roblox taught me those same instincts through space, scale, and live user behavior.
+
+## Brand and Platform Context
+
+The projects I worked on sat inside a broader moment where Roblox was becoming a serious platform for branded entertainment, music, and digital identity. Public industry context shows how large this shift was:
+
+- Sony Music and Roblox announced a strategic partnership after major Roblox music activations, with Roblox describing new commercial opportunities around virtual concerts, launch parties, artist worlds, and merchandise.
+- Warner Music Group later described Roblox as a channel for persistent music experiences, concerts, and artist-community worlds.
+- Bakugan Battle League is publicly documented as a Spin Master Roblox event.
+- L'Oreal and other beauty/fashion brands expanded into avatar, Roblox, and metaverse activations as the category matured.
+
+## Results/Impact
+
+- Contributed to shipped Roblox experiences totaling 6.5B+ place visits.
+- Worked on brand worlds and live-event surfaces tied to some of the earliest large-scale entertainment activations on Roblox.
+- Built assets and environments for global IP campaigns across music, film, toys, beauty, nonprofit events, and game experiences.
+- Developed a production mindset around scale, constraints, user behavior, client expectations, and interactive world readability.
+- Earned personal commendation from Roblox CEO David Baszucki for contribution quality during the platform's early interactive concert era.
+
+## Tech Stack
+
+- Roblox Studio
+- 3D modeling, environment design, texture work, terrain composition, prop production
+- Spatial product design, player flow, lighting, optimization, brand-world layout
+- Live-event world building, QA, production coordination, client/IP constraints
+
+## Deliverables
+
+- Shipped Roblox environments and branded spaces across multiple live games and campaigns.
+- 3D vehicles, props, buildings, terrain systems, lobby redesigns, and event-world assets.
+- Visual production work for brand worlds connected to Warner Music, DC/Black Adam, Bakugan, L'Oreal, JDRF, and other global projects.
+- Public portfolio context: [Sony Music and Roblox partnership](https://www.sonymusic.com/sonymusic/roblox-partnership/), [Warner Music Group Roblox experience context](https://www.wmg.com/news/warner-music-group-announces-the-launch-of-rhythm-city-its-first-persistent-music-experience-on-roblox), [Bakugan Battle League Roblox event](https://bakugan.wiki/wiki/Bakugan_Battle_League_(Roblox)), [L'Oreal metaverse/avatar context](https://www.loreal.com/en/press-release/group/loreal-partnership-with-metaverse-avatar-platform-ready-player-me/).
+
