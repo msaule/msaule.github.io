@@ -48,6 +48,7 @@
           const suffix = el.getAttribute("data-suffix") || "";
           const prefix = el.getAttribute("data-prefix") || "";
           const isDecimal = target.includes(".");
+          const decimalPlaces = isDecimal ? target.split(".")[1].length : 0;
           const end = parseFloat(target);
           const duration = 2000;
           const startTime = performance.now();
@@ -60,7 +61,7 @@
             el.textContent =
               prefix +
               (isDecimal
-                ? current.toFixed(4)
+                ? current.toFixed(decimalPlaces)
                 : Math.floor(current).toLocaleString()) +
               suffix;
             if (progress < 1) requestAnimationFrame(update);
