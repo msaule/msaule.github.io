@@ -38,7 +38,7 @@ title: "Resume"
 
 - MERCURY market microstructure lab with multi-agent exchange simulation, flash-crash experiments, and reproducible research publishing
 - Roblox immersive brand-world production across shipped games and global activations totaling 6.5B+ place visits
-- Ravel, a CRAN-published RStudio AI copilot for context-aware analysis, safe staged actions, model interpretation, and Quarto drafting
+- Ravel, a CRAN-published RStudio AI copilot with a 0.1.2 maintenance update for OpenAI Responses API support, remote MCP declarations, safer staged actions, model interpretation, and Quarto drafting
 - Wayline, a production-style travel analytics product with route orchestration, predictive trip scoring, protected API usage, and exportable planning outputs
 - Fraud modeling plus blockchain audit architecture for healthcare claims
 - Simulation-led staffing optimization for fulfillment operations

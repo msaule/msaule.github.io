@@ -203,13 +203,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Ravel is a CRAN-published R package that brings an AI copilot directly into RStudio and Posit-style analysis workflows. The goal was not to build a generic chat wrapper. The goal was to build a serious analyst companion that understands the surrounding project context: active editor code, selected snippets, loaded objects, console output, plots, git state, package structure, and reporting workflow.</p>
 <p>The package is designed for practical analysis work. It can help explain code, debug analysis problems, interpret models, compare modeling choices, draft Quarto sections, and stage file or code actions for review before anything is applied.</p>
 </section>
+<section id="latest-release-0.1.2-accepted-on-cran" class="level2">
+<h2 class="anchored" data-anchor-id="latest-release-0.1.2-accepted-on-cran">Latest Release: 0.1.2 Accepted on CRAN</h2>
+<p>The latest accepted maintenance update moves Ravel further from “chat box” and closer to a real RStudio-native analysis agent. Version 0.1.2 refreshed provider defaults, added OpenAI Responses API support, introduced remote MCP tool declarations, and tightened file-action safety so approved writes outside the detected project root are blocked unless explicitly allowed.</p>
+<p>That update matters because Ravel is built around trust: providers should use official APIs or CLIs, actions should be auditable, and generated code should never quietly mutate a project. The release also passed the full GitHub Actions matrix across Windows, macOS, Ubuntu release, and Ubuntu devel, with release assets attached on GitHub.</p>
+</section>
 <section id="what-i-built" class="level2">
 <h2 class="anchored" data-anchor-id="what-i-built">What I Built</h2>
 <ul>
 <li>Built an installable R package with RStudio addins for setup, chat, settings, and workflow support.</li>
 <li>Integrated context-aware helpers for active editor contents, selected code, workspace objects, console output, plots, project files, package metadata, and git state.</li>
 <li>Added multi-provider support through official APIs and CLIs, including OpenAI, Gemini, GitHub Copilot CLI, and Anthropic-oriented provider architecture.</li>
+<li>Modernized the OpenAI API path around the Responses API and added remote MCP tool declarations for provider-supported tool ecosystems.</li>
 <li>Designed safe staged actions so code and file operations are previewed before execution instead of silently modifying a project.</li>
+<li>Added project-root safety checks so even approved file writes outside the detected project are blocked by default.</li>
 <li>Added model interpretation helpers for common <code>lm()</code> and <code>glm()</code> workflows.</li>
 <li>Built Quarto drafting support for methods, results, diagnostics, and interpretation sections.</li>
 <li>Published documentation with pkgdown and maintained a CRAN-ready release process with cross-platform checks.</li>
@@ -222,6 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ravel)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>ravel<span class="sc">::</span><span class="fu">ravel_setup_addin</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The CRAN submission work required more than making the package run locally. I tightened software references in <code>DESCRIPTION</code>, avoided writing settings or history to user home filespace by default, moved code execution away from <code>.GlobalEnv</code> unless explicitly requested, and ensured network-backed providers are not contacted in examples or tests. The package checks reported 0 errors, 0 warnings, and 1 note across the submitted release process.</p>
+<p>The 0.1.2 update kept that same discipline: no new required dependencies for MCP, no network-backed examples or tests, no default writes into the user’s home filespace, and no hidden execution path.</p>
 </section>
 <section id="interface-and-documentation" class="level2">
 <h2 class="anchored" data-anchor-id="interface-and-documentation">Interface and Documentation</h2>
@@ -242,6 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Published a real R package to CRAN under the <code>ravel</code> package name.</li>
 <li>Made installation available through the standard R command <code>install.packages("ravel")</code>.</li>
+<li>Shipped and had accepted a 0.1.2 maintenance update with OpenAI Responses API support, remote MCP declarations, and stronger file-write guardrails.</li>
 <li>Built the package around analyst trust: context collection is explicit, actions are staged, and execution paths are designed to avoid reckless project modification.</li>
 <li>Created a foundation for AI-assisted statistical analysis that respects RStudio workflows, package development norms, Quarto reporting, and reproducibility.</li>
 <li>Maintained public documentation and GitHub infrastructure so the package can be inspected, installed, tested, and extended.</li>
@@ -253,6 +262,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>R package development: R, roxygen2, testthat, pkgdown, GitHub Actions</li>
 <li>RStudio integration: rstudioapi, Shiny, miniUI</li>
 <li>Provider integration: httr2, jsonlite, official provider APIs and CLIs</li>
+<li>Tooling direction: OpenAI Responses API, remote MCP declarations, provider capability metadata</li>
 <li>Analysis support: model interpretation helpers, workspace inspection, Quarto drafting, staged code/file actions</li>
 <li>Release workflow: CRAN submission, cross-platform R CMD check, package documentation, release assets</li>
 </ul>
@@ -263,6 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="https://cran.r-project.org/package=ravel" target="_blank" rel="noopener">CRAN package page</a></li>
 <li><a href="https://msaule.github.io/ravel/" target="_blank" rel="noopener">Package website</a></li>
 <li><a href="https://github.com/msaule/ravel" target="_blank" rel="noopener">GitHub repository</a></li>
+<li><a href="https://github.com/msaule/ravel/releases/tag/v0.1.2" target="_blank" rel="noopener">GitHub release v0.1.2</a></li>
 <li><a href="https://msaule.github.io/ravel/reference/" target="_blank" rel="noopener">Reference documentation</a></li>
 <li><a href="https://msaule.github.io/ravel/articles/ravel-showcase.html" target="_blank" rel="noopener">Showcase article</a></li>
 </ul>
