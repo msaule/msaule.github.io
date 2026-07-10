@@ -777,165 +777,144 @@
     "text": "Appendix\nhospital-db-project.pptx\nAttribution\nDesigned and developed by Markuss Saule."
   },
   {
-    "objectID": "projects/falsifyr.html",
-    "href": "projects/falsifyr.html",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
+    "objectID": "projects/education-wage.html",
+    "href": "projects/education-wage.html",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
     "section": "",
-    "text": "falsifyr HTML attack report showing a collapsed claim and ranked attack leaderboard"
+    "text": "Project cover"
   },
   {
-    "objectID": "projects/falsifyr.html#overview",
-    "href": "projects/falsifyr.html#overview",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
+    "objectID": "projects/education-wage.html#overview",
+    "href": "projects/education-wage.html#overview",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
     "section": "Overview",
-    "text": "Overview\nfalsifyr is an R package that asks a blunt question before a statistical result is trusted: what is the smallest plausible change that makes this claim disappear?\nThe package takes an lm, glm, or supported hypothesis-test result, extracts the target claim, runs a controlled set of adversarial checks, and ranks the weakest assumptions. Instead of returning another diagnostics panel, it reports the smallest kill: the least severe row deletion, missing-data choice, label perturbation, standard-error change, specification change, placebo, or sample split that overturns the conclusion.\nThe language is careful by design. A claim that dies under an attack is fragile under that attack. That does not prove the claim is false.\n\n\n11exported functions\n\n\n65testthat test blocks\n\n\n8attack families\n\n\n0.1.0current package version"
+    "text": "Overview\nAnalyzed 50 years of wage data (1973-2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights."
   },
   {
-    "objectID": "projects/falsifyr.html#why-i-built-it",
-    "href": "projects/falsifyr.html#why-i-built-it",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
-    "section": "Why I Built It",
-    "text": "Why I Built It\nStatistical work often stops too early. A coefficient crosses a threshold, the model prints stars, and the result moves into a report. Traditional diagnostics help, but they are split across functions and usually require the analyst to decide which robustness checks to run.\nI wanted one workflow that treated a fitted claim as something to attack. The package should search for the smallest reasonable perturbation, show exactly what changed, preserve reproducibility metadata, and distinguish between a result that survives and one that depends on a narrow assumption.\nThat makes falsifyr useful both as an analysis tool and as a discipline. It encourages the analyst to look for failure before presenting certainty."
+    "objectID": "projects/education-wage.html#what-i-did",
+    "href": "projects/education-wage.html#what-i-did",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "What I Did",
+    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
   },
   {
-    "objectID": "projects/falsifyr.html#attack-families",
-    "href": "projects/falsifyr.html#attack-families",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
-    "section": "Attack Families",
-    "text": "Attack Families\n\nRow deletion: ranked, greedy, and beam-search strategies look for influential observations or small groups that change the claim.\nStandard errors: bootstrap uncertainty and optional HC0-HC3 robust standard errors test whether the conclusion depends on the original variance assumption.\nCovariate dependence: drop-one checks show whether the claim survives small formula changes.\nMissingness: mean, median, mode, and explicit-missing treatments test common imputation choices.\nMeasurement error: controlled noise and binary-label flips test sensitivity to imperfect measurement.\nPlacebos: treatment-label permutation, fake predictors, and user-supplied placebo outcomes look for patterns the original claim should not produce.\nSpecification search: bounded formula search identifies a small defensible model change that kills the result.\nSplit stability: random and stratified train/test refits test whether the conclusion survives reasonable sample partitions."
+    "objectID": "projects/education-wage.html#resultsimpact",
+    "href": "projects/education-wage.html#resultsimpact",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "Results/Impact",
+    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
   },
   {
-    "objectID": "projects/falsifyr.html#a-real-attack-report",
-    "href": "projects/falsifyr.html#a-real-attack-report",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
-    "section": "A Real Attack Report",
-    "text": "A Real Attack Report\nThe example below starts with a treatment coefficient of 0.443 and a p-value of 0.041. The ordinary model output looks publishable. falsifyr finds that removing one influential row raises the p-value to 0.069, while several missingness, measurement-error, and split-stability attacks also overturn the claim.\n\n\n HTML attack report. The claim card, survival verdict, smallest kill, and ranked leaderboard make the weak point visible before the full technical appendix.\n\n\n Survival map. Attack families are compared by status and severity so the analyst can see which assumptions matter and which checks the claim survives."
-  },
-  {
-    "objectID": "projects/falsifyr.html#package-design",
-    "href": "projects/falsifyr.html#package-design",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
-    "section": "Package Design",
-    "text": "Package Design\nThe package API is deliberately small. attack() runs the analysis, smallest_kill() returns the leading failure, attack_leaderboard() exposes ranked results, score_survival() summarizes resilience, and report() writes a static HTML review. S3 print and plot methods keep the workflow natural inside R.\nAn optional RStudio addin can find supported model objects in the active session and launch the same attack workflow without requiring the analyst to assemble a long function call. Vignettes cover regression attacks, survival scores, and responsible interpretation.\nReproducibility information travels with the result: formula, term, alternative hypothesis, seed, attack settings, package version, R version, and session details. Deterministic attacks remain deterministic under a fixed seed."
-  },
-  {
-    "objectID": "projects/falsifyr.html#cran-readiness",
-    "href": "projects/falsifyr.html#cran-readiness",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
-    "section": "CRAN Readiness",
-    "text": "CRAN Readiness\nThe package is CRAN-targeted but not yet CRAN-published. A local R CMD check --as-cran completes with tests passing and two notes:\n\nThe maintainer field still uses placeholder metadata and must be replaced before submission.\nThe local Windows environment could not verify current time during the check.\n\nI am keeping that status explicit. Once the maintainer metadata is final, the remaining work is multi-platform checking, cran-comments.md, policy review, and submission. Until CRAN accepts it, the accurate description is “CRAN-targeted,” not “CRAN-approved.”"
-  },
-  {
-    "objectID": "projects/falsifyr.html#results-and-impact",
-    "href": "projects/falsifyr.html#results-and-impact",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
-    "section": "Results and Impact",
-    "text": "Results and Impact\n\nConsolidates eight robustness families behind one claim-centered workflow.\nFinds and ranks the smallest perturbation that changes a statistical conclusion.\nProduces a static report that can travel with an analysis or model review.\nSupports both fragile and resilient examples so the tool does not assume every claim should fail.\nPreserves caveats and unavailable attacks instead of silently omitting them.\nAdds an RStudio-native path through an optional addin."
-  },
-  {
-    "objectID": "projects/falsifyr.html#tech-stack",
-    "href": "projects/falsifyr.html#tech-stack",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
+    "objectID": "projects/education-wage.html#tech-stack",
+    "href": "projects/education-wage.html#tech-stack",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
     "section": "Tech Stack",
-    "text": "Tech Stack\n\nR package development, roxygen2, testthat, S3 methods\nggplot2, tibble, vctrs, rlang, cli\nOptional sandwich and lmtest support for robust standard errors\nRStudio addin, vignettes, static HTML reporting\nR CMD check --as-cran release workflow"
+    "text": "Tech Stack\n\nData Analysis, Inequality Research, Labor Economics, R, Visualization"
   },
   {
-    "objectID": "projects/falsifyr.html#boundaries",
-    "href": "projects/falsifyr.html#boundaries",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
-    "section": "Boundaries",
-    "text": "Boundaries\n\nA killed claim is fragile under a defined attack; it is not proven false.\nA survival score is a heuristic summary, not the probability that a claim is true.\nSupported attacks depend on the fitted object and retained source data.\nAutomated robustness testing does not replace study design, domain expertise, or causal identification."
-  },
-  {
-    "objectID": "projects/falsifyr.html#deliverables",
-    "href": "projects/falsifyr.html#deliverables",
-    "title": "falsifyr: Adversarial Testing for Statistical Claims",
+    "objectID": "projects/education-wage.html#deliverables",
+    "href": "projects/education-wage.html#deliverables",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
     "section": "Deliverables",
-    "text": "Deliverables\n\nGenerated attack report\nPackage source currently maintained as a private pre-release build"
+    "text": "Deliverables\n\nProject brief: (add file)\nSlides/report: (add file)\nDashboard/model file: (add file)\nSQL/notebook/code bundle: (add file)"
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html",
-    "href": "projects/earnings-quality-autopsy.html",
-    "title": "Earnings Quality Autopsy",
-    "section": "",
-    "text": "Claim-to-number evidence map connecting management statements to accounting support and tension"
+    "objectID": "projects/education-wage.html#project-notes",
+    "href": "projects/education-wage.html#project-notes",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "Project Notes",
+    "text": "Project Notes\nDescription: Analyzed 50 years of wage data (1973-2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights. Skills Demonstrated: Data Analysis, Inequality Research, Labor Economics, R, Visualization Project Status: Planning\nI like understanding why systems work the way they do. Money, education, and opportunity shape so much of a person’s life, and I have seen firsthand how different those systems feel depending on where you grow up. Moving from Europe to the United States made those differences even more obvious.\nAs a first generation college student, wage inequality feels personal to me. It is not just an economics topic. It affects people I know and people like me.\nSo I wanted to create a clear and honest analysis that shows how wages changed across fifty years. I wanted something that feels like a consulting report a policy team could actually use. Something that shows what education really buys people over time and how gender interacts with all of it.\n\nThis project takes a dataset of real wages from 1973 to 2022 and builds a full analytical workflow.\nIt includes:\n\nreshaping the data into a tidy format\nvisualizing long run wage paths\ncomputing the college wage premium\nrunning a regression model with interaction terms\ninterpreting the economic meaning\n\nEverything works together to answer one question.\nHow do education and gender shape long run wage inequality in the United States"
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#overview",
-    "href": "projects/earnings-quality-autopsy.html#overview",
-    "title": "Earnings Quality Autopsy",
-    "section": "Overview",
-    "text": "Overview\nEarnings Quality Autopsy is a full-stack research system for a question that ordinary earnings dashboards rarely answer: does the accounting evidence support the story management is telling?\nThe platform pulls official SEC companyfacts and XBRL data, normalizes quarterly statements, reviews earnings materials, and tests management claims against cash conversion, working capital, margin, segment, disclosure, and non-GAAP evidence. It then produces a source-backed dossier, research note, and workpaper package that an analyst can trace and challenge.\nI built it as a research workflow, not a stock picker. It does not issue ratings, price targets, fraud accusations, or automated investment recommendations. Its job is to expose support, tension, missing evidence, and the next question an analyst should ask.\n\n\n187backend tests collected\n\n\n14FastAPI routes\n\n\n9forensic analysis modules\n\n\n5export formats for analyst handoff"
+    "objectID": "projects/education-wage.html#data-tidying",
+    "href": "projects/education-wage.html#data-tidying",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "1. Data Tidying",
+    "text": "1. Data Tidying\nThe dataset originally stores each education group in its own column. I converted it into a long format with the standard layout.\n\n\n\nimage.png\n\n\nThis format made visualization and modeling straightforward."
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#the-problem-i-wanted-to-solve",
-    "href": "projects/earnings-quality-autopsy.html#the-problem-i-wanted-to-solve",
-    "title": "Earnings Quality Autopsy",
-    "section": "The Problem I Wanted to Solve",
-    "text": "The Problem I Wanted to Solve\nMost filing tools summarize text or calculate ratios. Those are useful steps, but neither one closes the loop between a management statement and the numbers that should support it.\nIf management says demand is strong, I want to see revenue, receivables, cash collection, segment behavior, and any relevant disclosure in one evidence chain. If margins expanded, I want to know whether recurring add-backs, stock compensation, restructuring costs, or segment mix complicate that claim. If the available source does not contain enough evidence, the system should say that directly instead of inventing certainty.\nThat led to the core design: each claim becomes a structured object with its source quote, claim type, required checks, supporting evidence, tension evidence, missing checks, confidence, verdict, and follow-up question."
+    "objectID": "projects/education-wage.html#trend-visuals",
+    "href": "projects/education-wage.html#trend-visuals",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "2. Trend Visuals",
+    "text": "2. Trend Visuals\nI created line charts showing wages from 1973 to 2022 for five education levels, separated by gender. The patterns are clear.\n\n\n\nimage.png\n\n\nThe main takeaways:\n\nmen earn more at every level\nbachelor and advanced degree wages pull far ahead\nthe high school to bachelor gap expands over time"
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#what-i-built",
-    "href": "projects/earnings-quality-autopsy.html#what-i-built",
-    "title": "Earnings Quality Autopsy",
-    "section": "What I Built",
-    "text": "What I Built\n\nA Python and FastAPI backend for SEC ingestion, normalization, forensic analysis, evidence mapping, reporting, and batch execution.\nA quarterly statement model that handles fiscal-period mapping, Q4 derivation, filing provenance, revisions, missing quarters, TTM calculations, and derived-ratio lineage.\nForensic modules for cash conversion, working capital, revenue quality, margin quality, non-GAAP adjustments, segments, KPI continuity, language drift, and management claims.\nPeer and historical benchmarking with denominator coverage, fiscal-calendar caveats, percentile context, and issuer-specific interpretation.\nA deterministic claim-testing layer that separates supported, partially supported, unsupported, and not-measurable conclusions.\nA Next.js and TypeScript interface for company review, dossiers, evidence maps, segments, language drift, source review, and production operations.\nA production runner with SEC caching, multi-company manifests, controlled failure states, artifact validation, and PM-use readiness checks.\nAnalyst deliverables in JSON, Markdown, HTML, CSV, and Excel."
+    "objectID": "projects/education-wage.html#college-wage-premium",
+    "href": "projects/education-wage.html#college-wage-premium",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "3. College Wage Premium",
+    "text": "3. College Wage Premium\nThe premium is simply bachelor wage minus high school wage.\n\n\n\nimage.png\n\n\nThe premium grows every decade for both genders."
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#claim-to-number-evidence",
-    "href": "projects/earnings-quality-autopsy.html#claim-to-number-evidence",
-    "title": "Earnings Quality Autopsy",
-    "section": "Claim-to-Number Evidence",
-    "text": "Claim-to-Number Evidence\n\n\n Evidence map. Each management claim connects to the filing or earnings source, the metrics that support or challenge it, and a follow-up question. The graph makes the reasoning inspectable instead of hiding it inside generated prose.\n\n\n Analyst dossier. The dossier brings the quality score, cash-conversion timeline, claim ledger, tension drivers, segment truth table, and analyst questions into one review surface.\n\n\nThe evidence layer is intentionally conservative. A missing non-GAAP bridge does not become zero adjustments. A footnote keyword does not become a reconstructed table. A peer percentile does not become strong evidence when peer coverage is thin. Derived metrics retain the provenance and limitations of their inputs."
+    "objectID": "projects/education-wage.html#regression-model",
+    "href": "projects/education-wage.html#regression-model",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "4. Regression Model",
+    "text": "4. Regression Model\nI used a regression model that includes interactions between gender, education, and year to capture how these factors move together.\n\n\n\nimage.png\n\n\nThis lets the model answer exactly how much faster bachelor wages grow compared to high school wages and how gender changes that growth."
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#sec-and-xbrl-normalization",
-    "href": "projects/earnings-quality-autopsy.html#sec-and-xbrl-normalization",
-    "title": "Earnings Quality Autopsy",
-    "section": "SEC and XBRL Normalization",
-    "text": "SEC and XBRL Normalization\nThe most difficult engineering work was making the statement layer dependable enough for the forensic modules above it.\nSEC companyfacts data is useful but not analysis-ready. Issuers use different tags, fiscal calendars, durations, amendments, and extension concepts. The normalization workflow maps available concepts into a consistent quarterly model, derives fourth-quarter values only when the annual and year-to-date facts support the calculation, records filing provenance, and flags unsupported gaps for review.\nThe model covers the income statement, balance sheet, cash flow statement, working-capital fields, TTM values, and ratios including CFO to net income, FCF conversion, accrual gap, DSO, DIO, DPO, cash conversion cycle, ROIC, leverage, and liquidity markers."
+    "objectID": "projects/education-wage.html#education-pays",
+    "href": "projects/education-wage.html#education-pays",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "1. Education Pays",
+    "text": "1. Education Pays\nIn 2022, men with a bachelor degree earned about 49.01 dollars per hour. Men with only a high school diploma earned about 24.08 dollars per hour. Women follow the same structure with lower wages at every level.\n\n\n\nimage.png"
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#real-sec-review-and-production-controls",
-    "href": "projects/earnings-quality-autopsy.html#real-sec-review-and-production-controls",
-    "title": "Earnings Quality Autopsy",
-    "section": "Real SEC Review and Production Controls",
-    "text": "Real SEC Review and Production Controls\n\n\n Real SEC workpaper review. The AAPL example preserves source links, normalized statements, peer context, model-line decisions, and open evidence repairs in one long-form review surface.\n\n\n Production console. Batch status, source coverage, validation results, cache state, failure stage, artifact readiness, and handoff files are visible before an output is treated as analyst-ready.\n\n\nProduction mode records which companies succeeded, where a run failed, how long each stage took, which artifacts passed validation, and whether the source trail is complete enough for PM use. That matters because a polished memo is not useful if the source chain behind it is incomplete."
+    "objectID": "projects/education-wage.html#the-college-wage-premium-has-grown",
+    "href": "projects/education-wage.html#the-college-wage-premium-has-grown",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "2. The College Wage Premium Has Grown",
+    "text": "2. The College Wage Premium Has Grown\nThe model shows bachelor wages grow about 0.279 dollars per hour per year faster than high school wages. Over fifty years, that adds up to about 13.95 dollars per hour of extra advantage."
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#verification",
-    "href": "projects/earnings-quality-autopsy.html#verification",
-    "title": "Earnings Quality Autopsy",
-    "section": "Verification",
-    "text": "Verification\nThe repository includes more than ordinary unit tests. I added checks for finance-specific completion and handoff quality:\n\n187 backend tests collected.\nRuff validation for the Python codebase.\nFrontend production build checks.\nAn 18-part finance completion audit.\nA 12-part PM final-review gate.\nAn 11-part source-link review.\nLive SEC HTTP checks and local cache verification.\nValidation for memo traceability, assumption registers, model-line gates, source-repair queues, confidence summaries, and linked workpapers."
+    "objectID": "projects/education-wage.html#women-catch-up-slowly",
+    "href": "projects/education-wage.html#women-catch-up-slowly",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "3. Women Catch Up Slowly",
+    "text": "3. Women Catch Up Slowly\nWomen’s wages grow about 0.097 dollars per hour per year faster than men’s. This closes the overall gap a little, but not enough to match the patterns for men.\n\n\n\nimage.png"
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#results-and-use",
-    "href": "projects/earnings-quality-autopsy.html#results-and-use",
-    "title": "Earnings Quality Autopsy",
-    "section": "Results and Use",
-    "text": "Results and Use\nThe finished system can move from an SEC filing and earnings release to a normalized model, a forensic review, a claim ledger, a research note, and an analyst handoff package without losing the evidence trail between those stages.\nFor a recruiter or engineering reviewer, the important point is not that the dashboard contains many pages. It is that the system has a clear operating contract: every conclusion must be connected to a source, every derived metric must preserve lineage, every unsupported area must stay visibly unresolved, and every production run must expose its validation state."
+    "objectID": "projects/education-wage.html#men-still-benefit-more-from-higher-education",
+    "href": "projects/education-wage.html#men-still-benefit-more-from-higher-education",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "4. Men Still Benefit More From Higher Education",
+    "text": "4. Men Still Benefit More From Higher Education\nThe three way interaction is negative. This means the education advantage grows faster for men than for women. Both groups gain. Men gain more."
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#tech-stack",
-    "href": "projects/earnings-quality-autopsy.html#tech-stack",
-    "title": "Earnings Quality Autopsy",
-    "section": "Tech Stack",
-    "text": "Tech Stack\n\nBackend: Python, FastAPI, Pydantic, CLI tooling, SEC companyfacts/XBRL\nFrontend: Next.js, React, TypeScript, Recharts, React Flow\nAnalysis: financial statement normalization, peer benchmarking, anomaly detection, deterministic evidence rules\nOutputs: JSON, Markdown, HTML, CSV, Excel\nQuality: pytest, Ruff, frontend build checks, finance-specific acceptance gates"
+    "objectID": "projects/education-wage.html#inequality-grows-slowly-until-it-does-not",
+    "href": "projects/education-wage.html#inequality-grows-slowly-until-it-does-not",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "1. Inequality grows slowly until it does not",
+    "text": "1. Inequality grows slowly until it does not\nSmall yearly differences turn into massive long run gaps."
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#boundaries",
-    "href": "projects/earnings-quality-autopsy.html#boundaries",
-    "title": "Earnings Quality Autopsy",
-    "section": "Boundaries",
-    "text": "Boundaries\n\nThe platform is an educational research tool, not investment advice.\nIt does not issue buy or sell recommendations, price targets, or fraud allegations.\nIssuer-specific XBRL extensions still require careful review.\nSource-limited disclosure scans are not presented as complete footnote reconstruction.\nThe output does not replace professional accounting judgment."
+    "objectID": "projects/education-wage.html#gender-affects-wages-even-after-you-control-for-education",
+    "href": "projects/education-wage.html#gender-affects-wages-even-after-you-control-for-education",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "2. Gender affects wages even after you control for education",
+    "text": "2. Gender affects wages even after you control for education\nThe model keeps showing this pattern."
   },
   {
-    "objectID": "projects/earnings-quality-autopsy.html#deliverables",
-    "href": "projects/earnings-quality-autopsy.html#deliverables",
-    "title": "Earnings Quality Autopsy",
-    "section": "Deliverables",
-    "text": "Deliverables\n\nAAPL earnings-quality dossier\nAAPL PM research note\nAAPL PM handoff workbook"
+    "objectID": "projects/education-wage.html#interaction-terms-matter",
+    "href": "projects/education-wage.html#interaction-terms-matter",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "3. Interaction terms matter",
+    "text": "3. Interaction terms matter\nThey reveal the deeper structure behind long run changes."
+  },
+  {
+    "objectID": "projects/education-wage.html#clean-data-is-everything",
+    "href": "projects/education-wage.html#clean-data-is-everything",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "4. Clean data is everything",
+    "text": "4. Clean data is everything\nThe tidy dataset made the analysis feel smooth and predictable."
+  },
+  {
+    "objectID": "projects/education-wage.html#this-is-real-consulting-work",
+    "href": "projects/education-wage.html#this-is-real-consulting-work",
+    "title": "Education, Gender and Wage Inequality (1973-2022)",
+    "section": "5. This is real consulting work",
+    "text": "5. This is real consulting work\nClear question. Clean data. Interpretable model. Actionable insights.\n\ndata                raw and cleaned wage data\nanalysis            descriptive stats and visuals\nmodel               regression and diagnostics\ninsights            narrative interpretation\nreport              final pdf write up\n\n\nadd race and ethnicity\ninclude non linear time trends\nadd occupation controls\ncreate dashboard for policymakers\n\n\nThis project reminded me why I enjoy analytics. A fifty year dataset can feel huge, but with the right structure you can turn it into a simple and meaningful story. Education opens real opportunities. Gender still influences how those opportunities pay out. And the data makes that very clear.\nIf you want to talk about wage inequality or long run economic trends, I am always open to it.\nMarkuss Saule"
   },
   {
     "objectID": "projects/blockchain-fraud.html",
@@ -1054,7 +1033,7 @@
     "href": "resume.html#experience-timeline",
     "title": "Resume",
     "section": "Experience Timeline",
-    "text": "Experience Timeline\n\n\nMay 2026 - Present: Volvo Group, Business Intelligence and Analytics Intern\n\n\n\nLeading Adobe CJA migration work for digital journeys serving 3M+ monthly users across web funnels and vehicle configurators.\n\n\nEliminated two martech dependencies through tool rationalization, reducing annual software run-rate by $50,000.\n\n\nBuilt statistical monitoring for traffic, sentiment, and funnels that detected a high-intent submission drop from 9% to 5%.\n\n\n\n\n\nOct 2024 - May 2026: BYU-Idaho Online Employment and Scheduling, Data and Campaign Analytics Coordinator\n\n\n\nOptimized a $4,000 Meta recruiting campaign through segmentation, generating 2,250 qualified applicants.\n\n\nBuilt KPI dashboards that increased hiring engagement by 320%.\n\n\nDesigned an AI-assisted screening workflow for 1,000+ global applicants.\n\n\n\n\n\nJun 2025 - Sep 2025: Fresno State University Sports, Digital Data and Insights Coordinator\n\n\n\nBuilt a scoring model that ranked 350+ sponsor prospects and surfaced $370,000 in sponsorship value.\n\n\nAutomated dashboards that reduced weekly reporting time by 70%.\n\n\nGuided audience, sponsorship, and campaign strategy across 4+ content channels.\n\n\n\n\n\n2020 - 2024: Roblox Immersive Brand Worlds, 3D Environment Artist and World Build Lead\n\n\n\nBuilt 3D environments, vehicles, terrain systems, props, and branded spaces across shipped Roblox experiences totaling 6.5B+ place visits.\n\n\nWorked on large-scale brand and entertainment activations connected to Warner Music, Sony Entertainment, DC/Black Adam, Bakugan, L’Oreal, JDRF, and other global IP campaigns.\n\n\nBalanced visual direction, player movement, performance budgets, launch deadlines, and brand constraints for high-traffic interactive worlds.\n\n\nPersonally commended by Roblox CEO David Baszucki for contributions during the early interactive concert era on Roblox.\n\n\n\n\n\nAug 2023 - Jul 2024: American Councils (US State Department), City Lead and Project Manager\n\n\n\nTracked participation and demographic data for 550+ program applicants.\n\n\nFacilitated six data-informed leadership workshops with measurement loops.\n\n\nProduced structured cross-border reporting for grant-compliance workflows.\n\n\n\n\n\nJun 2021 - Oct 2021: Ministry of Health of Latvia, Marketing and Analytics Intern\n\n\n\nAnalyzed vaccination trends for a national COVID-19 campaign reaching 175,000 people across Latvia.\n\n\nCoordinated data and messaging across three departments to improve targeting and clarity.\n\n\nMeasured outreach performance to refine audience segments, content, and channel allocation."
+    "text": "Experience Timeline\n\n\nMay 11, 2026 - Present: Volvo Group, Business Intelligence and Analytics Intern\n\n\n\nOptimizing AI engine workflows and analytics logic that support enterprise decision systems.\n\n\nSupporting Adobe CAJ migration work with measurement continuity, validation, and web analytics governance.\n\n\nBuilding forecasting and machine learning workflows to surface performance signals, operational risk, and high-value decision patterns.\n\n\nTranslating heavy web analytics into clear KPI logic, reporting layers, and decision-ready business insight.\n\n\n\n\n\nOct 2024 - May 11, 2026: BYU-Idaho Online Employment and Scheduling, Data and Campaign Analytics Coordinator\n\n\n\nOptimized a $4,000 Meta campaign and generated 1,150+ qualified applicants.\n\n\nBuilt KPI dashboards that increased hiring engagement by 320%.\n\n\nDesigned an AI-assisted screening workflow for 1,000+ applicants.\n\n\n\n\n\nJun 2025 - Sep 2025: Fresno State University Sports, Digital Data and Insights Coordinator\n\n\n\nBuilt a sponsor scoring model for 350+ prospects using fit and outreach metrics.\n\n\nAutomated dashboards that reduced weekly reporting time by 70%.\n\n\nGuided multi-channel strategy using performance segmentation across 4+ channels.\n\n\n\n\n\n2020 - 2024: Roblox Immersive Brand Worlds, 3D Environment Artist and World Build Lead\n\n\n\nBuilt 3D environments, vehicles, terrain systems, props, and branded spaces across shipped Roblox experiences totaling 6.5B+ place visits.\n\n\nWorked on large-scale brand and entertainment activations connected to Warner Music, Sony Entertainment, DC/Black Adam, Bakugan, L’Oreal, JDRF, and other global IP campaigns.\n\n\nBalanced visual direction, player movement, performance budgets, launch deadlines, and brand constraints for high-traffic interactive worlds.\n\n\nPersonally commended by Roblox CEO David Baszucki for contributions during the early interactive concert era on Roblox.\n\n\n\n\n\nAug 2023 - Jul 2024: American Councils (US State Department), City Lead and Project Manager\n\n\n\nTracked participation and demographic data for 550+ program applicants.\n\n\nFacilitated six data-informed leadership workshops with measurement loops.\n\n\nProduced structured cross-border reporting for grant-compliance workflows.\n\n\n\n\n\nJun 2021 - Oct 2021: Ministry of Health of Latvia, Marketing and Analytics Intern\n\n\n\nAnalyzed vaccination trends for a national COVID campaign reaching 20,000+ people.\n\n\nAligned insight-sharing across three departments to improve campaign precision."
   },
   {
     "objectID": "resume.html#education-and-credentials",
@@ -1068,21 +1047,21 @@
     "href": "resume.html#project-signature",
     "title": "Resume",
     "section": "Project Signature",
-    "text": "Project Signature\n\nEarnings Quality Autopsy, a full-stack SEC/XBRL research system with nine forensic modules, 14 API routes, 187 tests, and source-backed analyst handoff\nRavel, a CRAN-published RStudio AI copilot, and falsifyr, a CRAN-targeted package for adversarial testing of statistical claims\nRadiology Value Pipeline, a governed clinical AI workflow with model lineage, human review, audit trails, Power BI marts, and 0.9828 benchmark MRI AUC\nOWL, a local-first AI discovery daemon with a SQLite knowledge graph, MCP server, desktop application, and 98 tests\nRoblox immersive brand-world production across shipped games and global activations totaling 6.5B+ place visits"
+    "text": "Project Signature\n\nMERCURY market microstructure lab with multi-agent exchange simulation, flash-crash experiments, and reproducible research publishing\nRoblox immersive brand-world production across shipped games and global activations totaling 6.5B+ place visits\nRavel, a CRAN-published RStudio AI copilot with a 0.1.2 maintenance update for OpenAI Responses API support, remote MCP declarations, safer staged actions, model interpretation, and Quarto drafting\nWayline, a production-style travel analytics product with route orchestration, predictive trip scoring, protected API usage, and exportable planning outputs\nFraud modeling plus blockchain audit architecture for healthcare claims\nSimulation-led staffing optimization for fulfillment operations\nReadmission risk modeling with SQL, R, and BI integration\n114K+ case survival analysis on SEER lung cancer data"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "\nI build \n",
     "section": "",
-    "text": "Analytics Engineering and Applied Data Science\n\n\n\nBusiness AnalyticsStatistics\n\n\nData Science\n\n\nI build measured, testable decision systems for enterprise operations, product analytics, healthcare, and financial research.\n\nLinkedIn Resume PDF\n\n\n\nGPA4.0\n\n\nDegreeBS Business Analytics\n\n\nMinorsStatistics, Data Science\n\n\nCore StackPython, SQL, R, Power BI\n\n\n\n\n\n\n\n// Enterprise Analytics, Statistical Systems, Applied AI\n\n\n\nI work from instrumentation and source quality through statistical validation, product delivery, and executive-ready decisions. At Volvo, that means measurement for digital journeys serving 3M+ monthly users, $50K in annual software savings, and monitoring that exposed a material high-intent funnel failure.\n\n\nHealthcare is personal to me. Family health challenges shaped how I define impact, and why I care about platform-level systems that improve outcomes at scale.\n\n\nView Projects Experience Timeline\n\n\n\n\n\nEarnings Quality Autopsy is a full-stack SEC/XBRL research system that tests whether management narratives are supported by accounting evidence.\n\n\n\n\n\n// Flagship build\n\n\n\nThe platform ingests official SEC companyfacts and XBRL data, normalizes quarterly statements, and connects management claims to cash conversion, working capital, margin, segment, disclosure, and non-GAAP evidence. It exports a source-backed dossier, research note, and analyst workpapers without issuing ratings, price targets, or unsupported allegations.\nThe central design choice is traceability. Every conclusion retains its source, required checks, supporting and tension evidence, confidence, limitations, and next question. Missing evidence stays visible instead of being converted into false certainty.\n\n\n0backend tests collected\n\n\n0FastAPI routes across the research workflow\n\n\n0forensic analysis modules\n\n\n0output formats for analyst handoff\n\n\n\nExplore the Project Open AAPL Dossier\n\n\n\n\n\n\n\n\n\n\n\nI model the full system before choosing metrics. Local optimization without systems context is noise.\n\n\n\n\n\nI surface thresholds, failure modes, and confidence bounds so leaders can act under uncertainty.\n\n\n\n\n\nI prioritize constraints that limit throughput, access, and quality before adding complexity.\n\n\n\n\n\nI design analytics around decision consequences, not dashboard aesthetics.\n\n\n\n\n\n\n\n\n0Monthly users covered by Volvo digital measurement work\n\n\n0Annual software run-rate eliminated through martech rationalization\n\n\n0Qualified applicants generated through BYU-Idaho recruiting analytics\n\n\n0Sponsorship value surfaced through Fresno State prospect scoring\n\n\n0People reached by Latvia’s national public-health campaign\n\n\n0Roblox place visits across shipped immersive brand and game experiences\n\n\n\n\n\n\n\n\n\nFlagship\n\n\nEarnings Quality Autopsy\n\n\nSEC/XBRL forensic research system that maps management claims to accounting evidence and PM-ready workpapers.\n\n\nPythonFastAPINext.jsSEC/XBRL\n\n\n \n\n\nFlagship\n\n\nRadiology Value Pipeline\n\n\nClinical AI workflow platform for chest X-ray and brain MRI review, governed model runs, human feedback, audit trails, and Power BI reporting.\n\n\nFastAPIPostgreSQLClinical AIPower BI\n\n\n \n\n\nOpen Source\n\n\nOWL: Autonomous AI Discovery Daemon\n\n\nLocal-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.\n\n\nNode.jsElectronSQLiteLLM\n\n\n \n\n\nCRAN-targeted\n\n\nfalsifyr: Adversarial Statistical Testing\n\n\nR package that searches for the smallest plausible perturbation capable of overturning a statistical claim.\n\n\nRRobustness65 Tests\n\n\n \n\n\nWayline: Analytics-Driven Road Trip Planner\n\n\nProduction-minded trip planner with route orchestration, stop scoring, predictive fit, analytics events, and exports.\n\n\nNode.jsGoogle MapsPredictive Scoring\n\n\n \n\n\nRoblox Immersive Brand Worlds\n\n\n10 years of Roblox worldbuilding across shipped games, early music events, and global brand activations reaching 6.5B+ place visits.\n\n\n6.5B+ Visits3D DesignBrand Worlds\n\n\n\n\n\nSee full project archive"
+    "text": "Data and Analytics Specialist\n\n\n\nBusiness AnalyticsStatistics\n\n\nData Science\n\n\nI am a systems-first analytics builder focused on operational risk, bottlenecks, and decision thresholds in complex organizations.\n\nLinkedIn Resume PDF\n\n\n\nGPA4.0\n\n\nDegreeBS Business Analytics\n\n\nMinorsStatistics, Data Science\n\n\nCore StackPython, SQL, R, Power BI\n\n\n\n\n\n\n\n// Decision-Grade Analytics for Complex Systems\n\n\n\nBusiness Analytics student at BYU-Idaho building high-consequence analytics for healthcare, market systems, and enterprise operations. My work is designed for environments where tradeoffs matter and decisions carry real cost.\n\n\nHealthcare is personal to me. Family health challenges shaped how I define impact, and why I care about platform-level systems that improve outcomes at scale.\n\n\nView Projects Experience Timeline\n\n\n\n\n\nRadiology Value Pipeline is the strongest healthcare analytics and AI project in this portfolio: a local-first radiology workflow platform with model orchestration, human review, audit trails, governance surfaces, and Power BI reporting.\n\n\n\n\n\n// Flagship build\n\n\n\nRadiology Value Pipeline is a production-style MVP for a radiology workflow copilot. It supports chest X-ray and brain MRI workflows, registers studies, runs modality-aware model services, persists findings and report drafts, captures human feedback, and publishes dashboard-ready operational, clinical quality, and governance data.\nThe project is intentionally disciplined: AI outputs are assistive suggestions only, the radiologist remains the author of record, and every run is traceable through model versions, prompt versions, audit events, feedback, discrepancy analysis, and Power BI marts.\n\n\n0processed chest X-ray and brain MRI studies\n\n\n0workflow agent runs with prompt lineage\n\n\n0dashboard fact rows for operations, quality, and governance\n\n\n0held-out brain MRI macro AUC in benchmark testing\n\n\n\nExplore the Project Open Project PDF\n\n\n\n\n\n\n\n\n\n\n\nI model the full system before choosing metrics. Local optimization without systems context is noise.\n\n\n\n\n\nI surface thresholds, failure modes, and confidence bounds so leaders can act under uncertainty.\n\n\n\n\n\nI prioritize constraints that limit throughput, access, and quality before adding complexity.\n\n\n\n\n\nI design analytics around decision consequences, not dashboard aesthetics.\n\n\n\n\n\n\n\n\n0Processed imaging studies in the flagship radiology AI platform\n\n\n0Roblox place visits across shipped immersive brand and game experiences\n\n\n0Workflow agent runs tracked with prompt and model lineage\n\n\n0Dashboard fact rows for operations, quality, and governance\n\n\n0SEER patient records modeled for survival analysis\n\n\n\n\n\n\n\n\n\nFlagship\n\n\nRadiology Value Pipeline\n\n\nClinical AI workflow platform for chest X-ray and brain MRI review, governed model runs, human feedback, audit trails, and Power BI reporting.\n\n\nFastAPIPostgreSQLClinical AIPower BI\n\n\n \n\n\nOpen Source\n\n\nOWL: Autonomous AI Discovery Daemon\n\n\nLocal-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.\n\n\nNode.jsElectronSQLiteLLM\n\n\n \n\n\nRoblox Immersive Brand Worlds\n\n\n10 years of Roblox worldbuilding across shipped games, early music events, and global brand activations reaching 6.5B+ place visits.\n\n\n6.5B+ Visits3D DesignBrand Worlds\n\n\n \n\n\nMERCURY: Market Microstructure Simulation Lab\n\n\nResearch-grade exchange simulation for liquidity stress, flash crashes, venue fragmentation, and fee-aware strategy interaction.\n\n\nPythonSimulationMarket Microstructure\n\n\n \n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nSimPy-based engine with pressure scoring, risk signals, and staffing search for high-load operations.\n\n\nPythonSimPyOptimization\n\n\n \n\n\nBlockchain + ML Healthcare Fraud Ledger\n\n\nXGBoost fraud scoring combined with tamper-evident records for trust and auditability.\n\n\nXGBoostSHA-256Streamlit\n\n\n \n\n\nInsurance Fraud Detection\n\n\nModel comparison from logistic regression to XGBoost with SHAP explainability and deployment artifacts.\n\n\nscikit-learnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization\n\n\nHealthcare operations dashboard with forecasting, decomposition, and capacity visibility.\n\n\nPower BIForecastingHealthcare Ops\n\n\n\n\n\nSee full project archive"
   },
   {
-    "objectID": "index.html#current-flagship",
-    "href": "index.html#current-flagship",
+    "objectID": "index.html#flagship-project",
+    "href": "index.html#flagship-project",
     "title": "\nI build \n",
     "section": "",
-    "text": "Earnings Quality Autopsy is a full-stack SEC/XBRL research system that tests whether management narratives are supported by accounting evidence.\n\n\n\n\n\n// Flagship build\n\n\n\nThe platform ingests official SEC companyfacts and XBRL data, normalizes quarterly statements, and connects management claims to cash conversion, working capital, margin, segment, disclosure, and non-GAAP evidence. It exports a source-backed dossier, research note, and analyst workpapers without issuing ratings, price targets, or unsupported allegations.\nThe central design choice is traceability. Every conclusion retains its source, required checks, supporting and tension evidence, confidence, limitations, and next question. Missing evidence stays visible instead of being converted into false certainty.\n\n\n0backend tests collected\n\n\n0FastAPI routes across the research workflow\n\n\n0forensic analysis modules\n\n\n0output formats for analyst handoff\n\n\n\nExplore the Project Open AAPL Dossier"
+    "text": "Radiology Value Pipeline is the strongest healthcare analytics and AI project in this portfolio: a local-first radiology workflow platform with model orchestration, human review, audit trails, governance surfaces, and Power BI reporting.\n\n\n\n\n\n// Flagship build\n\n\n\nRadiology Value Pipeline is a production-style MVP for a radiology workflow copilot. It supports chest X-ray and brain MRI workflows, registers studies, runs modality-aware model services, persists findings and report drafts, captures human feedback, and publishes dashboard-ready operational, clinical quality, and governance data.\nThe project is intentionally disciplined: AI outputs are assistive suggestions only, the radiologist remains the author of record, and every run is traceable through model versions, prompt versions, audit events, feedback, discrepancy analysis, and Power BI marts.\n\n\n0processed chest X-ray and brain MRI studies\n\n\n0workflow agent runs with prompt lineage\n\n\n0dashboard fact rows for operations, quality, and governance\n\n\n0held-out brain MRI macro AUC in benchmark testing\n\n\n\nExplore the Project Open Project PDF"
   },
   {
     "objectID": "index.html#operating-doctrine",
@@ -1096,28 +1075,28 @@
     "href": "index.html#selected-outcomes",
     "title": "\nI build \n",
     "section": "",
-    "text": "0Monthly users covered by Volvo digital measurement work\n\n\n0Annual software run-rate eliminated through martech rationalization\n\n\n0Qualified applicants generated through BYU-Idaho recruiting analytics\n\n\n0Sponsorship value surfaced through Fresno State prospect scoring\n\n\n0People reached by Latvia’s national public-health campaign\n\n\n0Roblox place visits across shipped immersive brand and game experiences"
+    "text": "0Processed imaging studies in the flagship radiology AI platform\n\n\n0Roblox place visits across shipped immersive brand and game experiences\n\n\n0Workflow agent runs tracked with prompt and model lineage\n\n\n0Dashboard fact rows for operations, quality, and governance\n\n\n0SEER patient records modeled for survival analysis"
   },
   {
     "objectID": "index.html#featured-projects",
     "href": "index.html#featured-projects",
     "title": "\nI build \n",
     "section": "",
-    "text": "Flagship\n\n\nEarnings Quality Autopsy\n\n\nSEC/XBRL forensic research system that maps management claims to accounting evidence and PM-ready workpapers.\n\n\nPythonFastAPINext.jsSEC/XBRL\n\n\n \n\n\nFlagship\n\n\nRadiology Value Pipeline\n\n\nClinical AI workflow platform for chest X-ray and brain MRI review, governed model runs, human feedback, audit trails, and Power BI reporting.\n\n\nFastAPIPostgreSQLClinical AIPower BI\n\n\n \n\n\nOpen Source\n\n\nOWL: Autonomous AI Discovery Daemon\n\n\nLocal-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.\n\n\nNode.jsElectronSQLiteLLM\n\n\n \n\n\nCRAN-targeted\n\n\nfalsifyr: Adversarial Statistical Testing\n\n\nR package that searches for the smallest plausible perturbation capable of overturning a statistical claim.\n\n\nRRobustness65 Tests\n\n\n \n\n\nWayline: Analytics-Driven Road Trip Planner\n\n\nProduction-minded trip planner with route orchestration, stop scoring, predictive fit, analytics events, and exports.\n\n\nNode.jsGoogle MapsPredictive Scoring\n\n\n \n\n\nRoblox Immersive Brand Worlds\n\n\n10 years of Roblox worldbuilding across shipped games, early music events, and global brand activations reaching 6.5B+ place visits.\n\n\n6.5B+ Visits3D DesignBrand Worlds\n\n\n\n\n\nSee full project archive"
+    "text": "Flagship\n\n\nRadiology Value Pipeline\n\n\nClinical AI workflow platform for chest X-ray and brain MRI review, governed model runs, human feedback, audit trails, and Power BI reporting.\n\n\nFastAPIPostgreSQLClinical AIPower BI\n\n\n \n\n\nOpen Source\n\n\nOWL: Autonomous AI Discovery Daemon\n\n\nLocal-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.\n\n\nNode.jsElectronSQLiteLLM\n\n\n \n\n\nRoblox Immersive Brand Worlds\n\n\n10 years of Roblox worldbuilding across shipped games, early music events, and global brand activations reaching 6.5B+ place visits.\n\n\n6.5B+ Visits3D DesignBrand Worlds\n\n\n \n\n\nMERCURY: Market Microstructure Simulation Lab\n\n\nResearch-grade exchange simulation for liquidity stress, flash crashes, venue fragmentation, and fee-aware strategy interaction.\n\n\nPythonSimulationMarket Microstructure\n\n\n \n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nSimPy-based engine with pressure scoring, risk signals, and staffing search for high-load operations.\n\n\nPythonSimPyOptimization\n\n\n \n\n\nBlockchain + ML Healthcare Fraud Ledger\n\n\nXGBoost fraud scoring combined with tamper-evident records for trust and auditability.\n\n\nXGBoostSHA-256Streamlit\n\n\n \n\n\nInsurance Fraud Detection\n\n\nModel comparison from logistic regression to XGBoost with SHAP explainability and deployment artifacts.\n\n\nscikit-learnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization\n\n\nHealthcare operations dashboard with forecasting, decomposition, and capacity visibility.\n\n\nPower BIForecastingHealthcare Ops\n\n\n\n\n\nSee full project archive"
   },
   {
     "objectID": "projects.html",
     "href": "projects.html",
     "title": "Projects",
     "section": "",
-    "text": "These projects are working systems, research products, and analytical builds. The strongest ones combine source discipline, statistical validation, product interfaces, and an explicit decision or operating workflow.\n\n\nAll\n\n\nAI / Autonomous\n\n\nSimulation\n\n\nMachine Learning\n\n\nStatistics\n\n\nFinance / Risk\n\n\nHealthcare\n\n\nBI / Dashboards\n\n\nData Engineering\n\n\nProduct Systems\n\n\nOpen Source\n\n\nImmersive Worlds\n\n\n\n\n\n\nFlagship\n\n\nEarnings Quality Autopsy\n\n\nFull-stack SEC/XBRL research system that tests management claims against accounting evidence and exports PM-ready dossiers and workpapers.\n\n\nPythonFastAPINext.js187 Tests\n\n\n \n\n\nFlagship\n\n\nRadiology Value Pipeline\n\n\nLocal-first clinical AI workflow platform for chest X-ray and brain MRI review, governed model runs, auditability, and Power BI handoff.\n\n\nFastAPIPostgreSQLClinical AIPower BI\n\n\n \n\n\nOpen Source\n\n\nOWL: Autonomous AI Discovery Daemon\n\n\nLocal-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.\n\n\nNode.jsElectronSQLiteLLM\n\n\n \n\n\nCRAN-targeted\n\n\nfalsifyr: Adversarial Statistical Testing\n\n\nR package that finds the smallest plausible perturbation capable of overturning a statistical claim across 8 attack families.\n\n\nRRobustness65 Tests\n\n\n \n\n\nWayline: Analytics-Driven Road Trip Planner\n\n\nProduction-minded trip planner with route orchestration, stop scoring, predictive fit, analytics events, exports, and protected Google Maps infrastructure.\n\n\nNode.jsGoogle MapsPredictive Scoring\n\n\n \n\n\nRavel: CRAN-Published RStudio AI Copilot\n\n\nCRAN-accepted R package with a 0.1.2 update for OpenAI Responses API support, remote MCP declarations, safer staged actions, model interpretation, and Quarto drafting.\n\n\nRCRANMCP-ready\n\n\n \n\n\nRoblox Immersive Brand Worlds\n\n\n10 years of Roblox worldbuilding across shipped games and global brand activations totaling 6.5B+ place visits.\n\n\n6.5B+ Visits3D WorldsBrand Activations\n\n\n \n\n\nMERCURY: Market Microstructure Simulation Lab\n\n\nResearch-grade multi-agent exchange simulation for liquidity stress, fragmentation, and market-design experiments.\n\n\nPythonSimulationMarket Structure\n\n\n \n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nSimulation-driven staffing strategy and throughput risk mitigation.\n\n\nPythonSimPyPower BI\n\n\n \n\n\nMarket Basket Analysis: What Snacks Are Bought Together?\n\n\nProduct affinity mining to inform promotion and shelf strategy.\n\n\nPythonAprioriRetail\n\n\n \n\n\nBlockchain + Machine Learning Healthcare Fraud Ledger\n\n\nSecure, traceable fraud workflows with predictive risk signals.\n\n\nPythonMLBlockchain\n\n\n \n\n\nInsurance Fraud Detection\n\n\nModel comparison and explainability for claims fraud triage.\n\n\nScikit-LearnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization\n\n\nCapacity and scheduling intelligence for healthcare operations.\n\n\nPower BIHealthcareOperations\n\n\n \n\n\nHospital Financial Forecasting Dashboard\n\n\nDepartment-level forecasting to support budget and planning decisions.\n\n\nExcelForecastingFinance\n\n\n \n\n\nHospital Price Variation and Medicare Benchmarking\n\n\nState, regional, and service-level analysis of how 2023 inpatient charges diverge from Medicare payments for comparable stays.\n\n\nRCMSMedicare\n\n\n \n\n\nEducation, Gender and Wage Inequality (1973-2022)\n\n\nLong-horizon inequality analysis with policy-relevant segmentation.\n\n\nEconomicsRPolicy\n\n\n \n\n\nBank Loan Risk Rating Dashboard\n\n\nPortfolio risk visibility and borrower-level decision support.\n\n\nExcelRiskDashboard\n\n\n \n\n\nDying on the Margin: Capacity Utilization and Mortality\n\n\nRegression-driven hospital capacity study linking utilization, rural context, and risk-adjusted heart-failure mortality.\n\n\nRRegressionHealthcare\n\n\n \n\n\nLung Cancer Survival (SEER 2004-2015)\n\n\nClinical and demographic outcome analysis for survival insights.\n\n\nRPower BIHealthcare\n\n\n \n\n\nHospital Readmission Analytics\n\n\nReadmission benchmarking and equity-aware operational reporting.\n\n\nSQLRPower BI\n\n\n \n\n\nHospital Database System\n\n\nNormalized relational schema and reporting-ready SQL foundations.\n\n\nSQLDatabaseETL"
+    "text": "Each project below is designed around business impact: clearer decisions, lower risk, stronger performance.\n\n\nAll\n\n\nAI / Autonomous\n\n\nSimulation\n\n\nMachine Learning\n\n\nHealthcare\n\n\nBI / Dashboards\n\n\nData Engineering\n\n\nProduct Systems\n\n\nOpen Source\n\n\nImmersive Worlds\n\n\n\n\n\n\nFlagship\n\n\nRadiology Value Pipeline\n\n\nLocal-first clinical AI workflow platform for chest X-ray and brain MRI review, governed model runs, auditability, and Power BI handoff.\n\n\nFastAPIPostgreSQLClinical AIPower BI\n\n\n \n\n\nOpen Source\n\n\nOWL: Autonomous AI Discovery Daemon\n\n\nLocal-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.\n\n\nNode.jsElectronSQLiteLLM\n\n\n \n\n\nWayline: Analytics-Driven Road Trip Planner\n\n\nProduction-minded trip planner with route orchestration, stop scoring, predictive fit, analytics events, exports, and protected Google Maps infrastructure.\n\n\nNode.jsGoogle MapsPredictive Scoring\n\n\n \n\n\nRavel: CRAN-Published RStudio AI Copilot\n\n\nCRAN-accepted R package with a 0.1.2 update for OpenAI Responses API support, remote MCP declarations, safer staged actions, model interpretation, and Quarto drafting.\n\n\nRCRANMCP-ready\n\n\n \n\n\nRoblox Immersive Brand Worlds\n\n\n10 years of Roblox worldbuilding across shipped games and global brand activations totaling 6.5B+ place visits.\n\n\n6.5B+ Visits3D WorldsBrand Activations\n\n\n \n\n\nMERCURY: Market Microstructure Simulation Lab\n\n\nResearch-grade multi-agent exchange simulation for liquidity stress, fragmentation, and market-design experiments.\n\n\nPythonSimulationMarket Structure\n\n\n \n\n\nFulfillment Center Risk Simulation and Staffing Optimization\n\n\nSimulation-driven staffing strategy and throughput risk mitigation.\n\n\nPythonSimPyPower BI\n\n\n \n\n\nMarket Basket Analysis: What Snacks Are Bought Together?\n\n\nProduct affinity mining to inform promotion and shelf strategy.\n\n\nPythonAprioriRetail\n\n\n \n\n\nBlockchain + Machine Learning Healthcare Fraud Ledger\n\n\nSecure, traceable fraud workflows with predictive risk signals.\n\n\nPythonMLBlockchain\n\n\n \n\n\nInsurance Fraud Detection\n\n\nModel comparison and explainability for claims fraud triage.\n\n\nScikit-LearnXGBoostSHAP\n\n\n \n\n\nAI-Powered Scheduling and Patient Access Optimization\n\n\nCapacity and scheduling intelligence for healthcare operations.\n\n\nPower BIHealthcareOperations\n\n\n \n\n\nHospital Financial Forecasting Dashboard\n\n\nDepartment-level forecasting to support budget and planning decisions.\n\n\nExcelForecastingFinance\n\n\n \n\n\nHospital Price Variation and Medicare Benchmarking\n\n\nState, regional, and service-level analysis of how 2023 inpatient charges diverge from Medicare payments for comparable stays.\n\n\nRCMSMedicare\n\n\n \n\n\nEducation, Gender and Wage Inequality (1973-2022)\n\n\nLong-horizon inequality analysis with policy-relevant segmentation.\n\n\nEconomicsRPolicy\n\n\n \n\n\nBank Loan Risk Rating Dashboard\n\n\nPortfolio risk visibility and borrower-level decision support.\n\n\nExcelRiskDashboard\n\n\n \n\n\nDying on the Margin: Capacity Utilization and Mortality\n\n\nRegression-driven hospital capacity study linking utilization, rural context, and risk-adjusted heart-failure mortality.\n\n\nRRegressionHealthcare\n\n\n \n\n\nLung Cancer Survival (SEER 2004-2015)\n\n\nClinical and demographic outcome analysis for survival insights.\n\n\nRPower BIHealthcare\n\n\n \n\n\nHospital Readmission Analytics\n\n\nReadmission benchmarking and equity-aware operational reporting.\n\n\nSQLRPower BI\n\n\n \n\n\nHospital Database System\n\n\nNormalized relational schema and reporting-ready SQL foundations.\n\n\nSQLDatabaseETL"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "\nAbout Markuss\n",
+    "title": "\nAbout Me\n",
     "section": "",
-    "text": "I build analytics systems that hold up after the presentation ends: measured, testable, and tied to a real operating decision.\n\n\n\n\n\nBackground\n\n\nI am a Business Analytics student at BYU-Idaho with a 4.0 GPA and minors in Statistics and Data Science. I came into analytics through real operating work: campaign performance, sponsorship prioritization, public-health communication, enterprise web measurement, and systems where a weak metric can lead a team in the wrong direction.\n\n\nThat is why I rarely start with the dashboard. I start with the decision, the source data, the failure modes, and the threshold that should change what someone does next.\n\n\n\n\nCurrent Work\n\n\nAt Volvo Group, I work on enterprise digital analytics across Adobe Customer Journey Analytics, forecasting, machine learning, funnel monitoring, and web measurement. The work covers digital journeys serving more than 3 million monthly users.\n\n\nI have led martech rationalization that removed two software dependencies and reduced annual run-rate by $50,000. I also built statistical monitoring that surfaced a drop in high-intent funnel submissions from 9% to 5%, making the issue visible early enough for the team to act.\n\n\n\n\n\n3M+monthly users covered by enterprise measurement\n\n\n$50Kannual software run-rate eliminated\n\n\n2,250qualified applicants generated\n\n\n$370Ksponsorship value surfaced\n\n\n175Kpeople reached in public health\n\n\n6.5B+Roblox place visits across shipped work\n\n\n\n\n\nHow I Think\n\n\n\n\n01\n\n\nFind the constraint\n\nThe useful problem is usually the bottleneck limiting throughput, conversion, access, quality, or trust.\n\n\n\n\n\n02\n\n\nMake failure visible\n\nMonitoring, provenance, audit trails, and explicit caveats matter as much as the successful output.\n\n\n\n\n\n03\n\n\nTest the claim\n\nA model result or management narrative should survive an honest attempt to disprove it.\n\n\n\n\n\n04\n\n\nShip the handoff\n\nThe work is not finished until another person can inspect it, use it, and understand the decision it supports.\n\n\n\n\n\n\n\nWhere I Am Going\n\n\nI am targeting analytics engineering, product analytics, applied data science, and healthcare or financial data-product roles. I am most useful where the source data is messy, the operating environment is complex, and the answer needs more discipline than a one-off notebook.\n\n\nHealthcare remains personal. Family health challenges shaped the kind of impact I want over the long term. I am also drawn to enterprise operations, finance, and large product systems because they teach the same skills: capacity, risk, measurement, governance, and decisions under constraint.\n\n\n\n\n\nTechnical Range\n\n\n\n\nAnalytics Engineering\n\n\nSQL, ETL, data modeling, metric governance, source reconciliation, APIs, testing, and reporting datasets\n\n\n\n\nStatistical Systems\n\n\nRegression, robustness testing, forecasting, simulation, anomaly detection, experiment design, and uncertainty\n\n\n\n\nApplied Machine Learning\n\n\nscikit-learn, XGBoost, SHAP, model comparison, evaluation, monitoring, and human review workflows\n\n\n\n\nBusiness Intelligence\n\n\nPower BI, DAX, Power Query, Adobe CJA, Excel modeling, KPI design, and executive reporting\n\n\n\n\nProduct Development\n\n\nPython, R, FastAPI, PostgreSQL, SQLite, Node.js, Next.js, TypeScript, Quarto, and package development\n\n\n\n\n\n\nI am graduating in April 2027 and am interested in teams that expect analysts to own the problem, not just the chart.\n\nConnect on LinkedIn"
+    "text": "Business Analytics student at BYU-Idaho building decision-grade analytics for complex organizations.\n\n\n\n\n\nBackground\n\n\nI am a Business Analytics student at BYU-Idaho (4.0 GPA) with minors in Statistics and Data Science. I am building a long-term career at the intersection of analytics, operations, and systems strategy. My academic path is deliberately technical and operational.\n\n\nHealthcare impact is personal for me. Family health challenges shaped how I think about meaningful work. That is why I am deeply committed to operational and platform-level analytics that improve patient outcomes and system reliability.\n\n\n\n\nWhat Drives My Work\n\n\n\n\n◆\n\n\nBottlenecks\n\nConstraints that limit throughput, access, and quality\n\n\n\n\n\n◆\n\n\nRisk Surfaces\n\nWhere uncertainty meets real cost and consequence\n\n\n\n\n\n◆\n\n\nIntervention Thresholds\n\nKnowing when to act, not just what to measure\n\n\n\n\n\n◆\n\n\nReal Constraints\n\nTradeoffs under actual operating conditions\n\n\n\n\n\nI am not interested in surface-level reporting. I am interested in building analytics that change decisions.\n\n\n\n\n\nTechnical Stack\n\n\n\n\nPython\n\n\npandas, NumPy, scikit-learn, XGBoost, SHAP, simulation\n\n\n\n\nSQL\n\n\nJoins, CTEs, normalization, optimization, analytics views\n\n\n\n\nR\n\n\ntidyverse, regression, statistical modeling\n\n\n\n\nBI Tools\n\n\nPower BI (DAX, decomposition trees, KPI design), Excel forecasting\n\n\n\n\nSystems\n\n\nETL workflows, relational schema design, reproducible pipelines\n\n\n\n\n\n\nWorking Style\n\n\n\n▶High ownership\n\n\n▶High intensity\n\n\n▶Strategic and long-horizon\n\n\n▶Values-driven and impact-focused\n\n\n▶Most effective in autonomous, complex build environments\n\n\n\n\n\nData and analytics builder designing decision-grade systems for complex organizations, with a focus on operational risk, healthcare impact, and systems thinking.\n\nConnect on LinkedIn"
   },
   {
     "objectID": "projects/bank-loan.html",
@@ -1321,146 +1300,6 @@
     "title": "Dying on the Margin: Capacity Utilization and Mortality",
     "section": "Limits And Next Questions",
     "text": "Limits And Next Questions\nThis is still observational analysis, so the strongest claim here is predictive structure rather than causality. A next step would be to segment by service mix, ownership type, or hospital referral role, and to test whether similar patterns hold for other outcome measures beyond heart-failure mortality. That would make the capacity signal even more useful for operations and quality teams deciding where to investigate further."
-  },
-  {
-    "objectID": "projects/education-wage.html",
-    "href": "projects/education-wage.html",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "",
-    "text": "Project cover"
-  },
-  {
-    "objectID": "projects/education-wage.html#overview",
-    "href": "projects/education-wage.html#overview",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "Overview",
-    "text": "Overview\nAnalyzed 50 years of wage data (1973-2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights."
-  },
-  {
-    "objectID": "projects/education-wage.html#what-i-did",
-    "href": "projects/education-wage.html#what-i-did",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "What I Did",
-    "text": "What I Did\n\nDefined the business objective, metric targets, and analysis scope.\nBuilt and validated the data, modeling, and reporting workflow.\nPackaged outputs for stakeholder interpretation and decision support."
-  },
-  {
-    "objectID": "projects/education-wage.html#resultsimpact",
-    "href": "projects/education-wage.html#resultsimpact",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "Results/Impact",
-    "text": "Results/Impact\nDelivered an analysis workflow with decision-ready outputs and reusable artifacts."
-  },
-  {
-    "objectID": "projects/education-wage.html#tech-stack",
-    "href": "projects/education-wage.html#tech-stack",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "Tech Stack",
-    "text": "Tech Stack\n\nData Analysis, Inequality Research, Labor Economics, R, Visualization"
-  },
-  {
-    "objectID": "projects/education-wage.html#deliverables",
-    "href": "projects/education-wage.html#deliverables",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "Deliverables",
-    "text": "Deliverables\n\nProject brief: (add file)\nSlides/report: (add file)\nDashboard/model file: (add file)\nSQL/notebook/code bundle: (add file)"
-  },
-  {
-    "objectID": "projects/education-wage.html#project-notes",
-    "href": "projects/education-wage.html#project-notes",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "Project Notes",
-    "text": "Project Notes\nDescription: Analyzed 50 years of wage data (1973-2022) to quantify how education and gender drive long-run income inequality. Built a full R workflow with data cleaning, trend visualization, wage-premium tracking, and interaction-term regression to reveal how bachelor wages, gender gaps, and inequality evolve over time. Clear, consulting-style analysis with interpretable economic insights. Skills Demonstrated: Data Analysis, Inequality Research, Labor Economics, R, Visualization Project Status: Planning\nI like understanding why systems work the way they do. Money, education, and opportunity shape so much of a person’s life, and I have seen firsthand how different those systems feel depending on where you grow up. Moving from Europe to the United States made those differences even more obvious.\nAs a first generation college student, wage inequality feels personal to me. It is not just an economics topic. It affects people I know and people like me.\nSo I wanted to create a clear and honest analysis that shows how wages changed across fifty years. I wanted something that feels like a consulting report a policy team could actually use. Something that shows what education really buys people over time and how gender interacts with all of it.\n\nThis project takes a dataset of real wages from 1973 to 2022 and builds a full analytical workflow.\nIt includes:\n\nreshaping the data into a tidy format\nvisualizing long run wage paths\ncomputing the college wage premium\nrunning a regression model with interaction terms\ninterpreting the economic meaning\n\nEverything works together to answer one question.\nHow do education and gender shape long run wage inequality in the United States"
-  },
-  {
-    "objectID": "projects/education-wage.html#data-tidying",
-    "href": "projects/education-wage.html#data-tidying",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "1. Data Tidying",
-    "text": "1. Data Tidying\nThe dataset originally stores each education group in its own column. I converted it into a long format with the standard layout.\n\n\n\nimage.png\n\n\nThis format made visualization and modeling straightforward."
-  },
-  {
-    "objectID": "projects/education-wage.html#trend-visuals",
-    "href": "projects/education-wage.html#trend-visuals",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "2. Trend Visuals",
-    "text": "2. Trend Visuals\nI created line charts showing wages from 1973 to 2022 for five education levels, separated by gender. The patterns are clear.\n\n\n\nimage.png\n\n\nThe main takeaways:\n\nmen earn more at every level\nbachelor and advanced degree wages pull far ahead\nthe high school to bachelor gap expands over time"
-  },
-  {
-    "objectID": "projects/education-wage.html#college-wage-premium",
-    "href": "projects/education-wage.html#college-wage-premium",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "3. College Wage Premium",
-    "text": "3. College Wage Premium\nThe premium is simply bachelor wage minus high school wage.\n\n\n\nimage.png\n\n\nThe premium grows every decade for both genders."
-  },
-  {
-    "objectID": "projects/education-wage.html#regression-model",
-    "href": "projects/education-wage.html#regression-model",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "4. Regression Model",
-    "text": "4. Regression Model\nI used a regression model that includes interactions between gender, education, and year to capture how these factors move together.\n\n\n\nimage.png\n\n\nThis lets the model answer exactly how much faster bachelor wages grow compared to high school wages and how gender changes that growth."
-  },
-  {
-    "objectID": "projects/education-wage.html#education-pays",
-    "href": "projects/education-wage.html#education-pays",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "1. Education Pays",
-    "text": "1. Education Pays\nIn 2022, men with a bachelor degree earned about 49.01 dollars per hour. Men with only a high school diploma earned about 24.08 dollars per hour. Women follow the same structure with lower wages at every level.\n\n\n\nimage.png"
-  },
-  {
-    "objectID": "projects/education-wage.html#the-college-wage-premium-has-grown",
-    "href": "projects/education-wage.html#the-college-wage-premium-has-grown",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "2. The College Wage Premium Has Grown",
-    "text": "2. The College Wage Premium Has Grown\nThe model shows bachelor wages grow about 0.279 dollars per hour per year faster than high school wages. Over fifty years, that adds up to about 13.95 dollars per hour of extra advantage."
-  },
-  {
-    "objectID": "projects/education-wage.html#women-catch-up-slowly",
-    "href": "projects/education-wage.html#women-catch-up-slowly",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "3. Women Catch Up Slowly",
-    "text": "3. Women Catch Up Slowly\nWomen’s wages grow about 0.097 dollars per hour per year faster than men’s. This closes the overall gap a little, but not enough to match the patterns for men.\n\n\n\nimage.png"
-  },
-  {
-    "objectID": "projects/education-wage.html#men-still-benefit-more-from-higher-education",
-    "href": "projects/education-wage.html#men-still-benefit-more-from-higher-education",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "4. Men Still Benefit More From Higher Education",
-    "text": "4. Men Still Benefit More From Higher Education\nThe three way interaction is negative. This means the education advantage grows faster for men than for women. Both groups gain. Men gain more."
-  },
-  {
-    "objectID": "projects/education-wage.html#inequality-grows-slowly-until-it-does-not",
-    "href": "projects/education-wage.html#inequality-grows-slowly-until-it-does-not",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "1. Inequality grows slowly until it does not",
-    "text": "1. Inequality grows slowly until it does not\nSmall yearly differences turn into massive long run gaps."
-  },
-  {
-    "objectID": "projects/education-wage.html#gender-affects-wages-even-after-you-control-for-education",
-    "href": "projects/education-wage.html#gender-affects-wages-even-after-you-control-for-education",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "2. Gender affects wages even after you control for education",
-    "text": "2. Gender affects wages even after you control for education\nThe model keeps showing this pattern."
-  },
-  {
-    "objectID": "projects/education-wage.html#interaction-terms-matter",
-    "href": "projects/education-wage.html#interaction-terms-matter",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "3. Interaction terms matter",
-    "text": "3. Interaction terms matter\nThey reveal the deeper structure behind long run changes."
-  },
-  {
-    "objectID": "projects/education-wage.html#clean-data-is-everything",
-    "href": "projects/education-wage.html#clean-data-is-everything",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "4. Clean data is everything",
-    "text": "4. Clean data is everything\nThe tidy dataset made the analysis feel smooth and predictable."
-  },
-  {
-    "objectID": "projects/education-wage.html#this-is-real-consulting-work",
-    "href": "projects/education-wage.html#this-is-real-consulting-work",
-    "title": "Education, Gender and Wage Inequality (1973-2022)",
-    "section": "5. This is real consulting work",
-    "text": "5. This is real consulting work\nClear question. Clean data. Interpretable model. Actionable insights.\n\ndata                raw and cleaned wage data\nanalysis            descriptive stats and visuals\nmodel               regression and diagnostics\ninsights            narrative interpretation\nreport              final pdf write up\n\n\nadd race and ethnicity\ninclude non linear time trends\nadd occupation controls\ncreate dashboard for policymakers\n\n\nThis project reminded me why I enjoy analytics. A fifty year dataset can feel huge, but with the right structure you can turn it into a simple and meaningful story. Education opens real opportunities. Gender still influences how those opportunities pay out. And the data makes that very clear.\nIf you want to talk about wage inequality or long run economic trends, I am always open to it.\nMarkuss Saule"
   },
   {
     "objectID": "projects/fulfillment.html",

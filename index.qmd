@@ -15,14 +15,14 @@ title: ""
 
 ### Markuss Saule
 
-<div class="identity-line">Analytics Engineering and Applied Data Science</div>
+<div class="identity-line">Data and Analytics Specialist</div>
 
 <div class="profile-disciplines">
 <div class="discipline-row"><span class="discipline-pill">Business Analytics</span><span class="discipline-pill">Statistics</span></div>
 <div class="discipline-row"><span class="discipline-pill">Data Science</span></div>
 </div>
 
-I build measured, testable decision systems for enterprise operations, product analytics, healthcare, and financial research.
+I am a systems-first analytics builder focused on operational risk, bottlenecks, and decision thresholds in complex organizations.
 
 <div class="profile-links">
 <a class="btn-primary" href="https://www.linkedin.com/in/markuss-saule/" target="_blank" rel="noopener">LinkedIn</a>
@@ -39,11 +39,11 @@ I build measured, testable decision systems for enterprise operations, product a
 
 ::: {.home-main}
 ::: {.hero-panel .reveal}
-<div class="kicker">// Enterprise Analytics, Statistical Systems, Applied AI</div>
+<div class="kicker">// Decision-Grade Analytics for Complex Systems</div>
 
-<h1 class="hero-h1"><span class="gradient-text-animated">I build </span><span class="typed-text gradient-text-animated" data-phrases='["decision systems.","measurement engines.","research products.","analytics infrastructure."]'></span></h1>
+<h1 class="hero-h1"><span class="gradient-text-animated">I build </span><span class="typed-text gradient-text-animated" data-phrases='["decision engines.","risk models.","simulation labs.","analytics systems."]'></span></h1>
 
-<p class="hero-subtitle">I work from instrumentation and source quality through statistical validation, product delivery, and executive-ready decisions. At Volvo, that means measurement for digital journeys serving 3M+ monthly users, $50K in annual software savings, and monitoring that exposed a material high-intent funnel failure.</p>
+<p class="hero-subtitle">Business Analytics student at BYU-Idaho building high-consequence analytics for healthcare, market systems, and enterprise operations. My work is designed for environments where tradeoffs matter and decisions carry real cost.</p>
 
 <p class="hero-personal">Healthcare is personal to me. Family health challenges shaped how I define impact, and why I care about platform-level systems that improve outcomes at scale.</p>
 
@@ -53,31 +53,31 @@ I build measured, testable decision systems for enterprise operations, product a
 </div>
 :::
 
-## <span class="gradient-text">Current Flagship</span>
+## <span class="gradient-text">Flagship Project</span>
 
-<div class="section-intro">Earnings Quality Autopsy is a full-stack SEC/XBRL research system that tests whether management narratives are supported by accounting evidence.</div>
+<div class="section-intro">Radiology Value Pipeline is the strongest healthcare analytics and AI project in this portfolio: a local-first radiology workflow platform with model orchestration, human review, audit trails, governance surfaces, and Power BI reporting.</div>
 
 ::: {.flagship-panel .reveal-scale}
-<img class="flagship-banner flagship-banner-contain" src="images/projects/earnings-quality-autopsy/cover.png" alt="Earnings Quality Autopsy claim-to-number evidence map">
+<img class="flagship-banner" src="images/projects/radiology-value-pipeline/cover.png" alt="Radiology Value Pipeline clinical AI review workspace">
 <div class="flagship-copy">
 <div class="eyebrow">// Flagship build</div>
 
-### Earnings Quality Autopsy
+### Radiology Value Pipeline
 
-The platform ingests official SEC companyfacts and XBRL data, normalizes quarterly statements, and connects management claims to cash conversion, working capital, margin, segment, disclosure, and non-GAAP evidence. It exports a source-backed dossier, research note, and analyst workpapers without issuing ratings, price targets, or unsupported allegations.
+Radiology Value Pipeline is a production-style MVP for a radiology workflow copilot. It supports chest X-ray and brain MRI workflows, registers studies, runs modality-aware model services, persists findings and report drafts, captures human feedback, and publishes dashboard-ready operational, clinical quality, and governance data.
 
-The central design choice is traceability. Every conclusion retains its source, required checks, supporting and tension evidence, confidence, limitations, and next question. Missing evidence stays visible instead of being converted into false certainty.
+The project is intentionally disciplined: AI outputs are assistive suggestions only, the radiologist remains the author of record, and every run is traceable through model versions, prompt versions, audit events, feedback, discrepancy analysis, and Power BI marts.
 
 <div class="flagship-stats reveal-stagger">
-<div class="flagship-stat"><strong data-count="187">0</strong><span>backend tests collected</span></div>
-<div class="flagship-stat"><strong data-count="14">0</strong><span>FastAPI routes across the research workflow</span></div>
-<div class="flagship-stat"><strong data-count="9">0</strong><span>forensic analysis modules</span></div>
-<div class="flagship-stat"><strong data-count="5">0</strong><span>output formats for analyst handoff</span></div>
+<div class="flagship-stat"><strong data-count="76">0</strong><span>processed chest X-ray and brain MRI studies</span></div>
+<div class="flagship-stat"><strong data-count="304">0</strong><span>workflow agent runs with prompt lineage</span></div>
+<div class="flagship-stat"><strong data-count="858">0</strong><span>dashboard fact rows for operations, quality, and governance</span></div>
+<div class="flagship-stat"><strong data-count="0.9828">0</strong><span>held-out brain MRI macro AUC in benchmark testing</span></div>
 </div>
 
 <div class="hero-actions">
-<a class="btn-primary" href="projects/earnings-quality-autopsy.html">Explore the Project</a>
-<a class="btn-ghost" href="files/earnings-quality-autopsy/aapl-earnings-quality-dossier.html" target="_blank" rel="noopener">Open AAPL Dossier</a>
+<a class="btn-primary" href="projects/radiology-value-pipeline.html">Explore the Project</a>
+<a class="btn-ghost" href="files/radiology-value-pipeline/radiology_value_pipeline_mayo_portfolio.pdf" target="_blank" rel="noopener">Open Project PDF</a>
 </div>
 </div>
 :::
@@ -94,23 +94,24 @@ The central design choice is traceability. Every conclusion retains its source, 
 ## <span class="gradient-text">Selected Outcomes</span>
 
 <div class="metric-strip reveal-stagger">
-<div class="metric-pill"><strong data-count="3" data-suffix="M+">0</strong><span>Monthly users covered by Volvo digital measurement work</span></div>
-<div class="metric-pill"><strong data-prefix="$" data-count="50" data-suffix="K">0</strong><span>Annual software run-rate eliminated through martech rationalization</span></div>
-<div class="metric-pill"><strong data-count="2250">0</strong><span>Qualified applicants generated through BYU-Idaho recruiting analytics</span></div>
-<div class="metric-pill"><strong data-prefix="$" data-count="370" data-suffix="K">0</strong><span>Sponsorship value surfaced through Fresno State prospect scoring</span></div>
-<div class="metric-pill"><strong data-count="175" data-suffix="K">0</strong><span>People reached by Latvia's national public-health campaign</span></div>
+<div class="metric-pill"><strong data-count="76">0</strong><span>Processed imaging studies in the flagship radiology AI platform</span></div>
 <div class="metric-pill"><strong data-count="6.5" data-suffix="B+">0</strong><span>Roblox place visits across shipped immersive brand and game experiences</span></div>
+<div class="metric-pill"><strong data-count="304">0</strong><span>Workflow agent runs tracked with prompt and model lineage</span></div>
+<div class="metric-pill"><strong data-count="858">0</strong><span>Dashboard fact rows for operations, quality, and governance</span></div>
+<div class="metric-pill"><strong data-count="114" data-suffix="K+">0</strong><span>SEER patient records modeled for survival analysis</span></div>
 </div>
 
 ## <span class="gradient-text">Featured Projects</span>
 
 ::: {.project-grid .reveal-stagger}
-<a class="project-card" href="projects/earnings-quality-autopsy.html"><img class="project-thumb project-thumb-contain" src="images/projects/earnings-quality-autopsy/cover.png" alt="Earnings Quality Autopsy evidence map"><div class="project-body"><div class="card-topline"><span class="project-badge">Flagship</span></div><div class="card-title">Earnings Quality Autopsy</div><p>SEC/XBRL forensic research system that maps management claims to accounting evidence and PM-ready workpapers.</p><div class="chips"><span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Next.js</span><span class="chip">SEC/XBRL</span></div></div></a>
 <a class="project-card" href="projects/radiology-value-pipeline.html"><img class="project-thumb" src="images/projects/radiology-value-pipeline/cover.png" alt="Radiology Value Pipeline review workspace"><div class="project-body"><div class="card-topline"><span class="project-badge">Flagship</span></div><div class="card-title">Radiology Value Pipeline</div><p>Clinical AI workflow platform for chest X-ray and brain MRI review, governed model runs, human feedback, audit trails, and Power BI reporting.</p><div class="chips"><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Clinical AI</span><span class="chip">Power BI</span></div></div></a>
 <a class="project-card" href="projects/owl.html"><img class="project-thumb" src="images/projects/owl/cover.svg" alt="OWL knowledge graph"><div class="project-body"><div class="card-topline"><span class="project-badge">Open Source</span></div><div class="card-title">OWL: Autonomous AI Discovery Daemon</div><p>Local-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.</p><div class="chips"><span class="chip">Node.js</span><span class="chip">Electron</span><span class="chip">SQLite</span><span class="chip">LLM</span></div></div></a>
-<a class="project-card" href="projects/falsifyr.html"><img class="project-thumb project-thumb-contain" src="images/projects/falsifyr/cover.png" alt="falsifyr attack report"><div class="project-body"><div class="card-topline"><span class="project-badge">CRAN-targeted</span></div><div class="card-title">falsifyr: Adversarial Statistical Testing</div><p>R package that searches for the smallest plausible perturbation capable of overturning a statistical claim.</p><div class="chips"><span class="chip">R</span><span class="chip">Robustness</span><span class="chip">65 Tests</span></div></div></a>
-<a class="project-card" href="projects/wayline.html"><img class="project-thumb" src="images/projects/wayline/cover.png" alt="Wayline road trip planner"><div class="project-body"><div class="card-title">Wayline: Analytics-Driven Road Trip Planner</div><p>Production-minded trip planner with route orchestration, stop scoring, predictive fit, analytics events, and exports.</p><div class="chips"><span class="chip">Node.js</span><span class="chip">Google Maps</span><span class="chip">Predictive Scoring</span></div></div></a>
 <a class="project-card" href="projects/roblox-brand-worlds.html"><img class="project-thumb" src="images/projects/roblox-brand-worlds/cover.jpg" alt="Roblox Black Adam immersive world"><div class="project-body"><div class="card-title">Roblox Immersive Brand Worlds</div><p>10 years of Roblox worldbuilding across shipped games, early music events, and global brand activations reaching 6.5B+ place visits.</p><div class="chips"><span class="chip">6.5B+ Visits</span><span class="chip">3D Design</span><span class="chip">Brand Worlds</span></div></div></a>
+<a class="project-card" href="projects/mercury-market-sim.html"><img class="project-thumb" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape"><div class="project-body"><div class="card-title">MERCURY: Market Microstructure Simulation Lab</div><p>Research-grade exchange simulation for liquidity stress, flash crashes, venue fragmentation, and fee-aware strategy interaction.</p><div class="chips"><span class="chip">Python</span><span class="chip">Simulation</span><span class="chip">Market Microstructure</span></div></div></a>
+<a class="project-card" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment simulation visual"><div class="project-body"><div class="card-title">Fulfillment Center Risk Simulation and Staffing Optimization</div><p>SimPy-based engine with pressure scoring, risk signals, and staffing search for high-load operations.</p><div class="chips"><span class="chip">Python</span><span class="chip">SimPy</span><span class="chip">Optimization</span></div></div></a>
+<a class="project-card" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain fraud architecture"><div class="project-body"><div class="card-title">Blockchain + ML Healthcare Fraud Ledger</div><p>XGBoost fraud scoring combined with tamper-evident records for trust and auditability.</p><div class="chips"><span class="chip">XGBoost</span><span class="chip">SHA-256</span><span class="chip">Streamlit</span></div></div></a>
+<a class="project-card" href="projects/insurance-fraud.html"><img class="project-thumb" src="images/projects/insurance-fraud/cover.png" alt="Insurance model performance chart"><div class="project-body"><div class="card-title">Insurance Fraud Detection</div><p>Model comparison from logistic regression to XGBoost with SHAP explainability and deployment artifacts.</p><div class="chips"><span class="chip">scikit-learn</span><span class="chip">XGBoost</span><span class="chip">SHAP</span></div></div></a>
+<a class="project-card" href="projects/ai-scheduling.html"><img class="project-thumb" src="images/projects/ai-scheduling/cover.png" alt="Scheduling dashboard"><div class="project-body"><div class="card-title">AI-Powered Scheduling and Patient Access Optimization</div><p>Healthcare operations dashboard with forecasting, decomposition, and capacity visibility.</p><div class="chips"><span class="chip">Power BI</span><span class="chip">Forecasting</span><span class="chip">Healthcare Ops</span></div></div></a>
 :::
 
 <div class="center-link"><a class="btn-ghost" href="projects.html">See full project archive</a></div>

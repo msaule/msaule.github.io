@@ -12,16 +12,11 @@ In GitHub repo settings:
 ## Update workflow
 
 1. Edit `.qmd` source files and assets.
-2. If the resume changed, compile `resume.tex` and replace `files/resume.pdf`:
-   ```powershell
-   pdflatex -interaction=nonstopmode -halt-on-error resume.tex
-   Copy-Item resume.pdf files/resume.pdf -Force
-   ```
-3. Render site:
+2. Render site:
    ```bash
    quarto render
    ```
-4. Commit and push:
+3. Commit and push:
    ```bash
    git add .
    git commit -m "Build Quarto portfolio"
