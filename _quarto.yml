@@ -8,6 +8,8 @@ project:
     - files/hospital-prices/**
     - files/dying-on-the-margin/**
     - files/wayline/**
+    - files/earnings-quality-autopsy/**
+    - files/falsifyr/**
   post-render:
     - powershell -ExecutionPolicy Bypass -File scripts/post-render.ps1
   render:
@@ -21,6 +23,7 @@ website:
   title: "Markuss Saule"
   site-url: "https://msaule.github.io"
   favicon: images/favicon.svg
+  search: false
   navbar:
     left:
       - text: Home

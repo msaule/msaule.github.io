@@ -25,12 +25,8 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
 <link href="./images/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -43,18 +39,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-0774fc528949661fb60d8774007a227f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -86,7 +70,6 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Markuss Saule</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
@@ -154,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Each project below is designed around business impact: clearer decisions, lower risk, stronger performance.</p>
+<p>These projects are working systems, research products, and analytical builds. The strongest ones combine source discipline, statistical validation, product interfaces, and an explicit decision or operating workflow.</p>
 <div class="filter-bar">
 <button class="filter-btn active" data-filter="all">
 All
@@ -167,6 +150,12 @@ Simulation
 </button>
 <button class="filter-btn" data-filter="ml">
 Machine Learning
+</button>
+<button class="filter-btn" data-filter="statistics">
+Statistics
+</button>
+<button class="filter-btn" data-filter="finance">
+Finance / Risk
 </button>
 <button class="filter-btn" data-filter="healthcare">
 Healthcare
@@ -188,7 +177,22 @@ Immersive Worlds
 </button>
 </div>
 <div class="project-grid reveal-stagger">
-<a class="project-card" data-category="ai ml healthcare bi data-eng" href="projects/radiology-value-pipeline.html"><img class="project-thumb" src="images/projects/radiology-value-pipeline/cover.png" alt="Radiology Value Pipeline project cover">
+<a class="project-card" data-category="finance data-eng product ai" href="projects/earnings-quality-autopsy.html"><img class="project-thumb project-thumb-contain" src="images/projects/earnings-quality-autopsy/cover.png" alt="Earnings Quality Autopsy claim-to-number evidence map">
+<div class="project-body">
+<div class="card-topline">
+<span class="project-badge">Flagship</span>
+</div>
+<div class="card-title">
+Earnings Quality Autopsy
+</div>
+<p>
+Full-stack SEC/XBRL research system that tests management claims against accounting evidence and exports PM-ready dossiers and workpapers.
+</p>
+<div class="chips">
+<span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Next.js</span><span class="chip">187 Tests</span>
+</div>
+</div>
+</a> <a class="project-card" data-category="ai ml healthcare bi data-eng" href="projects/radiology-value-pipeline.html"><img class="project-thumb" src="images/projects/radiology-value-pipeline/cover.png" alt="Radiology Value Pipeline project cover">
 <div class="project-body">
 <div class="card-topline">
 <span class="project-badge">Flagship</span>
@@ -216,6 +220,21 @@ Local-first AI daemon with knowledge graph, discovery engine, Electron desktop a
 </p>
 <div class="chips">
 <span class="chip">Node.js</span><span class="chip">Electron</span><span class="chip">SQLite</span><span class="chip">LLM</span>
+</div>
+</div>
+</a> <a class="project-card" data-category="statistics open-source product" href="projects/falsifyr.html"><img class="project-thumb project-thumb-contain" src="images/projects/falsifyr/cover.png" alt="falsifyr attack report">
+<div class="project-body">
+<div class="card-topline">
+<span class="project-badge">CRAN-targeted</span>
+</div>
+<div class="card-title">
+falsifyr: Adversarial Statistical Testing
+</div>
+<p>
+R package that finds the smallest plausible perturbation capable of overturning a statistical claim across 8 attack families.
+</p>
+<div class="chips">
+<span class="chip">R</span><span class="chip">Robustness</span><span class="chip">65 Tests</span>
 </div>
 </div>
 </a> <a class="project-card" data-category="product ml data-eng" href="projects/wayline.html"><img class="project-thumb" src="images/projects/wayline/cover.png" alt="Wayline road trip planner cover">

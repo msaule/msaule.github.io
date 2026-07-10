@@ -3,54 +3,67 @@ title: ""
 ---
 
 <div class="about-hero reveal">
-<h1 class="gradient-text-animated">About Me</h1>
-<p class="about-lead">Business Analytics student at BYU-Idaho building decision-grade analytics for complex organizations.</p>
+<h1 class="gradient-text-animated">About Markuss</h1>
+<p class="about-lead">I build analytics systems that hold up after the presentation ends: measured, testable, and tied to a real operating decision.</p>
 </div>
 
 <div class="about-grid">
 
 <div class="about-section reveal">
 <h2>Background</h2>
-<p>I am a Business Analytics student at BYU-Idaho (4.0 GPA) with minors in Statistics and Data Science. I am building a long-term career at the intersection of analytics, operations, and systems strategy. My academic path is deliberately technical and operational.</p>
-<p>Healthcare impact is personal for me. Family health challenges shaped how I think about meaningful work. That is why I am deeply committed to operational and platform-level analytics that improve patient outcomes and system reliability.</p>
+<p>I am a Business Analytics student at BYU-Idaho with a 4.0 GPA and minors in Statistics and Data Science. I came into analytics through real operating work: campaign performance, sponsorship prioritization, public-health communication, enterprise web measurement, and systems where a weak metric can lead a team in the wrong direction.</p>
+<p>That is why I rarely start with the dashboard. I start with the decision, the source data, the failure modes, and the threshold that should change what someone does next.</p>
 </div>
 
 <div class="about-section reveal">
-<h2>What Drives My Work</h2>
-<div class="about-values">
-<div class="value-item"><div class="value-icon">&#9670;</div><div><strong>Bottlenecks</strong><p>Constraints that limit throughput, access, and quality</p></div></div>
-<div class="value-item"><div class="value-icon">&#9670;</div><div><strong>Risk Surfaces</strong><p>Where uncertainty meets real cost and consequence</p></div></div>
-<div class="value-item"><div class="value-icon">&#9670;</div><div><strong>Intervention Thresholds</strong><p>Knowing when to act, not just what to measure</p></div></div>
-<div class="value-item"><div class="value-icon">&#9670;</div><div><strong>Real Constraints</strong><p>Tradeoffs under actual operating conditions</p></div></div>
+<h2>Current Work</h2>
+<p>At Volvo Group, I work on enterprise digital analytics across Adobe Customer Journey Analytics, forecasting, machine learning, funnel monitoring, and web measurement. The work covers digital journeys serving more than 3 million monthly users.</p>
+<p>I have led martech rationalization that removed two software dependencies and reduced annual run-rate by $50,000. I also built statistical monitoring that surfaced a drop in high-intent funnel submissions from 9% to 5%, making the issue visible early enough for the team to act.</p>
 </div>
-<p style="margin-top: 1rem; color: var(--muted);">I am not interested in surface-level reporting. I am interested in building analytics that change decisions.</p>
+
+</div>
+
+<div class="about-proof reveal-stagger">
+<div><strong>3M+</strong><span>monthly users covered by enterprise measurement</span></div>
+<div><strong>$50K</strong><span>annual software run-rate eliminated</span></div>
+<div><strong>2,250</strong><span>qualified applicants generated</span></div>
+<div><strong>$370K</strong><span>sponsorship value surfaced</span></div>
+<div><strong>175K</strong><span>people reached in public health</span></div>
+<div><strong>6.5B+</strong><span>Roblox place visits across shipped work</span></div>
+</div>
+
+<div class="about-grid">
+
+<div class="about-section reveal">
+<h2>How I Think</h2>
+<div class="about-values">
+<div class="value-item"><div class="value-icon">01</div><div><strong>Find the constraint</strong><p>The useful problem is usually the bottleneck limiting throughput, conversion, access, quality, or trust.</p></div></div>
+<div class="value-item"><div class="value-icon">02</div><div><strong>Make failure visible</strong><p>Monitoring, provenance, audit trails, and explicit caveats matter as much as the successful output.</p></div></div>
+<div class="value-item"><div class="value-icon">03</div><div><strong>Test the claim</strong><p>A model result or management narrative should survive an honest attempt to disprove it.</p></div></div>
+<div class="value-item"><div class="value-icon">04</div><div><strong>Ship the handoff</strong><p>The work is not finished until another person can inspect it, use it, and understand the decision it supports.</p></div></div>
+</div>
+</div>
+
+<div class="about-section reveal">
+<h2>Where I Am Going</h2>
+<p>I am targeting analytics engineering, product analytics, applied data science, and healthcare or financial data-product roles. I am most useful where the source data is messy, the operating environment is complex, and the answer needs more discipline than a one-off notebook.</p>
+<p>Healthcare remains personal. Family health challenges shaped the kind of impact I want over the long term. I am also drawn to enterprise operations, finance, and large product systems because they teach the same skills: capacity, risk, measurement, governance, and decisions under constraint.</p>
 </div>
 
 </div>
 
 <div class="about-tech reveal">
-<h2><span class="gradient-text">Technical Stack</span></h2>
+<h2><span class="gradient-text">Technical Range</span></h2>
 <div class="tech-grid">
-<div class="tech-card"><h4>Python</h4><p>pandas, NumPy, scikit-learn, XGBoost, SHAP, simulation</p></div>
-<div class="tech-card"><h4>SQL</h4><p>Joins, CTEs, normalization, optimization, analytics views</p></div>
-<div class="tech-card"><h4>R</h4><p>tidyverse, regression, statistical modeling</p></div>
-<div class="tech-card"><h4>BI Tools</h4><p>Power BI (DAX, decomposition trees, KPI design), Excel forecasting</p></div>
-<div class="tech-card"><h4>Systems</h4><p>ETL workflows, relational schema design, reproducible pipelines</p></div>
-</div>
-</div>
-
-<div class="about-working-style reveal">
-<h2><span class="gradient-text">Working Style</span></h2>
-<div class="style-grid">
-<div class="style-item"><span class="style-icon">&#9654;</span><span>High ownership</span></div>
-<div class="style-item"><span class="style-icon">&#9654;</span><span>High intensity</span></div>
-<div class="style-item"><span class="style-icon">&#9654;</span><span>Strategic and long-horizon</span></div>
-<div class="style-item"><span class="style-icon">&#9654;</span><span>Values-driven and impact-focused</span></div>
-<div class="style-item"><span class="style-icon">&#9654;</span><span>Most effective in autonomous, complex build environments</span></div>
+<div class="tech-card"><h4>Analytics Engineering</h4><p>SQL, ETL, data modeling, metric governance, source reconciliation, APIs, testing, and reporting datasets</p></div>
+<div class="tech-card"><h4>Statistical Systems</h4><p>Regression, robustness testing, forecasting, simulation, anomaly detection, experiment design, and uncertainty</p></div>
+<div class="tech-card"><h4>Applied Machine Learning</h4><p>scikit-learn, XGBoost, SHAP, model comparison, evaluation, monitoring, and human review workflows</p></div>
+<div class="tech-card"><h4>Business Intelligence</h4><p>Power BI, DAX, Power Query, Adobe CJA, Excel modeling, KPI design, and executive reporting</p></div>
+<div class="tech-card"><h4>Product Development</h4><p>Python, R, FastAPI, PostgreSQL, SQLite, Node.js, Next.js, TypeScript, Quarto, and package development</p></div>
 </div>
 </div>
 
 <div class="about-cta reveal">
-<p>Data and analytics builder designing decision-grade systems for complex organizations, with a focus on operational risk, healthcare impact, and systems thinking.</p>
+<p>I am graduating in April 2027 and am interested in teams that expect analysts to own the problem, not just the chart.</p>
 <a class="btn-primary" href="https://www.linkedin.com/in/markuss-saule/" target="_blank" rel="noopener">Connect on LinkedIn</a>
 </div>
