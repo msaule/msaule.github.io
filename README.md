@@ -24,16 +24,21 @@ This repository hosts the static portfolio at `https://msaule.github.io/` throug
 ## Update workflow
 
 1. Edit the root HTML, JavaScript, CSS, images, files, or `resume.tex`.
-2. Preview locally:
+2. Regenerate project thumbnails after changing project metadata or source imagery:
+
+   ```powershell
+   node scripts/generate-thumbnails.mjs
+   ```
+3. Preview locally:
 
    ```powershell
    python -m http.server 4173
    ```
 
-3. Compile `resume.tex` when the resume changes and copy the PDF to `files/resume.pdf`.
-4. Synchronize the root site files into `docs/`.
-5. Verify desktop and mobile layouts plus local links.
-6. Commit and push:
+4. Compile `resume.tex` when the resume changes and copy the PDF to `files/resume.pdf`.
+5. Synchronize the root site files into `docs/`.
+6. Verify desktop and mobile layouts plus local links.
+7. Commit and push:
 
    ```powershell
    git add .

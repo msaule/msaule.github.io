@@ -33,7 +33,9 @@ window.PORTFOLIO_PROJECTS = [
       "SEC/XBRL",
       "Next.js"
     ],
-    "featured": true
+    "featured": true,
+    "thumbnailSource": "images/projects/earnings-quality-autopsy/cover.png",
+    "thumbnail": "images/project-thumbnails/earnings-quality-autopsy.svg"
   },
   {
     "slug": "falsifyr",
@@ -69,7 +71,9 @@ window.PORTFOLIO_PROJECTS = [
       "Robustness",
       "RStudio"
     ],
-    "featured": true
+    "featured": true,
+    "thumbnailSource": "images/projects/falsifyr/cover.png",
+    "thumbnail": "images/project-thumbnails/falsifyr.svg"
   },
   {
     "slug": "radiology-value-pipeline",
@@ -105,7 +109,9 @@ window.PORTFOLIO_PROJECTS = [
       "Clinical AI",
       "Power BI"
     ],
-    "featured": true
+    "featured": true,
+    "thumbnailSource": "images/projects/radiology-value-pipeline/cover.png",
+    "thumbnail": "images/project-thumbnails/radiology-value-pipeline.svg"
   },
   {
     "slug": "ravel",
@@ -142,7 +148,8 @@ window.PORTFOLIO_PROJECTS = [
       "Quarto"
     ],
     "featured": true,
-    "thumbnail": "images/projects/ravel/pkgdown-home.png"
+    "thumbnail": "images/project-thumbnails/ravel.svg",
+    "thumbnailSource": "images/projects/ravel/pkgdown-home.png"
   },
   {
     "slug": "wayline",
@@ -179,7 +186,8 @@ window.PORTFOLIO_PROJECTS = [
       "Predictive Scoring"
     ],
     "featured": true,
-    "thumbnail": "images/projects/wayline/wayline-architecture.svg"
+    "thumbnail": "images/project-thumbnails/wayline.svg",
+    "thumbnailSource": "images/projects/wayline/wayline-architecture.svg"
   },
   {
     "slug": "owl",
@@ -215,7 +223,9 @@ window.PORTFOLIO_PROJECTS = [
       "SQLite",
       "MCP"
     ],
-    "featured": true
+    "featured": true,
+    "thumbnailSource": "images/projects/owl/cover.svg",
+    "thumbnail": "images/project-thumbnails/owl.svg"
   },
   {
     "slug": "mercury-market-sim",
@@ -251,7 +261,9 @@ window.PORTFOLIO_PROJECTS = [
       "Pytest",
       "Quarto"
     ],
-    "featured": true
+    "featured": true,
+    "thumbnailSource": "images/projects/mercury-market-sim/cover.png",
+    "thumbnail": "images/project-thumbnails/mercury-market-sim.svg"
   },
   {
     "slug": "roblox-brand-worlds",
@@ -287,7 +299,9 @@ window.PORTFOLIO_PROJECTS = [
       "World Design",
       "Launch QA"
     ],
-    "featured": true
+    "featured": true,
+    "thumbnailSource": "images/projects/roblox-brand-worlds/cover.jpg",
+    "thumbnail": "images/project-thumbnails/roblox-brand-worlds.svg"
   },
   {
     "slug": "fulfillment",
@@ -322,7 +336,9 @@ window.PORTFOLIO_PROJECTS = [
       "SimPy",
       "Optimization",
       "Power BI"
-    ]
+    ],
+    "thumbnailSource": "images/projects/fulfillment/cover.png",
+    "thumbnail": "images/project-thumbnails/fulfillment.svg"
   },
   {
     "slug": "insurance-fraud",
@@ -358,7 +374,8 @@ window.PORTFOLIO_PROJECTS = [
       "SHAP",
       "Python"
     ],
-    "thumbnail": "images/projects/insurance-fraud/model_auc_comparison.png"
+    "thumbnail": "images/project-thumbnails/insurance-fraud.svg",
+    "thumbnailSource": "images/projects/insurance-fraud/model_auc_comparison.png"
   },
   {
     "slug": "lung-cancer",
@@ -393,7 +410,9 @@ window.PORTFOLIO_PROJECTS = [
       "Logistic Regression",
       "SEER",
       "Power BI"
-    ]
+    ],
+    "thumbnailSource": "images/projects/lung-cancer/cover.png",
+    "thumbnail": "images/project-thumbnails/lung-cancer.svg"
   },
   {
     "slug": "readmission",
@@ -428,7 +447,9 @@ window.PORTFOLIO_PROJECTS = [
       "R",
       "Power BI",
       "Clinical Analytics"
-    ]
+    ],
+    "thumbnailSource": "images/projects/readmission/cover.png",
+    "thumbnail": "images/project-thumbnails/readmission.svg"
   },
   {
     "slug": "hospital-prices",
@@ -463,7 +484,9 @@ window.PORTFOLIO_PROJECTS = [
       "CMS Data",
       "Regression",
       "Visualization"
-    ]
+    ],
+    "thumbnailSource": "images/projects/hospital-prices/cover.png",
+    "thumbnail": "images/project-thumbnails/hospital-prices.svg"
   },
   {
     "slug": "dying-on-the-margin",
@@ -498,6 +521,8 @@ window.PORTFOLIO_PROJECTS = [
       "Regression",
       "Diagnostics",
       "Healthcare Ops"
-    ]
+    ],
+    "thumbnailSource": "images/projects/dying-on-the-margin/cover.png",
+    "thumbnail": "images/project-thumbnails/dying-on-the-margin.svg"
   }
 ];
