@@ -156,14 +156,16 @@
     const filters = [...document.querySelectorAll('.filter-button')];
 
     projects.forEach((project, index) => {
+      const thumbnail = project.thumbnail || project.image;
       const link = document.createElement('a');
       link.className = 'project-row';
       link.href = `project.html?slug=${encodeURIComponent(project.slug)}`;
       link.dataset.category = project.category;
-      link.dataset.image = project.image;
+      link.dataset.image = thumbnail;
+      link.dataset.featured = String(Boolean(project.featured));
       link.innerHTML = `
         <span class="row-number">${String(index + 1).padStart(2, '0')}</span>
-        <span class="row-thumb"><img src="${project.image}" alt=""></span>
+        <span class="row-thumb"><img src="${thumbnail}" alt=""></span>
         <span class="row-title">${project.title}</span>
         <span class="row-category">${project.category}</span>
         <span class="row-year">${project.year}</span>
@@ -175,17 +177,24 @@
       const visible = container.querySelectorAll('.project-row:not([hidden])').length;
       if (count) count.textContent = `${String(visible).padStart(2, '0')} projects`;
     };
-    updateCount();
+    const applyFilter = (selected) => {
+      container.querySelectorAll('.project-row').forEach((row) => {
+        if (selected === 'Selected') {
+          row.hidden = row.dataset.featured !== 'true';
+        } else {
+          row.hidden = selected !== 'All' && row.dataset.category !== selected;
+        }
+      });
+      updateCount();
+    };
+
+    applyFilter(filters.find((item) => item.classList.contains('is-active'))?.dataset.filter || 'All');
 
     filters.forEach((button) => {
       button.addEventListener('click', () => {
         filters.forEach((item) => item.classList.remove('is-active'));
         button.classList.add('is-active');
-        const selected = button.dataset.filter;
-        container.querySelectorAll('.project-row').forEach((row) => {
-          row.hidden = selected !== 'All' && row.dataset.category !== selected;
-        });
-        updateCount();
+        applyFilter(button.dataset.filter);
       });
     });
   }
@@ -202,6 +211,7 @@
     const year = document.querySelector('[data-project-year]');
     const title = document.querySelector('[data-project-title]');
     const cover = document.querySelector('[data-project-cover]');
+    const coverStage = document.querySelector('[data-project-cover-stage]');
     const summary = document.querySelector('[data-project-summary]');
     const detail = document.querySelector('[data-project-detail]');
     const stats = document.querySelector('[data-project-stats]');
@@ -223,6 +233,7 @@
     if (year) year.textContent = project.year;
     if (title) title.textContent = project.title;
     if (cover) { cover.src = project.image; cover.alt = project.alt; }
+    if (coverStage) coverStage.dataset.category = project.category;
     if (summary) summary.textContent = project.summary;
     if (detail) detail.textContent = project.detail;
     if (problem) problem.textContent = study.problem || project.summary;
@@ -269,7 +280,13 @@
       images.forEach(([src, caption], index) => {
         const figure = document.createElement('figure');
         figure.className = index === 0 ? 'evidence-item evidence-item--wide' : 'evidence-item';
-        figure.innerHTML = `<img src="${src}" alt="${caption}"><figcaption>${String(index + 1).padStart(2, '0')} / ${caption}</figcaption>`;
+        figure.innerHTML = `<div class="evidence-media"><img src="${src}" alt="${caption}"></div><figcaption>${String(index + 1).padStart(2, '0')} / ${caption}</figcaption>`;
+        const image = figure.querySelector('img');
+        image.addEventListener('load', () => {
+          if (image.naturalWidth / image.naturalHeight < 1.15) {
+            figure.classList.add('evidence-item--wide', 'evidence-item--portrait');
+          }
+        }, { once: true });
         gallery.appendChild(figure);
       });
     }

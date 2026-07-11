@@ -12,7 +12,7 @@ This repository hosts the static portfolio at `https://msaule.github.io/` throug
 
 - `index.html`, `work.html`, `about.html`, `resume.html`: page sources
 - `project.html?slug=...`: reusable project case-study route
-- `assets/data.js`: metadata for all projects
+- `assets/data.js`: metadata for the 14 public projects
 - `assets/case-studies.js`: long-form case-study content
 - `assets/app.js`: project rendering, filters, navigation, and motion
 - `assets/styles.css`: visual system and responsive layout

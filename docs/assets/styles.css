@@ -435,6 +435,22 @@ a { -webkit-tap-highlight-color: transparent; }
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.28);
 }
 
+.case-visual--framed {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  padding: clamp(10px, 1.4vw, 20px);
+  border: 1px solid var(--line);
+  background: #1a1b19;
+}
+.case-visual--framed img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  box-shadow: none;
+}
+
 .case-visual--contain img {
   max-height: 520px;
   object-fit: contain;
@@ -759,10 +775,10 @@ a { -webkit-tap-highlight-color: transparent; }
 .project-index { padding-bottom: 120px; }
 .project-row {
   display: grid;
-  grid-template-columns: 40px 148px minmax(260px, 1fr) 170px 74px 20px;
+  grid-template-columns: 40px 196px minmax(260px, 1fr) 170px 74px 20px;
   gap: 20px;
   align-items: center;
-  min-height: 126px;
+  min-height: 148px;
   border-bottom: 1px solid var(--line);
   color: inherit;
   text-decoration: none;
@@ -779,20 +795,21 @@ a { -webkit-tap-highlight-color: transparent; }
 .project-row .row-arrow { text-align: right; }
 
 .row-thumb {
-  width: 148px;
-  height: 88px;
+  width: 196px;
+  aspect-ratio: 16 / 9;
   display: block;
+  padding: 7px;
   overflow: hidden;
   border: 1px solid var(--line);
-  background: var(--ink-2);
+  background: #1a1b19;
 }
 .row-thumb img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
-  object-position: top;
-  filter: saturate(0.78);
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(0.86) contrast(1.02);
   transition: filter 150ms ease;
 }
 .project-row:hover .row-thumb img { filter: saturate(1); }
@@ -887,7 +904,26 @@ a { -webkit-tap-highlight-color: transparent; }
 }
 .project-hero-meta span:last-child { text-align: right; }
 .project-hero h1 { max-width: 1250px; margin: 46px 0 56px; font-size: clamp(54px, 8vw, 124px); font-weight: 500; letter-spacing: -0.07em; line-height: 0.9; }
-.project-cover { width: 100%; aspect-ratio: 16 / 9; max-height: 78svh; object-fit: contain; object-position: center; border: 1px solid var(--line); background: var(--ink-2); }
+.project-cover-stage {
+  --frame-inset: clamp(12px, 2vw, 28px);
+  position: relative;
+  width: 100%;
+  height: clamp(320px, 56vw, 720px);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: #171816;
+}
+.project-cover {
+  position: absolute;
+  inset: var(--frame-inset);
+  width: calc(100% - (2 * var(--frame-inset)));
+  height: calc(100% - (2 * var(--frame-inset)));
+  display: block;
+  object-fit: contain;
+  object-position: center;
+  border: 1px solid rgba(244, 243, 235, 0.12);
+  background: #10110f;
+}
 .project-lead {
   display: grid;
   grid-template-columns: 2fr 7fr 3fr;
@@ -1056,15 +1092,25 @@ a { -webkit-tap-highlight-color: transparent; }
   background: var(--paper);
 }
 .evidence-item--wide { grid-column: 1 / -1; }
-.evidence-item img {
+.evidence-media {
   width: 100%;
-  height: min(44vw, 590px);
+  min-height: min(34vw, 460px);
+  display: grid;
+  place-items: center;
+  padding: clamp(8px, 1.2vw, 18px);
+  background: #d4d2c8;
+}
+.evidence-media img {
+  width: 100%;
+  height: auto;
+  max-height: 620px;
   display: block;
   object-fit: contain;
   object-position: center;
-  background: #d4d2c8;
 }
-.evidence-item--wide img { height: min(58vw, 760px); }
+.evidence-item--wide .evidence-media { min-height: min(50vw, 690px); }
+.evidence-item--wide .evidence-media img { max-height: 760px; }
+.evidence-item--portrait .evidence-media img { width: auto; max-width: 100%; }
 .evidence-item figcaption {
   padding-top: 13px;
   color: #666861;
@@ -1282,7 +1328,8 @@ a { -webkit-tap-highlight-color: transparent; }
   .recruiter-brief article + article { padding-left: 28px; }
   .judgment-grid ol { grid-template-columns: 1fr; }
   .project-hero h1 { margin-top: 34px; font-size: clamp(48px, 14.5vw, 78px); }
-  .project-cover { min-height: 320px; }
+  .project-cover-stage { height: clamp(320px, 100vw, 520px); }
+  .project-cover { min-height: 0; }
   .project-stats { grid-template-columns: 1fr; }
   .project-stat { min-height: 170px; border-right: 0; border-bottom: 1px solid var(--line); }
   .project-stat strong { margin-bottom: 44px; }
