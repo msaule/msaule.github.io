@@ -219,14 +219,14 @@ a { -webkit-tap-highlight-color: transparent; }
   line-height: 0.86;
 }
 
-.hero h1 .quiet { color: #777a72; }
+.hero h1 .quiet { color: inherit; }
 
 .hero h1 .signal {
   color: var(--signal);
-  font-family: var(--mono);
-  font-size: 0.72em;
-  font-weight: 400;
-  letter-spacing: -0.06em;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: inherit;
 }
 
 .hero-portrait {
@@ -584,6 +584,8 @@ a { -webkit-tap-highlight-color: transparent; }
 
 .duo-image img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 500ms cubic-bezier(.2,.7,.2,1); }
 .duo-image--contain img { object-fit: contain; background: #e5e3d9; }
+.duo-image--thumb { height: auto; aspect-ratio: 16 / 9; background: #10110f; }
+.duo-image--thumb img { object-fit: contain; object-position: center; }
 .duo-item:hover .duo-image img { transform: scale(1.025); }
 
 .range {
