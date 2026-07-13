@@ -224,8 +224,8 @@
     const build = document.querySelector('[data-case-build]');
     const decisions = document.querySelector('[data-case-decisions]');
     const validation = document.querySelector('[data-case-validation]');
-    const limits = document.querySelector('[data-case-limits]');
-    const next = document.querySelector('[data-case-next]');
+    const narrative = document.querySelector('[data-case-narrative]');
+    const narrativeSection = document.querySelector('[data-project-narrative-section]');
     const links = document.querySelector('[data-case-links]');
     const resourcesSection = document.querySelector('[data-project-resources-section]');
 
@@ -239,8 +239,6 @@
     if (problem) problem.textContent = study.problem || project.summary;
     if (role) role.textContent = study.role || 'Independent project with end-to-end ownership.';
     if (validation) validation.textContent = study.validation || 'Validated through reproducible outputs and the project evidence shown below.';
-    if (limits) limits.textContent = study.limits || 'The project is a portfolio analysis and would require production data and operating validation before deployment.';
-    if (next) next.textContent = study.next || 'Expand testing, validation, and production integration with real operating data.';
 
     if (build) {
       (study.build || []).forEach((text) => {
@@ -256,6 +254,19 @@
         item.textContent = text;
         decisions.appendChild(item);
       });
+    }
+
+    const narrativeSections = (window.PORTFOLIO_CASE_NARRATIVES || {})[project.slug] || [];
+    if (narrative && narrativeSections.length) {
+      narrativeSections.forEach((section, index) => {
+        const article = document.createElement('article');
+        article.className = 'deep-dive-card';
+        const paragraphs = (section.paragraphs || []).map((text) => `<p>${text}</p>`).join('');
+        article.innerHTML = `<span>${String(index + 1).padStart(2, '0')}</span><h3>${section.title}</h3>${paragraphs}`;
+        narrative.appendChild(article);
+      });
+    } else if (narrativeSection) {
+      narrativeSection.hidden = true;
     }
 
     if (stats) {
