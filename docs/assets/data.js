@@ -526,3 +526,68 @@ window.PORTFOLIO_PROJECTS = [
     "thumbnail": "images/project-thumbnails/dying-on-the-margin.svg"
   }
 ];
+
+// Lead copy is intentionally decision- and evidence-led. The long-form case
+// studies supply the mechanics, validation, and artifacts behind each summary.
+const PORTFOLIO_PROJECT_COPY = {
+  "earnings-quality-autopsy": {
+    summary: "A forensic SEC/XBRL research platform that traces management claims through normalized fundamentals, source evidence, and documented tensions.",
+    detail: "The system turns a filing cycle into quarterly models, claim-specific evidence ledgers, nine forensic reviews, and analyst-ready dossiers that preserve every source and derivation."
+  },
+  falsifyr: {
+    summary: "An R package that actively tries to break a statistical result, then shows the smallest plausible change that makes the claim fragile.",
+    detail: "Eight attack families test row sensitivity, uncertainty, missingness, measurement error, placebos, specifications, and sample splits before producing a traceable report."
+  },
+  "radiology-value-pipeline": {
+    summary: "A radiology AI operating layer that connects imaging models to human review, audit trails, governance, and Power BI reporting.",
+    detail: "The platform records the study, model version, prompt, findings, clinician feedback, final report, and reporting lineage so every AI-assisted step remains reviewable."
+  },
+  ravel: {
+    summary: "A CRAN-published RStudio copilot that understands the active analysis and keeps every proposed code or file action visible and reviewable.",
+    detail: "Ravel collects explicit project context, supports model interpretation and Quarto drafting, and stages changes for approval rather than quietly modifying an analyst's work."
+  },
+  wayline: {
+    summary: "A full product road-trip planner that turns routing, fuel cadence, overnight choices, trip-fit scoring, and exports into one explainable plan.",
+    detail: "Wayline protects paid map infrastructure, ranks stops with visible rationale, instruments its funnel, and generates portable PDF, text, JSON, share-link, and Google Maps outputs."
+  },
+  owl: {
+    summary: "A local-first AI discovery system that connects scattered data sources, builds a living world model, and surfaces material changes without waiting for a prompt.",
+    detail: "OWL combines source plugins, a SQLite knowledge graph, scheduled discovery, feedback-aware filtering, an Electron app, a dashboard, MCP tools, and delivery channels."
+  },
+  "mercury-market-sim": {
+    summary: "A research-grade market simulator that shows how order-book rules, agent behavior, liquidity withdrawal, and controls shape market stress.",
+    detail: "MERCURY combines a continuous double auction, heterogeneous trading agents, fragmented venues, benchmark scenarios, parameter sweeps, and reproducible reports."
+  },
+  "roblox-brand-worlds": {
+    summary: "Ten years of shipped Roblox worldbuilding across games, music events, and global brand activations with experiences totaling 6.5B+ place visits.",
+    detail: "I built environments, props, vehicles, textures, and player-facing spaces for releases involving Warner Music, Sony, DC, Bakugan, L'Oreal, and other major brands."
+  },
+  fulfillment: {
+    summary: "A discrete-event fulfillment model that turns queues, station pressure, SLA risk, and staffing choices into an operating decision.",
+    detail: "The SimPy engine observes every station minute by minute, raises alerts, scores system risk, tests scenarios, and exports the full decision layer to Power BI."
+  },
+  "insurance-fraud": {
+    summary: "A fraud-modeling workflow built for the metric that matters: finding suspicious claims without hiding behind overall accuracy.",
+    detail: "The pipeline compares three model families, evaluates the fraud class directly, interprets drivers with SHAP, and saves reusable scoring artifacts."
+  },
+  "lung-cancer": {
+    summary: "A 114,000-case SEER analysis that turns survival modeling into an interpretable view of the disease and patient factors tied to two-year outcomes.",
+    detail: "The R workflow cleans the cohort, tests relationships, runs logistic regression, and carries the results into Power BI without hiding the underlying assumptions."
+  },
+  readmission: {
+    summary: "A SQL-to-R-to-Power BI clinical analytics pipeline that connects 100,000 encounters to readmission drivers, subgroup patterns, and action-ready reporting.",
+    detail: "The project starts with normalized tables and analysis views, then moves through regression and equity analysis into a three-page decision report for clinical operations."
+  },
+  "hospital-prices": {
+    summary: "A CMS inpatient-pricing analysis that exposes how charge-to-payment gaps vary by service, geography, and hospital-market context.",
+    detail: "The report uses DRG-level comparisons to make pricing variation traceable, separating a meaningful payment benchmark from a headline charge number."
+  },
+  "dying-on-the-margin": {
+    summary: "A hospital-capacity study that asks whether occupancy is just an efficiency metric or an early signal of operational pressure tied to mortality.",
+    detail: "The analysis pairs regression with hospital context and diagnostics so the operational question stays grounded in what the data can actually show."
+  }
+};
+
+window.PORTFOLIO_PROJECTS.forEach((project) => {
+  Object.assign(project, PORTFOLIO_PROJECT_COPY[project.slug] || {});
+});

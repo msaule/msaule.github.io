@@ -292,3 +292,10 @@ window.PORTFOLIO_CASE_STUDIES = {
     links: []
   }
 };
+
+Object.assign(window.PORTFOLIO_CASE_STUDIES, {
+  "roblox-brand-worlds": {
+    ...window.PORTFOLIO_CASE_STUDIES["roblox-brand-worlds"],
+    ownership: "Shipped with multidisciplinary studio and brand teams. My work covered the environments, 3D assets, textures, vehicles, and player-facing spaces assigned to me across live releases."
+  }
+});

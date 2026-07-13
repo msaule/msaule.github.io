@@ -213,6 +213,7 @@
     const cover = document.querySelector('[data-project-cover]');
     const coverStage = document.querySelector('[data-project-cover-stage]');
     const summary = document.querySelector('[data-project-summary]');
+    const ownership = document.querySelector('[data-project-ownership]');
     const detail = document.querySelector('[data-project-detail]');
     const stats = document.querySelector('[data-project-stats]');
     const tools = document.querySelector('[data-project-tools]');
@@ -235,6 +236,7 @@
     if (cover) { cover.src = project.image; cover.alt = project.alt; }
     if (coverStage) coverStage.dataset.category = project.category;
     if (summary) summary.textContent = project.summary;
+    if (ownership) ownership.textContent = study.ownership || 'Independent build. End-to-end ownership from the operating question through the model, system, interface, and handoff.';
     if (detail) detail.textContent = project.detail;
     if (problem) problem.textContent = study.problem || project.summary;
     if (role) role.textContent = study.role || 'Independent project with end-to-end ownership.';
