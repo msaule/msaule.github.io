@@ -84,23 +84,23 @@ window.PORTFOLIO_PROJECTS = [
     "image": "images/projects/radiology-value-pipeline/cover.png",
     "alt": "Radiology review workspace showing a brain MRI",
     "summary": "A local-first radiology workflow platform that connects model orchestration, human review, audit trails, governance, and Power BI reporting.",
-    "detail": "I built the platform around a strict principle: AI can assist, but the radiologist remains the author of record. Every run keeps its model version, prompt version, findings, feedback, and downstream reporting lineage.",
+    "detail": "The MRI work separates 20 real public CUDA volumes from 120,000 deterministic engineering evaluations. Every candidate remains reject_for_more_evidence, with model and workflow lineage retained for review.",
     "stats": [
       [
-        "76",
-        "processed studies"
+        "20",
+        "public CUDA MRI volumes"
       ],
       [
-        "304",
-        "agent runs"
+        "120K",
+        "deterministic evaluations"
       ],
       [
-        "858",
-        "dashboard fact rows"
+        "123,020",
+        "engineering evaluations"
       ],
       [
         "0.9828",
-        "held-out MRI macro AUC"
+        "held-out MRI benchmark AUC"
       ]
     ],
     "tools": [
@@ -121,7 +121,7 @@ window.PORTFOLIO_PROJECTS = [
     "category": "Open Source",
     "image": "images/projects/ravel/cover.png",
     "alt": "Ravel R package documentation homepage",
-    "summary": "A CRAN-published R package that gives RStudio a context-aware copilot for statistical work, model interpretation, safe actions, and Quarto drafting.",
+    "summary": "A CRAN-published R package used by 1,600+ people that gives RStudio a context-aware copilot for statistical work, model interpretation, safe actions, and Quarto drafting.",
     "detail": "Ravel understands the active editor, selected code, loaded objects, console output, plots, git state, and package structure. Actions are staged and reviewable instead of silently changing an analyst's work.",
     "stats": [
       [
@@ -129,8 +129,8 @@ window.PORTFOLIO_PROJECTS = [
         "accepted package"
       ],
       [
-        "0.1.2",
-        "current release"
+        "1,600+",
+        "package users"
       ],
       [
         "MCP",
@@ -273,16 +273,16 @@ window.PORTFOLIO_PROJECTS = [
     "category": "Immersive Worlds",
     "image": "images/projects/roblox-brand-worlds/cover.jpg",
     "alt": "Black Adam immersive Roblox world",
-    "summary": "Ten years of worldbuilding across shipped games, early music events, and global brand activations whose experiences total more than 6.5 billion place visits.",
-    "detail": "I worked as a world designer, environment artist, builder, texture artist, and DevRel QA tester. The work included Ava Max, Black Adam, Bakugan, L'Oreal, Sony, Warner Music, and other large-scale interactive releases.",
+    "summary": "Ten years of world, level, and game design across shipped games, live events, and global brand activations with 7.5B+ plays.",
+    "detail": "I designed player flow, progression spaces, gameplay loops, and memorable environments for Ava Max, Black Adam, Bakugan, L'Oreal, Sony, Warner Music, and other large-scale releases.",
     "stats": [
       [
-        "6.5B+",
-        "place visits"
+        "7.5B+",
+        "plays across shipped experiences"
       ],
       [
         "10 yrs",
-        "building on Roblox"
+        "world and game design"
       ],
       [
         "30+",
@@ -295,9 +295,9 @@ window.PORTFOLIO_PROJECTS = [
     ],
     "tools": [
       "Roblox Studio",
-      "3D Modeling",
       "World Design",
-      "Launch QA"
+      "Level Design",
+      "Game Systems"
     ],
     "featured": true,
     "thumbnailSource": "images/projects/roblox-brand-worlds/cover.jpg",
@@ -539,11 +539,11 @@ const PORTFOLIO_PROJECT_COPY = {
     detail: "Eight attack families test row sensitivity, uncertainty, missingness, measurement error, placebos, specifications, and sample splits before producing a traceable report."
   },
   "radiology-value-pipeline": {
-    summary: "A radiology AI operating layer that connects imaging models to human review, audit trails, governance, and Power BI reporting.",
-    detail: "The platform records the study, model version, prompt, findings, clinician feedback, final report, and reporting lineage so every AI-assisted step remains reviewable."
+    summary: "A radiology workflow platform that connects imaging models to human review, audit trails, governance, and Power BI reporting, with its MRI evidence clearly bounded.",
+    detail: "The platform distinguishes 20 real public CUDA MRI volumes from 120,000 deterministic engineering evaluations and retains study, model, prompt, findings, feedback, and reporting lineage for review."
   },
   ravel: {
-    summary: "A CRAN-published RStudio copilot that understands the active analysis and keeps every proposed code or file action visible and reviewable.",
+    summary: "A CRAN-published RStudio copilot used by 1,600+ people that understands the active analysis and keeps every proposed code or file action visible and reviewable.",
     detail: "Ravel collects explicit project context, supports model interpretation and Quarto drafting, and stages changes for approval rather than quietly modifying an analyst's work."
   },
   wayline: {
@@ -559,8 +559,8 @@ const PORTFOLIO_PROJECT_COPY = {
     detail: "MERCURY combines a continuous double auction, heterogeneous trading agents, fragmented venues, benchmark scenarios, parameter sweeps, and reproducible reports."
   },
   "roblox-brand-worlds": {
-    summary: "Ten years of shipped Roblox worldbuilding across games, music events, and global brand activations with experiences totaling 6.5B+ place visits.",
-    detail: "I built environments, props, vehicles, textures, and player-facing spaces for releases involving Warner Music, Sony, DC, Bakugan, L'Oreal, and other major brands."
+    summary: "Ten years of shipped Roblox world, level, and game design across games, music events, and global brand activations with 7.5B+ plays.",
+    detail: "I designed player flow, progression spaces, gameplay loops, vehicles, and memorable worlds for releases involving Warner Music, Sony, DC, Bakugan, L'Oreal, and other major brands."
   },
   fulfillment: {
     summary: "A discrete-event fulfillment model that turns queues, station pressure, SLA risk, and staffing choices into an operating decision.",

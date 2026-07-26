@@ -1,30 +1,30 @@
 ---
 title: "Roblox Immersive Brand Worlds"
-subtitle: "10 years of 3D worldbuilding, brand activations, and shipped Roblox experiences at 6.5B+ visit scale"
+subtitle: "10 years of world, level, and game design across shipped Roblox experiences with 7.5B+ plays"
 ---
 
 ![Black Adam Roblox event world environment](../images/projects/roblox-brand-worlds/cover.jpg){.cover-image}
 
 ## Overview
 
-I have been building on Roblox for 10 years. Before this portfolio became mostly analytics and machine learning, a lot of my work was shipped 3D worlds. Across the games and brand experiences I contributed to, those places add up to 6.5B+ place visits.
+I have been building on Roblox for 10 years. Before this portfolio became mostly analytics and machine learning, I was designing the worlds, levels, player flow, and progression spaces behind shipped games and branded events. Across the experiences I contributed to, those worlds have generated 7.5B+ plays.
 
-I worked as a world designer, 3D artist, environment artist, texture artist, builder, and Roblox DevRel QA tester. I built environments, vehicles, terrain, city layouts, props, interior spaces, lobby redesigns, expansion areas, and branded worlds for games and campaigns tied to major entertainment and consumer brands.
+I worked in world design, level design, game design, progression, environment production, build leadership, and Roblox DevRel QA. I designed environments, vehicles, terrain, city layouts, lobbies, expansion areas, and branded worlds with attention to the player journey: where people spawn, what they notice, how they move, where they gather, and what keeps the experience engaging.
 
 A lot of this happened when Roblox brand activations were still early. I worked on projects connected to Warner Music, Sony Entertainment, DC's Black Adam, Bakugan, L'Oreal, JDRF, and other large IP campaigns. I was also personally commended by Roblox CEO David Baszucki for my work during the early interactive concert era on Roblox, including the Ava Max launch-party period.
 
-The simple version: I learned how to build digital places that millions of people could enter, understand, move through, and remember.
+The simple version: I learned how to build digital worlds that millions of people could enter, understand, explore, return to, and remember.
 
 ## What I Worked On
 
-- Built 3D environments, terrain, props, vehicles, background buildings, and world layouts for live Roblox games.
-- Helped create branded event spaces for music, film, toy, beauty, nonprofit, and game IP.
-- Worked on the Black Adam Roblox event as the main 3D world build lead for the Justice Hall area and surrounding environment.
-- Built assets and lobby/world elements for Bakugan Battle League.
-- Created 30+ vehicles for Anomic's revamp.
-- Built stylized props and expansion environments for Spirit Guides.
+- Designed world layouts, terrain, vehicles, lobbies, expansion areas, and progression spaces for live Roblox games.
+- Built branded event worlds for music, film, toy, beauty, nonprofit, and game IP, making each world readable and engaging from the first spawn.
+- Led the Justice Hall area and surrounding player experience for the Black Adam promotional event.
+- Designed building systems and supported the full lobby redesign for Bakugan Battle League.
+- Created 30+ vehicles for Anomic's revamp and supported its larger world system.
+- Built expansion worlds for Spirit Guides and helped develop Dreamworld RP from the ground up.
 - Helped create the main world and supporting environments for JDRF One World.
-- Helped bring the Ava Max Heaven and Hell launch-party map to life, including the dominant Heaven and Hell environments, props, and catalog assets.
+- Helped shape the Ava Max Heaven and Hell launch-party map, including its major event environments, props, and catalog assets.
 
 ## Visual Work
 
@@ -48,61 +48,61 @@ The simple version: I learned how to build digital places that millions of peopl
 ## Selected Work
 
 **Dreamworld RP**  
-3D Artist for Cosmow from December 2023 to February 2024. I helped develop Dreamworld RP from the base up: terrain environments, background buildings, nature props, world population, and vehicles.
+World and environment designer for Cosmow from December 2023 to February 2024. I helped develop Dreamworld RP from the ground up through terrain, city structure, nature, world population, vehicles, and player-facing environmental systems.
 
 **Spirit Guides**  
-3D Environment Artist from November 2022 to September 2023. I created stylized world props, modified existing environments, and built new environment pieces for expansion updates.
+World and environment designer from November 2022 to September 2023. I created stylized world systems, reshaped existing environments, and built new expansion spaces that added more places and reasons for players to explore.
 
 **Black Adam Event**  
-3D World Build Lead from September 2022 to October 2022. I built the Justice Hall area and surrounding environment for the main Roblox promotional event tied to the movie.
+World build lead from September 2022 to October 2022. I led the Justice Hall area and surrounding player experience for the main Roblox promotional event tied to the movie.
 
 **Bakugan Battle League**  
-3D Modeler and World Build from May 2022 to July 2022. I created building assets and supported a full lobby redesign for a major global toy brand.
+World and level designer from May 2022 to July 2022. I designed building systems and supported a full lobby redesign for a major global toy brand.
 
 **Infinite Canvas**  
-3D Artist from February 2022 to September 2022. I helped with 3D assets, animal rigs, and outsourced Roblox projects, including creator-led collaborations.
+World production contributor from February 2022 to September 2022. I supported interactive world systems, animal rigs, and creator-led Roblox projects, including the JayPrehistoricPets collaboration.
 
 **Anomic**  
-3D Artist from May 2021 to March 2022. I created 30+ vehicles for the game's revamp.
+World and vehicle designer from May 2021 to March 2022. I created 30+ vehicles for the game's revamp and contributed to the world systems around them.
 
 **Specter**  
-3D Artist from March 2021 to April 2021. I created new ghost models as part of a larger creature revamp.
+Game-world contributor from March 2021 to April 2021. I created new ghost characters and environment assets as part of a larger creature and gameplay refresh.
 
 **JDRF One World**  
-3D Artist and Environment Artist from September 2020 to October 2020. I built the main world environment, props, and multiple supporting environments for the client's virtual walk concept.
+World designer from September 2020 to October 2020. I built the main player environment, props, and supporting spaces for the client's virtual walk concept.
 
 **Ava Max Heaven and Hell Launch Party**  
-Environment Artist and 3D Modeler from August 2020 to September 2020. I helped shape the map design and built major Heaven and Hell environments, prop models, and catalog assets for one of Roblox's early music launch-party experiences.
+World and event designer from August 2020 to September 2020. I helped shape the map, player routes, and major Heaven and Hell event environments for one of Roblox's early interactive music launch parties.
 
 ## How I Thought About The Work
 
-Roblox worlds punish weak design fast. Players do not stop to read a manual. They spawn in, look around, and decide almost immediately if the place makes sense.
+Roblox worlds punish weak design fast. Players do not stop to read a manual. They spawn in, look around, and decide almost immediately whether the world makes sense and gives them a reason to stay.
 
 That meant the environment had to do a lot of work:
 
-- The first view had to tell players where they were.
-- Roads, bridges, buildings, lights, and landmarks had to guide movement without overexplaining.
-- Branded areas had to feel big without becoming confusing.
-- Assets had to look good while still running on lower-end devices.
-- Event spaces had to support crowds, screenshots, social movement, and timed moments.
-- Client ideas had to become actual places people could use.
+- The first view had to tell players where they were and what was worth doing next.
+- Routes, landmarks, reveal moments, and world hierarchy had to guide movement without overexplaining.
+- Branded areas had to feel big without becoming confusing or losing the core game loop.
+- Progression, social spaces, and repeatable moments had to give people reasons to keep playing.
+- Worlds had to run on lower-end devices while supporting crowds, screenshots, and timed live moments.
+- Client ideas had to become real interactive experiences that players could use immediately.
 
-That is the part I am proud of. I was not just making objects. I was building the shape of the experience.
+That is the part I am proud of. I was designing the shape of the experience: the level flow, the progression, the energy, and the reasons players came back.
 
 ## Results/Impact
 
-- Contributed to shipped Roblox experiences totaling 6.5B+ place visits.
+- Contributed to shipped Roblox experiences with 7.5B+ plays.
 - Worked on brand worlds and live-event environments connected to Warner Music, Sony Entertainment, DC/Black Adam, Bakugan, L'Oreal, JDRF, and other global projects.
 - Helped build early Roblox music and brand activations before this category became normal across the platform.
-- Created 30+ vehicles for Anomic and a large amount of environment work across roleplay, event, horror, nonprofit, and branded experiences.
+- Created 30+ vehicles for Anomic and designed world, level, and gameplay systems across roleplay, event, horror, nonprofit, and branded experiences.
 - Personally commended by Roblox CEO David Baszucki for my work during the early interactive concert era on Roblox.
 
 ## Skills
 
 - Roblox Studio
-- 3D modeling, environment design, texture work, terrain, lighting, prop production
-- World layout, player flow, landmark design, interior/exterior composition
-- Performance-aware asset design for high-traffic Roblox experiences
+- World design, level design, player flow, progression, and gameplay loops
+- Terrain, lighting, vehicle design, environment production, and interior/exterior composition
+- Performance-aware world systems for high-traffic Roblox experiences
 - Brand translation from real-world IP into interactive spaces
 - QA, launch readiness, client feedback, and production deadlines
 

@@ -55,7 +55,7 @@ I am a systems-first analytics builder focused on operational risk, bottlenecks,
 
 ## <span class="gradient-text">Flagship Project</span>
 
-<div class="section-intro">Radiology Value Pipeline is the strongest healthcare analytics and AI project in this portfolio: a local-first radiology workflow platform with model orchestration, human review, audit trails, governance surfaces, and Power BI reporting.</div>
+<div class="section-intro">Radiology Value Pipeline is a local-first radiology workflow platform with model orchestration, human review, audit trails, governance surfaces, and Power BI reporting. Its MRI evidence is presented with a clear boundary between public-volume evaluation and deterministic engineering checks.</div>
 
 ::: {.flagship-panel .reveal-scale}
 <img class="flagship-banner" src="images/projects/radiology-value-pipeline/cover.png" alt="Radiology Value Pipeline clinical AI review workspace">
@@ -66,13 +66,13 @@ I am a systems-first analytics builder focused on operational risk, bottlenecks,
 
 Radiology Value Pipeline is a production-style MVP for a radiology workflow copilot. It supports chest X-ray and brain MRI workflows, registers studies, runs modality-aware model services, persists findings and report drafts, captures human feedback, and publishes dashboard-ready operational, clinical quality, and governance data.
 
-The project is intentionally disciplined: AI outputs are assistive suggestions only, the radiologist remains the author of record, and every run is traceable through model versions, prompt versions, audit events, feedback, discrepancy analysis, and Power BI marts.
+The MRI work separates 20 real public CUDA volumes from 120,000 deterministic robustness, acceptance, conversion, and contract evaluations. Every candidate remains <code>reject_for_more_evidence</code>; the radiologist remains the author of record, and every run is traceable through model versions, prompt versions, audit events, feedback, discrepancy analysis, and Power BI marts.
 
 <div class="flagship-stats reveal-stagger">
-<div class="flagship-stat"><strong data-count="76">0</strong><span>processed chest X-ray and brain MRI studies</span></div>
-<div class="flagship-stat"><strong data-count="304">0</strong><span>workflow agent runs with prompt lineage</span></div>
-<div class="flagship-stat"><strong data-count="858">0</strong><span>dashboard fact rows for operations, quality, and governance</span></div>
-<div class="flagship-stat"><strong data-count="0.9828">0</strong><span>held-out brain MRI macro AUC in benchmark testing</span></div>
+<div class="flagship-stat"><strong data-count="20">0</strong><span>real public CUDA MRI volumes</span></div>
+<div class="flagship-stat"><strong data-count="120" data-suffix="K">0</strong><span>deterministic engineering evaluations</span></div>
+<div class="flagship-stat"><strong data-count="123020">0</strong><span>tracked engineering case-evaluations</span></div>
+<div class="flagship-stat"><strong data-count="0.9828">0</strong><span>held-out MRI benchmark macro AUC</span></div>
 </div>
 
 <div class="hero-actions">
@@ -94,8 +94,8 @@ The project is intentionally disciplined: AI outputs are assistive suggestions o
 ## <span class="gradient-text">Selected Outcomes</span>
 
 <div class="metric-strip reveal-stagger">
-<div class="metric-pill"><strong data-count="76">0</strong><span>Processed imaging studies in the flagship radiology AI platform</span></div>
-<div class="metric-pill"><strong data-count="6.5" data-suffix="B+">0</strong><span>Roblox place visits across shipped immersive brand and game experiences</span></div>
+<div class="metric-pill"><strong data-count="123020">0</strong><span>Tracked radiology engineering case-evaluations</span></div>
+<div class="metric-pill"><strong data-count="7.5" data-suffix="B+">0</strong><span>Roblox plays across shipped worlds, games, and brand experiences</span></div>
 <div class="metric-pill"><strong data-count="304">0</strong><span>Workflow agent runs tracked with prompt and model lineage</span></div>
 <div class="metric-pill"><strong data-count="858">0</strong><span>Dashboard fact rows for operations, quality, and governance</span></div>
 <div class="metric-pill"><strong data-count="114" data-suffix="K+">0</strong><span>SEER patient records modeled for survival analysis</span></div>
@@ -104,9 +104,9 @@ The project is intentionally disciplined: AI outputs are assistive suggestions o
 ## <span class="gradient-text">Featured Projects</span>
 
 ::: {.project-grid .reveal-stagger}
-<a class="project-card" href="projects/radiology-value-pipeline.html"><img class="project-thumb" src="images/projects/radiology-value-pipeline/cover.png" alt="Radiology Value Pipeline review workspace"><div class="project-body"><div class="card-topline"><span class="project-badge">Flagship</span></div><div class="card-title">Radiology Value Pipeline</div><p>Clinical AI workflow platform for chest X-ray and brain MRI review, governed model runs, human feedback, audit trails, and Power BI reporting.</p><div class="chips"><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Clinical AI</span><span class="chip">Power BI</span></div></div></a>
+<a class="project-card" href="projects/radiology-value-pipeline.html"><img class="project-thumb" src="images/projects/radiology-value-pipeline/cover.png" alt="Radiology Value Pipeline review workspace"><div class="project-body"><div class="card-topline"><span class="project-badge">Flagship</span></div><div class="card-title">Radiology Value Pipeline</div><p>Radiology workflow platform with review, lineage, and Power BI reporting; its evidence package separates 20 public CUDA MRI volumes from 120K deterministic engineering evaluations.</p><div class="chips"><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">MRI Workflow</span><span class="chip">Power BI</span></div></div></a>
 <a class="project-card" href="projects/owl.html"><img class="project-thumb" src="images/projects/owl/cover.svg" alt="OWL knowledge graph"><div class="project-body"><div class="card-topline"><span class="project-badge">Open Source</span></div><div class="card-title">OWL: Autonomous AI Discovery Daemon</div><p>Local-first AI daemon with knowledge graph, discovery engine, Electron desktop app, MCP server, and 5 deployment modes.</p><div class="chips"><span class="chip">Node.js</span><span class="chip">Electron</span><span class="chip">SQLite</span><span class="chip">LLM</span></div></div></a>
-<a class="project-card" href="projects/roblox-brand-worlds.html"><img class="project-thumb" src="images/projects/roblox-brand-worlds/cover.jpg" alt="Roblox Black Adam immersive world"><div class="project-body"><div class="card-title">Roblox Immersive Brand Worlds</div><p>10 years of Roblox worldbuilding across shipped games, early music events, and global brand activations reaching 6.5B+ place visits.</p><div class="chips"><span class="chip">6.5B+ Visits</span><span class="chip">3D Design</span><span class="chip">Brand Worlds</span></div></div></a>
+<a class="project-card" href="projects/roblox-brand-worlds.html"><img class="project-thumb" src="images/projects/roblox-brand-worlds/cover.jpg" alt="Roblox Black Adam immersive world"><div class="project-body"><div class="card-title">Roblox Immersive Brand Worlds</div><p>10 years of world, level, and game design across shipped games, live events, and global brand activations with 7.5B+ plays.</p><div class="chips"><span class="chip">7.5B+ Plays</span><span class="chip">Level Design</span><span class="chip">Game Systems</span></div></div></a>
 <a class="project-card" href="projects/mercury-market-sim.html"><img class="project-thumb" src="images/projects/mercury-market-sim/cover.png" alt="MERCURY benchmark landscape"><div class="project-body"><div class="card-title">MERCURY: Market Microstructure Simulation Lab</div><p>Research-grade exchange simulation for liquidity stress, flash crashes, venue fragmentation, and fee-aware strategy interaction.</p><div class="chips"><span class="chip">Python</span><span class="chip">Simulation</span><span class="chip">Market Microstructure</span></div></div></a>
 <a class="project-card" href="projects/fulfillment.html"><img class="project-thumb" src="images/projects/fulfillment/cover.png" alt="Fulfillment simulation visual"><div class="project-body"><div class="card-title">Fulfillment Center Risk Simulation and Staffing Optimization</div><p>SimPy-based engine with pressure scoring, risk signals, and staffing search for high-load operations.</p><div class="chips"><span class="chip">Python</span><span class="chip">SimPy</span><span class="chip">Optimization</span></div></div></a>
 <a class="project-card" href="projects/blockchain-fraud.html"><img class="project-thumb" src="images/projects/blockchain-fraud/cover.png" alt="Blockchain fraud architecture"><div class="project-body"><div class="card-title">Blockchain + ML Healthcare Fraud Ledger</div><p>XGBoost fraud scoring combined with tamper-evident records for trust and auditability.</p><div class="chips"><span class="chip">XGBoost</span><span class="chip">SHA-256</span><span class="chip">Streamlit</span></div></div></a>

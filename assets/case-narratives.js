@@ -47,17 +47,17 @@ window.PORTFOLIO_CASE_NARRATIVES = {
   ],
   "radiology-value-pipeline": [
     {
-      title: "A workflow around the model",
+      title: "A workflow around evidence",
       paragraphs: [
         "I designed Radiology Value Pipeline around the work that follows an imaging prediction. A study enters through a normalized ingestion contract, moves through an ordered pipeline, and leaves behind structured findings, urgency suggestions, report drafts, feedback events, final reports, discrepancy records, and audit history.",
         "FastAPI handles the product APIs, PostgreSQL holds the operational state and lineage, and a database-backed worker claims jobs with row locking. The modular-monolith design keeps the system runnable and understandable while preserving clean boundaries for ingestion, pipeline services, reporting, feedback, governance, and dashboard marts."
       ]
     },
     {
-      title: "Two imaging paths, one operating model",
+      title: "MRI evidence boundary",
       paragraphs: [
-        "The chest X-ray path covers the high-throughput workflow: study registration, view-quality checks, target probabilities, assistive urgency, structured report drafting, review feedback, discrepancy handling, and dashboard publication. The brain MRI path adds multi-class tumor classification, context-aware slice analysis, segmentation-backed localization, and patient-level 3D corroboration.",
-        "Each specialist service records its version, status, latency, inputs, outputs, and artifacts. The held-out brain MRI benchmark reached a macro AUC of 0.9828, while the chest X-ray bundle exposes target-level performance rather than hiding variation inside a single score."
+        "The MRI evaluation includes 20 real public CUDA volumes from the public MSD Task01 BrainTumour dataset. Those runs cover prediction conversion, scoring, review overlays, and candidate cards. The 120,000 deterministic robustness, acceptance, conversion, and contract evaluations are separate engineering checks across synthetic failure modes and workflow gates; together the tracked engineering total is 123,020 case-evaluations.",
+        "The public MRI cohort ran with a 240 x 240 x 160 ROI. It completed with mean whole-tumor Dice of 0.9202, mean region macro Dice of 0.8411, mean whole-tumor HD95 of 7.3455 mm, and mean whole-tumor 2 mm surface Dice of 0.2970. The 2D held-out benchmark macro AUC was 0.9828. Every candidate card remains reject_for_more_evidence."
       ]
     },
     {
@@ -86,7 +86,7 @@ window.PORTFOLIO_CASE_NARRATIVES = {
     {
       title: "A real CRAN release workflow",
       paragraphs: [
-        "Ravel is published on CRAN and installs through install.packages('ravel'). I prepared the documentation, test suite, examples, release assets, pkgdown site, GitHub Actions matrix, and submission materials as part of the package itself.",
+        "Ravel is published on CRAN, has reached 1,600+ users, and installs through install.packages('ravel'). I prepared the documentation, test suite, examples, release assets, pkgdown site, GitHub Actions matrix, and submission materials as part of the package itself.",
         "Version 0.1.2 added OpenAI Responses API support, remote MCP declarations, refreshed provider defaults, and stronger file-action controls. The release passed checks across Windows, macOS, Ubuntu release, and Ubuntu devel."
       ]
     }
@@ -162,24 +162,24 @@ window.PORTFOLIO_CASE_NARRATIVES = {
   ],
   "roblox-brand-worlds": [
     {
-      title: "A decade of shipped 3D work",
+      title: "A decade of world and game design",
       paragraphs: [
-        "Before analytics became the center of my portfolio, I spent ten years building Roblox worlds and assets for live games, expansions, and branded events. My work covered environment design, terrain, texture work, props, vehicles, background buildings, city layouts, interiors, and world build.",
+        "Before analytics became the center of my portfolio, I spent ten years designing Roblox worlds for live games, expansions, and branded events. The work covered world layout, level flow, player routes, progression spaces, terrain, city planning, interiors, vehicles, and the systems that make a world feel alive.",
         "I worked across roleplay, music, film, toy, beauty, nonprofit, horror, and consumer-brand experiences. The projects included work connected to Warner Music, Sony Entertainment, DC's Black Adam, Bakugan, L'Oreal, and other large campaigns."
       ]
     },
     {
-      title: "Designing places people can use immediately",
+      title: "Designing worlds people return to",
       paragraphs: [
-        "World design had to do more than look good. Roads, lighting, landmarks, scale, and sightlines carried the player from the first spawn point through social spaces, event moments, and brand areas without a manual explaining where to go.",
-        "I balanced those visual decisions against lower-end device performance, large crowds, client review, screenshots, and live-event deadlines. The work translated client concepts into spaces that felt legible, memorable, and usable once players arrived."
+        "World design had to do more than look good. Routes, landmarks, sightlines, and reveal moments carried players from the first spawn through social spaces, event moments, and brand areas without a manual explaining where to go.",
+        "I designed around player pacing, progression, social behavior, repeatable gameplay loops, screenshots, and live-event moments, then balanced it all against lower-end device performance, large crowds, client review, and launch deadlines."
       ]
     },
     {
       title: "Selected production work",
       paragraphs: [
-        "For Black Adam, I led the Justice Hall area and the surrounding world environment. For Bakugan Battle League, I created building assets and supported a full lobby redesign. For the Ava Max launch party, I helped shape the map and built the major Heaven and Hell environments, props, and catalog assets.",
-        "I also produced more than 30 vehicles for Anomic, built stylized props and expansion environments for Spirit Guides, and helped develop Dreamworld RP from the ground up. The experiences I contributed to total more than 6.5 billion place visits, and Roblox CEO David Baszucki personally commended my work during the early interactive-concert era."
+        "For Black Adam, I led the Justice Hall area and the surrounding player experience. For Bakugan Battle League, I designed building systems and supported a full lobby redesign. For the Ava Max launch party, I helped shape the map and built the major Heaven and Hell environments and event spaces.",
+        "I also produced more than 30 vehicles for Anomic, built stylized expansion worlds for Spirit Guides, and helped develop Dreamworld RP from the ground up. The shipped experiences I contributed to have generated 7.5B+ plays, and Roblox CEO David Baszucki personally commended my work during the early interactive-concert era."
       ]
     }
   ],
@@ -367,7 +367,7 @@ Object.assign(window.PORTFOLIO_CASE_NARRATIVES, {
     {
       title: "A published CRAN release",
       paragraphs: [
-        "Ravel is published on CRAN and installs through install.packages('ravel'). I prepared the documentation, test suite, examples, release assets, pkgdown site, GitHub Actions matrix, and submission materials as part of the package itself.",
+        "Ravel is published on CRAN, has reached 1,600+ users, and installs through install.packages('ravel'). I prepared the documentation, test suite, examples, release assets, pkgdown site, GitHub Actions matrix, and submission materials as part of the package itself.",
         "Version 0.1.2 added OpenAI Responses API support, remote MCP declarations, refreshed provider defaults, and stronger file-action controls. The release passed checks across Windows, macOS, Ubuntu release, and Ubuntu devel."
       ]
     }

@@ -22,7 +22,7 @@ title: "Resume"
 
 <div class="timeline-item"><h4>Jun 2025 - Sep 2025: Fresno State University Sports, Digital Data and Insights Coordinator</h4><ul><li>Built a sponsor scoring model for 350+ prospects using fit and outreach metrics.</li><li>Automated dashboards that reduced weekly reporting time by 70%.</li><li>Guided multi-channel strategy using performance segmentation across 4+ channels.</li></ul></div>
 
-<div class="timeline-item"><h4>2020 - 2024: Roblox Immersive Brand Worlds, 3D Environment Artist and World Build Lead</h4><ul><li>Built 3D environments, vehicles, terrain systems, props, and branded spaces across shipped Roblox experiences totaling 6.5B+ place visits.</li><li>Worked on large-scale brand and entertainment activations connected to Warner Music, Sony Entertainment, DC/Black Adam, Bakugan, L'Oreal, JDRF, and other global IP campaigns.</li><li>Balanced visual direction, player movement, performance budgets, launch deadlines, and brand constraints for high-traffic interactive worlds.</li><li>Personally commended by Roblox CEO David Baszucki for contributions during the early interactive concert era on Roblox.</li></ul></div>
+<div class="timeline-item"><h4>2020 - 2024: Roblox Immersive Brand Worlds, World Design, Level Design and Game Systems</h4><ul><li>Designed player flow, progression spaces, environments, vehicles, terrain systems, and branded worlds across shipped Roblox experiences with 7.5B+ plays.</li><li>Worked on large-scale brand and entertainment activations connected to Warner Music, Sony Entertainment, DC/Black Adam, Bakugan, L'Oreal, JDRF, and other global IP campaigns.</li><li>Balanced captivating gameplay loops, player movement, performance budgets, launch deadlines, and brand constraints for high-traffic interactive worlds.</li><li>Personally commended by Roblox CEO David Baszucki for contributions during the early interactive concert era on Roblox.</li></ul></div>
 
 <div class="timeline-item"><h4>Aug 2023 - Jul 2024: American Councils (US State Department), City Lead and Project Manager</h4><ul><li>Tracked participation and demographic data for 550+ program applicants.</li><li>Facilitated six data-informed leadership workshops with measurement loops.</li><li>Produced structured cross-border reporting for grant-compliance workflows.</li></ul></div>
 
@@ -37,8 +37,8 @@ title: "Resume"
 ## <span class="gradient-text">Project Signature</span>
 
 - MERCURY market microstructure lab with multi-agent exchange simulation, flash-crash experiments, and reproducible research publishing
-- Roblox immersive brand-world production across shipped games and global activations totaling 6.5B+ place visits
-- Ravel, a CRAN-published RStudio AI copilot with a 0.1.2 maintenance update for OpenAI Responses API support, remote MCP declarations, safer staged actions, model interpretation, and Quarto drafting
+- Roblox world, level, and game design across shipped games and global activations with 7.5B+ plays
+- Ravel, a CRAN-published RStudio AI copilot used by 1,600+ people, with OpenAI Responses API support, remote MCP declarations, safer staged actions, model interpretation, and Quarto drafting
 - Wayline, a production-style travel analytics product with route orchestration, predictive trip scoring, protected API usage, and exportable planning outputs
 - Fraud modeling plus blockchain audit architecture for healthcare claims
 - Simulation-led staffing optimization for fulfillment operations

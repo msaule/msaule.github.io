@@ -1,7 +1,7 @@
 ---
 title: "Radiology Value Pipeline"
-subtitle: "Local-first radiology workflow AI with review, governance, and Power BI reporting"
-date: "April 24, 2026"
+subtitle: "A local-first, auditable radiology workflow platform for chest X-ray and brain MRI"
+date: "July 25, 2026"
 toc: true
 toc-depth: 3
 number-sections: true
@@ -62,6 +62,20 @@ The result is a credible foundation for a radiology workflow platform that can:
 ```
 
 ![](../images/projects/radiology-value-pipeline/charts/portfolio-scorecard.png){fig-alt="Portfolio scorecard showing processed studies, findings, reports, dashboard fact rows, and modality counts." width=100%}
+
+## MRI Evidence Boundary
+
+The MRI work has two distinct evidence categories. They are presented together for transparency, but they are not interchangeable and must not be described as one patient cohort.
+
+| Evidence category | Count | What it establishes | What it does not establish |
+|---|---:|---|---|
+| Real public MRI volumes | 20 | CUDA execution of the downloaded MONAI/NVIDIA BraTS bundle on public MSD Task01 BrainTumour volumes, including prediction conversion, scoring, review overlays, and candidate cards | Clinical performance, prospective utility, or deployment readiness |
+| Deterministic MRI robustness, acceptance, conversion, and contract evaluations | 120,000 | Reproducible software behavior across synthetic failure modes, workflow contracts, and acceptance gates | 120,000 real people, scans, or clinical outcomes |
+| Total engineering case-evaluations | 123,020 | Breadth of the tracked validation and contract artifacts | A clinical validation cohort |
+
+The completed public cohort ran on CUDA with the bundle ROI `240 x 240 x 160`. All 20 cases completed, with mean whole-tumor Dice `0.9202`, mean region macro Dice `0.8411`, mean whole-tumor HD95 `7.3455 mm`, and mean whole-tumor 2 mm surface Dice `0.2970`. Every candidate card remains `reject_for_more_evidence`.
+
+![](../images/projects/radiology-value-pipeline/charts/validation-evidence-boundary.png){fig-alt="Evidence boundary chart distinguishing 20 real public MRI volumes, 120000 deterministic engineering evaluations, and 33000 platform contract executions." width=100%}
 
 ## Why This Project Matters
 

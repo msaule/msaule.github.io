@@ -446,7 +446,7 @@ The first six cards should prove different dimensions rather than repeat similar
 3. OWL - local AI infrastructure, knowledge graph, tested product.
 4. `falsifyr` - statistical rigor and open source.
 5. Wayline - consumer product craft, APIs, predictive scoring.
-6. Roblox - 6.5B+ shipped-experience scale and commercial creative work.
+6. Roblox - 7.5B+ plays across shipped experiences, with commercial world and game-design work.
 
 Keep MERCURY, Ravel, and Fulfillment immediately below as strong secondary projects. This arrangement makes the first screen communicate finance, healthcare, infrastructure, statistics, product, and shipped scale.
 
@@ -496,12 +496,12 @@ The following numbers would materially strengthen applications if they are real 
 | BYU-Idaho | $4K spend, 2,250 qualified applicants, 320% engagement | Cost per qualified applicant, baseline, attribution window, conversion to hire. |
 | Fresno State | 350+ prospects, $370K sponsorship value, 70% reporting reduction | Hours saved, sponsor meetings, conversion, sponsorship revenue realized. |
 | Ministry of Health | 175,000 people reached across Latvia | Engagement, appointments, vaccinations, and message-performance change attributable to the analysis. |
-| Ravel | CRAN-approved | Downloads, active users, stars, issues closed, institutions or courses using it. |
+| Ravel | CRAN-approved; 1,600+ users | Downloads, active users, stars, issues closed, institutions or courses using it. |
 | falsifyr | 11 exports, 65 tests, local check | CRAN acceptance, downloads, reverse dependencies, user examples, coverage percentage. |
 | Earnings Quality | 14 routes, 187 tests | Dossier generation time, issuers tested, XBRL concept coverage, human review agreement, source-link precision. |
 | Radiology | 0.9828 MRI AUC shown on resume | Dataset split, external validation, calibration, sensitivity/specificity at operating threshold, exact personal contribution. |
 | OWL | 98 tests shown on resume | Indexing scale, retrieval latency, evaluation set, precision, active usage. |
-| Roblox | 6.5B+ aggregate place visits | Exact credited experiences, role per experience, launch dates, concurrent users, retention or engagement where public. |
+| Roblox | 7.5B+ aggregate plays | Exact credited experiences, role per experience, launch dates, concurrent users, retention or engagement where public. |
 
 Maintain a private evidence ledger with a row for every resume number: source, owner, date, definition, public-disclosure status, and supporting file or link.
 
@@ -636,7 +636,7 @@ Once `falsifyr` is accepted on CRAN, use:
 
 For Amazon operations or BIE roles, replace Radiology or `falsifyr` with Fulfillment Risk Engine. For finance, use Earnings Quality, `falsifyr`, MERCURY, and Insurance Fraud. For Mayo, use Radiology, Readmission, Lung Cancer, and OWL.
 
-Roblox should remain prominent on the portfolio and LinkedIn because 6.5B+ aggregate visits and CEO-level recognition are unusual. It should enter the resume when the target role values product craft, consumer scale, gaming, spatial computing, creative technology, or cross-functional delivery. It does not need to occupy scarce space on every analytics-engineering application.
+Roblox should remain prominent on the portfolio and LinkedIn because 7.5B+ aggregate plays and CEO-level recognition are unusual. It should enter the resume when the target role values product craft, consumer scale, gaming, spatial computing, creative technology, or cross-functional delivery. It does not need to occupy scarce space on every analytics-engineering application.
 
 ## 18. Final Standard
 

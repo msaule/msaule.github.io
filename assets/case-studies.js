@@ -59,7 +59,7 @@ window.PORTFOLIO_CASE_STUDIES = {
       "Kept clinicians in the review loop through structured feedback, report drafting, final sign-off, and complete audit history.",
       "Kept Power BI downstream of explicit SQL marts so dashboard logic remains inspectable and reproducible."
     ],
-    validation: "The portfolio build processed 76 studies, persisted 129 candidate findings, recorded 304 workflow-agent runs, and produced 858 dashboard fact rows. The brain MRI benchmark path reached a held-out macro AUC of 0.9828. Contract tests, smoke scripts, typed APIs, and stored lineage verify system behavior beyond the model itself.",
+    validation: "The MRI evidence is deliberately separated: 20 real public CUDA MRI volumes completed with a mean whole-tumor Dice of 0.9202, while 120,000 deterministic robustness, acceptance, conversion, and contract evaluations verify engineering behavior. Together the tracked engineering total is 123,020 case-evaluations. The held-out MRI benchmark macro AUC was 0.9828; every candidate remains reject_for_more_evidence.",
     links: [
       ["Full project PDF", "files/radiology-value-pipeline/radiology_value_pipeline_mayo_portfolio.pdf"],
       ["Power BI export", "files/radiology-value-pipeline/RadiologyValuePipelineDashboard.pdf"],
@@ -130,7 +130,7 @@ window.PORTFOLIO_CASE_STUDIES = {
       "Kept network-backed providers out of examples and tests to meet CRAN expectations and maintain deterministic checks.",
       "Added MCP capability without a new required dependency, preserving a light installation path."
     ],
-    validation: "Ravel was accepted on CRAN and is installable with install.packages('ravel'). Version 0.1.2 passed the GitHub Actions matrix on Windows, macOS, Ubuntu release, and Ubuntu devel. The submitted package checks reported zero errors, zero warnings, and one note.",
+    validation: "Ravel is published on CRAN, has reached 1,600+ users, and installs through install.packages('ravel'). Version 0.1.2 passed the GitHub Actions matrix on Windows, macOS, Ubuntu release, and Ubuntu devel. The submitted package checks reported zero errors, zero warnings, and one note.",
     links: [
       ["CRAN package", "https://cran.r-project.org/package=ravel"],
       ["Package website", "https://msaule.github.io/ravel/"],
@@ -160,21 +160,21 @@ window.PORTFOLIO_CASE_STUDIES = {
     ]
   },
   "roblox-brand-worlds": {
-    problem: "A branded 3D world has to communicate place, guide movement, support crowds, respect performance budgets, and still feel recognizable to the client. Players decide whether it works within seconds of spawning.",
-    role: "Across ten years I worked as a world designer, 3D artist, environment artist, texture artist, builder, vehicle modeler, world-build lead, and former Roblox DevRel QA tester on shipped games and brand activations.",
+    problem: "A branded game world has to make the first few seconds count: players need a clear place to go, reasons to keep exploring, and an experience that works under real device and crowd constraints.",
+    role: "Across ten years I worked in world design, level design, game design, progression, environment production, launch QA, and world-build leadership on shipped games and brand activations.",
     build: [
-      "Led the Justice Hall area and surrounding environment for the Black Adam promotional event.",
-      "Created building assets and supported a full lobby redesign for Bakugan Battle League.",
-      "Built major Heaven and Hell environments, props, and catalog assets for the Ava Max launch-party experience.",
-      "Produced 30+ vehicles for Anomic and environment expansions, terrain, city layouts, interiors, and world props across multiple games.",
-      "Translated work tied to Warner Music, Sony Entertainment, DC, Bakugan, L'Oreal, and other clients into usable interactive spaces."
+      "Led the Justice Hall area and surrounding player experience for the Black Adam promotional event.",
+      "Designed building systems and player flow for a full Bakugan Battle League lobby redesign.",
+      "Built the major Heaven and Hell environments and event spaces for the Ava Max launch-party experience.",
+      "Created vehicles, expansion spaces, terrain, city layouts, interiors, and progression-ready world systems across multiple games.",
+      "Turned work tied to Warner Music, Sony Entertainment, DC, Bakugan, L'Oreal, and other clients into interactive worlds people wanted to explore."
     ],
     decisions: [
-      "Used roads, lighting, landmarks, scale, and sightlines to guide players without relying on instructions.",
-      "Balanced visual ambition against lower-end device performance and high concurrent traffic.",
-      "Designed event spaces for crowds, social movement, screenshots, timed moments, and client review rather than treating them as static art scenes."
+      "Used landmarks, sightlines, routes, and reveal moments to guide players without relying on instructions.",
+      "Designed layouts around pacing, return paths, social interaction, progression, and the gameplay loops that keep a world active.",
+      "Balanced atmosphere and brand specificity against lower-end-device performance, high traffic, launch deadlines, and live-event constraints."
     ],
-    validation: "The shipped experiences I contributed to total more than 6.5 billion place visits. I delivered work across major entertainment and consumer-brand activations and was personally commended by Roblox CEO David Baszucki during the platform's early interactive-concert era.",
+    validation: "The shipped experiences I contributed to have generated 7.5B+ plays. I delivered work across major entertainment and consumer-brand activations and was personally commended by Roblox CEO David Baszucki during the platform's early interactive-concert era.",
     links: []
   },
   fulfillment: {

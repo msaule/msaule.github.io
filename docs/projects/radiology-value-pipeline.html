@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-04-24">
+<meta name="dcterms.date" content="2026-07-25">
 
 <title>Radiology Value Pipeline – Markuss Saule</title>
 <style>
@@ -174,58 +174,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#portfolio-package" id="toc-portfolio-package" class="nav-link active" data-scroll-target="#portfolio-package"><span class="header-section-number">1</span> Portfolio Package</a></li>
   <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary"><span class="header-section-number">2</span> Executive Summary</a></li>
-  <li><a href="#why-this-project-matters" id="toc-why-this-project-matters" class="nav-link" data-scroll-target="#why-this-project-matters"><span class="header-section-number">3</span> Why This Project Matters</a></li>
-  <li><a href="#product-snapshot" id="toc-product-snapshot" class="nav-link" data-scroll-target="#product-snapshot"><span class="header-section-number">4</span> Product Snapshot</a></li>
-  <li><a href="#the-design-choice-that-defines-the-project" id="toc-the-design-choice-that-defines-the-project" class="nav-link" data-scroll-target="#the-design-choice-that-defines-the-project"><span class="header-section-number">5</span> The Design Choice That Defines The Project</a></li>
-  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture"><span class="header-section-number">6</span> Architecture</a>
+  <li><a href="#mri-evidence-boundary" id="toc-mri-evidence-boundary" class="nav-link" data-scroll-target="#mri-evidence-boundary"><span class="header-section-number">3</span> MRI Evidence Boundary</a></li>
+  <li><a href="#why-this-project-matters" id="toc-why-this-project-matters" class="nav-link" data-scroll-target="#why-this-project-matters"><span class="header-section-number">4</span> Why This Project Matters</a></li>
+  <li><a href="#product-snapshot" id="toc-product-snapshot" class="nav-link" data-scroll-target="#product-snapshot"><span class="header-section-number">5</span> Product Snapshot</a></li>
+  <li><a href="#the-design-choice-that-defines-the-project" id="toc-the-design-choice-that-defines-the-project" class="nav-link" data-scroll-target="#the-design-choice-that-defines-the-project"><span class="header-section-number">6</span> The Design Choice That Defines The Project</a></li>
+  <li><a href="#architecture" id="toc-architecture" class="nav-link" data-scroll-target="#architecture"><span class="header-section-number">7</span> Architecture</a>
   <ul class="collapse">
-  <li><a href="#runtime-architecture" id="toc-runtime-architecture" class="nav-link" data-scroll-target="#runtime-architecture"><span class="header-section-number">6.1</span> Runtime Architecture</a></li>
-  <li><a href="#why-this-architecture-is-strong" id="toc-why-this-architecture-is-strong" class="nav-link" data-scroll-target="#why-this-architecture-is-strong"><span class="header-section-number">6.2</span> Why This Architecture Is Strong</a></li>
-  <li><a href="#architectural-boundaries" id="toc-architectural-boundaries" class="nav-link" data-scroll-target="#architectural-boundaries"><span class="header-section-number">6.3</span> Architectural Boundaries</a></li>
+  <li><a href="#runtime-architecture" id="toc-runtime-architecture" class="nav-link" data-scroll-target="#runtime-architecture"><span class="header-section-number">7.1</span> Runtime Architecture</a></li>
+  <li><a href="#why-this-architecture-is-strong" id="toc-why-this-architecture-is-strong" class="nav-link" data-scroll-target="#why-this-architecture-is-strong"><span class="header-section-number">7.2</span> Why This Architecture Is Strong</a></li>
+  <li><a href="#architectural-boundaries" id="toc-architectural-boundaries" class="nav-link" data-scroll-target="#architectural-boundaries"><span class="header-section-number">7.3</span> Architectural Boundaries</a></li>
   </ul></li>
-  <li><a href="#technology-stack" id="toc-technology-stack" class="nav-link" data-scroll-target="#technology-stack"><span class="header-section-number">7</span> Technology Stack</a></li>
-  <li><a href="#research-backed-integration-choices" id="toc-research-backed-integration-choices" class="nav-link" data-scroll-target="#research-backed-integration-choices"><span class="header-section-number">8</span> Research-Backed Integration Choices</a></li>
-  <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure"><span class="header-section-number">9</span> Repository Structure</a></li>
-  <li><a href="#data-model" id="toc-data-model" class="nav-link" data-scroll-target="#data-model"><span class="header-section-number">10</span> Data Model</a>
+  <li><a href="#technology-stack" id="toc-technology-stack" class="nav-link" data-scroll-target="#technology-stack"><span class="header-section-number">8</span> Technology Stack</a></li>
+  <li><a href="#research-backed-integration-choices" id="toc-research-backed-integration-choices" class="nav-link" data-scroll-target="#research-backed-integration-choices"><span class="header-section-number">9</span> Research-Backed Integration Choices</a></li>
+  <li><a href="#repository-structure" id="toc-repository-structure" class="nav-link" data-scroll-target="#repository-structure"><span class="header-section-number">10</span> Repository Structure</a></li>
+  <li><a href="#data-model" id="toc-data-model" class="nav-link" data-scroll-target="#data-model"><span class="header-section-number">11</span> Data Model</a>
   <ul class="collapse">
-  <li><a href="#core-tables" id="toc-core-tables" class="nav-link" data-scroll-target="#core-tables"><span class="header-section-number">10.1</span> Core Tables</a></li>
-  <li><a href="#schema-principles" id="toc-schema-principles" class="nav-link" data-scroll-target="#schema-principles"><span class="header-section-number">10.2</span> Schema Principles</a></li>
-  <li><a href="#example-db-backed-worker-claim" id="toc-example-db-backed-worker-claim" class="nav-link" data-scroll-target="#example-db-backed-worker-claim"><span class="header-section-number">10.3</span> Example: DB-Backed Worker Claim</a></li>
-  <li><a href="#example-dashboard-mart-shape" id="toc-example-dashboard-mart-shape" class="nav-link" data-scroll-target="#example-dashboard-mart-shape"><span class="header-section-number">10.4</span> Example: Dashboard Mart Shape</a></li>
+  <li><a href="#core-tables" id="toc-core-tables" class="nav-link" data-scroll-target="#core-tables"><span class="header-section-number">11.1</span> Core Tables</a></li>
+  <li><a href="#schema-principles" id="toc-schema-principles" class="nav-link" data-scroll-target="#schema-principles"><span class="header-section-number">11.2</span> Schema Principles</a></li>
+  <li><a href="#example-db-backed-worker-claim" id="toc-example-db-backed-worker-claim" class="nav-link" data-scroll-target="#example-db-backed-worker-claim"><span class="header-section-number">11.3</span> Example: DB-Backed Worker Claim</a></li>
+  <li><a href="#example-dashboard-mart-shape" id="toc-example-dashboard-mart-shape" class="nav-link" data-scroll-target="#example-dashboard-mart-shape"><span class="header-section-number">11.4</span> Example: Dashboard Mart Shape</a></li>
   </ul></li>
-  <li><a href="#model-system" id="toc-model-system" class="nav-link" data-scroll-target="#model-system"><span class="header-section-number">11</span> Model System</a>
+  <li><a href="#model-system" id="toc-model-system" class="nav-link" data-scroll-target="#model-system"><span class="header-section-number">12</span> Model System</a>
   <ul class="collapse">
-  <li><a href="#specialist-services" id="toc-specialist-services" class="nav-link" data-scroll-target="#specialist-services"><span class="header-section-number">11.1</span> Specialist Services</a></li>
-  <li><a href="#workflow-agents" id="toc-workflow-agents" class="nav-link" data-scroll-target="#workflow-agents"><span class="header-section-number">11.2</span> Workflow Agents</a></li>
+  <li><a href="#specialist-services" id="toc-specialist-services" class="nav-link" data-scroll-target="#specialist-services"><span class="header-section-number">12.1</span> Specialist Services</a></li>
+  <li><a href="#workflow-agents" id="toc-workflow-agents" class="nav-link" data-scroll-target="#workflow-agents"><span class="header-section-number">12.2</span> Workflow Agents</a></li>
   </ul></li>
-  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance"><span class="header-section-number">12</span> Model Performance</a>
+  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance"><span class="header-section-number">13</span> Model Performance</a>
   <ul class="collapse">
-  <li><a href="#chest-x-ray-baseline" id="toc-chest-x-ray-baseline" class="nav-link" data-scroll-target="#chest-x-ray-baseline"><span class="header-section-number">12.1</span> Chest X-Ray Baseline</a></li>
-  <li><a href="#brain-mri-advanced-imaging-path" id="toc-brain-mri-advanced-imaging-path" class="nav-link" data-scroll-target="#brain-mri-advanced-imaging-path"><span class="header-section-number">12.2</span> Brain MRI Advanced Imaging Path</a></li>
-  <li><a href="#patient-level-3d-mri-corroboration" id="toc-patient-level-3d-mri-corroboration" class="nav-link" data-scroll-target="#patient-level-3d-mri-corroboration"><span class="header-section-number">12.3</span> Patient-Level 3D MRI Corroboration</a></li>
+  <li><a href="#chest-x-ray-baseline" id="toc-chest-x-ray-baseline" class="nav-link" data-scroll-target="#chest-x-ray-baseline"><span class="header-section-number">13.1</span> Chest X-Ray Baseline</a></li>
+  <li><a href="#brain-mri-advanced-imaging-path" id="toc-brain-mri-advanced-imaging-path" class="nav-link" data-scroll-target="#brain-mri-advanced-imaging-path"><span class="header-section-number">13.2</span> Brain MRI Advanced Imaging Path</a></li>
+  <li><a href="#patient-level-3d-mri-corroboration" id="toc-patient-level-3d-mri-corroboration" class="nav-link" data-scroll-target="#patient-level-3d-mri-corroboration"><span class="header-section-number">13.3</span> Patient-Level 3D MRI Corroboration</a></li>
   </ul></li>
-  <li><a href="#review-workspace" id="toc-review-workspace" class="nav-link" data-scroll-target="#review-workspace"><span class="header-section-number">13</span> Review Workspace</a></li>
-  <li><a href="#operations-quality-and-governance-dashboards" id="toc-operations-quality-and-governance-dashboards" class="nav-link" data-scroll-target="#operations-quality-and-governance-dashboards"><span class="header-section-number">14</span> Operations, Quality, and Governance Dashboards</a>
+  <li><a href="#review-workspace" id="toc-review-workspace" class="nav-link" data-scroll-target="#review-workspace"><span class="header-section-number">14</span> Review Workspace</a></li>
+  <li><a href="#operations-quality-and-governance-dashboards" id="toc-operations-quality-and-governance-dashboards" class="nav-link" data-scroll-target="#operations-quality-and-governance-dashboards"><span class="header-section-number">15</span> Operations, Quality, and Governance Dashboards</a>
   <ul class="collapse">
-  <li><a href="#power-bi-report-package" id="toc-power-bi-report-package" class="nav-link" data-scroll-target="#power-bi-report-package"><span class="header-section-number">14.1</span> Power BI Report Package</a></li>
-  <li><a href="#embedded-power-bi-export" id="toc-embedded-power-bi-export" class="nav-link" data-scroll-target="#embedded-power-bi-export"><span class="header-section-number">14.2</span> Embedded Power BI Export</a></li>
+  <li><a href="#power-bi-report-package" id="toc-power-bi-report-package" class="nav-link" data-scroll-target="#power-bi-report-package"><span class="header-section-number">15.1</span> Power BI Report Package</a></li>
+  <li><a href="#embedded-power-bi-export" id="toc-embedded-power-bi-export" class="nav-link" data-scroll-target="#embedded-power-bi-export"><span class="header-section-number">15.2</span> Embedded Power BI Export</a></li>
   </ul></li>
-  <li><a href="#what-makes-this-portfolio-project-different" id="toc-what-makes-this-portfolio-project-different" class="nav-link" data-scroll-target="#what-makes-this-portfolio-project-different"><span class="header-section-number">15</span> What Makes This Portfolio Project Different</a></li>
-  <li><a href="#clinical-workflow-design" id="toc-clinical-workflow-design" class="nav-link" data-scroll-target="#clinical-workflow-design"><span class="header-section-number">16</span> Clinical Workflow Design</a></li>
-  <li><a href="#report-assist-design" id="toc-report-assist-design" class="nav-link" data-scroll-target="#report-assist-design"><span class="header-section-number">17</span> Report Assist Design</a></li>
-  <li><a href="#feedback-loop" id="toc-feedback-loop" class="nav-link" data-scroll-target="#feedback-loop"><span class="header-section-number">18</span> Feedback Loop</a></li>
-  <li><a href="#governance-and-monitoring" id="toc-governance-and-monitoring" class="nav-link" data-scroll-target="#governance-and-monitoring"><span class="header-section-number">19</span> Governance and Monitoring</a></li>
-  <li><a href="#api-surface" id="toc-api-surface" class="nav-link" data-scroll-target="#api-surface"><span class="header-section-number">20</span> API Surface</a></li>
-  <li><a href="#security-and-privacy-posture" id="toc-security-and-privacy-posture" class="nav-link" data-scroll-target="#security-and-privacy-posture"><span class="header-section-number">21</span> Security and Privacy Posture</a></li>
-  <li><a href="#what-is-real-vs-stubbed" id="toc-what-is-real-vs-stubbed" class="nav-link" data-scroll-target="#what-is-real-vs-stubbed"><span class="header-section-number">22</span> What Is Real vs Stubbed</a></li>
-  <li><a href="#what-i-want-a-clinical-engineering-team-to-notice" id="toc-what-i-want-a-clinical-engineering-team-to-notice" class="nav-link" data-scroll-target="#what-i-want-a-clinical-engineering-team-to-notice"><span class="header-section-number">23</span> What I Want A Clinical Engineering Team To Notice</a></li>
-  <li><a href="#how-i-would-walk-a-reviewer-through-it" id="toc-how-i-would-walk-a-reviewer-through-it" class="nav-link" data-scroll-target="#how-i-would-walk-a-reviewer-through-it"><span class="header-section-number">24</span> How I Would Walk A Reviewer Through It</a></li>
-  <li><a href="#next-milestones" id="toc-next-milestones" class="nav-link" data-scroll-target="#next-milestones"><span class="header-section-number">25</span> Next Milestones</a></li>
-  <li><a href="#local-run-path" id="toc-local-run-path" class="nav-link" data-scroll-target="#local-run-path"><span class="header-section-number">26</span> Local Run Path</a></li>
-  <li><a href="#appendix-dashboard-data-export-shape" id="toc-appendix-dashboard-data-export-shape" class="nav-link" data-scroll-target="#appendix-dashboard-data-export-shape"><span class="header-section-number">27</span> Appendix: Dashboard Data Export Shape</a></li>
-  <li><a href="#appendix-sql-mart-excerpts" id="toc-appendix-sql-mart-excerpts" class="nav-link" data-scroll-target="#appendix-sql-mart-excerpts"><span class="header-section-number">28</span> Appendix: SQL Mart Excerpts</a></li>
-  <li><a href="#appendix-product-boundaries" id="toc-appendix-product-boundaries" class="nav-link" data-scroll-target="#appendix-product-boundaries"><span class="header-section-number">29</span> Appendix: Product Boundaries</a></li>
-  <li><a href="#closing" id="toc-closing" class="nav-link" data-scroll-target="#closing"><span class="header-section-number">30</span> Closing</a></li>
+  <li><a href="#what-makes-this-portfolio-project-different" id="toc-what-makes-this-portfolio-project-different" class="nav-link" data-scroll-target="#what-makes-this-portfolio-project-different"><span class="header-section-number">16</span> What Makes This Portfolio Project Different</a></li>
+  <li><a href="#clinical-workflow-design" id="toc-clinical-workflow-design" class="nav-link" data-scroll-target="#clinical-workflow-design"><span class="header-section-number">17</span> Clinical Workflow Design</a></li>
+  <li><a href="#report-assist-design" id="toc-report-assist-design" class="nav-link" data-scroll-target="#report-assist-design"><span class="header-section-number">18</span> Report Assist Design</a></li>
+  <li><a href="#feedback-loop" id="toc-feedback-loop" class="nav-link" data-scroll-target="#feedback-loop"><span class="header-section-number">19</span> Feedback Loop</a></li>
+  <li><a href="#governance-and-monitoring" id="toc-governance-and-monitoring" class="nav-link" data-scroll-target="#governance-and-monitoring"><span class="header-section-number">20</span> Governance and Monitoring</a></li>
+  <li><a href="#api-surface" id="toc-api-surface" class="nav-link" data-scroll-target="#api-surface"><span class="header-section-number">21</span> API Surface</a></li>
+  <li><a href="#security-and-privacy-posture" id="toc-security-and-privacy-posture" class="nav-link" data-scroll-target="#security-and-privacy-posture"><span class="header-section-number">22</span> Security and Privacy Posture</a></li>
+  <li><a href="#what-is-real-vs-stubbed" id="toc-what-is-real-vs-stubbed" class="nav-link" data-scroll-target="#what-is-real-vs-stubbed"><span class="header-section-number">23</span> What Is Real vs Stubbed</a></li>
+  <li><a href="#what-i-want-a-clinical-engineering-team-to-notice" id="toc-what-i-want-a-clinical-engineering-team-to-notice" class="nav-link" data-scroll-target="#what-i-want-a-clinical-engineering-team-to-notice"><span class="header-section-number">24</span> What I Want A Clinical Engineering Team To Notice</a></li>
+  <li><a href="#how-i-would-walk-a-reviewer-through-it" id="toc-how-i-would-walk-a-reviewer-through-it" class="nav-link" data-scroll-target="#how-i-would-walk-a-reviewer-through-it"><span class="header-section-number">25</span> How I Would Walk A Reviewer Through It</a></li>
+  <li><a href="#next-milestones" id="toc-next-milestones" class="nav-link" data-scroll-target="#next-milestones"><span class="header-section-number">26</span> Next Milestones</a></li>
+  <li><a href="#local-run-path" id="toc-local-run-path" class="nav-link" data-scroll-target="#local-run-path"><span class="header-section-number">27</span> Local Run Path</a></li>
+  <li><a href="#appendix-dashboard-data-export-shape" id="toc-appendix-dashboard-data-export-shape" class="nav-link" data-scroll-target="#appendix-dashboard-data-export-shape"><span class="header-section-number">28</span> Appendix: Dashboard Data Export Shape</a></li>
+  <li><a href="#appendix-sql-mart-excerpts" id="toc-appendix-sql-mart-excerpts" class="nav-link" data-scroll-target="#appendix-sql-mart-excerpts"><span class="header-section-number">29</span> Appendix: SQL Mart Excerpts</a></li>
+  <li><a href="#appendix-product-boundaries" id="toc-appendix-product-boundaries" class="nav-link" data-scroll-target="#appendix-product-boundaries"><span class="header-section-number">30</span> Appendix: Product Boundaries</a></li>
+  <li><a href="#closing" id="toc-closing" class="nav-link" data-scroll-target="#closing"><span class="header-section-number">31</span> Closing</a></li>
   </ul>
 </nav>
     </div>
@@ -235,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Radiology Value Pipeline</h1>
-<p class="subtitle lead">Local-first radiology workflow AI with review, governance, and Power BI reporting</p>
+<p class="subtitle lead">A local-first, auditable radiology workflow platform for chest X-ray and brain MRI</p>
 </div>
 
 
@@ -246,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 24, 2026</p>
+      <p class="date">July 25, 2026</p>
     </div>
   </div>
   
@@ -329,8 +330,50 @@ Important
 </div>
 <p><img src="../images/projects/radiology-value-pipeline/charts/portfolio-scorecard.png" class="img-fluid" style="width:100.0%" alt="Portfolio scorecard showing processed studies, findings, reports, dashboard fact rows, and modality counts."></p>
 </section>
-<section id="why-this-project-matters" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="why-this-project-matters"><span class="header-section-number">3</span> Why This Project Matters</h2>
+<section id="mri-evidence-boundary" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="mri-evidence-boundary"><span class="header-section-number">3</span> MRI Evidence Boundary</h2>
+<p>The MRI work has two distinct evidence categories. They are presented together for transparency, but they are not interchangeable and must not be described as one patient cohort.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 30%">
+<col style="width: 23%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Evidence category</th>
+<th style="text-align: right;">Count</th>
+<th>What it establishes</th>
+<th>What it does not establish</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Real public MRI volumes</td>
+<td style="text-align: right;">20</td>
+<td>CUDA execution of the downloaded MONAI/NVIDIA BraTS bundle on public MSD Task01 BrainTumour volumes, including prediction conversion, scoring, review overlays, and candidate cards</td>
+<td>Clinical performance, prospective utility, or deployment readiness</td>
+</tr>
+<tr class="even">
+<td>Deterministic MRI robustness, acceptance, conversion, and contract evaluations</td>
+<td style="text-align: right;">120,000</td>
+<td>Reproducible software behavior across synthetic failure modes, workflow contracts, and acceptance gates</td>
+<td>120,000 real people, scans, or clinical outcomes</td>
+</tr>
+<tr class="odd">
+<td>Total engineering case-evaluations</td>
+<td style="text-align: right;">123,020</td>
+<td>Breadth of the tracked validation and contract artifacts</td>
+<td>A clinical validation cohort</td>
+</tr>
+</tbody>
+</table>
+<p>The completed public cohort ran on CUDA with the bundle ROI <code>240 x 240 x 160</code>. All 20 cases completed, with mean whole-tumor Dice <code>0.9202</code>, mean region macro Dice <code>0.8411</code>, mean whole-tumor HD95 <code>7.3455 mm</code>, and mean whole-tumor 2 mm surface Dice <code>0.2970</code>. Every candidate card remains <code>reject_for_more_evidence</code>.</p>
+<p><img src="../images/projects/radiology-value-pipeline/charts/validation-evidence-boundary.png" class="img-fluid" style="width:100.0%" alt="Evidence boundary chart distinguishing 20 real public MRI volumes, 120000 deterministic engineering evaluations, and 33000 platform contract executions."></p>
+</section>
+<section id="why-this-project-matters" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="why-this-project-matters"><span class="header-section-number">4</span> Why This Project Matters</h2>
 <p>This project is personal.</p>
 <p>My father and his brother both died from cancer in their mid 40s, and poor or delayed diagnostic pathways were part of the story. I do not say that to claim a model would have saved them. I say it because diagnostic systems are human systems, and human systems need better memory, better feedback loops, better measurement, and better ways to reduce preventable misses.</p>
 <p>Radiology is one of the places where this matters most. A radiologist is asked to move fast, read complex imaging, integrate clinical context, handle prior exams, manage interruptions, support urgent findings, and produce reports that downstream teams act on. The right AI system should not try to replace that expertise. It should make the workflow more inspectable, more measurable, and more resilient.</p>
@@ -344,8 +387,8 @@ Important
 </ul>
 <p>This is the kind of platform I would want to build around a real clinical team: technically ambitious, clinically humble, and designed to improve through feedback.</p>
 </section>
-<section id="product-snapshot" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="product-snapshot"><span class="header-section-number">4</span> Product Snapshot</h2>
+<section id="product-snapshot" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="product-snapshot"><span class="header-section-number">5</span> Product Snapshot</h2>
 <p>Radiology Value Pipeline currently includes:</p>
 <ul>
 <li>A FastAPI backend with versioned APIs for studies, pipeline execution, findings, report drafts, feedback, final reports, discrepancy analysis, dashboards, and governance.</li>
@@ -360,8 +403,8 @@ Important
 </ul>
 <p><img src="../images/projects/radiology-value-pipeline/screenshots/web-workspace-overview.png" class="img-fluid" style="width:100.0%" alt="Radiology Value Pipeline browser workspace overview showing modality-aware worklist and dashboard panels."></p>
 </section>
-<section id="the-design-choice-that-defines-the-project" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="the-design-choice-that-defines-the-project"><span class="header-section-number">5</span> The Design Choice That Defines The Project</h2>
+<section id="the-design-choice-that-defines-the-project" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="the-design-choice-that-defines-the-project"><span class="header-section-number">6</span> The Design Choice That Defines The Project</h2>
 <p>The central architectural decision is that this is not a model demo. It is a workflow platform.</p>
 <p>In healthcare AI, the hard parts are not only model architecture. The hard parts are versioning, traceability, feedback, governance, review experience, data contracts, operational monitoring, and making it possible for a clinician to understand what happened after the fact.</p>
 <p>This platform treats every AI output as part of a governed workflow:</p>
@@ -378,12 +421,12 @@ Important
 </ul>
 <p>That design is what makes the project more than a classifier.</p>
 </section>
-<section id="architecture" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="architecture"><span class="header-section-number">6</span> Architecture</h2>
+<section id="architecture" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="architecture"><span class="header-section-number">7</span> Architecture</h2>
 <p>The MVP is intentionally a modular monolith plus worker. It avoids Kafka, event-sourcing theater, and microservice sprawl. Clean boundaries exist inside the repo, but the system stays comprehensible and runnable on a laptop.</p>
 <p><img src="../images/projects/radiology-value-pipeline/diagrams/platform-architecture.png" class="img-fluid" style="width:100.0%" alt="Platform architecture diagram showing FastAPI, PostgreSQL, worker, Orthanc, OHIF, artifact storage, MLflow, Evidently, and Power BI."></p>
-<section id="runtime-architecture" class="level3" data-number="6.1">
-<h3 data-number="6.1" class="anchored" data-anchor-id="runtime-architecture"><span class="header-section-number">6.1</span> Runtime Architecture</h3>
+<section id="runtime-architecture" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="runtime-architecture"><span class="header-section-number">7.1</span> Runtime Architecture</h3>
 <pre class="text"><code>Browser review workspace
         |
         v
@@ -420,8 +463,8 @@ Worker process
         +-- discrepancy service
         +-- workflow agents</code></pre>
 </section>
-<section id="why-this-architecture-is-strong" class="level3" data-number="6.2">
-<h3 data-number="6.2" class="anchored" data-anchor-id="why-this-architecture-is-strong"><span class="header-section-number">6.2</span> Why This Architecture Is Strong</h3>
+<section id="why-this-architecture-is-strong" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="why-this-architecture-is-strong"><span class="header-section-number">7.2</span> Why This Architecture Is Strong</h3>
 <p>This architecture is deliberately boring where reliability matters and advanced where imaging AI matters.</p>
 <ul>
 <li>FastAPI keeps the API layer typed, inspectable, and easy to document.</li>
@@ -435,8 +478,8 @@ Worker process
 <li>Power BI exports make the governance and operations story visible to leaders, not just engineers.</li>
 </ul>
 </section>
-<section id="architectural-boundaries" class="level3" data-number="6.3">
-<h3 data-number="6.3" class="anchored" data-anchor-id="architectural-boundaries"><span class="header-section-number">6.3</span> Architectural Boundaries</h3>
+<section id="architectural-boundaries" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="architectural-boundaries"><span class="header-section-number">7.3</span> Architectural Boundaries</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -493,8 +536,8 @@ Worker process
 </table>
 </section>
 </section>
-<section id="technology-stack" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="technology-stack"><span class="header-section-number">7</span> Technology Stack</h2>
+<section id="technology-stack" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="technology-stack"><span class="header-section-number">8</span> Technology Stack</h2>
 <p>This stack was chosen for practical clinical product engineering, not novelty.</p>
 <table class="caption-top table">
 <colgroup>
@@ -581,8 +624,8 @@ Note
 </div>
 </div>
 </section>
-<section id="research-backed-integration-choices" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="research-backed-integration-choices"><span class="header-section-number">8</span> Research-Backed Integration Choices</h2>
+<section id="research-backed-integration-choices" class="level2" data-number="9">
+<h2 data-number="9" class="anchored" data-anchor-id="research-backed-integration-choices"><span class="header-section-number">9</span> Research-Backed Integration Choices</h2>
 <p>The project documentation captures current design-relevant research in <code>docs/architecture/research-notes.md</code>. The most important choices are:</p>
 <ul>
 <li>Use Orthanc DICOMweb and OHIF DICOMweb data source patterns rather than inventing proprietary imaging APIs.</li>
@@ -599,8 +642,8 @@ Note
 <li>Treat FDA AI-enabled device software lifecycle guidance and ONC HTI-1 predictive DSI transparency expectations as governance design inputs, not compliance claims.</li>
 </ul>
 </section>
-<section id="repository-structure" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="repository-structure"><span class="header-section-number">9</span> Repository Structure</h2>
+<section id="repository-structure" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="repository-structure"><span class="header-section-number">10</span> Repository Structure</h2>
 <pre class="text"><code>radiology-value-pipeline/
   backend/
     app/
@@ -639,12 +682,12 @@ Note
   README.md</code></pre>
 <p>The structure is designed to be legible to a reviewer. A hiring manager or technical interviewer can open the repository and immediately find the product specification, architecture decisions, database model, pipeline interfaces, worker behavior, dashboards, and tests.</p>
 </section>
-<section id="data-model" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="data-model"><span class="header-section-number">10</span> Data Model</h2>
+<section id="data-model" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="data-model"><span class="header-section-number">11</span> Data Model</h2>
 <p>PostgreSQL is the operational backbone. The platform does not store DICOM binaries in the relational database. It stores metadata, lineage, structured outputs, and retrieval references, while image artifacts, overlays, saliency maps, masks, and generated files live in artifact storage.</p>
 <p><img src="../images/projects/radiology-value-pipeline/diagrams/data-model-erd.png" class="img-fluid" style="width:100.0%" alt="Simplified ERD showing studies, instances, model runs, findings, drafts, final reports, feedback, audit, governance, and dashboard facts."></p>
-<section id="core-tables" class="level3" data-number="10.1">
-<h3 data-number="10.1" class="anchored" data-anchor-id="core-tables"><span class="header-section-number">10.1</span> Core Tables</h3>
+<section id="core-tables" class="level3" data-number="11.1">
+<h3 data-number="11.1" class="anchored" data-anchor-id="core-tables"><span class="header-section-number">11.1</span> Core Tables</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -752,8 +795,8 @@ Note
 </tbody>
 </table>
 </section>
-<section id="schema-principles" class="level3" data-number="10.2">
-<h3 data-number="10.2" class="anchored" data-anchor-id="schema-principles"><span class="header-section-number">10.2</span> Schema Principles</h3>
+<section id="schema-principles" class="level3" data-number="11.2">
+<h3 data-number="11.2" class="anchored" data-anchor-id="schema-principles"><span class="header-section-number">11.2</span> Schema Principles</h3>
 <ul>
 <li>UUID primary keys where durable identity matters.</li>
 <li><code>created_at</code> and <code>updated_at</code> timestamps on operational entities.</li>
@@ -766,8 +809,8 @@ Note
 <li>Append-only feedback and audit records.</li>
 </ul>
 </section>
-<section id="example-db-backed-worker-claim" class="level3" data-number="10.3">
-<h3 data-number="10.3" class="anchored" data-anchor-id="example-db-backed-worker-claim"><span class="header-section-number">10.3</span> Example: DB-Backed Worker Claim</h3>
+<section id="example-db-backed-worker-claim" class="level3" data-number="11.3">
+<h3 data-number="11.3" class="anchored" data-anchor-id="example-db-backed-worker-claim"><span class="header-section-number">11.3</span> Example: DB-Backed Worker Claim</h3>
 <p>The worker is intentionally simple. It claims jobs with row-level locking and <code>SKIP LOCKED</code>, which gives safe concurrent polling without adding Redis or Kafka.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> <span class="op">*</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> pipeline_jobs</span>
@@ -777,8 +820,8 @@ Note
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">1</span>;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is an MVP-appropriate choice because the queue semantics are directly tied to the operational database, the failure modes are easy to inspect, and the system stays small enough to understand.</p>
 </section>
-<section id="example-dashboard-mart-shape" class="level3" data-number="10.4">
-<h3 data-number="10.4" class="anchored" data-anchor-id="example-dashboard-mart-shape"><span class="header-section-number">10.4</span> Example: Dashboard Mart Shape</h3>
+<section id="example-dashboard-mart-shape" class="level3" data-number="11.4">
+<h3 data-number="11.4" class="anchored" data-anchor-id="example-dashboard-mart-shape"><span class="header-section-number">11.4</span> Example: Dashboard Mart Shape</h3>
 <p>The dashboard marts are SQL-first. Power BI is a presentation layer, not a hidden source of truth.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  event_date,</span>
@@ -799,12 +842,12 @@ Note
 </ul>
 </section>
 </section>
-<section id="model-system" class="level2" data-number="11">
-<h2 data-number="11" class="anchored" data-anchor-id="model-system"><span class="header-section-number">11</span> Model System</h2>
+<section id="model-system" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="model-system"><span class="header-section-number">12</span> Model System</h2>
 <p>The model system is orchestrated as specialist components, not a giant monolith. Each service has a typed contract, persists run metadata, records latency and status, and can run in stub or real mode.</p>
 <p><img src="../images/projects/radiology-value-pipeline/diagrams/model-orchestration.png" class="img-fluid" style="width:100.0%" alt="Model orchestration diagram showing specialist services and workflow agents."></p>
-<section id="specialist-services" class="level3" data-number="11.1">
-<h3 data-number="11.1" class="anchored" data-anchor-id="specialist-services"><span class="header-section-number">11.1</span> Specialist Services</h3>
+<section id="specialist-services" class="level3" data-number="12.1">
+<h3 data-number="12.1" class="anchored" data-anchor-id="specialist-services"><span class="header-section-number">12.1</span> Specialist Services</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -852,8 +895,8 @@ Note
 </tbody>
 </table>
 </section>
-<section id="workflow-agents" class="level3" data-number="11.2">
-<h3 data-number="11.2" class="anchored" data-anchor-id="workflow-agents"><span class="header-section-number">11.2</span> Workflow Agents</h3>
+<section id="workflow-agents" class="level3" data-number="12.2">
+<h3 data-number="12.2" class="anchored" data-anchor-id="workflow-agents"><span class="header-section-number">12.2</span> Workflow Agents</h3>
 <p>The platform also includes explicit workflow agents. These are not free-floating chatbots. They are governed workflow components with prompt versions, agent versions, input payloads, output payloads, status, latency, trace JSON, and audit linkage.</p>
 <p>Current agent examples:</p>
 <ul>
@@ -864,12 +907,12 @@ Note
 <p>The agent layer matters because modern clinical AI products will increasingly combine image models, structured rules, report drafting, and natural-language review. The platform makes those components observable rather than invisible.</p>
 </section>
 </section>
-<section id="model-performance" class="level2" data-number="12">
-<h2 data-number="12" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">12</span> Model Performance</h2>
+<section id="model-performance" class="level2" data-number="13">
+<h2 data-number="13" class="anchored" data-anchor-id="model-performance"><span class="header-section-number">13</span> Model Performance</h2>
 <p>The project uses real public benchmark data where possible, while keeping strict language around clinical validation. The AUC values below are benchmark and demo evaluation metrics. They are not claims of clinical readiness.</p>
 <p><img src="../images/projects/radiology-value-pipeline/charts/model-performance-summary.png" class="img-fluid" style="width:100.0%" alt="Model performance summary showing validation and test AUC for chest X-ray, infiltration, brain MRI, and 3D brain MRI paths."></p>
-<section id="chest-x-ray-baseline" class="level3" data-number="12.1">
-<h3 data-number="12.1" class="anchored" data-anchor-id="chest-x-ray-baseline"><span class="header-section-number">12.1</span> Chest X-Ray Baseline</h3>
+<section id="chest-x-ray-baseline" class="level3" data-number="13.1">
+<h3 data-number="13.1" class="anchored" data-anchor-id="chest-x-ray-baseline"><span class="header-section-number">13.1</span> Chest X-Ray Baseline</h3>
 <div class="mayo-model-card">
   <p class="mayo-card-title">Chest X-ray abnormality baseline</p>
   <p><strong>Runtime bundle:</strong> compact-cnn-v4-ensemble-2</p>
@@ -919,8 +962,8 @@ Note
 <p>The system does not hide weak targets. It surfaces model posture and target-level metrics in the UI and governance data. That is an important product behavior: weaker model areas should be visible, not disguised behind a single aggregate score.</p>
 <p><img src="../images/projects/radiology-value-pipeline/screenshots/study-review-chest-xray.png" class="img-fluid" style="width:100.0%" alt="Chest X-ray study review showing imaging preview, AI synthesis, model posture, target probabilities, agent ledger, feedback, discrepancy, and audit trail."></p>
 </section>
-<section id="brain-mri-advanced-imaging-path" class="level3" data-number="12.2">
-<h3 data-number="12.2" class="anchored" data-anchor-id="brain-mri-advanced-imaging-path"><span class="header-section-number">12.2</span> Brain MRI Advanced Imaging Path</h3>
+<section id="brain-mri-advanced-imaging-path" class="level3" data-number="13.2">
+<h3 data-number="13.2" class="anchored" data-anchor-id="brain-mri-advanced-imaging-path"><span class="header-section-number">13.2</span> Brain MRI Advanced Imaging Path</h3>
 <div class="mayo-model-card">
   <p class="mayo-card-title">Brain MRI context and segmentation bundle</p>
   <p><strong>Runtime bundle:</strong> brain-mri-context-seg-v2</p>
@@ -969,8 +1012,8 @@ Note
 </table>
 <p><img src="../images/projects/radiology-value-pipeline/screenshots/study-review-brain-mri.png" class="img-fluid" style="width:100.0%" alt="Brain MRI study review showing MRI preview, tumor classification targets, segmentation-backed artifacts, report assist output, and audit events."></p>
 </section>
-<section id="patient-level-3d-mri-corroboration" class="level3" data-number="12.3">
-<h3 data-number="12.3" class="anchored" data-anchor-id="patient-level-3d-mri-corroboration"><span class="header-section-number">12.3</span> Patient-Level 3D MRI Corroboration</h3>
+<section id="patient-level-3d-mri-corroboration" class="level3" data-number="13.3">
+<h3 data-number="13.3" class="anchored" data-anchor-id="patient-level-3d-mri-corroboration"><span class="header-section-number">13.3</span> Patient-Level 3D MRI Corroboration</h3>
 <div class="mayo-model-card">
   <p class="mayo-card-title">Brain MRI patient-level 3D corroboration</p>
   <p><strong>Runtime bundle:</strong> brain-mri-volume3d-v1</p>
@@ -991,8 +1034,8 @@ Note
 </ul>
 </section>
 </section>
-<section id="review-workspace" class="level2" data-number="13">
-<h2 data-number="13" class="anchored" data-anchor-id="review-workspace"><span class="header-section-number">13</span> Review Workspace</h2>
+<section id="review-workspace" class="level2" data-number="14">
+<h2 data-number="14" class="anchored" data-anchor-id="review-workspace"><span class="header-section-number">14</span> Review Workspace</h2>
 <p>The browser review workspace is designed to feel like a clinical operations surface rather than a model demo page.</p>
 <p>The study review page shows:</p>
 <ul>
@@ -1013,14 +1056,14 @@ Note
 </ul>
 <p>The UI is intentionally explicit. If a sidecar service is offline, it says so. If an artifact is local, it shows the local fallback. If the AI is assistive only, the copy says so.</p>
 </section>
-<section id="operations-quality-and-governance-dashboards" class="level2" data-number="14">
-<h2 data-number="14" class="anchored" data-anchor-id="operations-quality-and-governance-dashboards"><span class="header-section-number">14</span> Operations, Quality, and Governance Dashboards</h2>
+<section id="operations-quality-and-governance-dashboards" class="level2" data-number="15">
+<h2 data-number="15" class="anchored" data-anchor-id="operations-quality-and-governance-dashboards"><span class="header-section-number">15</span> Operations, Quality, and Governance Dashboards</h2>
 <p>Power BI is included because the product is not only for model builders. A radiology AI platform needs visibility for operations leaders, clinical quality teams, and governance committees.</p>
 <p><img src="../images/projects/radiology-value-pipeline/screenshots/web-operations-dashboard.png" class="img-fluid" style="width:100.0%" alt="Web operations dashboard showing study volume, latency, urgency, and run health."></p>
 <p><img src="../images/projects/radiology-value-pipeline/screenshots/web-quality-dashboard.png" class="img-fluid" style="width:100.0%" alt="Web clinical quality dashboard showing discrepancy, feedback, adoption, and model quality metrics."></p>
 <p><img src="../images/projects/radiology-value-pipeline/screenshots/web-governance-dashboard.png" class="img-fluid" style="width:100.0%" alt="Web governance dashboard showing deployed models, prompts, drift, audit, and governance inventory."></p>
-<section id="power-bi-report-package" class="level3" data-number="14.1">
-<h3 data-number="14.1" class="anchored" data-anchor-id="power-bi-report-package"><span class="header-section-number">14.1</span> Power BI Report Package</h3>
+<section id="power-bi-report-package" class="level3" data-number="15.1">
+<h3 data-number="15.1" class="anchored" data-anchor-id="power-bi-report-package"><span class="header-section-number">15.1</span> Power BI Report Package</h3>
 <p>The Power BI package is designed around curated exports from dashboard marts. The report includes:</p>
 <ul>
 <li>Executive overview.</li>
@@ -1032,8 +1075,8 @@ Note
 <p>The project includes a PBIP handoff package, CSV exports, and a browser download surface.</p>
 <p><img src="../images/projects/radiology-value-pipeline/screenshots/web-powerbi-handoff.png" class="img-fluid" style="width:100.0%" alt="Power BI handoff page with packaged downloads and export status."></p>
 </section>
-<section id="embedded-power-bi-export" class="level3" data-number="14.2">
-<h3 data-number="14.2" class="anchored" data-anchor-id="embedded-power-bi-export"><span class="header-section-number">14.2</span> Embedded Power BI Export</h3>
+<section id="embedded-power-bi-export" class="level3" data-number="15.2">
+<h3 data-number="15.2" class="anchored" data-anchor-id="embedded-power-bi-export"><span class="header-section-number">15.2</span> Embedded Power BI Export</h3>
 <p>The exported Power BI PDF is embedded below for HTML renderers that support PDF objects. The individual pages are also extracted as PNG images for portability.</p>
 <object class="mayo-pdf-frame" data="../files/radiology-value-pipeline/RadiologyValuePipelineDashboard.pdf" type="application/pdf">
   <p>Open the exported Power BI PDF at <a href="../files/radiology-value-pipeline/RadiologyValuePipelineDashboard.pdf">../files/radiology-value-pipeline/RadiologyValuePipelineDashboard.pdf</a>.</p>
@@ -1044,8 +1087,8 @@ Note
 <p><img src="../images/projects/radiology-value-pipeline/powerbi/powerbi-page-4.png" class="img-fluid" style="width:100.0%" alt="Power BI dashboard page 4."></p>
 </section>
 </section>
-<section id="what-makes-this-portfolio-project-different" class="level2" data-number="15">
-<h2 data-number="15" class="anchored" data-anchor-id="what-makes-this-portfolio-project-different"><span class="header-section-number">15</span> What Makes This Portfolio Project Different</h2>
+<section id="what-makes-this-portfolio-project-different" class="level2" data-number="16">
+<h2 data-number="16" class="anchored" data-anchor-id="what-makes-this-portfolio-project-different"><span class="header-section-number">16</span> What Makes This Portfolio Project Different</h2>
 <p>Many AI portfolio projects stop at a notebook. This one builds the product shell around the model.</p>
 <p>The work demonstrates:</p>
 <ul>
@@ -1061,8 +1104,8 @@ Note
 </ul>
 <p>This is the difference between “I trained a model” and “I understand what it takes to make imaging AI useful inside a clinical workflow.”</p>
 </section>
-<section id="clinical-workflow-design" class="level2" data-number="16">
-<h2 data-number="16" class="anchored" data-anchor-id="clinical-workflow-design"><span class="header-section-number">16</span> Clinical Workflow Design</h2>
+<section id="clinical-workflow-design" class="level2" data-number="17">
+<h2 data-number="17" class="anchored" data-anchor-id="clinical-workflow-design"><span class="header-section-number">17</span> Clinical Workflow Design</h2>
 <p>The platform follows a human-in-the-loop path:</p>
 <ol type="1">
 <li>A study is registered from a DICOM gateway or demo adapter.</li>
@@ -1079,8 +1122,8 @@ Note
 </ol>
 <p>This workflow avoids the most dangerous pattern in medical AI demos: producing a confident paragraph with no lineage, no feedback, no uncertainty, and no accountability.</p>
 </section>
-<section id="report-assist-design" class="level2" data-number="17">
-<h2 data-number="17" class="anchored" data-anchor-id="report-assist-design"><span class="header-section-number">17</span> Report Assist Design</h2>
+<section id="report-assist-design" class="level2" data-number="18">
+<h2 data-number="18" class="anchored" data-anchor-id="report-assist-design"><span class="header-section-number">18</span> Report Assist Design</h2>
 <p>The report assist layer does not merely output a free-form paragraph. It produces structured data first and text second.</p>
 <p>Canonical finding shape:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
@@ -1105,8 +1148,8 @@ Suggested urgency tier: urgent.
 No prior comparison available in local demo store.</code></pre>
 <p>This structure is important because downstream systems can reason about a finding object, but they cannot safely reason about a free-form paragraph alone.</p>
 </section>
-<section id="feedback-loop" class="level2" data-number="18">
-<h2 data-number="18" class="anchored" data-anchor-id="feedback-loop"><span class="header-section-number">18</span> Feedback Loop</h2>
+<section id="feedback-loop" class="level2" data-number="19">
+<h2 data-number="19" class="anchored" data-anchor-id="feedback-loop"><span class="header-section-number">19</span> Feedback Loop</h2>
 <p>Feedback is append-only and typed. The system supports:</p>
 <ul>
 <li>Accept finding.</li>
@@ -1119,8 +1162,8 @@ No prior comparison available in local demo store.</code></pre>
 </ul>
 <p>This creates a learning system without pretending to retrain automatically. Feedback is stored as evidence for review, analytics, and future model improvement.</p>
 </section>
-<section id="governance-and-monitoring" class="level2" data-number="19">
-<h2 data-number="19" class="anchored" data-anchor-id="governance-and-monitoring"><span class="header-section-number">19</span> Governance and Monitoring</h2>
+<section id="governance-and-monitoring" class="level2" data-number="20">
+<h2 data-number="20" class="anchored" data-anchor-id="governance-and-monitoring"><span class="header-section-number">20</span> Governance and Monitoring</h2>
 <p>The governance layer is one of the strongest parts of the project because it treats model deployment as an accountable lifecycle.</p>
 <p>Governance snapshots store:</p>
 <ul>
@@ -1150,8 +1193,8 @@ No prior comparison available in local demo store.</code></pre>
 </ul>
 <p>This is directly aligned with the direction of modern clinical AI governance: transparency, versioning, real-world monitoring, and clear human accountability.</p>
 </section>
-<section id="api-surface" class="level2" data-number="20">
-<h2 data-number="20" class="anchored" data-anchor-id="api-surface"><span class="header-section-number">20</span> API Surface</h2>
+<section id="api-surface" class="level2" data-number="21">
+<h2 data-number="21" class="anchored" data-anchor-id="api-surface"><span class="header-section-number">21</span> API Surface</h2>
 <p>The API is intentionally simple and reviewable.</p>
 <table class="caption-top table">
 <colgroup>
@@ -1251,8 +1294,8 @@ No prior comparison available in local demo store.</code></pre>
 <span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"audit_events"</span><span class="fu">:</span> <span class="ot">[]</span></span>
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="security-and-privacy-posture" class="level2" data-number="21">
-<h2 data-number="21" class="anchored" data-anchor-id="security-and-privacy-posture"><span class="header-section-number">21</span> Security and Privacy Posture</h2>
+<section id="security-and-privacy-posture" class="level2" data-number="22">
+<h2 data-number="22" class="anchored" data-anchor-id="security-and-privacy-posture"><span class="header-section-number">22</span> Security and Privacy Posture</h2>
 <p>The MVP is local-first and privacy-safe by default:</p>
 <ul>
 <li>No PHI is required for the demo path.</li>
@@ -1265,8 +1308,8 @@ No prior comparison available in local demo store.</code></pre>
 <li>The system does not make clinical deployment claims.</li>
 </ul>
 </section>
-<section id="what-is-real-vs-stubbed" class="level2" data-number="22">
-<h2 data-number="22" class="anchored" data-anchor-id="what-is-real-vs-stubbed"><span class="header-section-number">22</span> What Is Real vs Stubbed</h2>
+<section id="what-is-real-vs-stubbed" class="level2" data-number="23">
+<h2 data-number="23" class="anchored" data-anchor-id="what-is-real-vs-stubbed"><span class="header-section-number">23</span> What Is Real vs Stubbed</h2>
 <p>The project is honest about maturity.</p>
 <table class="caption-top table">
 <colgroup>
@@ -1351,8 +1394,8 @@ No prior comparison available in local demo store.</code></pre>
 </tbody>
 </table>
 </section>
-<section id="what-i-want-a-clinical-engineering-team-to-notice" class="level2" data-number="23">
-<h2 data-number="23" class="anchored" data-anchor-id="what-i-want-a-clinical-engineering-team-to-notice"><span class="header-section-number">23</span> What I Want A Clinical Engineering Team To Notice</h2>
+<section id="what-i-want-a-clinical-engineering-team-to-notice" class="level2" data-number="24">
+<h2 data-number="24" class="anchored" data-anchor-id="what-i-want-a-clinical-engineering-team-to-notice"><span class="header-section-number">24</span> What I Want A Clinical Engineering Team To Notice</h2>
 <p>I built this project to show how I think about clinical software, not just how I train a model.</p>
 <p>The model matters, but the system around the model matters just as much. In a real radiology setting, a good prediction is only useful if the team can see where it came from, understand what version produced it, review the evidence, correct it, audit it later, and measure whether it helped or hurt the workflow.</p>
 <p>That is why I put so much weight on the parts that are often missing from AI demos:</p>
@@ -1366,15 +1409,15 @@ No prior comparison available in local demo store.</code></pre>
 </ul>
 <p>What I want a reviewer to see is that I care about the whole product surface: the imaging edge, the database, the model contracts, the review workflow, the reporting layer, the failure modes, and the documentation. I did not want this to be a notebook that looks impressive for five minutes. I wanted it to feel like the beginning of a system a serious team could critique, extend, and eventually harden.</p>
 </section>
-<section id="how-i-would-walk-a-reviewer-through-it" class="level2" data-number="24">
-<h2 data-number="24" class="anchored" data-anchor-id="how-i-would-walk-a-reviewer-through-it"><span class="header-section-number">24</span> How I Would Walk A Reviewer Through It</h2>
+<section id="how-i-would-walk-a-reviewer-through-it" class="level2" data-number="25">
+<h2 data-number="25" class="anchored" data-anchor-id="how-i-would-walk-a-reviewer-through-it"><span class="header-section-number">25</span> How I Would Walk A Reviewer Through It</h2>
 <p>If we were walking through the repository together, I would start with the workflow instead of the model. I would show how a study enters the system, how the pipeline job is created, how each specialist service writes a run record, and how the review page makes the model output inspectable.</p>
 <p>Then I would show the database. That is where the project becomes more than a demo. The schema captures studies, model versions, prompt versions, model runs, findings, urgency scores, report drafts, final reports, feedback, discrepancies, audit events, governance snapshots, drift snapshots, and dashboard facts. It is designed so a clinical team can ask: what happened, who reviewed it, what changed, and how often is this pattern occurring?</p>
 <p>After that I would show the two imaging paths. Chest X-ray demonstrates the high-throughput workflow and the practical challenge of weaker targets like infiltration. Brain MRI demonstrates the more advanced imaging path: multi-class tumor phenotype classification, segmentation-backed localization, and a patient-level 3D corroboration model. I would be explicit that these are benchmark-trained models and not clinically validated devices.</p>
 <p>Finally, I would show the dashboards and governance surfaces. My goal there was to make the product legible to more than one audience. Engineers can inspect runs and versions. Clinicians can review findings and feedback. Operations leaders can see throughput and latency. Governance reviewers can see model inventory, prompts, drift records, limitations, and audit completeness.</p>
 </section>
-<section id="next-milestones" class="level2" data-number="25">
-<h2 data-number="25" class="anchored" data-anchor-id="next-milestones"><span class="header-section-number">25</span> Next Milestones</h2>
+<section id="next-milestones" class="level2" data-number="26">
+<h2 data-number="26" class="anchored" data-anchor-id="next-milestones"><span class="header-section-number">26</span> Next Milestones</h2>
 <p>The next serious increments would be:</p>
 <ol type="1">
 <li>Harden DICOM ingestion against a live Orthanc instance and test OHIF launch URLs with real DICOMweb studies.</li>
@@ -1388,8 +1431,8 @@ No prior comparison available in local demo store.</code></pre>
 <li>Run a silent-mode evaluation against de-identified retrospective cases under appropriate governance.</li>
 </ol>
 </section>
-<section id="local-run-path" class="level2" data-number="26">
-<h2 data-number="26" class="anchored" data-anchor-id="local-run-path"><span class="header-section-number">26</span> Local Run Path</h2>
+<section id="local-run-path" class="level2" data-number="27">
+<h2 data-number="27" class="anchored" data-anchor-id="local-run-path"><span class="header-section-number">27</span> Local Run Path</h2>
 <p>The repo includes a one-command local path:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>powershell <span class="op">-</span>ExecutionPolicy Bypass <span class="op">-</span>File scripts<span class="op">/</span>start_local_mvp<span class="op">.</span><span class="fu">ps1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>For the already-seeded local environment, the fast path is:</p>
@@ -1399,8 +1442,8 @@ No prior comparison available in local demo store.</code></pre>
 <p>API docs:</p>
 <pre class="text"><code>http://127.0.0.1:8000/docs</code></pre>
 </section>
-<section id="appendix-dashboard-data-export-shape" class="level2" data-number="27">
-<h2 data-number="27" class="anchored" data-anchor-id="appendix-dashboard-data-export-shape"><span class="header-section-number">27</span> Appendix: Dashboard Data Export Shape</h2>
+<section id="appendix-dashboard-data-export-shape" class="level2" data-number="28">
+<h2 data-number="28" class="anchored" data-anchor-id="appendix-dashboard-data-export-shape"><span class="header-section-number">28</span> Appendix: Dashboard Data Export Shape</h2>
 <p>The Power BI package consumes curated exports such as:</p>
 <pre class="text"><code>dashboards/powerbi/exports/ops_snapshot.csv
 dashboards/powerbi/exports/quality_snapshot.csv
@@ -1415,8 +1458,8 @@ dashboards/powerbi/exports/agent_runs.csv</code></pre>
 <p><img src="../images/projects/radiology-value-pipeline/charts/operational-volume-trend.png" class="img-fluid" style="width:100.0%" alt="Operational volume trend chart showing chest X-ray and brain MRI processed over time."></p>
 <p><img src="../images/projects/radiology-value-pipeline/charts/governance-score-trend.png" class="img-fluid" style="width:100.0%" alt="Governance score trend chart showing model and agent lineage over time."></p>
 </section>
-<section id="appendix-sql-mart-excerpts" class="level2" data-number="28">
-<h2 data-number="28" class="anchored" data-anchor-id="appendix-sql-mart-excerpts"><span class="header-section-number">28</span> Appendix: SQL Mart Excerpts</h2>
+<section id="appendix-sql-mart-excerpts" class="level2" data-number="29">
+<h2 data-number="29" class="anchored" data-anchor-id="appendix-sql-mart-excerpts"><span class="header-section-number">29</span> Appendix: SQL Mart Excerpts</h2>
 <p>Operational dashboard:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  event_date,</span>
@@ -1458,8 +1501,8 @@ dashboards/powerbi/exports/agent_runs.csv</code></pre>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  infiltration_specialist_gain_auc</span>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> dashboard_governance_daily;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="appendix-product-boundaries" class="level2" data-number="29">
-<h2 data-number="29" class="anchored" data-anchor-id="appendix-product-boundaries"><span class="header-section-number">29</span> Appendix: Product Boundaries</h2>
+<section id="appendix-product-boundaries" class="level2" data-number="30">
+<h2 data-number="30" class="anchored" data-anchor-id="appendix-product-boundaries"><span class="header-section-number">30</span> Appendix: Product Boundaries</h2>
 <p>This project is meant to be impressive because it is disciplined.</p>
 <p>It does not claim:</p>
 <ul>
@@ -1483,8 +1526,8 @@ dashboards/powerbi/exports/agent_runs.csv</code></pre>
 <li>A credible path from portfolio MVP to clinical engineering platform.</li>
 </ul>
 </section>
-<section id="closing" class="level2" data-number="30">
-<h2 data-number="30" class="anchored" data-anchor-id="closing"><span class="header-section-number">30</span> Closing</h2>
+<section id="closing" class="level2" data-number="31">
+<h2 data-number="31" class="anchored" data-anchor-id="closing"><span class="header-section-number">31</span> Closing</h2>
 <p>I built Radiology Value Pipeline because radiology AI should be measured by more than a model score. It should be measured by whether it can fit into real clinical work, preserve accountability, learn from feedback, and make diagnostic systems more reliable over time.</p>
 <p>That is the project I wanted to show: a platform that respects the clinician, respects the patient, and treats AI as one part of a larger care-delivery system.</p>
 
