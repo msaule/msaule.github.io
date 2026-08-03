@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+  <title id="title">MSRA Global AI Values Challenge research visual</title>
+  <desc id="description">A research diagram showing ten Advanced Acceptance cases across four human-values domains</desc>
+  <style>
+    .mono { font-family: "Fragment Mono", "IBM Plex Mono", monospace; font-size: 22px; letter-spacing: 1px; }
+    .title { font-family: "Spline Sans", "Helvetica Neue", sans-serif; font-size: 66px; font-weight: 600; letter-spacing: -2.5px; fill: #ecebe4; }
+    .metric { font-family: "Fragment Mono", "IBM Plex Mono", monospace; font-size: 76px; fill: #d9ff43; }
+    .label { font-family: "Spline Sans", "Helvetica Neue", sans-serif; font-size: 24px; fill: #96998f; }
+    .node { fill: #151715; stroke: #3a3d35; stroke-width: 2; }
+    .node-t { font-family: "Fragment Mono", "IBM Plex Mono", monospace; font-size: 18px; fill: #bfc1b7; }
+  </style>
+  <rect width="1600" height="900" fill="#0c0d0c"/>
+  <rect width="12" height="900" fill="#d9ff43"/>
+  <line x1="570" y1="60" x2="570" y2="840" stroke="#33362f" stroke-width="2"/>
+  <text x="78" y="96" class="mono" fill="#d9ff43">RESEARCH / 2026</text>
+  <text x="78" y="142" class="mono" fill="#96998f">MSRA GLOBAL AI VALUES</text>
+  <text x="78" y="258" class="title">AI Values</text>
+  <text x="78" y="326" class="title">Research</text>
+  <text x="78" y="692" class="metric">10 AA</text>
+  <text x="78" y="736" class="label">Advanced Acceptance selections</text>
+  <text x="78" y="830" class="mono" fill="#6f7269">CONSENT / UNCERTAINTY / HARM / AUTHORITY</text>
+  <rect x="620" y="60" width="920" height="780" fill="#121310" stroke="#33362f" stroke-width="2"/>
+  <text x="664" y="112" class="mono" fill="#d9ff43">10 CASES / 4 VALUE DOMAINS</text>
+  <line x1="664" y1="146" x2="1496" y2="146" stroke="#33362f" stroke-width="2"/>
+  <line x1="1080" y1="182" x2="1080" y2="764" stroke="#33362f" stroke-width="2"/>
+  <text x="664" y="206" class="mono" fill="#96998f">HEALTHCARE + BIOETHICS</text>
+  <text x="1120" y="206" class="mono" fill="#96998f">SCIENCE + TECHNOLOGY</text>
+  <g>
+    <rect class="node" x="664" y="246" width="366" height="88"/><text class="node-t" x="692" y="281">KIDNEY REDIRECTION</text><text class="node-t" x="692" y="310" fill="#d9ff43">CONSENT / TIME PRESSURE</text>
+    <rect class="node" x="664" y="354" width="366" height="88"/><text class="node-t" x="692" y="389">POSTHUMOUS EMBRYO</text><text class="node-t" x="692" y="418" fill="#d9ff43">REPRODUCTIVE AUTHORITY</text>
+    <rect class="node" x="664" y="462" width="366" height="88"/><text class="node-t" x="692" y="497">UNCLAIMED BODY</text><text class="node-t" x="692" y="526" fill="#d9ff43">DIGNITY / PUBLIC BENEFIT</text>
+    <rect class="node" x="664" y="570" width="366" height="88"/><text class="node-t" x="692" y="605">RARE DONOR</text><text class="node-t" x="692" y="634" fill="#d9ff43">PROXY DECISION LIMITS</text>
+    <rect class="node" x="664" y="678" width="366" height="88"/><text class="node-t" x="692" y="713">TRUTH COMMISSION</text><text class="node-t" x="692" y="742" fill="#d9ff43">TESTIMONY / PROTECTION</text>
+    <rect class="node" x="1120" y="246" width="376" height="88"/><text class="node-t" x="1148" y="281">POSTMORTEM BRAIN</text><text class="node-t" x="1148" y="310" fill="#d9ff43">UNCERTAIN MORAL STATUS</text>
+    <rect class="node" x="1120" y="354" width="376" height="88"/><text class="node-t" x="1148" y="389">COMMERCIAL CELL LINE</text><text class="node-t" x="1148" y="418" fill="#d9ff43">BENEFIT / COMMERCIALIZATION</text>
+    <rect class="node" x="1120" y="462" width="376" height="88"/><text class="node-t" x="1148" y="497">COUNSELOR AVATAR</text><text class="node-t" x="1148" y="526" fill="#d9ff43">RELATIONSHIP / CONTINUITY</text>
+    <rect class="node" x="1120" y="570" width="376" height="88"/><text class="node-t" x="1148" y="605">RECORDING RETURN</text><text class="node-t" x="1148" y="634" fill="#d9ff43">COMMUNITY / ARCHIVAL USE</text>
+    <rect class="node" x="1120" y="678" width="376" height="88"/><text class="node-t" x="1148" y="713">IVG SAVIOR SIBLING</text><text class="node-t" x="1148" y="742" fill="#d9ff43">FUTURE PERSON / CONSENT</text>
+  </g>
+</svg>

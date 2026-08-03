@@ -1,0 +1,1 @@
+Place the official MSRA Global AI Values Challenge certificate PDF in this folder when issued. The case-study page reserves a visible artifact slot without implying that a certificate has already been published.

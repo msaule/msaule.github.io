@@ -345,7 +345,7 @@ Object.assign(window.PORTFOLIO_CASE_NARRATIVES, {
       title: "Built as a real R package",
       paragraphs: [
         "I built the R package, S3 methods, reporting layer, plots, RStudio addin, vignettes, and test suite as one release workflow. The addin finds supported model objects in the active RStudio session and launches the same controlled analysis without forcing a separate environment.",
-        "Version 0.1.0 includes 11 exported functions, 65 testthat blocks, and eight attack families. The package is CRAN-targeted; the release work is organized around deterministic checks, explicit dependencies, and traceable results."
+        "Version 0.1.0 includes 11 exported functions, 65 testthat blocks, and eight attack families. falsifyr is published on CRAN with deterministic checks, explicit dependencies, and traceable results built into the release."
       ]
     }
   ],
@@ -461,6 +461,32 @@ Object.assign(window.PORTFOLIO_CASE_NARRATIVES, {
       paragraphs: [
         "The final Power BI package has overview, equity, and clinical-driver pages with consistent measures and filters. It lets a reader move from population-level outcomes to subgroup patterns and the encounter characteristics associated with risk.",
         "The result is a complete SQL-to-R-to-BI workflow: disciplined data design, reproducible modeling, and a reporting layer that keeps the operational question visible."
+      ]
+    }
+  ]
+});
+
+Object.assign(window.PORTFOLIO_CASE_NARRATIVES, {
+  "msra-ai-values": [
+    {
+      title: "The problem starts where the rulebook stops",
+      paragraphs: [
+        "Each case begins with a real direction in science, medicine, law, or institutional practice. I then constructed a situation where the facts leave no easy exit: an organ could save a child but was not authorized for redirection; a community could recover land through testimony an elder reserved from legal use; a research method could reduce animal suffering while raising a hard-to-measure welfare concern.",
+        "The goal was not to invent a shocking hypothetical. It was to create a decision context where a system has to account for who has authority, what is uncertain, which harms are irreversible, and what it would take for the answer to change."
+      ]
+    },
+    {
+      title: "Ten cases, four domains",
+      paragraphs: [
+        "The portfolio spans healthcare and bioethics, science and technology, institutional authority, and culture and community. Topics include kidney redirection, posthumous reproduction, unclaimed bodies, postmortem brain research, commercial cell lines, counselor avatars, truth-commission testimony, Indigenous archival governance, and in-vitro gametogenesis.",
+        "Across those topics, the common structure is deliberate: separate the real research basis from the constructed scenario; identify the decision-maker and the interests at stake; name the boundary; and make the strongest opposing case visible before defending the answer."
+      ]
+    },
+    {
+      title: "A reasoned answer must survive disagreement",
+      paragraphs: [
+        "A polished answer is not enough if it ignores the consequence of the other choice. Each justification takes the objection seriously, explains why it still does or does not cross the stated boundary, and identifies the evidence or authorization that would justify revisiting the decision.",
+        "All ten submissions received Advanced Acceptance selections from the Microsoft Research Asia Global AI Values Challenge, recognizing work designed to test value-aware reasoning where outcomes alone cannot settle the decision."
       ]
     }
   ]

@@ -24,7 +24,7 @@ window.PORTFOLIO_CASE_STUDIES = {
   },
   falsifyr: {
     problem: "Statistical work often stops once a coefficient crosses a threshold. Diagnostics exist, but they are scattered across functions and rarely answer the more useful question: what is the smallest reasonable change that makes the claim disappear?",
-    role: "I designed and built the R package, attack engine, S3 methods, plotting and reporting layers, RStudio addin, vignettes, test suite, and CRAN-oriented release workflow.",
+    role: "I designed and built the R package, attack engine, S3 methods, plotting and reporting layers, RStudio addin, vignettes, test suite, and CRAN publication workflow.",
     build: [
       "Wrapped eight attack families around lm, glm, and supported hypothesis-test claims: row deletion, uncertainty, covariates, missingness, measurement error, placebos, specifications, and sample splits.",
       "Ranked the smallest kill by severity so an analyst can see the weakest assumption without reading a pile of disconnected diagnostics.",
@@ -297,5 +297,32 @@ Object.assign(window.PORTFOLIO_CASE_STUDIES, {
   "roblox-brand-worlds": {
     ...window.PORTFOLIO_CASE_STUDIES["roblox-brand-worlds"],
     ownership: "Shipped with multidisciplinary studio and brand teams. My work covered the environments, 3D assets, textures, vehicles, and player-facing spaces assigned to me across live releases."
+  }
+});
+
+Object.assign(window.PORTFOLIO_CASE_STUDIES, {
+  "msra-ai-values": {
+    problem: "AI systems can sound decisive in high-stakes settings even when the real question is not factual retrieval. In these cases, consent, uncertain harm, institutional authority, community governance, and human relationships pull in different directions, and an apparently compassionate answer can still cross a boundary it has no authority to cross.",
+    role: "I independently researched, wrote, and structured ten Question-Answer-Justification cases for Microsoft Research Asia's Global AI Values Challenge. I built each one from a real scientific, clinical, legal, or institutional direction, then made the hypothetical facts, value conflict, boundary, and strongest objection explicit.",
+    ownership: "Each submission is a self-contained research case: a grounded scenario, a decision under conflict, a bounded answer, and a justification that takes the strongest counterargument seriously.",
+    build: [
+      "Created ten original cases across healthcare and bioethics, science and technology, institutional authority, and culture and community.",
+      "Grounded each scenario in research and authoritative sources while marking constructed facts so the ethical question does not masquerade as a real event.",
+      "Specified the competing interests, information limits, decision authority, and the practical consequence of either path before writing an answer.",
+      "Wrote a bounded proposed answer and justification for every case, including conditions that would make a different decision permissible.",
+      "Tested each position against its strongest objection instead of treating the conclusion as self-evident."
+    ],
+    decisions: [
+      "Started with a conflict that cannot be resolved by technical fluency alone; a model has to decide what it may authorize, not merely summarize a policy.",
+      "Separated real background evidence from constructed facts so a reviewer can inspect what the scenario relies on without confusing it with a factual claim.",
+      "Made consent and delegated authority concrete where they matter, rather than assuming a good outcome can silently replace a person's reserved decision.",
+      "Kept the answer conditional when the boundary depends on new evidence, valid prior authorization, or a legitimate decision-maker."
+    ],
+    validation: "All ten cases received Advanced Acceptance selections in the Microsoft Research Asia Global AI Values Challenge. The Challenge uses this designation for accepted submissions that pose substantial challenges to large language models and align with directions related to human values and morality. The result recognizes the cases as review-selected dataset contributions; it does not establish clinical, legal, or expert-advisory authority.",
+    links: [
+      ["Global AI Values Challenge overview", "https://microsoft.github.io/ValueChallenge/"],
+      ["Official Advanced Acceptance certificate", null, "PDF will be added here when issued"],
+      ["Research portfolio", null, "Private supporting material available for discussion"]
+    ]
   }
 });

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Open source engineering proof map</title>
+  <desc id="desc">A bounded evidence board showing four open-source ecosystems, three code contributions, one clinical-AI conformance design, and validation metrics.</desc>
+  <defs>
+    <clipPath id="frame-clip"><rect x="42" y="42" width="1516" height="816"/></clipPath>
+  </defs>
+  <rect width="1600" height="900" fill="#10110f"/>
+  <rect x="42" y="42" width="1516" height="816" fill="#151714" stroke="#3b3e36" stroke-width="2"/>
+  <g clip-path="url(#frame-clip)">
+    <rect x="104" y="102" width="9" height="650" fill="#d9ff43"/>
+    <text x="148" y="154" fill="#d9ff43" font-family="monospace" font-size="24" font-weight="700">OPEN SOURCE ENGINEERING / 2026</text>
+    <text x="148" y="194" fill="#a8aaa1" font-family="monospace" font-size="17">PRODUCTION-MINDED CHANGES FOR REAL SYSTEMS</text>
+
+    <g font-family="Arial, sans-serif">
+      <rect x="148" y="238" width="390" height="150" fill="#11120f" stroke="#3b3e36" stroke-width="2"/>
+      <text x="176" y="305" fill="#d9ff43" font-size="68" font-weight="700">4</text>
+      <text x="248" y="299" fill="#f0efe7" font-size="28" font-weight="700">ECOSYSTEMS</text>
+      <text x="248" y="335" fill="#a8aaa1" font-family="monospace" font-size="16">ML / AI / CLINICAL / R</text>
+
+      <rect x="605" y="238" width="390" height="150" fill="#11120f" stroke="#3b3e36" stroke-width="2"/>
+      <text x="633" y="305" fill="#d9ff43" font-size="68" font-weight="700">3</text>
+      <text x="705" y="299" fill="#f0efe7" font-size="28" font-weight="700">CODE CHANGES</text>
+      <text x="705" y="335" fill="#a8aaa1" font-family="monospace" font-size="16">ML TOOLING</text>
+
+      <rect x="1062" y="238" width="390" height="150" fill="#11120f" stroke="#3b3e36" stroke-width="2"/>
+      <text x="1090" y="305" fill="#d9ff43" font-size="68" font-weight="700">1</text>
+      <text x="1162" y="299" fill="#f0efe7" font-size="28" font-weight="700">TEST DESIGN</text>
+      <text x="1162" y="335" fill="#a8aaa1" font-family="monospace" font-size="16">CLINICAL-AI</text>
+    </g>
+
+    <g font-family="monospace">
+      <rect x="148" y="454" width="600" height="126" fill="#151714" stroke="#3b3e36" stroke-width="2"/>
+      <text x="174" y="492" fill="#d9ff43" font-size="17">01 / SCIKIT-LEARN</text>
+      <text x="174" y="535" fill="#f0efe7" font-size="31" font-weight="700">324 TEST PASSES</text>
+      <text x="174" y="560" fill="#a8aaa1" font-size="15">LOGISTICREGRESSIONCV / POS_LABEL</text>
+
+      <rect x="820" y="454" width="600" height="126" fill="#151714" stroke="#3b3e36" stroke-width="2"/>
+      <text x="846" y="492" fill="#d9ff43" font-size="17">02 / TRANSFORMERLENS</text>
+      <text x="846" y="535" fill="#f0efe7" font-size="31" font-weight="700">385 SOURCES CHECKED</text>
+      <text x="846" y="560" fill="#a8aaa1" font-size="15">DEPRECATION / V4 MIGRATION</text>
+
+      <rect x="148" y="622" width="600" height="126" fill="#151714" stroke="#3b3e36" stroke-width="2"/>
+      <text x="174" y="660" fill="#d9ff43" font-size="17">03 / MONAI LABEL</text>
+      <text x="174" y="703" fill="#f0efe7" font-size="31" font-weight="700">2 MISMATCHES TRACED</text>
+      <text x="174" y="728" fill="#a8aaa1" font-size="15">LABEL CONTRACT / TEST DESIGN</text>
+
+      <rect x="820" y="622" width="600" height="126" fill="#151714" stroke="#3b3e36" stroke-width="2"/>
+      <text x="846" y="660" fill="#d9ff43" font-size="17">04 / POSIT AIR</text>
+      <text x="846" y="703" fill="#f0efe7" font-size="31" font-weight="700">2-PASS IDEMPOTENCE</text>
+      <text x="846" y="728" fill="#a8aaa1" font-size="15">R FORMATTER / COMMENT PRESERVATION</text>
+    </g>
+    <circle cx="1472" cy="784" r="20" fill="#d9ff43"/>
+  </g>
+</svg>

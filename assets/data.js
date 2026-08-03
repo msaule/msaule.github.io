@@ -45,7 +45,7 @@ window.PORTFOLIO_PROJECTS = [
     "category": "Open Source",
     "image": "images/projects/falsifyr/cover.png",
     "alt": "falsifyr attack report with a claim verdict and ranked robustness attacks",
-    "summary": "A CRAN-targeted R package that searches for the smallest plausible change capable of overturning a statistical claim.",
+    "summary": "A CRAN-published R package that searches for the smallest plausible change capable of overturning a statistical claim.",
     "detail": "falsifyr attacks fitted claims through row deletion, uncertainty changes, missingness, measurement error, placebos, specification search, and sample splits, then reports exactly where the result breaks and what it survives.",
     "stats": [
       [
@@ -267,10 +267,10 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     "slug": "roblox-brand-worlds",
-    "title": "Roblox Immersive Brand Worlds",
-    "shortTitle": "Roblox Brand Worlds",
+    "title": "Roblox: 7.5B+ Plays Across Global Brand Worlds",
+    "shortTitle": "Roblox: 7.5B+ Plays",
     "year": "2016-2024",
-    "category": "Immersive Worlds",
+    "category": "Product Systems",
     "image": "images/projects/roblox-brand-worlds/cover.jpg",
     "alt": "Black Adam immersive Roblox world",
     "summary": "Ten years of world, level, and game design across shipped games, live events, and global brand activations with 7.5B+ plays.",
@@ -525,7 +525,22 @@ window.PORTFOLIO_PROJECTS = [
     "thumbnailSource": "images/projects/dying-on-the-margin/cover.png",
     "thumbnail": "images/project-thumbnails/dying-on-the-margin.svg"
   }
-];
+  ,{
+    "slug": "msra-ai-values",
+    "title": "AI Values Research: Ten Advanced Acceptance Selections",
+    "shortTitle": "AI Values Research",
+    "year": "2026",
+    "category": "AI Safety & Governance",
+    "image": "images/projects/msra-ai-values/cover.svg",
+    "alt": "Research visual mapping ten Advanced Acceptance AI values cases across four domains",
+    "summary": "Ten research-grounded cases selected at Advanced Acceptance by Microsoft Research Asia's Global AI Values Challenge, each built around a decision no model can settle by retrieving a rule.",
+    "detail": "The work turns real policy and technology directions into tightly bounded Question-Answer-Justification cases. Each case makes the stakes, competing interests, uncertainty, decision boundary, and strongest objection visible before defending a position.",
+    "stats": [["10", "AA selections"], ["10", "original cases"], ["4", "value domains"], ["AA", "accepted tier"]],
+    "tools": ["AI Safety", "Bioethics", "Research", "Value Reasoning"],
+    "featured": true,
+    "thumbnail": "images/project-thumbnails/msra-ai-values.svg",
+    "thumbnailSource": "images/projects/msra-ai-values/cover.svg"
+  }];
 
 // Lead copy is intentionally decision- and evidence-led. The long-form case
 // studies supply the mechanics, validation, and artifacts behind each summary.
@@ -585,9 +600,18 @@ const PORTFOLIO_PROJECT_COPY = {
   "dying-on-the-margin": {
     summary: "A hospital-capacity study that asks whether occupancy is just an efficiency metric or an early signal of operational pressure tied to mortality.",
     detail: "The analysis pairs regression with hospital context and diagnostics so the operational question stays grounded in what the data can actually show."
+  }  ,"msra-ai-values": {
+    summary: "Ten Advanced Acceptance selections in Microsoft Research Asia's Global AI Values Challenge for research-grounded cases that test whether an AI system can reason through human value conflicts.",
+    detail: "Each Question-Answer-Justification case makes the facts, stakeholders, competing values, boundary, and strongest objection explicit before defending a decision under uncertainty."
   }
 };
 
+const msraIndex = window.PORTFOLIO_PROJECTS.findIndex((project) => project.slug === "msra-ai-values");
+const ravelIndex = window.PORTFOLIO_PROJECTS.findIndex((project) => project.slug === "ravel");
+if (msraIndex !== -1 && ravelIndex !== -1 && msraIndex !== ravelIndex + 1) {
+  const [msraProject] = window.PORTFOLIO_PROJECTS.splice(msraIndex, 1);
+  window.PORTFOLIO_PROJECTS.splice(ravelIndex + 1, 0, msraProject);
+}
 window.PORTFOLIO_PROJECTS.forEach((project) => {
   Object.assign(project, PORTFOLIO_PROJECT_COPY[project.slug] || {});
 });

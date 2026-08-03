@@ -107,6 +107,10 @@
     ]
   };
 
+  projectGalleries["msra-ai-values"] = [
+    ["images/projects/msra-ai-values/cover.svg", "Ten Advanced Acceptance cases across four value domains"],
+    ["images/projects/msra-ai-values/case-design.svg", "Case-design method: context, conflict, boundary, and objection"]
+  ];
   const toggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   if (toggle && navLinks) {
@@ -155,7 +159,31 @@
     const count = document.querySelector('[data-work-count]');
     const filters = [...document.querySelectorAll('.filter-button')];
 
-    projects.forEach((project, index) => {
+    // Lead with externally validated work, then move into the broader archive.
+    const projectOrder = [
+      'ravel',
+      'radiology-value-pipeline',
+      'roblox-brand-worlds',
+      'msra-ai-values',
+      'falsifyr',
+      'earnings-quality-autopsy',
+      'owl',
+      'mercury-market-sim',
+      'wayline',
+      'fulfillment',
+      'insurance-fraud',
+      'lung-cancer',
+      'readmission',
+      'hospital-prices',
+      'dying-on-the-margin'
+    ];
+    const orderedProjects = [...projects].sort((a, b) => {
+      const aRank = projectOrder.indexOf(a.slug);
+      const bRank = projectOrder.indexOf(b.slug);
+      return (aRank === -1 ? projects.length : aRank) - (bRank === -1 ? projects.length : bRank);
+    });
+
+    orderedProjects.forEach((project, index) => {
       const thumbnail = project.thumbnail || project.image;
       const link = document.createElement('a');
       link.className = 'project-row';
@@ -305,13 +333,18 @@
     }
 
     if (links && study.links && study.links.length) {
-      study.links.forEach(([label, href], index) => {
-        const anchor = document.createElement('a');
-        anchor.href = href;
-        anchor.target = '_blank';
-        anchor.rel = 'noopener';
-        anchor.innerHTML = `<span>${String(index + 1).padStart(2, '0')}</span><strong>${label}</strong><span aria-hidden="true">↗</span>`;
-        links.appendChild(anchor);
+      study.links.forEach(([label, href, note], index) => {
+        const item = href ? document.createElement('a') : document.createElement('div');
+        if (href) {
+          item.href = href;
+          item.target = '_blank';
+          item.rel = 'noopener';
+          item.innerHTML = `<span>${String(index + 1).padStart(2, '0')}</span><strong>${label}</strong><span aria-hidden="true">↗</span>`;
+        } else {
+          item.className = 'resource-placeholder';
+          item.innerHTML = `<span>${String(index + 1).padStart(2, '0')}</span><strong>${label}</strong><span>${note || 'Pending'}</span>`;
+        }
+        links.appendChild(item);
       });
     } else if (resourcesSection) {
       resourcesSection.hidden = true;
