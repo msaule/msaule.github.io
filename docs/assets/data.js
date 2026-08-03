@@ -527,7 +527,7 @@ window.PORTFOLIO_PROJECTS = [
   }
   ,{
     "slug": "msra-ai-values",
-    "title": "AI Values Research: Ten Advanced Acceptance Selections",
+    "title": "Microsoft AI Values Research: Ten Advanced Acceptance Selections",
     "shortTitle": "AI Values Research",
     "year": "2026",
     "category": "AI Safety & Governance",
