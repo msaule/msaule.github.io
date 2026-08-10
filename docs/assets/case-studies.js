@@ -38,8 +38,9 @@ window.PORTFOLIO_CASE_STUDIES = {
       "Reported unsupported attacks and their reasons so every skipped check is visible in the final report.",
       "Kept deterministic attacks reproducible under a fixed seed and separated optional dependencies from the core install path."
     ],
-    validation: "Version 0.1.0 contains 11 exported functions, 65 testthat blocks, and eight attack families. Local R CMD check --as-cran completes with the test suite passing.",
+    validation: "falsifyr is published on CRAN. Version 0.1.0 contains 11 exported functions, 65 testthat blocks, and eight attack families; it recorded 40 users in the past day. The package has deterministic checks, explicit dependencies, and traceable results built into the release.",
     links: [
+      ["CRAN package", "https://cran.r-project.org/web/packages/falsifyr/index.html"],
       ["Generated attack report", "files/falsifyr/attack-report.html"]
     ]
   },
@@ -130,7 +131,7 @@ window.PORTFOLIO_CASE_STUDIES = {
       "Kept network-backed providers out of examples and tests to meet CRAN expectations and maintain deterministic checks.",
       "Added MCP capability without a new required dependency, preserving a light installation path."
     ],
-    validation: "Ravel is published on CRAN, has reached 1,600+ users, and installs through install.packages('ravel'). Version 0.1.2 passed the GitHub Actions matrix on Windows, macOS, Ubuntu release, and Ubuntu devel. The submitted package checks reported zero errors, zero warnings, and one note.",
+    validation: "Ravel is published on CRAN, has reached 1,700+ users, and installs through install.packages('ravel'). Version 0.1.2 passed the GitHub Actions matrix on Windows, macOS, Ubuntu release, and Ubuntu devel. The submitted package checks reported zero errors, zero warnings, and one note.",
     links: [
       ["CRAN package", "https://cran.r-project.org/package=ravel"],
       ["Package website", "https://msaule.github.io/ravel/"],

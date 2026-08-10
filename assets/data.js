@@ -61,8 +61,8 @@ window.PORTFOLIO_PROJECTS = [
         "attack families"
       ],
       [
-        "0.1.0",
-        "package version"
+        "40",
+        "users in past day"
       ]
     ],
     "tools": [
@@ -121,7 +121,7 @@ window.PORTFOLIO_PROJECTS = [
     "category": "Open Source",
     "image": "images/projects/ravel/cover.png",
     "alt": "Ravel R package documentation homepage",
-    "summary": "A CRAN-published R package used by 1,600+ people that gives RStudio a context-aware copilot for statistical work, model interpretation, safe actions, and Quarto drafting.",
+    "summary": "A CRAN-published R package used by 1,700+ people that gives RStudio a context-aware copilot for statistical work, model interpretation, safe actions, and Quarto drafting.",
     "detail": "Ravel understands the active editor, selected code, loaded objects, console output, plots, git state, and package structure. Actions are staged and reviewable instead of silently changing an analyst's work.",
     "stats": [
       [
@@ -129,7 +129,7 @@ window.PORTFOLIO_PROJECTS = [
         "accepted package"
       ],
       [
-        "1,600+",
+        "1,700+",
         "package users"
       ],
       [
@@ -558,7 +558,7 @@ const PORTFOLIO_PROJECT_COPY = {
     detail: "The platform distinguishes 20 real public CUDA MRI volumes from 120,000 deterministic engineering evaluations and retains study, model, prompt, findings, feedback, and reporting lineage for review."
   },
   ravel: {
-    summary: "A CRAN-published RStudio copilot used by 1,600+ people that understands the active analysis and keeps every proposed code or file action visible and reviewable.",
+    summary: "A CRAN-published RStudio copilot used by 1,700+ people that understands the active analysis and keeps every proposed code or file action visible and reviewable.",
     detail: "Ravel collects explicit project context, supports model interpretation and Quarto drafting, and stages changes for approval rather than quietly modifying an analyst's work."
   },
   wayline: {
