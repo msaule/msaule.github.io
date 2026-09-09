@@ -131,7 +131,7 @@ window.PORTFOLIO_CASE_STUDIES = {
       "Kept network-backed providers out of examples and tests to meet CRAN expectations and maintain deterministic checks.",
       "Added MCP capability without a new required dependency, preserving a light installation path."
     ],
-    validation: "Ravel is published on CRAN, has reached 1,700+ users, and installs through install.packages('ravel'). Version 0.1.2 passed the GitHub Actions matrix on Windows, macOS, Ubuntu release, and Ubuntu devel. The submitted package checks reported zero errors, zero warnings, and one note.",
+    validation: "Ravel is published on CRAN, has reached 2,000+ users, and installs through install.packages('ravel'). Version 0.1.2 passed the GitHub Actions matrix on Windows, macOS, Ubuntu release, and Ubuntu devel. The submitted package checks reported zero errors, zero warnings, and one note.",
     links: [
       ["CRAN package", "https://cran.r-project.org/package=ravel"],
       ["Package website", "https://msaule.github.io/ravel/"],

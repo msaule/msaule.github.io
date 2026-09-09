@@ -86,7 +86,7 @@ window.PORTFOLIO_CASE_NARRATIVES = {
     {
       title: "A real CRAN release workflow",
       paragraphs: [
-        "Ravel is published on CRAN, has reached 1,700+ users, and installs through install.packages('ravel'). I prepared the documentation, test suite, examples, release assets, pkgdown site, GitHub Actions matrix, and submission materials as part of the package itself.",
+        "Ravel is published on CRAN, has reached 2,000+ users, and installs through install.packages('ravel'). I prepared the documentation, test suite, examples, release assets, pkgdown site, GitHub Actions matrix, and submission materials as part of the package itself.",
         "Version 0.1.2 added OpenAI Responses API support, remote MCP declarations, refreshed provider defaults, and stronger file-action controls. The release passed checks across Windows, macOS, Ubuntu release, and Ubuntu devel."
       ]
     }
@@ -367,7 +367,7 @@ Object.assign(window.PORTFOLIO_CASE_NARRATIVES, {
     {
       title: "A published CRAN release",
       paragraphs: [
-        "Ravel is published on CRAN, has reached 1,700+ users, and installs through install.packages('ravel'). I prepared the documentation, test suite, examples, release assets, pkgdown site, GitHub Actions matrix, and submission materials as part of the package itself.",
+        "Ravel is published on CRAN, has reached 2,000+ users, and installs through install.packages('ravel'). I prepared the documentation, test suite, examples, release assets, pkgdown site, GitHub Actions matrix, and submission materials as part of the package itself.",
         "Version 0.1.2 added OpenAI Responses API support, remote MCP declarations, refreshed provider defaults, and stronger file-action controls. The release passed checks across Windows, macOS, Ubuntu release, and Ubuntu devel."
       ]
     }

@@ -36,7 +36,7 @@ title: "Resume"
 ## <span class="gradient-text">Selected Projects</span>
 
 - Built **Earnings Quality Autopsy**, a 187-test SEC/XBRL research system with 9 modules and 14 API routes.
-- Published 2 CRAN packages: **Ravel** (1,700+ users) and **falsifyr** for adversarial statistical testing.
+- Published **Ravel**, an RStudio AI copilot on CRAN used by 2,000+ users, and **falsifyr**, a CRAN package used by 300 users for adversarial statistical testing.
 - Built **Radiology Value Pipeline**, a governed clinical-AI workflow with audit trails, BI marts, and MRI validation.
 - Shipped **Roblox worlds and game systems** with 7.5B+ plays; personally commended by CEO David Baszucki.
 - Earned 10 Advanced Acceptance selections in the **Microsoft Research Asia Global AI Values Challenge**.
