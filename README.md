@@ -1,47 +1,28 @@
-# Markuss Saule Portfolio
+# Markuss Saule portfolio
 
-This repository hosts the static portfolio at `https://msaule.github.io/` through GitHub Pages.
+Live: https://msaule.github.io
 
-## Pages setup
+GitHub Pages publishes from main, repository root. The current site is built
+with Node.js, without dependencies. Quarto sources and docs remain as legacy material.
 
-- Source: `Deploy from a branch`
-- Branch: `main`
-- Folder: `/docs`
+## Editing
 
-## Site structure
+- Content: assets/data.js, assets/case-studies.js, assets/case-narratives.js
+- Page templates: scripts/build.mjs
+- Style: assets/atelier.css and assets/layout.css
+- Interactions: assets/atelier.js
+- Resume: files/resume.pdf
+- Preserved build inputs: design-reference (required for galleries/contributions)
 
-- `index.html`, `work.html`, `about.html`, `resume.html`: page sources
-- `project.html?slug=...`: reusable project case-study route
-- `assets/data.js`: metadata for the 14 public projects
-- `assets/case-studies.js`: long-form case-study content
-- `assets/app.js`: project rendering, filters, navigation, and motion
-- `assets/styles.css`: visual system and responsive layout
-- `images/`: profile and project evidence
-- `files/`: resume and downloadable project artifacts
-- `docs/`: deployed GitHub Pages build
-- `resume.tex`: source for the one-page resume
+## Render, review, publish
 
-## Update workflow
+```powershell
+node scripts/build.mjs
+node scripts/preview.mjs
+# Review http://127.0.0.1:4187/ then stop the preview.
+git add .
+git commit -m "Update portfolio"
+git push origin main
+```
 
-1. Edit the root HTML, JavaScript, CSS, images, files, or `resume.tex`.
-2. Regenerate project thumbnails after changing project metadata or source imagery:
-
-   ```powershell
-   node scripts/generate-thumbnails.mjs
-   ```
-3. Preview locally:
-
-   ```powershell
-   python -m http.server 4173
-   ```
-
-4. Compile `resume.tex` when the resume changes and copy the PDF to `files/resume.pdf`.
-5. Synchronize the root site files into `docs/`.
-6. Verify desktop and mobile layouts plus local links.
-7. Commit and push:
-
-   ```powershell
-   git add .
-   git commit -m "Update portfolio"
-   git push origin main
-   ```
+The Quarto post-render hook rebuilds the custom homepage; it does not redirect to docs.

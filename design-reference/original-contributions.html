@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Upstream open-source work by Markuss Saule across ML, AI research tooling, clinical AI infrastructure, and R developer tooling.">
+  <title>Open Source Engineering - Markuss Saule</title>
+  <link rel="icon" href="assets/favicon.svg?v=20260802-msra-preview" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css?v=20260802-msra-preview-upstream">
+  <script defer src="assets/app.js?v=20260802-msra-preview"></script>
+</head>
+<body class="contribution-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-progress" aria-hidden="true"></div>
+  <header class="site-nav">
+    <nav class="nav-inner" aria-label="Primary navigation">
+      <a class="brand" href="index.html"><span class="brand-mark">MS</span><span>Markuss Saule</span></a>
+      <div class="nav-links" id="mobile-navigation"><a href="index.html">Home</a><a href="work.html" aria-current="page">Work</a><a href="about.html">About</a><a href="resume.html">Resume</a></div>
+      <div class="nav-meta"><span class="availability">Volvo Group | May 2026 - Present</span><a href="https://www.linkedin.com/in/markuss-saule/" target="_blank" rel="noopener">LinkedIn &nearr;</a></div>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation">Menu</button>
+    </nav>
+  </header>
+
+  <main id="main" class="shell">
+    <header class="page-hero contribution-page-hero">
+      <span class="page-index">02 / OPEN SOURCE ENGINEERING</span>
+      <h1>Open Source<br><span class="signal">Engineering.</span></h1>
+      <p>Four substantive upstream contributions across machine learning, AI research tooling, clinical-AI infrastructure, and R developer tooling.</p>
+    </header>
+
+    <section class="contribution-intro reveal" aria-labelledby="contribution-intro-title">
+      <div class="contribution-intro-copy">
+        <span class="eyebrow">UPSTREAM ENGINEERING / 2026</span>
+        <h2 id="contribution-intro-title">Build where<br>the systems live.</h2>
+        <p>I work upstream when a failure mode is specific, reproducible, and worth fixing at the library level: an ML scorer edge case, a migration path, a clinical-AI contract mismatch, or a formatter that changes code on a second pass.</p>
+      </div>
+      <figure class="contribution-visual">
+        <img src="images/contributions/upstream-work.svg?v=20260802-open-source" alt="Systems map showing four open-source ecosystems and validation evidence">
+        <figcaption>4 ecosystems / 3 code contributions / 1 clinical-AI conformance design</figcaption>
+      </figure>
+    </section>
+
+    <section class="contribution-summary reveal" aria-label="Contribution summary">
+      <div><strong>4</strong><span>upstream ecosystems</span></div>
+      <div><strong>3</strong><span>code contributions</span></div>
+      <div><strong>1</strong><span>clinical-AI conformance design</span></div>
+      <div><strong>2026</strong><span>engineering record</span></div>
+    </section>
+
+    <section class="contribution-log" aria-labelledby="proof-log-title">
+      <div class="section-head reveal">
+        <span>01 / PROOF LOG</span>
+        <h2 id="proof-log-title">The evidence<br>is in the change.</h2>
+        <div class="aside">Each entry isolates a bounded technical problem, states the invariant, and leaves behind validation others can trust.</div>
+      </div>
+
+      <div class="contribution-ledger">
+        <article class="contribution-row reveal">
+          <div class="contribution-row-meta"><span>01</span><span>UPSTREAM CHANGE</span></div>
+          <div class="contribution-row-main">
+            <p class="contribution-system">scikit-learn / MACHINE LEARNING</p>
+            <h3>Scorer compatibility in <em>LogisticRegressionCV.</em></h3>
+            <p>Implemented a fix for a binary string-scorer edge case where <code>pos_label</code> could be passed twice while cross-validation rebuilt the scorer, producing a <code>TypeError</code>.</p>
+          </div>
+          <dl class="contribution-proof">
+            <div><dt>324</dt><dd>targeted tests passed</dd></div>
+            <div><dt>2</dt><dd>scoped commits</dd></div>
+            <div><dt>1</dt><dd>v1.9 regression addressed</dd></div>
+          </dl>
+          <a class="contribution-link" href="https://github.com/scikit-learn/scikit-learn/pull/34540" target="_blank" rel="noopener">View contribution <span>&nearr;</span></a>
+        </article>
+
+        <article class="contribution-row reveal">
+          <div class="contribution-row-meta"><span>02</span><span>UPSTREAM CHANGE</span></div>
+          <div class="contribution-row-main">
+            <p class="contribution-system">TransformerLens / AI RESEARCH TOOLING</p>
+            <h3>Safe migration from legacy <em>Hooked</em> entry points.</h3>
+            <p>Implemented targeted deprecation warnings for remaining legacy constructors, with warnings emitted once at direct construction and a clean package import path preserved for users ahead of the 4.0 removal.</p>
+          </div>
+          <dl class="contribution-proof">
+            <div><dt>5</dt><dd>warning regression tests</dd></div>
+            <div><dt>385</dt><dd>source files type-checked</dd></div>
+            <div><dt>4.0</dt><dd>migration milestone</dd></div>
+          </dl>
+          <a class="contribution-link" href="https://github.com/TransformerLensOrg/TransformerLens/pull/1592" target="_blank" rel="noopener">View contribution <span>&nearr;</span></a>
+        </article>
+
+        <article class="contribution-row reveal">
+          <div class="contribution-row-meta"><span>03</span><span>CONFORMANCE DESIGN</span></div>
+          <div class="contribution-row-main">
+            <p class="contribution-system">MONAI LABEL / CLINICAL-AI INFRASTRUCTURE</p>
+            <h3>Conformance testing for declared and observed label IDs.</h3>
+            <p>Reproduced deterministic mismatches between label specifications and model output, then proposed a narrow test-only helper that makes missing and undeclared IDs visible before a model integration reaches users.</p>
+          </div>
+          <dl class="contribution-proof">
+            <div><dt>2</dt><dd>contract mismatches traced</dd></div>
+            <div><dt>3</dt><dd>fixture cases designed</dd></div>
+            <div><dt>1</dt><dd>reusable test-only scope</dd></div>
+          </dl>
+          <a class="contribution-link" href="https://github.com/Project-MONAI/MONAILabel/issues/1871#issuecomment-5097644274" target="_blank" rel="noopener">View technical note <span>&nearr;</span></a>
+        </article>
+
+        <article class="contribution-row reveal">
+          <div class="contribution-row-meta"><span>04</span><span>UPSTREAM CHANGE</span></div>
+          <div class="contribution-row-main">
+            <p class="contribution-system">POSIT AIR / R DEVELOPER TOOLING</p>
+            <h3>Formatter idempotence for commented walrus expressions.</h3>
+            <p>Implemented a formatting fix that preserves an own-line comment between <code>:=</code> and its right-hand side, so a second formatter pass does not silently change the code again.</p>
+          </div>
+          <dl class="contribution-proof">
+            <div><dt>3</dt><dd>formatter edge cases</dd></div>
+            <div><dt>4</dt><dd>validation layers</dd></div>
+            <div><dt>2</dt><dd>CLI passes per check</dd></div>
+          </dl>
+          <a class="contribution-link" href="https://github.com/posit-dev/air/pull/520" target="_blank" rel="noopener">View contribution <span>&nearr;</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="contribution-status reveal" aria-label="Engineering standard">
+      <span>ENGINEERING STANDARD</span>
+      <p>A useful upstream contribution does more than patch a symptom. It isolates the failure mode, makes the invariant explicit, and leaves the system with tests maintainers and users can trust.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <div class="footer-call reveal"><span>03 / CONTACT</span><a href="mailto:markusstomas@gmail.com">Have a hard<br>problem?</a></div>
+    <div class="footer-bottom"><span>&copy; <span data-year></span> MARKUSS SAULE</span><div class="footer-links"><a href="https://github.com/msaule" target="_blank" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/markuss-saule/" target="_blank" rel="noopener">LinkedIn</a></div><span>IDAHO, UNITED STATES</span></div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,94 @@
+/* Shared alignment and reading rhythm; the Atelier visual language stays intact. */
+:root { --section-gap: clamp(56px, 6vw, 88px); }
+.site-header { height: 84px; }
+.hero-composition { min-height: 410px; grid-template-columns: 1.2fr 1fr; gap: 24px; }
+.hero-heading { padding: 34px 0; }
+.hero-heading h1 { font-size: clamp(68px, 7.7vw, 130px); margin-right: 0; }
+.hero-heading > p { max-width: 46ch; font-size: 18px; margin-top: 24px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 18px 32px; margin-top: 26px; }
+.hero-heading .hero-actions .text-link { margin-top: 0; }
+.sculpture { height: 410px; }
+.sculpture figcaption { font-size: 12px; left: 16px; }
+.sculpture button { font-size: 12px; min-height: 32px; }
+.hero-bottom { padding: 22px 0; gap: 28px; }
+.proof-band { padding-top: 28px; padding-bottom: 28px; }
+.proof-band span, .card-meta, .section-number { font-size: 13px; }
+.section-space { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
+.section-heading { grid-template-columns: minmax(0, 1fr) auto; gap: 16px 32px; margin-bottom: 36px; }
+.section-heading > .section-number { grid-column: 1 / -1; }
+.section-heading h2 { grid-column: 1; font-size: clamp(34px, 4vw, 60px); }
+.section-heading > .text-link { grid-column: 2; }
+.selected-grid .work-card:nth-child(even) { padding-top: 0; }
+.selected-grid, .work-grid { gap: 48px 32px; }
+.selected-grid .project-art, .work-grid .project-art { aspect-ratio: 1.55; }
+.card-meta { margin-top: 18px; }
+.card-heading { margin-top: 10px; }
+.world-feature, .world-content { min-height: 600px; }
+.world-content { padding-top: 48px; padding-bottom: 48px; }
+.world-content h2 { font-size: clamp(48px, 5.5vw, 82px); }
+.world-bottom { gap: 48px; padding-top: 48px; }
+.world-bottom > strong { font-size: clamp(80px, 10vw, 150px); }
+.research-grid { grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.upstream { padding-top: 0; }
+.upstream h3 { font-size: 38px; margin-top: 20px; }
+.about-teaser { gap: 64px; }
+.about-teaser-photo { max-width: 380px; }
+.page-intro { padding-top: 32px; padding-bottom: 40px; }
+.page-intro h1 { font-size: clamp(58px, 7vw, 104px); margin: 32px 0; }
+.intro-bottom > p { font-size: 18px; }
+.work-toolbar { margin-bottom: 32px; }
+.mobile-category { display: none; }
+.filters button { font-size: 14px; min-height: 40px; }
+.biography { gap: 64px; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); }
+.bio-copy { max-width: 62ch; }
+.reading-body p, .reading-body li { max-width: 68ch; }
+.experience-row { grid-template-columns: .65fr 1fr 1.6fr; gap: 28px; }
+.experience-row > span, .experience-row .role { font-size: 14px; }
+.site-footer { padding-top: 48px; }
+.footer-top { padding-bottom: 48px; }
+.footer-action { font-size: clamp(64px, 9vw, 140px); }
+@media (min-width: 1600px) {
+  :root { --gutter: max(64px, calc((100vw - 1440px) / 2)); }
+}
+/* Grow into available screen height while reserving space for identity and proof. */
+@media (min-width: 761px) {
+  .home-hero { --hero-height: clamp(340px, calc(100svh - 440px), 580px); }
+  .hero-composition { min-height: var(--hero-height); }
+  .sculpture { height: var(--hero-height); }
+  .hero-heading h1 { font-size: clamp(68px, min(8.4vw, 13svh), 140px); }
+}
+@media (max-width: 1100px) and (min-width: 761px) {
+  .home-hero { --hero-height: clamp(340px, calc(100svh - 530px), 560px); }
+  .hero-heading h1 { font-size: 8.7vw; }
+  .hero-bottom { grid-template-columns: 1.2fr 1fr; }
+  .hero-note { grid-column: 2; justify-self: start; }
+  .research-grid, .biography, .about-teaser { gap: 36px; }
+}
+@media (max-width: 760px) {
+  .work-toolbar .filters { display: none; }
+  .mobile-category { display: flex; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; }
+  .mobile-category select { min-width: 0; max-width: 74%; min-height: 44px; padding: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font: inherit; }
+  .site-header { height: 76px; }
+  .hero-composition { grid-template-columns: 1fr; gap: 0; min-height: 0; }
+  .hero-heading { padding: 30px 0 12px; }
+  .hero-heading h1 { font-size: clamp(48px, 12.5vw, 88px); }
+  .hero-heading > p { font-size: 17px; margin-top: 22px; }
+  .hero-actions { gap: 18px 26px; margin-top: 22px; }
+  .sculpture { height: 240px; }
+  .sculpture figcaption { left: 0; bottom: 0; }
+  .hero-bottom { grid-template-columns: 1fr; gap: 20px; padding: 24px 0; margin-top: 12px; }
+  .hero-note { justify-self: start; }
+  .proof-band { gap: 24px; }
+  .section-heading { grid-template-columns: 1fr; gap: 14px; margin-bottom: 28px; }
+  .section-heading > .text-link { grid-column: 1; justify-self: start; margin-top: 6px; }
+  .selected-grid, .work-grid { gap: 36px; }
+  .world-feature, .world-content { min-height: 580px; }
+  .world-content { padding-top: 36px; padding-bottom: 36px; }
+  .world-content h2 { font-size: 44px; }
+  .world-bottom { gap: 26px; }
+  .research-grid, .biography, .about-teaser { grid-template-columns: 1fr; gap: 36px; }
+  .page-intro h1 { font-size: clamp(48px, 12vw, 76px); margin: 28px 0; }
+  .page-intro { padding-bottom: 32px; }
+  .experience-row { grid-template-columns: 1fr; gap: 12px; }
+  .capability-grid p { font-size: 16px; }
+}

@@ -1,17 +1,4 @@
-$redirect = @"
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Redirecting...</title>
-  <meta http-equiv="refresh" content="0; url=/docs/">
-  <script>window.location.replace('/docs/');</script>
-</head>
-<body>
-  <p>Redirecting to <a href="/docs/">/docs/</a>...</p>
-</body>
-</html>
-"@
-
-Set-Content -Path (Join-Path $PSScriptRoot "..\\index.html") -Value $redirect -Encoding Ascii
+$ErrorActionPreference = 'Stop'
+# Keep the custom homepage intact after rendering legacy Quarto source material.
+& node (Join-Path $PSScriptRoot 'build.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'Portfolio build failed.' }

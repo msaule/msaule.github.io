@@ -1,12 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MS">
-  <rect width="64" height="64" fill="#d9ff43"/>
-  <text
-    x="32"
-    y="39"
-    text-anchor="middle"
-    font-family="Fragment Mono, IBM Plex Mono, monospace"
-    font-size="23"
-    font-weight="700"
-    letter-spacing="-1"
-    fill="#0c0d0c">MS</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80"><rect width="80" height="80" rx="8" fill="#d9f780"/><g transform="translate(2 16)"><path d="M6 39V9l14 17L34 9v30M68 9H53a7.5 7.5 0 0 0 0 15h8a7.5 7.5 0 0 1 0 15H46" fill="none" stroke="#1b2722" stroke-width="3.4" stroke-linecap="square" stroke-linejoin="miter"/></g></svg>
