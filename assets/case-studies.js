@@ -327,3 +327,29 @@ Object.assign(window.PORTFOLIO_CASE_STUDIES, {
     ]
   }
 });
+
+Object.assign(window.PORTFOLIO_CASE_STUDIES, {
+  "constrained-ai-compiler": {
+    problem: "The challenge gives you a small simulated accelerator, a fixed machine-learning kernel, and a cycle budget. The hard part is not writing more code; it is finding a legal schedule that respects data dependencies, vector width, memory movement, and exact output-index semantics at the same time.",
+    role: "I built the compiler path end to end: dependency IR, lowering, priority scheduling, virtual-vector allocation, scratch binding, schedule emission, reproducibility records, and the values-plus-indices verification harness.",
+    build: [
+      "Represented the kernel as a dependency-aware intermediate form instead of hand-authoring an opaque instruction sequence.",
+      "Scheduled work across the frozen ALU, VALU, load, flow, and store engines using VLIW issue slots and dependency priorities.",
+      "Added virtual-vector and scratch allocation so lifetimes, aliases, loads, and writeback could be optimized together.",
+      "Used batch SIMD, hash-stage strength reduction, shallow-tree reuse, and explicit index writeback to cut the critical path.",
+      "Kept a dynamic compiler and a compiler-generated ahead-of-time bundle for the community runner's fixed tuple, with the two schedules matching exactly."
+    ],
+    decisions: [
+      "Optimized for exact values and exact indices. A fast result that returned the right numbers to the wrong positions was still wrong.",
+      "Treated dependency pressure, register lifetime, scratch capacity, and machine issue width as one scheduling problem rather than optimizing each in isolation.",
+      "Left the official simulator, reference problem, and test tree untouched so the score remained attributable to the submission.",
+      "Used the ahead-of-time bundle only to meet the community runner's generation timeout; the schedule was emitted by the dynamic compiler and the dynamic path remains available for replay."
+    ],
+    validation: "The unchanged official suite passed 9/9 at 971 cycles. The result is 28 cycles faster than the public Claude Code Fable 5 baseline at 999 cycles, and approximately 35% below Anthropic's published 1,487-cycle reference. A strict rerun matched every value and output index across 50 seeded inputs with zero correctness failures. At verification, 971 cycles ranked #25 worldwide on the public Paradigm community leaderboard; that board is independent of Anthropic's official evaluation.",
+    links: [
+      ["Official Anthropic challenge", "https://github.com/anthropics/original_performance_takehome"],
+      ["Anthropic performance-evaluation context", "https://www.anthropic.com/engineering/AI-resistant-technical-evaluations"],
+      ["Public community leaderboard", "https://www.paradigm.xyz/puzzles/anthropic-challenge"]
+    ]
+  }
+});

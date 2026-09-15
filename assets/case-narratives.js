@@ -491,3 +491,29 @@ Object.assign(window.PORTFOLIO_CASE_NARRATIVES, {
     }
   ]
 });
+
+Object.assign(window.PORTFOLIO_CASE_NARRATIVES, {
+  "constrained-ai-compiler": [
+    {
+      title: "Win the machine you are given",
+      paragraphs: [
+        "This was a compiler problem disguised as a benchmark. The machine has a small number of issue slots, a scratchpad, vector operations, and strict rules about when values become available. Every shortcut has a cost somewhere else.",
+        "I started by making the kernel legible: operations became a dependency graph with explicit inputs, outputs, widths, and memory behavior. That gave me something I could reason about and schedule instead of a pile of local instruction edits."
+      ]
+    },
+    {
+      title: "Schedule the whole critical path",
+      paragraphs: [
+        "The useful gains came from letting the compiler see the full problem. It could place independent work into otherwise empty VLIW slots, batch compatible operations across SIMD lanes, reuse shallow tree work, and decide when a value should occupy scratch space or move through a vector register.",
+        "That is where the project became more than benchmark tuning. The scheduler and allocator were constantly trading off parallel issue width, dependency distance, address generation, live ranges, and writeback order. A change that looked cheaper in isolation could make the final program slower or run out of scratch."
+      ]
+    },
+    {
+      title: "Beat the baseline, then prove it",
+      paragraphs: [
+        "The final schedule completed in 971 simulated cycles, 28 cycles ahead of the public Claude Code Fable 5 baseline at 999. It passed all nine official tests and matched both output values and output indices in 50 independently seeded reruns.",
+        "The community runner has a generation timeout, so the submitted wrapper carries a compiler-generated ahead-of-time schedule for the fixed challenge tuple. The dynamic compiler produced the same schedule, and it remains in the package for inspection and replay. At verification, the result ranked #25 worldwide on the public community board."
+      ]
+    }
+  ]
+});

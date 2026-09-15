@@ -15,15 +15,87 @@ const originalApp = read('design-reference/original-app.js');
 const gallerySource = originalApp.match(/const projectGalleries = (\{[\s\S]*?\n  \});/)[1];
 const galleries = vm.runInNewContext(`(${gallerySource})`);
 const esc = s => String(s ?? '').replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;');
+
+const jpegSofMarkers = new Set([
+  0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7,
+  0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf,
+]);
+
+function imageDimensions(src) {
+  const file = path.join(root, src);
+  try {
+    const buffer = fs.readFileSync(file);
+    const ext = path.extname(file).toLowerCase();
+
+    if (ext === '.png' && buffer.length >= 24 && buffer.readUInt32BE(0) === 0x89504e47) {
+      return [buffer.readUInt32BE(16), buffer.readUInt32BE(20)];
+    }
+
+    if (ext === '.svg') {
+      const tag = buffer.toString('utf8').match(/<svg[^>]*>/i)?.[0] || '';
+      const viewBox = tag.match(/viewBox="([^"]+)"/i)?.[1]
+        ?.trim()
+        .split(/[ ,]+/)
+        .map(Number);
+      if (viewBox?.length === 4 && viewBox[2] > 0 && viewBox[3] > 0) {
+        return [viewBox[2], viewBox[3]];
+      }
+      const width = Number.parseFloat(tag.match(/width="([\d.]+)/i)?.[1]);
+      const height = Number.parseFloat(tag.match(/height="([\d.]+)/i)?.[1]);
+      return width > 0 && height > 0 ? [width, height] : null;
+    }
+
+    if (ext === '.jpg' || ext === '.jpeg') {
+      let offset = 2;
+      while (offset + 9 < buffer.length) {
+        if (buffer[offset] !== 0xff) {
+          offset += 1;
+          continue;
+        }
+        const marker = buffer[offset + 1];
+        if (marker === 0xd8 || marker === 0xd9) {
+          offset += 2;
+          continue;
+        }
+        const segmentLength = buffer.readUInt16BE(offset + 2);
+        if (jpegSofMarkers.has(marker)) {
+          return [buffer.readUInt16BE(offset + 7), buffer.readUInt16BE(offset + 5)];
+        }
+        if (segmentLength < 2) break;
+        offset += 2 + segmentLength;
+      }
+    }
+  } catch {
+    // Missing or unsupported media should not prevent the site from building.
+  }
+  return null;
+}
+
+function evidenceClasses(src) {
+  const dimensions = imageDimensions(src);
+  if (!dimensions) return { figure: 'evidence-item', media: 'evidence-media evidence-media--standard' };
+
+  const ratio = dimensions[0] / dimensions[1];
+  if (ratio < 0.86) {
+    return { figure: 'evidence-item', media: 'evidence-media evidence-media--document' };
+  }
+  if (ratio >= 2.05) {
+    return { figure: 'evidence-item evidence-item--wide', media: 'evidence-media evidence-media--panorama' };
+  }
+  if (ratio >= 1.78) {
+    return { figure: 'evidence-item evidence-item--wide', media: 'evidence-media evidence-media--landscape' };
+  }
+  return { figure: 'evidence-item', media: 'evidence-media evidence-media--standard' };
+}
 const para = text => `<p>${esc(text)}</p>`;
-const order = ['ravel', 'radiology-value-pipeline', 'roblox-brand-worlds', 'falsifyr', 'msra-ai-values', 'earnings-quality-autopsy', 'wayline', 'owl', 'mercury-market-sim', 'fulfillment', 'insurance-fraud', 'lung-cancer', 'readmission', 'hospital-prices', 'dying-on-the-margin'];
+const order = ['ravel', 'constrained-ai-compiler', 'radiology-value-pipeline', 'roblox-brand-worlds', 'falsifyr', 'msra-ai-values', 'earnings-quality-autopsy', 'wayline', 'owl', 'mercury-market-sim', 'fulfillment', 'insurance-fraud', 'lung-cancer', 'readmission', 'hospital-prices', 'dying-on-the-margin'];
 const ordered = order.map(slug => projects.find(p => p.slug === slug)).filter(Boolean);
 const get = slug => projects.find(p => p.slug === slug);
 const arrow = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.6"/></svg>';
 const logo = '<svg viewBox="0 0 76 48" fill="none" aria-hidden="true"><path d="M6 39V9l14 17L34 9v30M68 9H53a7.5 7.5 0 0 0 0 15h8a7.5 7.5 0 0 1 0 15H46" stroke="currentColor" stroke-width="3.4" stroke-linecap="square" stroke-linejoin="miter"/></svg>';
 const prettyTitle = p => p.slug === 'msra-ai-values' ? 'Microsoft AI Values Research' : p.slug === 'roblox-brand-worlds' ? 'Worlds worth getting lost in.' : p.shortTitle;
-const themes = { ravel:'ravel', falsifyr:'falsifyr', 'radiology-value-pipeline':'radiology', 'roblox-brand-worlds':'roblox', 'msra-ai-values':'values', 'earnings-quality-autopsy':'earnings', owl:'owl', 'mercury-market-sim':'mercury', wayline:'wayline' };
-const covers = { 'radiology-value-pipeline': 'images/projects/radiology-value-pipeline/cover.png', ravel: 'images/projects/ravel/pkgdown-home.png', wayline: 'images/projects/wayline/vegas-greensboro-250-desktop.png' };
+const themes = { ravel:'ravel', 'constrained-ai-compiler':'compiler', falsifyr:'falsifyr', 'radiology-value-pipeline':'radiology', 'roblox-brand-worlds':'roblox', 'msra-ai-values':'values', 'earnings-quality-autopsy':'earnings', owl:'owl', 'mercury-market-sim':'mercury', wayline:'wayline' };
+const covers = { 'radiology-value-pipeline': 'images/projects/radiology-value-pipeline/cover.png', ravel: 'images/projects/ravel/pkgdown-home.png', wayline: 'images/projects/wayline/vegas-greensboro-250-desktop.png', 'constrained-ai-compiler': 'images/projects/constrained-ai-compiler/cover.svg' };
 function localUrl(href, base) {
   if (/^(https?:|mailto:|#)/.test(href)) return href;
   const legacy = href.match(/^(?:\.\.\/)?projects\/([^/?]+)\.html$/);
@@ -31,7 +103,7 @@ function localUrl(href, base) {
   return base + href.replace(/^\.\.\//, '');
 }
 function art(p, base = '', hero = false) {
-  const src = covers[p.slug] || p.image;
+  const src = hero ? (covers[p.slug] || p.image) : (p.thumbnail || covers[p.slug] || p.image);
   if (!hero && p.slug === 'ravel') return `<div class="project-art art-ravel"><span class="art-word">ravel<span class="art-star">*</span></span><svg viewBox="0 0 700 220" class="ravel-lines" fill="none" aria-hidden="true">${Array.from({length: 9}, (_,i) => `<path d="M-40 ${30+i*18}C150 ${-120+i*24} 360 ${380-i*18} 740 ${40+i*18}" stroke="currentColor" stroke-width="${i%3===0?3:1}"/>`).join('')}</svg><div class="art-foot"><span>AI, inside your analysis.</span><span>RStudio / CRAN</span></div></div>`;
   if (!hero && p.slug === 'falsifyr') return `<div class="project-art art-falsifyr"><div class="art-foot"><span>Statistical stress testing</span><span>R / CRAN</span></div><div class="falsify-type">How sure<br>is <span>sure?</span></div><div class="fracture" aria-hidden="true">${Array.from({length:28},(_,i)=>`<i style="--i:${i};--h:${25+Math.abs(Math.sin(i*1.7))*70}%"></i>`).join('')}</div></div>`;
   if (!hero && p.slug === 'msra-ai-values') return `<div class="project-art art-values"><div class="art-foot"><span>Microsoft Research Asia</span><span>AI & human values</span></div><div class="values-ten">10<span>/10</span></div><p>Advanced Acceptance selections</p><svg class="values-grid" viewBox="0 0 350 80" aria-hidden="true">${Array.from({length:10},(_,i)=>`<circle cx="${15+i*35}" cy="40" r="12" fill="none" stroke="currentColor"/><path d="m${9+i*35} 40 4 4 8-9" fill="none" stroke="currentColor"/>`).join('')}</svg></div>`;
@@ -52,7 +124,7 @@ function card(p, i, base='') {
 
 const home = `<section class="home-hero"><div class="hero-kicker"><span>Data & AI / Independent portfolio</span><span>2026</span></div><div class="hero-composition"><div class="hero-heading"><h1>Curiosity,<br><span>engineered.</span></h1><p>I build AI tools, statistical software, and analytics systems. Currently at Volvo; publishing open-source tools used by thousands.</p><div class="hero-actions"><a class="text-link" href="#selected">Explore the work <span>&darr;</span></a><a class="text-link" href="files/resume.pdf">Read my resume ${arrow}</a></div></div><figure class="sculpture"><canvas id="sculpture" aria-label="A slowly rotating geometric sculpture made of folded triangular panels"></canvas><figcaption><span>A little order in the complexity.</span><button id="pause-art" type="button" aria-pressed="false">Pause motion</button></figcaption></figure></div><div class="hero-bottom"><a href="about.html" class="mini-profile"><img src="images/markuss-headshot.jpg" alt="Markuss Saule" width="90" height="110"><span><strong>Markuss Saule</strong><span>Business Analytics<br>Statistics & Data Science</span></span>${arrow}</a><p>Python, R, SQL &amp; Power BI.<br>Statistics, software, and product analytics.</p><a class="hero-note" href="resume.html">Full-time from<br><strong>April 2027 ${arrow}</strong></a></div></section>
 <section class="proof-band" aria-label="A few things I have built"><div><strong>2K+</strong><span>Ravel users<br>AI copilot on CRAN</span></div><div><strong>1.5M+</strong><span>monthly web users<br>Volvo CJA migration</span></div><div><strong>10</strong><span>Advanced Acceptance selections<br>Microsoft AI Values Challenge</span></div><div><strong>7.5B+</strong><span>plays across shipped<br>Roblox experiences</span></div></section>
-<section class="selected-section section-space" id="selected"><div class="section-heading"><span class="section-number">01 / Selected work</span><h2>Selected <span>work.</span></h2><a class="text-link" href="work.html">All ${ordered.length} projects ${arrow}</a></div><div class="selected-grid">${['ravel','radiology-value-pipeline','falsifyr','earnings-quality-autopsy'].map((s,i)=>card(get(s),i)).join('')}</div></section>
+<section class="selected-section section-space" id="selected"><div class="section-heading"><span class="section-number">01 / Selected work</span><h2>Selected <span>work.</span></h2><a class="text-link" href="work.html">All ${ordered.length} projects ${arrow}</a></div><div class="selected-grid">${['ravel','constrained-ai-compiler','radiology-value-pipeline','falsifyr'].map((s,i)=>card(get(s),i)).join('')}</div></section>
 <section class="world-feature"><div class="world-image"><img src="images/projects/roblox-brand-worlds/cover.jpg" alt="Justice Hall environment for the Black Adam Roblox event" loading="lazy"></div><div class="world-content"><span class="section-number">02 / A different kind of system</span><h2>Before the models,<br>there were <em>worlds.</em></h2><div class="world-bottom"><strong>7.5B<span>+ plays</span></strong><div><p>Ten years of world design, player flow, and live experiences. Warner Music, DC, Bakugan, L'Oreal, and Sony. Personally commended by Roblox CEO David Baszucki.</p><a href="projects/roblox-brand-worlds.html" class="text-link">Step inside ${arrow}</a></div></div></div></section>
 <section class="section-space research-section"><div class="section-heading"><span class="section-number">03 / Beyond the build</span><h2>Research &amp; <span>contributions.</span></h2></div><div class="research-grid"><a href="projects/msra-ai-values.html" class="research-main">${art(get('msra-ai-values'))}<div class="card-heading"><h3>Microsoft AI Values Research</h3>${arrow}</div><p>Ten Advanced Acceptance selections exploring difficult questions in bioethics, consent, and human judgment.</p></a><div class="upstream"><p class="section-number">Open-source engineering</p><h3>A contribution<br>at the source.</h3><p>Correctness, testing, and developer experience in the tools that other people build on.</p>${['scikit-learn','TransformerLens','MONAI Label','Posit Air'].map((s,i)=>`<a href="contributions.html#contribution-${i+1}"><span>${s}</span>${arrow}</a>`).join('')}</div></div></section>
 <section class="about-teaser section-space"><div class="about-teaser-photo"><img src="images/markuss-headshot.jpg" alt="Portrait of Markuss Saule" loading="lazy"></div><div><span class="section-number">04 / The person behind it</span><h2>I care where<br>the work goes.</h2><p>Health challenges in my family made healthcare personal. Building on Roblox taught me how people move through a system. At Volvo, I work with the scale and constraints of a global business.</p><p>Those experiences shape what I choose to build, and how carefully I build it.</p><a class="text-link" href="about.html">A little more about me ${arrow}</a></div></section>`;
@@ -82,7 +154,11 @@ for(const [idx,p] of ordered.entries()) {
  const resources=(s.links||[]).filter(([label,href])=>href);
  const gallery=(galleries[p.slug]||[[p.image,p.alt]]).filter(([src])=>fs.existsSync(path.join(root,src)));
  const next=ordered[(idx+1)%ordered.length];
- const content=`<header class="case-intro"><a class="case-back" href="../work.html">&larr; All work</a><div class="intro-top"><span>${esc(p.category)}</span><span>${esc(p.year)} / ${String(idx+1).padStart(2,'0')}</span></div><h1>${esc(prettyTitle(p))}</h1><div class="case-deck"><p>${esc(p.summary)}</p><div class="case-tools">${p.tools.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div>${resources.length?`<a class="text-link" href="#resources">Source & deliverables ${arrow}</a>`:''}</header><figure class="case-cover"><button class="image-open" data-image="${base}${esc(covers[p.slug]||p.image)}" data-caption="${esc(p.alt)}" aria-label="Expand project cover">${art(p,base,true)}<span class="image-expand">View image ${arrow}</span></button></figure><section class="case-numbers" aria-label="Project figures">${p.stats.map(([v,l])=>`<div><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join('')}</section><div class="reading-layout"><aside class="reading-nav"><span>Inside this project</span><a href="#overview">Overview</a><a href="#build">What I built</a>${n.length?'<a href="#story">The details</a>':''}<a href="#decisions">Design decisions</a><a href="#evidence">Working outputs</a>${resources.length?'<a href="#resources">Source & deliverables</a>':''}</aside><div class="reading-body"><section id="overview"><span class="section-number">01 / Context</span><h2>The question<br>behind the work.</h2>${para(s.problem||p.summary)}<h3>My role</h3>${para(s.role||p.detail)}</section><section id="build"><span class="section-number">02 / Implementation</span><h2>What I built.</h2>${para(p.detail)}<ul>${(s.build||[]).map(b=>`<li>${esc(b)}</li>`).join('')}</ul></section>${n.length?`<section id="story"><span class="section-number">03 / In detail</span>${n.map((part,i)=>`<article class="narrative"><h2>${esc(part.title)}</h2>${(part.paragraphs||[]).map(para).join('')}</article>`).join('')}</section>`:''}<section id="decisions"><span class="section-number">04 / Engineering judgment</span><h2>The decisions<br>that shaped it.</h2><ol>${(s.decisions||[]).map(d=>`<li>${esc(d)}</li>`).join('')}</ol>${s.validation?`<h3>Evaluation & results</h3>${para(s.validation)}`:''}</section></div></div><section id="evidence" class="case-evidence section-space"><div class="section-heading"><span class="section-number">05 / Working outputs</span><h2>See it for yourself.</h2><p>Select an image to view it at full size.</p></div><div class="evidence-gallery">${gallery.map(([src,caption],i)=>`<figure><button class="image-open" data-image="${base}${esc(src)}" data-caption="${esc(caption)}" aria-label="Expand ${esc(caption)}"><img src="${base}${esc(src)}" alt="${esc(caption)}" loading="lazy"><span class="image-expand">View image ${arrow}</span></button><figcaption><span>${String(i+1).padStart(2,'0')}</span>${esc(caption)}</figcaption></figure>`).join('')}</div></section>${resources.length?`<section id="resources" class="resources section-space"><div class="section-heading"><span class="section-number">06 / Artifacts</span><h2>Take a closer look.</h2></div>${resources.map(([label,href],i)=>`<a href="${esc(localUrl(href,base))}" target="_blank" rel="noopener"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(label)}</strong>${arrow}</a>`).join('')}</section>`:''}<a class="next-project" href="${next.slug}.html"><span>Next project</span><strong>${esc(prettyTitle(next))}</strong>${arrow}</a>`;
+ const evidence=gallery.map(([src,caption],i)=>{
+  const media=evidenceClasses(src);
+  return `<figure class="${media.figure}"><button class="image-open" data-image="${base}${esc(src)}" data-caption="${esc(caption)}" aria-label="Expand ${esc(caption)}"><div class="${media.media}"><img src="${base}${esc(src)}" alt="${esc(caption)}" loading="lazy"></div><span class="image-expand">View image ${arrow}</span></button><figcaption><span>${String(i+1).padStart(2,'0')}</span>${esc(caption)}</figcaption></figure>`;
+ }).join('');
+ const content=`<header class="case-intro"><a class="case-back" href="../work.html">&larr; All work</a><div class="intro-top"><span>${esc(p.category)}</span><span>${esc(p.year)} / ${String(idx+1).padStart(2,'0')}</span></div><h1>${esc(prettyTitle(p))}</h1><div class="case-deck"><p>${esc(p.summary)}</p><div class="case-tools">${p.tools.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div>${resources.length?`<a class="text-link" href="#resources">Source & deliverables ${arrow}</a>`:''}</header><figure class="case-cover"><button class="image-open" data-image="${base}${esc(covers[p.slug]||p.image)}" data-caption="${esc(p.alt)}" aria-label="Expand project cover">${art(p,base,true)}<span class="image-expand">View image ${arrow}</span></button></figure><section class="case-numbers" aria-label="Project figures">${p.stats.map(([v,l])=>`<div><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join('')}</section><div class="reading-layout"><aside class="reading-nav"><span>Inside this project</span><a href="#overview">Overview</a><a href="#build">What I built</a>${n.length?'<a href="#story">The details</a>':''}<a href="#decisions">Design decisions</a><a href="#evidence">Working outputs</a>${resources.length?'<a href="#resources">Source & deliverables</a>':''}</aside><div class="reading-body"><section id="overview"><span class="section-number">01 / Context</span><h2>The question<br>behind the work.</h2>${para(s.problem||p.summary)}<h3>My role</h3>${para(s.role||p.detail)}</section><section id="build"><span class="section-number">02 / Implementation</span><h2>What I built.</h2>${para(p.detail)}<ul>${(s.build||[]).map(b=>`<li>${esc(b)}</li>`).join('')}</ul></section>${n.length?`<section id="story"><span class="section-number">03 / In detail</span>${n.map((part,i)=>`<article class="narrative"><h2>${esc(part.title)}</h2>${(part.paragraphs||[]).map(para).join('')}</article>`).join('')}</section>`:''}<section id="decisions"><span class="section-number">04 / Engineering judgment</span><h2>The decisions<br>that shaped it.</h2><ol>${(s.decisions||[]).map(d=>`<li>${esc(d)}</li>`).join('')}</ol>${s.validation?`<h3>Evaluation & results</h3>${para(s.validation)}`:''}</section></div></div><section id="evidence" class="case-evidence section-space"><div class="section-heading"><span class="section-number">05 / Working outputs</span><h2>See it for yourself.</h2><p>Select an image to view it at full size.</p></div><div class="evidence-gallery">${evidence}</div></section>${resources.length?`<section id="resources" class="resources section-space"><div class="section-heading"><span class="section-number">06 / Artifacts</span><h2>Take a closer look.</h2></div>${resources.map(([label,href],i)=>`<a href="${esc(localUrl(href,base))}" target="_blank" rel="noopener"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(label)}</strong>${arrow}</a>`).join('')}</section>`:''}<a class="next-project" href="${next.slug}.html"><span>Next project</span><strong>${esc(prettyTitle(next))}</strong>${arrow}</a>`;
  write(`projects/${p.slug}.html`,page(prettyTitle(p),content,'Work',base,`case-page theme-${themes[p.slug]||'default'}`));
 }
 

@@ -540,6 +540,22 @@ window.PORTFOLIO_PROJECTS = [
     "featured": true,
     "thumbnail": "images/project-thumbnails/msra-ai-values.svg",
     "thumbnailSource": "images/projects/msra-ai-values/cover.svg"
+  },
+  {
+    "slug": "constrained-ai-compiler",
+    "title": "Constrained AI Compiler: 971-Cycle Performance",
+    "shortTitle": "Constrained Compiler",
+    "year": "2026",
+    "category": "Compiler & ML Systems",
+    "image": "images/projects/constrained-ai-compiler/cover.svg",
+    "alt": "A compiler schedule reduced to 971 simulated cycles, ahead of a public Fable 5 baseline",
+    "summary": "A dependency-aware VLIW/SIMD compiler that drove a frozen machine-learning kernel to 971 cycles, placing #25 worldwide and finishing 28 cycles ahead of the public Claude Code Fable 5 baseline.",
+    "detail": "I built the compiler pipeline, schedule search, virtual-vector allocation, scratch binding, and exact verification path for a constrained simulated accelerator.",
+    "stats": [["971", "simulated cycles"], ["28", "cycles ahead of Fable 5"], ["9/9", "official tests"], ["#25", "worldwide placement"]],
+    "tools": ["Python", "Compiler Design", "VLIW/SIMD", "Exact Verification"],
+    "featured": true,
+    "thumbnail": "images/project-thumbnails/constrained-ai-compiler.svg",
+    "thumbnailSource": "images/projects/constrained-ai-compiler/cover.svg"
   }];
 
 // Lead copy is intentionally decision- and evidence-led. The long-form case
@@ -560,6 +576,10 @@ const PORTFOLIO_PROJECT_COPY = {
   ravel: {
     summary: "A CRAN-published RStudio copilot used by 2,000+ people that understands the active analysis and keeps every proposed code or file action visible and reviewable.",
     detail: "Ravel collects explicit project context, supports model interpretation and Quarto drafting, and stages changes for approval rather than quietly modifying an analyst's work."
+  },
+  "constrained-ai-compiler": {
+    summary: "A dependency-aware VLIW/SIMD compiler that drove a frozen machine-learning kernel to 971 cycles, placing #25 worldwide and finishing 28 cycles ahead of the public Claude Code Fable 5 baseline.",
+    detail: "The system turns a dependency IR into a scheduled program with virtual-vector allocation, scratch binding, SIMD lowering, and exact values-plus-indices verification."
   },
   wayline: {
     summary: "A full product road-trip planner that turns routing, fuel cadence, overnight choices, trip-fit scoring, and exports into one explainable plan.",

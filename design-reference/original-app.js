@@ -34,6 +34,10 @@
       ['images/projects/ravel/showcase.png', 'Ravel showcase article'],
       ['images/projects/ravel/reference.png', 'Function reference']
     ],
+    'constrained-ai-compiler': [
+      ['images/projects/constrained-ai-compiler/cover.svg', '971-cycle compiler result'],
+      ['images/projects/constrained-ai-compiler/architecture.svg', 'Compiler pipeline and verification path']
+    ],
     'mercury-market-sim': [
       ['images/projects/mercury-market-sim/flash_crash_price_path.png', 'Endogenous flash-crash price path'],
       ['images/projects/mercury-market-sim/fragmented_venues_market_state_heatmap.png', 'Fragmented venue state heatmap'],
@@ -102,7 +106,7 @@
     ],
     'hospital-db': [
       ['images/projects/hospital-db/image 1.png', 'Hospital database interface'],
-      ['images/projects/hospital-db/image 4.png', 'Relational schema'],
+      ['images/projects/hospital-db/image 2.png', 'Relational schema'],
       ['images/projects/hospital-db/image 8.png', 'Operational reporting query']
     ]
   };
