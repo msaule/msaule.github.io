@@ -11,7 +11,7 @@
   <rect width="1600" height="900" fill="#0c0d0c"/>
   <rect x="0" y="0" width="12" height="900" fill="#d9ff43"/>
   <line x1="560" y1="60" x2="560" y2="840" stroke="#33362f" stroke-width="2"/>
-  <text x="78" y="96" class="mono" fill="#d9ff43">10 / 14</text>
+  <text x="78" y="96" class="mono" fill="#d9ff43">12 / 16</text>
   <text x="78" y="142" class="mono" fill="#96998f">MACHINE LEARNING</text>
   <text x="78" y="260" class="title">Insurance Fraud</text>
     <text x="78" y="325.28" class="title">Detection</text>

@@ -18,6 +18,36 @@
   dialog?.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
   dialog?.addEventListener('close',()=>{document.body.style.overflow='';trigger?.focus();});
 
+  const motionOK=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const header=document.querySelector('.site-header'),progress=document.querySelector('.scroll-progress');
+  let ticking=false;
+  function onScroll(){ticking=false;const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;header?.classList.toggle('is-scrolled',y>8);progress?.style.setProperty('--progress',max>0?Math.min(y/max,1):0);}
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});onScroll();
+
+  const revealSelector='.section-heading,.work-card,.proof-band>div,.research-main,.upstream,.about-teaser>*,.experience-row,.capability-grid article,.case-numbers>div,.reading-body>section,.evidence-item,.resources>a,.contribution-row,.next-project,.footer-top,.world-content>*,.intro-bottom,.biography>*,.case-cover,.contributions-intro>*,.resume-viewer';
+  const revealTargets=[...document.querySelectorAll(revealSelector)].filter(el=>!el.closest('.home-hero'));
+  if('IntersectionObserver' in window&&motionOK){
+    revealTargets.forEach(el=>{const siblings=[...el.parentElement.children].filter(c=>c.matches(revealSelector));el.style.setProperty('--delay',`${Math.min(siblings.indexOf(el)%4,3)*.08}s`);el.classList.add('will-reveal');});
+    const revealer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealer.unobserve(entry.target);}}),{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    revealTargets.forEach(el=>revealer.observe(el));
+  }
+
+  document.querySelectorAll('.work-card-link,.research-main').forEach(link=>link.addEventListener('pointermove',e=>{const art=link.querySelector('.project-art');if(!art)return;const r=art.getBoundingClientRect();art.style.setProperty('--mx',`${e.clientX-r.left}px`);art.style.setProperty('--my',`${e.clientY-r.top}px`);}));
+
+  const counters=document.querySelectorAll('.proof-band strong');
+  if(counters.length&&'IntersectionObserver' in window&&motionOK){
+    const countUp=el=>{const match=el.textContent.trim().match(/^([\d.]+)(.*)$/);if(!match)return;const target=parseFloat(match[1]),decimals=(match[1].split('.')[1]||'').length,start=performance.now(),duration=1600;const step=now=>{const t=Math.min((now-start)/duration,1),eased=1-Math.pow(1-t,4);el.textContent=(target*eased).toFixed(decimals)+match[2];if(t<1)requestAnimationFrame(step);};requestAnimationFrame(step);};
+    const counterObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){countUp(entry.target);counterObserver.unobserve(entry.target);}}),{threshold:.6});
+    counters.forEach(el=>counterObserver.observe(el));
+  }
+
+  const spyLinks=[...document.querySelectorAll('.reading-nav a')];
+  if(spyLinks.length&&'IntersectionObserver' in window){
+    const sections=spyLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const spy=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)spyLinks.forEach(a=>a.classList.toggle('is-active',a.getAttribute('href')==='#'+entry.target.id));}),{rootMargin:'-35% 0px -60% 0px'});
+    sections.forEach(s=>spy.observe(s));
+  }
+
   // Folded triangular panels, built as a closed mesh and depth-sorted each frame.
   const canvas=document.querySelector('#sculpture');if(!canvas)return;
   const context=canvas.getContext('2d');if(!context)return;
@@ -44,17 +74,18 @@
       const n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]],len=Math.hypot(...n);
       n.forEach((v,k)=>n[k]=v/len);
       const light=Math.max(0,-n[0]*.35-n[1]*.5+n[2]*.79);
-      const base=panel.fold===0?[209,226,178]:panel.fold===1?[238,239,222]:[161,181,156];
-      const rgb=base.map(v=>Math.round(v*(.52+.48*light)));
-      return {p:p.map(project),z:p.reduce((s,v)=>s+v[2],0)/3,color:'rgb('+rgb.join(',')+')'};
+      // Obsidian facets that catch lime light on the lit folds.
+      const t=Math.pow(light,2.2)*(panel.fold===0?.95:panel.fold===1?.6:.32),dark=[16,21,19],lit=[217,247,128];
+      const rgb=dark.map((v,k)=>Math.round(v+(lit[k]-v)*t+light*14));
+      return {p:p.map(project),z:p.reduce((s,v)=>s+v[2],0)/3,color:'rgb('+rgb.join(',')+')',light};
     }).sort((a,b)=>a.z-b.z);
     for(const face of faces){
       context.beginPath();face.p.forEach(([x,y],i)=>i?context.lineTo(x,y):context.moveTo(x,y));context.closePath();
-      context.fillStyle=face.color;context.fill();context.strokeStyle='rgba(35,57,43,.48)';context.lineWidth=.8;context.stroke();
+      context.fillStyle=face.color;context.fill();context.strokeStyle=`rgba(217,247,128,${.14+face.light*.4})`;context.lineWidth=.8;context.stroke();
       // Fine inset scoring emphasizes the physical folds without a wireframe overlay.
       const center=[0,1].map(k=>face.p.reduce((s,p)=>s+p[k],0)/3);
       context.beginPath();face.p.forEach((p,i)=>{const x=p[0]*.965+center[0]*.035,y=p[1]*.965+center[1]*.035;i?context.lineTo(x,y):context.moveTo(x,y);});
-      context.closePath();context.strokeStyle='rgba(255,255,240,.25)';context.lineWidth=.6;context.stroke();
+      context.closePath();context.strokeStyle='rgba(255,255,240,.07)';context.lineWidth=.6;context.stroke();
     }
   }
   function tick(now){if(!paused&&inView&&!document.hidden){const delta=Math.min((now-previous)/1000,.05)||0;phase+=delta*.14;mouseX+=(targetX-mouseX)*.04;mouseY+=(targetY-mouseY)*.04;if(now-lastDraw>1000/30){draw();lastDraw=now;}}previous=now;frame=requestAnimationFrame(tick);}

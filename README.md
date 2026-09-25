@@ -9,7 +9,7 @@ with Node.js, without dependencies. Quarto sources and docs remain as legacy mat
 
 - Content: assets/data.js, assets/case-studies.js, assets/case-narratives.js
 - Page templates: scripts/build.mjs
-- Style: assets/atelier.css and assets/layout.css
+- Style: assets/atelier.css and assets/layout.css, with the dark premium theme layered in assets/premium.css
 - Interactions: assets/atelier.js
 - Resume: files/resume.pdf
 - Preserved build inputs: design-reference (required for galleries/contributions)
